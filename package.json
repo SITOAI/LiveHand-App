@@ -1,0 +1,13 @@
+{
+	"packageManager": "pnpm@10.9.0+sha1.aa4a6bfc002fd508e5643944fb46f2ad64eb8b95",
+	"devDependencies": {
+		"sass": "^1.89.2"
+	},
+	"dependencies": {
+		"crypto": "^1.0.1",
+		"cryptojs": "^2.5.3",
+		"dotenv": "^16.5.0",
+		"pinia": "^3.0.3",
+		"uview-plus": "3.1.23"
+	}
+}

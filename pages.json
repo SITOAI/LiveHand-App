@@ -1,0 +1,94 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      // 一级 layout 页面：入口页面
+      "path": "pages/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 登录页
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // index layout 页面：控制 notes 和 knows
+      "path": "pages/index/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 笔记页面
+      "path": "pages/index/notes/notes",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 知识页面
+      "path": "pages/index/knows/knows",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 智能体主要页面
+      "path": "pages/index/agents/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 404 页面
+      "path": "pages/404/404",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+    	"path" : "pages/login/verify",
+    	"style" : 
+    	{
+			"navigationBarTitleText": "",
+			"navigationStyle": "custom"
+    	}
+    },
+    {
+    	"path" : "pages/details/NoteDetails/NoteDetails",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
+    },
+    {
+    	"path" : "pages/details/KnowDetails/KnowDetails",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#ffffff"
+  }
+}
