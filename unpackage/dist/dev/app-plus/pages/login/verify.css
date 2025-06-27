@@ -10,7 +10,7 @@
  *
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
-uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[data-v-bedad649] {
+uni-view[data-v-1c933a9a], uni-scroll-view[data-v-1c933a9a], uni-swiper-item[data-v-1c933a9a] {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -23,27 +23,27 @@ uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[dat
   font-family: "uicon-iconfont";
   src: url("https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf") format("truetype");
 }
-.u-icon[data-v-bedad649] {
+.u-icon[data-v-1c933a9a] {
   display: flex;
   align-items: center;
 }
-.u-icon--left[data-v-bedad649] {
+.u-icon--left[data-v-1c933a9a] {
   flex-direction: row-reverse;
   align-items: center;
 }
-.u-icon--right[data-v-bedad649] {
+.u-icon--right[data-v-1c933a9a] {
   flex-direction: row;
   align-items: center;
 }
-.u-icon--top[data-v-bedad649] {
+.u-icon--top[data-v-1c933a9a] {
   flex-direction: column-reverse;
   justify-content: center;
 }
-.u-icon--bottom[data-v-bedad649] {
+.u-icon--bottom[data-v-1c933a9a] {
   flex-direction: column;
   justify-content: center;
 }
-.u-icon__icon[data-v-bedad649] {
+.u-icon__icon[data-v-1c933a9a] {
   font-family: uicon-iconfont;
   position: relative;
 
@@ -52,26 +52,26 @@ uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[dat
   flex-direction: row;
   align-items: center;
 }
-.u-icon__icon--primary[data-v-bedad649] {
+.u-icon__icon--primary[data-v-1c933a9a] {
   color: #3c9cff;
 }
-.u-icon__icon--success[data-v-bedad649] {
+.u-icon__icon--success[data-v-1c933a9a] {
   color: #5ac725;
 }
-.u-icon__icon--error[data-v-bedad649] {
+.u-icon__icon--error[data-v-1c933a9a] {
   color: #f56c6c;
 }
-.u-icon__icon--warning[data-v-bedad649] {
+.u-icon__icon--warning[data-v-1c933a9a] {
   color: #f9ae3d;
 }
-.u-icon__icon--info[data-v-bedad649] {
+.u-icon__icon--info[data-v-1c933a9a] {
   color: #909399;
 }
-.u-icon__img[data-v-bedad649] {
+.u-icon__img[data-v-1c933a9a] {
   height: auto;
   will-change: transform;
 }
-.u-icon__label[data-v-bedad649] {
+.u-icon__label[data-v-1c933a9a] {
   line-height: 1;
 }
 

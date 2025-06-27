@@ -82,16 +82,17 @@ function getVerifyCode() {
 
   // 模拟请求验证码成功，跳转到验证码输入页，并传递手机号
   // uni.showToast({ title: '正在获取验证码', icon: 'none' })
-  var result = http.post("/user/getCaptcha", {
+  http.post("/user/getCaptcha", {
 	  phonenumber: phone.value
+  }).then(result=>{
+	  if(result.code === 200 && result.data.isSuccess === 1){
+	  	  uni.navigateTo({
+	  	      url: `/pages/login/verify?phone=${encodeURIComponent(phone.value)}`
+	  	  	  })
+	  }else{
+		  return uni.showToast({ title: '获取验证码失败，请稍后再试！', icon: 'error' })
+	  }
   })
-  
-  console.log(result)
-
-  // 跳转并传参
-  uni.navigateTo({
-      url: `/pages/login/verify?phone=${encodeURIComponent(fullPhone)}`
-	  })
 
   // 你也可以在这里开始倒计时，或者放到验证码页处理
   countdown.value = 60

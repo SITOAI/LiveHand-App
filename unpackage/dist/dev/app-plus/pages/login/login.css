@@ -10,7 +10,7 @@
  *
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
-uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[data-v-bedad649] {
+uni-view[data-v-1c933a9a], uni-scroll-view[data-v-1c933a9a], uni-swiper-item[data-v-1c933a9a] {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -23,27 +23,27 @@ uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[dat
   font-family: "uicon-iconfont";
   src: url("https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf") format("truetype");
 }
-.u-icon[data-v-bedad649] {
+.u-icon[data-v-1c933a9a] {
   display: flex;
   align-items: center;
 }
-.u-icon--left[data-v-bedad649] {
+.u-icon--left[data-v-1c933a9a] {
   flex-direction: row-reverse;
   align-items: center;
 }
-.u-icon--right[data-v-bedad649] {
+.u-icon--right[data-v-1c933a9a] {
   flex-direction: row;
   align-items: center;
 }
-.u-icon--top[data-v-bedad649] {
+.u-icon--top[data-v-1c933a9a] {
   flex-direction: column-reverse;
   justify-content: center;
 }
-.u-icon--bottom[data-v-bedad649] {
+.u-icon--bottom[data-v-1c933a9a] {
   flex-direction: column;
   justify-content: center;
 }
-.u-icon__icon[data-v-bedad649] {
+.u-icon__icon[data-v-1c933a9a] {
   font-family: uicon-iconfont;
   position: relative;
 
@@ -52,26 +52,26 @@ uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[dat
   flex-direction: row;
   align-items: center;
 }
-.u-icon__icon--primary[data-v-bedad649] {
+.u-icon__icon--primary[data-v-1c933a9a] {
   color: #3c9cff;
 }
-.u-icon__icon--success[data-v-bedad649] {
+.u-icon__icon--success[data-v-1c933a9a] {
   color: #5ac725;
 }
-.u-icon__icon--error[data-v-bedad649] {
+.u-icon__icon--error[data-v-1c933a9a] {
   color: #f56c6c;
 }
-.u-icon__icon--warning[data-v-bedad649] {
+.u-icon__icon--warning[data-v-1c933a9a] {
   color: #f9ae3d;
 }
-.u-icon__icon--info[data-v-bedad649] {
+.u-icon__icon--info[data-v-1c933a9a] {
   color: #909399;
 }
-.u-icon__img[data-v-bedad649] {
+.u-icon__img[data-v-1c933a9a] {
   height: auto;
   will-change: transform;
 }
-.u-icon__label[data-v-bedad649] {
+.u-icon__label[data-v-1c933a9a] {
   line-height: 1;
 }
 /**
@@ -86,7 +86,7 @@ uni-view[data-v-bedad649], uni-scroll-view[data-v-bedad649], uni-swiper-item[dat
  *
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
-uni-view[data-v-8b7c3dc7], uni-scroll-view[data-v-8b7c3dc7], uni-swiper-item[data-v-8b7c3dc7] {
+uni-view[data-v-abd63d8e], uni-scroll-view[data-v-abd63d8e], uni-swiper-item[data-v-abd63d8e] {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -95,7 +95,7 @@ uni-view[data-v-8b7c3dc7], uni-scroll-view[data-v-8b7c3dc7], uni-swiper-item[dat
   align-items: stretch;
   align-content: flex-start;
 }
-.u-checkbox[data-v-8b7c3dc7] {
+.u-checkbox[data-v-abd63d8e] {
 
   display: flex;
 
@@ -106,14 +106,14 @@ uni-view[data-v-8b7c3dc7], uni-scroll-view[data-v-8b7c3dc7], uni-swiper-item[dat
   margin-bottom: 5px;
   margin-top: 5px;
 }
-.u-checkbox-label--left[data-v-8b7c3dc7] {
+.u-checkbox-label--left[data-v-abd63d8e] {
   flex-direction: row;
 }
-.u-checkbox-label--right[data-v-8b7c3dc7] {
+.u-checkbox-label--right[data-v-abd63d8e] {
   flex-direction: row-reverse;
   justify-content: space-between;
 }
-.u-checkbox__icon-wrap[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap[data-v-abd63d8e] {
   box-sizing: border-box;
   transition-property: border-color, background-color, color;
   transition-duration: 0.2s;
@@ -132,31 +132,31 @@ uni-view[data-v-8b7c3dc7], uni-scroll-view[data-v-8b7c3dc7], uni-swiper-item[dat
   border-color: #c8c9cc;
   border-style: solid;
 }
-.u-checkbox__icon-wrap--circle[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap--circle[data-v-abd63d8e] {
   border-radius: 100%;
 }
-.u-checkbox__icon-wrap--square[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap--square[data-v-abd63d8e] {
   border-radius: 3px;
 }
-.u-checkbox__icon-wrap--checked[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap--checked[data-v-abd63d8e] {
   color: #fff;
   background-color: red;
   border-color: #2979ff;
 }
-.u-checkbox__icon-wrap--disabled[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap--disabled[data-v-abd63d8e] {
   background-color: #ebedf0 !important;
 }
-.u-checkbox__icon-wrap--disabled--checked[data-v-8b7c3dc7] {
+.u-checkbox__icon-wrap--disabled--checked[data-v-abd63d8e] {
   color: #c8c9cc !important;
 }
-.u-checkbox__label[data-v-8b7c3dc7] {
+.u-checkbox__label[data-v-abd63d8e] {
   word-wrap: break-word;
   margin-left: 5px;
   margin-right: 12px;
   color: #606266;
   font-size: 15px;
 }
-.u-checkbox__label--disabled[data-v-8b7c3dc7] {
+.u-checkbox__label--disabled[data-v-abd63d8e] {
   color: #c8c9cc;
 }
 /**
@@ -171,7 +171,7 @@ uni-view[data-v-8b7c3dc7], uni-scroll-view[data-v-8b7c3dc7], uni-swiper-item[dat
  *
  * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
  */
-uni-view[data-v-bffd0d93], uni-scroll-view[data-v-bffd0d93], uni-swiper-item[data-v-bffd0d93] {
+uni-view[data-v-504cd728], uni-scroll-view[data-v-504cd728], uni-swiper-item[data-v-504cd728] {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -180,11 +180,11 @@ uni-view[data-v-bffd0d93], uni-scroll-view[data-v-bffd0d93], uni-swiper-item[dat
   align-items: stretch;
   align-content: flex-start;
 }
-.u-checkbox-group--row[data-v-bffd0d93] {
+.u-checkbox-group--row[data-v-504cd728] {
   display: flex;
   flex-flow: row wrap;
 }
-.u-checkbox-group--column[data-v-bffd0d93] {
+.u-checkbox-group--column[data-v-504cd728] {
 
   display: flex;
 

@@ -1,8 +1,7 @@
-// utils/http.js
 class Http {
   constructor({
-    baseURL = 'http://192.168.1.246:8082',
-    timeout = 10000, // 10秒超时
+    baseURL = 'http://ai.sitoai.cn',
+    timeout = 10000,
     headers = { 'Content-Type': 'application/json' },
   } = {}) {
     this.baseURL = baseURL
@@ -13,37 +12,31 @@ class Http {
     this.responseInterceptors = []
   }
 
-  // 添加请求拦截器，返回 config 或 Promise.reject(error)
   addRequestInterceptor(fn) {
     this.requestInterceptors.push(fn)
   }
 
-  // 添加响应拦截器，返回 response 或 Promise.reject(error)
   addResponseInterceptor(fn) {
     this.responseInterceptors.push(fn)
   }
 
-  // 内部调用请求拦截器
   async runRequestInterceptors(config) {
     let cfg = { ...config }
     for (const interceptor of this.requestInterceptors) {
-      // 支持异步
       cfg = await interceptor(cfg)
     }
     return cfg
   }
 
-  // 内部调用响应拦截器
   async runResponseInterceptors(response) {
     let res = response
     for (const interceptor of this.responseInterceptors) {
-      // 支持异步
       res = await interceptor(res)
     }
     return res
   }
 
-  // 发送请求核心
+  // 核心请求
   async request(url, options = {}) {
     let config = {
       method: 'GET',
@@ -51,57 +44,62 @@ class Http {
       ...options,
     }
 
-    // 完整 URL
     const fullUrl = this.baseURL + url
-
-    // 先执行请求拦截器
     config = await this.runRequestInterceptors(config)
 
-    // 创建 AbortController 用于取消和超时
-    const controller = new AbortController()
-    config.signal = controller.signal
+    return new Promise((resolve, reject) => {
+      const timeoutTimer = setTimeout(() => {
+        reject(new Error('请求超时'))
+      }, this.timeout)
 
-    // 超时控制
-    const timeoutId = setTimeout(() => controller.abort(), this.timeout)
+      uni.request({
+        url: fullUrl,
+        method: config.method || 'GET',
+        header: config.headers,
+        data: config.body ? JSON.parse(config.body) : {},
+        success: async (res) => {
+          clearTimeout(timeoutTimer)
 
-    try {
-      const response = await fetch(fullUrl, config)
-      clearTimeout(timeoutId)
+          const response = {
+            ok: res.statusCode >= 200 && res.statusCode < 300,
+            status: res.statusCode,
+            json: async () => res.data,
+            text: async () => JSON.stringify(res.data),
+            headers: {
+              get: (key) => res.header?.[key.toLowerCase()] || ''
+            }
+          }
 
-      // 响应拦截器先处理原始响应
-      const interceptedResponse = await this.runResponseInterceptors(response)
+          const intercepted = await this.runResponseInterceptors(response)
 
-      if (!interceptedResponse.ok) {
-        // 尝试解析错误信息
-        let errorMsg = `HTTP错误: ${interceptedResponse.status}`
-        try {
-          const errJson = await interceptedResponse.json()
-          errorMsg = errJson.message || errorMsg
-        } catch {}
+          if (!intercepted.ok) {
+            const errData = await intercepted.json()
+            const error = new Error(errData?.message || `HTTP错误: ${intercepted.status}`)
+            error.status = intercepted.status
+            return reject(error)
+          }
 
-        const error = new Error(errorMsg)
-        error.status = interceptedResponse.status
-        throw error
-      }
-
-      // 默认返回 JSON，可以根据响应头判断是否为 json
-      const contentType = interceptedResponse.headers.get('content-type') || ''
-      if (contentType.includes('application/json')) {
-        return interceptedResponse.json()
-      } else {
-        // 返回文本
-        return interceptedResponse.text()
-      }
-    } catch (error) {
-      clearTimeout(timeoutId)
-      if (error.name === 'AbortError') {
-        throw new Error('请求超时或被取消')
-      }
-      throw error
-    }
+          const contentType = intercepted.headers.get('content-type') || ''
+          try {
+            const data = await intercepted.json()
+            return resolve(data)
+          } catch (e) {
+            const text = await intercepted.text()
+            try {
+              return resolve(JSON.parse(text))  // 某些服务返回的是 text 但内容是 JSON 字符串
+            } catch {
+              return resolve(text) // 真的是纯文本
+            }
+          }
+        },
+        fail: (err) => {
+          clearTimeout(timeoutTimer)
+          reject(new Error(err.errMsg || '请求失败'))
+        }
+      })
+    })
   }
 
-  // GET 请求，支持 params 参数
   get(url, params = {}, options = {}) {
     const queryString = new URLSearchParams(params).toString()
     const fullUrl = queryString ? `${url}?${queryString}` : url
@@ -111,7 +109,6 @@ class Http {
     })
   }
 
-  // POST 请求，自动序列化 JSON
   post(url, data = {}, options = {}) {
     const config = {
       method: 'POST',
@@ -140,28 +137,32 @@ class Http {
   }
 }
 
-// 实例化并导出一个默认 Http 实例，方便全局用
 const http = new Http({
   baseURL: 'http://ai.sitoai.cn',
-  timeout: 15000, // 15秒超时
+  timeout: 15000,
 })
 
-// 示例：添加请求拦截器，自动添加token
+// 请求拦截器：自动附加 token
 http.addRequestInterceptor(async (config) => {
-  const token = localStorage.getItem('token') || ''
-  if (token) {
-    config.headers['Authorization'] = `Bearer ${token}`
+  try {
+    const token = uni.getStorageSync('token') || ''
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+  } catch (e) {
+    console.warn('token 获取失败:', e)
   }
   return config
 })
 
-// 示例：添加响应拦截器，401自动登出跳转登录
+// 响应拦截器：自动处理 401
 http.addResponseInterceptor(async (response) => {
   if (response.status === 401) {
-    // 这里可以做登出处理，比如清token、跳转登录页
-    localStorage.removeItem('token')
-    // 你可以使用router跳转，或者触发全局事件
-    // router.push('/login')
+    try {
+      uni.removeStorageSync('token')
+    } catch (e) {
+      console.warn('token 清除失败:', e)
+    }
     throw new Error('未授权，请重新登录')
   }
   return response

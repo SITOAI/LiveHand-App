@@ -41,6 +41,8 @@
 import { ref, onUnmounted } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user.js'
+import CryptoJS from 'crypto-js'
+import http from '../../utils/http.js'
 
 const phone = ref('')
 const code = ref('')
@@ -71,19 +73,35 @@ function resendCode() {
   // TODO: 这里调用接口重新发送验证码
 }
 
-function onInput() {
+async function onInput() {
   if (code.value.length === 6) {
-    // 模拟验证码校验
-    if (code.value === '123456') {
-      // 校验成功，模拟登录成功
-      const fakeToken = 'token_' + Date.now()
-      userStore.login(fakeToken)
-      // 跳转首页
-      uni.reLaunch({ url: '/pages/index/layout' })
-    } else {
-      uni.showToast({ title: '验证码错误', icon: 'error' })
-    }
+	const encryptedCode = encryptCaptcha(code.value)
+	var result = await http.post("/user/loginByCaptcha", {
+		  phonenumber: phone.value,
+		  captcha: encryptedCode
+	})
+	if(result.code === 200 && result.data.isSuccess === 1){
+		const token = result.data.user_id
+		userStore.login(token)
+		uni.showToast({ title: '登录成功', icon: 'none' })
+		uni.reLaunch({ url: '/pages/index/layout' })
+	}else{
+		uni.showToast({ title: result.data.msg || '验证码错误', icon: 'error' })
+	}
   }
+}
+
+
+function encryptCaptcha(code) {
+  const key = CryptoJS.enc.Utf8.parse('7e677bfa07e11a8f')
+  const iv = CryptoJS.enc.Utf8.parse('30ff0efcb957087f')
+  const srcs = CryptoJS.enc.Utf8.parse(code)
+  const encrypted = CryptoJS.AES.encrypt(srcs, key, {
+    iv: iv,
+    mode: CryptoJS.mode.CBC,
+    padding: CryptoJS.pad.Pkcs7
+  })
+  return encrypted.ciphertext.toString().toUpperCase()
 }
 
 onUnmounted(() => {
