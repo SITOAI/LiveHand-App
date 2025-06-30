@@ -35,7 +35,11 @@
       </view>
 
       <!-- Tabs栏 -->
-      <u-tabs :list="tabList" :current="activeTab" @change="handleTabChange" />
+      <u-tabs :list="tabList" :current="activeTab" @change="handleTabChange" 
+		  :item-style="{ justifyContent: 'center', padding: '20rpx 0', height: '80rpx',flex: 1, justifyContent: 'center' }"
+		  :active-style="{ fontSize: '18px', fontWeight: '600' }"
+		  :scrollable="false"
+	  />
     </view>
 
     <!-- Swiper 内容区 -->
@@ -217,6 +221,7 @@ function onTouchEnd(e) {
   padding: 16px;
   margin-bottom: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 4vh;
 }
 .note-title-row {
   display: flex;

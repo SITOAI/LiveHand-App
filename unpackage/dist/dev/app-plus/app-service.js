@@ -16582,7 +16582,7 @@ This will fail in production.`);
         }
       });
       function onTalkWithAI() {
-        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:135", "功能暂未开放");
+        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:139", "功能暂未开放");
       }
       function goBack() {
         uni.navigateBack();
@@ -16699,7 +16699,10 @@ This will fail in production.`);
             vue.createVNode(_component_u_tabs, {
               list: tabList,
               current: activeTab.value,
-              onChange: handleTabChange
+              onChange: handleTabChange,
+              "item-style": { justifyContent: "center", padding: "20rpx 0", height: "80rpx", flex: 1, justifyContent: "center" },
+              "active-style": { fontSize: "18px", fontWeight: "600" },
+              scrollable: false
             }, null, 8, ["current"])
           ]),
           vue.createCommentVNode(" Swiper 内容区 "),
