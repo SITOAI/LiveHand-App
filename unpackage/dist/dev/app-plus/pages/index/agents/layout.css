@@ -4,6 +4,7 @@
   gap: 20px;           /* 固定间距 */
   justify-content: center;
   padding: 0 10px;
+  margin-top: -10px;
 }
 .subtab[data-v-25def7fe] {
   white-space: nowrap;

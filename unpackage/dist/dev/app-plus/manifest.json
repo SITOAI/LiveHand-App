@@ -42,6 +42,16 @@
     "nvueStyleCompiler": "uni-app",
     "compilerVersion": 3,
     "distribute": {
+      "splashscreen": {
+        "androidStyle": "default",
+        "useOriginalMsgbox": false,
+        "iosStyle": "common",
+        "android": {
+          "hdpi": "static/logo.png",
+          "xhdpi": "static/logo.png",
+          "xxhdpi": "static/logo.png"
+        }
+      },
       "google": {
         "permissions": [
           "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
@@ -75,6 +85,7 @@
       "style": "dark",
       "background": "#000000"
     },
+    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\"}",
     "uniStatistics": {
       "enable": false
     },

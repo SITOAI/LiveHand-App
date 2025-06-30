@@ -5821,17 +5821,18 @@ This will fail in production.`);
         default: () => [
           { text: "标签一", type: "warning" },
           { text: "标签二", type: "success" },
-          { text: "标签三", type: "primary" }
+          { text: "标签三", type: "primary" },
+          { text: "标签四", type: "primary" }
         ]
       }
     },
     setup(__props) {
       const props2 = __props;
       const onShare = () => {
-        formatAppLog("log", "at components/cards/KnowCard.vue:66", "点击了分享");
+        formatAppLog("log", "at components/cards/KnowCard.vue:67", "点击了分享");
       };
       const onDelete = () => {
-        formatAppLog("log", "at components/cards/KnowCard.vue:70", "点击了删除");
+        formatAppLog("log", "at components/cards/KnowCard.vue:71", "点击了删除");
       };
       function openDetails() {
         uni.navigateTo({
@@ -6007,7 +6008,11 @@ This will fail in production.`);
   const _sfc_main$G = {
     __name: "SubTabBar",
     props: {
-      modelValue: Number
+      modelValue: Number,
+      statusBarHeight: {
+        type: Number,
+        default: 20
+      }
     },
     emits: ["update:modelValue", "change"],
     setup(__props, { emit }) {
@@ -6025,31 +6030,40 @@ This will fail in production.`);
         activeIndex.value = index2;
       }
       return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "subtabbar" }, [
-          (vue.openBlock(), vue.createElementBlock(
-            vue.Fragment,
-            null,
-            vue.renderList(["新闻", "调研", "简历"], (tab, i) => {
-              return vue.createElementVNode("view", {
-                key: i,
-                class: vue.normalizeClass(["subtab", { active: vue.unref(activeIndex) === i }]),
-                onClick: ($event) => onTabClick(i)
-              }, [
-                vue.createTextVNode(
-                  vue.toDisplayString(tab) + " ",
-                  1
-                  /* TEXT */
-                ),
-                vue.unref(activeIndex) === i ? (vue.openBlock(), vue.createElementBlock("view", {
-                  key: 0,
-                  class: "active-line"
-                })) : vue.createCommentVNode("v-if", true)
-              ], 10, ["onClick"]);
-            }),
-            64
-            /* STABLE_FRAGMENT */
-          ))
-        ]);
+        return vue.openBlock(), vue.createElementBlock(
+          "view",
+          {
+            class: "subtabbar",
+            style: vue.normalizeStyle({ paddingTop: __props.statusBarHeight + "px" })
+          },
+          [
+            (vue.openBlock(), vue.createElementBlock(
+              vue.Fragment,
+              null,
+              vue.renderList(["新闻", "调研", "简历"], (tab, i) => {
+                return vue.createElementVNode("view", {
+                  key: i,
+                  class: vue.normalizeClass(["subtab", { active: vue.unref(activeIndex) === i }]),
+                  onClick: ($event) => onTabClick(i)
+                }, [
+                  vue.createTextVNode(
+                    vue.toDisplayString(tab) + " ",
+                    1
+                    /* TEXT */
+                  ),
+                  vue.unref(activeIndex) === i ? (vue.openBlock(), vue.createElementBlock("view", {
+                    key: 0,
+                    class: "active-line"
+                  })) : vue.createCommentVNode("v-if", true)
+                ], 10, ["onClick"]);
+              }),
+              64
+              /* STABLE_FRAGMENT */
+            ))
+          ],
+          4
+          /* STYLE */
+        );
       };
     }
   };
@@ -6089,14 +6103,17 @@ This will fail in production.`);
           swipeLeftFromFirstPage();
         }
       }
+      const statusBarHeight = uni.getSystemInfoSync().statussBarHeight;
+      formatAppLog("log", "at pages/index/agents/layout.vue:84", "statusBarHeight:" + statusBarHeight);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("view", { class: "sub-index-page" }, [
           vue.createElementVNode("view", { class: "sub-index-header" }, [
             vue.createVNode(SubTabBar, {
               modelValue: activeTab.value,
               "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => activeTab.value = $event),
-              onChange: handleTabChange
-            }, null, 8, ["modelValue"])
+              onChange: handleTabChange,
+              statusBarHeight: vue.unref(statusBarHeight)
+            }, null, 8, ["modelValue", "statusBarHeight"])
           ]),
           vue.createElementVNode(
             "view",
@@ -16798,6 +16815,9 @@ This will fail in production.`);
       const users = vue.ref(0);
       const time = vue.ref("");
       const tags = vue.ref([]);
+      const systemInfo = uni.getSystemInfoSync();
+      const statusBarHeight = systemInfo.statusBarHeight || 20;
+      const safeAreaTop = `calc(${statusBarHeight}px + env(safe-area-inset-top))`;
       onLoad((options) => {
         name.value = decodeURIComponent(options.name || "");
         user.value = decodeURIComponent(options.user || "");
@@ -16816,25 +16836,34 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "know-details" }, [
-          vue.createElementVNode("view", { class: "details-header" }, [
-            vue.createVNode(_component_u_icon, {
-              name: "arrow-left",
-              size: "24",
-              onClick: goBack
-            }),
-            vue.createElementVNode(
-              "text",
-              { class: "details-title" },
-              vue.toDisplayString(name.value),
-              1
-              /* TEXT */
-            )
-          ]),
-          vue.createElementVNode("view", { class: "details-body" }, [
-            vue.createElementVNode("text", null, "这里是知识库详情页，目前仅展示基础信息。")
-          ])
-        ]);
+        return vue.openBlock(), vue.createElementBlock(
+          "view",
+          {
+            class: "know-details",
+            style: vue.normalizeStyle({ paddingTop: safeAreaTop })
+          },
+          [
+            vue.createElementVNode("view", { class: "details-header" }, [
+              vue.createVNode(_component_u_icon, {
+                name: "arrow-left",
+                size: "24",
+                onClick: goBack
+              }),
+              vue.createElementVNode(
+                "text",
+                { class: "details-title" },
+                vue.toDisplayString(name.value),
+                1
+                /* TEXT */
+              )
+            ]),
+            vue.createElementVNode("view", { class: "details-body" }, [
+              vue.createElementVNode("text", null, "这里是知识库详情页，目前仅展示基础信息。")
+            ])
+          ],
+          4
+          /* STYLE */
+        );
       };
     }
   };

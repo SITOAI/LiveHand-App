@@ -875,5 +875,7 @@ uni-view[data-v-12b77a26], uni-scroll-view[data-v-12b77a26], uni-swiper-item[dat
 .notes-container[data-v-8b89ac5f] {
   display: flex;
   flex-wrap: wrap;
-  gap: 5vw;
+  gap: 4vw;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+

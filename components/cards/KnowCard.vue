@@ -57,7 +57,8 @@ const props = defineProps({
     default: () => [
       { text: '标签一', type: 'warning' },
       { text: '标签二', type: 'success' },
-      { text: '标签三', type: 'primary' }
+      { text: '标签三', type: 'primary' },
+	  { text: '标签四', type: 'primary' }
     ]
   }
 })
@@ -164,19 +165,18 @@ function openDetails() {
 .know-footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   font-size: 12px;
   color: #666;
+  flex-wrap: nowrap;
 }
 
 .know-info {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  flex: 1;
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 65%;
 }
 
 .know-time {
@@ -189,10 +189,11 @@ function openDetails() {
 
 .know-tags {
   display: flex;
-  gap: 6px;
-  flex-wrap: nowrap;
-  max-width: 35%;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-width: 45%;
   justify-content: flex-end;
+  align-content: flex-start;
 }
 
 .tag-item {

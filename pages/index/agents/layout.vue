@@ -1,7 +1,7 @@
 <template>
   <view class="sub-index-page">
     <view class="sub-index-header">
-      <SubTabBar v-model="activeTab" @change="handleTabChange" />
+      <SubTabBar v-model="activeTab" @change="handleTabChange" :statusBarHeight="statusBarHeight"/>
 	</view>
     <view
       class="sub-index-content"
@@ -80,6 +80,8 @@ function onTouchEnd(e) {
   }
 }
 
+const statusBarHeight = uni.getSystemInfoSync().statussBarHeight
+console.log("statusBarHeight:"+statusBarHeight)
 </script>
 
 <style scoped>

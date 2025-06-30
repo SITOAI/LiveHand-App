@@ -23,6 +23,8 @@ import NoteCard from '@/components/cards/NoteCard.vue' // 按需调整路径
 .notes-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 5vw;
+  gap: 4vw;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+
 </style>

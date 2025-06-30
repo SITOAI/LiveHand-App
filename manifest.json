@@ -43,7 +43,17 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {},
+            "splashscreen" : {
+                "androidStyle" : "default",
+                "useOriginalMsgbox" : false,
+                "iosStyle" : "common",
+                "android" : {
+                    "hdpi" : "static/logo.png",
+                    "xhdpi" : "static/logo.png",
+                    "xxhdpi" : "static/logo.png"
+                }
+            }
         }
     },
     /* 快应用特有相关 */

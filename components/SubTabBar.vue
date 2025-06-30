@@ -1,5 +1,5 @@
 <template>
-  <view class="subtabbar">
+  <view class="subtabbar" :style="{ paddingTop: statusBarHeight + 'px' }">
     <view
       v-for="(tab, i) in ['新闻', '调研', '简历']"
       :key="i"
@@ -17,7 +17,11 @@
 import { computed, defineEmits, defineProps } from 'vue'
 
 const props = defineProps({
-  modelValue: Number
+  modelValue: Number,
+  statusBarHeight: {
+      type: Number,
+      default: 20
+    }
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 
@@ -34,6 +38,7 @@ const activeIndex = computed({
 function onTabClick(index) {
   activeIndex.value = index
 }
+
 </script>
 
 <style scoped>
@@ -42,6 +47,7 @@ function onTabClick(index) {
   gap: 20px;           /* 固定间距 */
   justify-content: center;
   padding: 0 10px;
+  margin-top: -10px;
 }
 
 .subtab {

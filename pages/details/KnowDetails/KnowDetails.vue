@@ -1,5 +1,5 @@
 <template>
-  <view class="know-details">
+  <view class="know-details" :style="{ paddingTop: safeAreaTop }">
     <view class="details-header">
       <u-icon name="arrow-left" size="24" @click="goBack" />
       <text class="details-title">{{ name }}</text>
@@ -21,6 +21,10 @@ const count = ref(0)
 const users = ref(0)
 const time = ref('')
 const tags = ref([])
+
+const systemInfo = uni.getSystemInfoSync()
+const statusBarHeight = systemInfo.statusBarHeight || 20
+const safeAreaTop = `calc(${statusBarHeight}px + env(safe-area-inset-top))`
 
 onLoad((options) => {
   name.value = decodeURIComponent(options.name || '')
