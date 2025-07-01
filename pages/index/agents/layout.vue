@@ -18,10 +18,10 @@
           <News class="sub-index-container" />
         </swiper-item>
         <swiper-item>
-          <Resume class="sub-index-container" />
+          <Research class="sub-index-container" />
         </swiper-item>
         <swiper-item>
-          <Research class="sub-index-container" />
+          <Resume class="sub-index-container" />
         </swiper-item>
       </swiper>
     </view>
