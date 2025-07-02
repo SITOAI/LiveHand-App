@@ -3168,7 +3168,7 @@ This will fail in production.`);
       previewImage: true
     }
   };
-  const props$f = {
+  const props$i = {
     ...ActionSheet,
     ...Album,
     ...Alert,
@@ -3258,92 +3258,92 @@ This will fail in production.`);
     ...Transition,
     ...Upload
   };
-  const props$e = {
+  const props$h = {
     props: {
       // 图标类名
       name: {
         type: String,
-        default: props$f.icon.name
+        default: props$i.icon.name
       },
       // 图标颜色，可接受主题色
       color: {
         type: String,
-        default: props$f.icon.color
+        default: props$i.icon.color
       },
       // 字体大小，单位px
       size: {
         type: [String, Number],
-        default: props$f.icon.size
+        default: props$i.icon.size
       },
       // 是否显示粗体
       bold: {
         type: Boolean,
-        default: props$f.icon.bold
+        default: props$i.icon.bold
       },
       // 点击图标的时候传递事件出去的index（用于区分点击了哪一个）
       index: {
         type: [String, Number],
-        default: props$f.icon.index
+        default: props$i.icon.index
       },
       // 触摸图标时的类名
       hoverClass: {
         type: String,
-        default: props$f.icon.hoverClass
+        default: props$i.icon.hoverClass
       },
       // 自定义扩展前缀，方便用户扩展自己的图标库
       customPrefix: {
         type: String,
-        default: props$f.icon.customPrefix
+        default: props$i.icon.customPrefix
       },
       // 图标右边或者下面的文字
       label: {
         type: [String, Number],
-        default: props$f.icon.label
+        default: props$i.icon.label
       },
       // label的位置，只能右边或者下边
       labelPos: {
         type: String,
-        default: props$f.icon.labelPos
+        default: props$i.icon.labelPos
       },
       // label的大小
       labelSize: {
         type: [String, Number],
-        default: props$f.icon.labelSize
+        default: props$i.icon.labelSize
       },
       // label的颜色
       labelColor: {
         type: String,
-        default: props$f.icon.labelColor
+        default: props$i.icon.labelColor
       },
       // label与图标的距离
       space: {
         type: [String, Number],
-        default: props$f.icon.space
+        default: props$i.icon.space
       },
       // 图片的mode
       imgMode: {
         type: String,
-        default: props$f.icon.imgMode
+        default: props$i.icon.imgMode
       },
       // 用于显示图片小图标时，图片的宽度
       width: {
         type: [String, Number],
-        default: props$f.icon.width
+        default: props$i.icon.width
       },
       // 用于显示图片小图标时，图片的高度
       height: {
         type: [String, Number],
-        default: props$f.icon.height
+        default: props$i.icon.height
       },
       // 用于解决某些情况下，让图标垂直居中的用途
       top: {
         type: [String, Number],
-        default: props$f.icon.top
+        default: props$i.icon.top
       },
       // 是否阻止事件传播
       stop: {
         type: Boolean,
-        default: props$f.icon.stop
+        default: props$i.icon.stop
       }
     }
   };
@@ -3484,13 +3484,13 @@ This will fail in production.`);
     }
     return target;
   };
-  const _sfc_main$_ = {
+  const _sfc_main$11 = {
     name: "u-icon",
     data() {
       return {};
     },
     emits: ["click"],
-    mixins: [mpMixin, mixin, props$e],
+    mixins: [mpMixin, mixin, props$h],
     computed: {
       uClasses() {
         let classes = [];
@@ -3534,7 +3534,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -3578,79 +3578,79 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$l], ["__scopeId", "data-v-1c933a9a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
-  const props$d = {
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$o], ["__scopeId", "data-v-1c933a9a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
+  const props$g = {
     props: {
       // checkbox的名称
       name: {
         type: [String, Number, Boolean],
-        default: props$f.checkbox.name
+        default: props$i.checkbox.name
       },
       // 形状，square为方形，circle为圆型
       shape: {
         type: String,
-        default: props$f.checkbox.shape
+        default: props$i.checkbox.shape
       },
       // 整体的大小
       size: {
         type: [String, Number],
-        default: props$f.checkbox.size
+        default: props$i.checkbox.size
       },
       // 是否默认选中
       checked: {
         type: Boolean,
-        default: props$f.checkbox.checked
+        default: props$i.checkbox.checked
       },
       // 是否禁用
       disabled: {
         type: [String, Boolean],
-        default: props$f.checkbox.disabled
+        default: props$i.checkbox.disabled
       },
       // 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
       activeColor: {
         type: String,
-        default: props$f.checkbox.activeColor
+        default: props$i.checkbox.activeColor
       },
       // 未选中的颜色
       inactiveColor: {
         type: String,
-        default: props$f.checkbox.inactiveColor
+        default: props$i.checkbox.inactiveColor
       },
       // 图标的大小，单位px
       iconSize: {
         type: [String, Number],
-        default: props$f.checkbox.iconSize
+        default: props$i.checkbox.iconSize
       },
       // 图标颜色
       iconColor: {
         type: String,
-        default: props$f.checkbox.iconColor
+        default: props$i.checkbox.iconColor
       },
       // label提示文字，因为nvue下，直接slot进来的文字，由于特殊的结构，无法修改样式
       label: {
         type: [String, Number],
-        default: props$f.checkbox.label
+        default: props$i.checkbox.label
       },
       // label的字体大小，px单位
       labelSize: {
         type: [String, Number],
-        default: props$f.checkbox.labelSize
+        default: props$i.checkbox.labelSize
       },
       // label的颜色
       labelColor: {
         type: String,
-        default: props$f.checkbox.labelColor
+        default: props$i.checkbox.labelColor
       },
       // 是否禁止点击提示语选中复选框
       labelDisabled: {
         type: [String, Boolean],
-        default: props$f.checkbox.labelDisabled
+        default: props$i.checkbox.labelDisabled
       }
     }
   };
-  const _sfc_main$Z = {
+  const _sfc_main$10 = {
     name: "u-checkbox",
-    mixins: [mpMixin, mixin, props$d],
+    mixins: [mpMixin, mixin, props$g],
     data() {
       return {
         isChecked: false,
@@ -3810,7 +3810,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock(
       "view",
@@ -3859,89 +3859,89 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$k], ["__scopeId", "data-v-abd63d8e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
-  const props$c = {
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$n], ["__scopeId", "data-v-abd63d8e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
+  const props$f = {
     props: {
       // 标识符
       name: {
         type: String,
-        default: props$f.checkboxGroup.name
+        default: props$i.checkboxGroup.name
       },
       // 绑定的值
       modelValue: {
         type: Array,
-        default: props$f.checkboxGroup.value
+        default: props$i.checkboxGroup.value
       },
       // 形状，circle-圆形，square-方形
       shape: {
         type: String,
-        default: props$f.checkboxGroup.shape
+        default: props$i.checkboxGroup.shape
       },
       // 是否禁用全部checkbox
       disabled: {
         type: Boolean,
-        default: props$f.checkboxGroup.disabled
+        default: props$i.checkboxGroup.disabled
       },
       // 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
       activeColor: {
         type: String,
-        default: props$f.checkboxGroup.activeColor
+        default: props$i.checkboxGroup.activeColor
       },
       // 未选中的颜色
       inactiveColor: {
         type: String,
-        default: props$f.checkboxGroup.inactiveColor
+        default: props$i.checkboxGroup.inactiveColor
       },
       // 整个组件的尺寸，默认px
       size: {
         type: [String, Number],
-        default: props$f.checkboxGroup.size
+        default: props$i.checkboxGroup.size
       },
       // 布局方式，row-横向，column-纵向
       placement: {
         type: String,
-        default: props$f.checkboxGroup.placement
+        default: props$i.checkboxGroup.placement
       },
       // label的字体大小，px单位
       labelSize: {
         type: [String, Number],
-        default: props$f.checkboxGroup.labelSize
+        default: props$i.checkboxGroup.labelSize
       },
       // label的字体颜色
       labelColor: {
         type: [String],
-        default: props$f.checkboxGroup.labelColor
+        default: props$i.checkboxGroup.labelColor
       },
       // 是否禁止点击文本操作
       labelDisabled: {
         type: Boolean,
-        default: props$f.checkboxGroup.labelDisabled
+        default: props$i.checkboxGroup.labelDisabled
       },
       // 图标颜色
       iconColor: {
         type: String,
-        default: props$f.checkboxGroup.iconColor
+        default: props$i.checkboxGroup.iconColor
       },
       // 图标的大小，单位px
       iconSize: {
         type: [String, Number],
-        default: props$f.checkboxGroup.iconSize
+        default: props$i.checkboxGroup.iconSize
       },
       // 勾选图标的对齐方式，left-左边，right-右边
       iconPlacement: {
         type: String,
-        default: props$f.checkboxGroup.iconPlacement
+        default: props$i.checkboxGroup.iconPlacement
       },
       // 竖向配列时，是否显示下划线
       borderBottom: {
         type: Boolean,
-        default: props$f.checkboxGroup.borderBottom
+        default: props$i.checkboxGroup.borderBottom
       }
     }
   };
-  const _sfc_main$Y = {
+  const _sfc_main$$ = {
     name: "u-checkbox-group",
-    mixins: [mpMixin, mixin, props$c],
+    mixins: [mpMixin, mixin, props$f],
     computed: {
       // 这里computed的变量，都是子组件u-checkbox需要用到的，由于头条小程序的兼容性差异，子组件无法实时监听父组件参数的变化
       // 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(u-checkbox-group)
@@ -3998,7 +3998,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4011,7 +4011,7 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$j], ["__scopeId", "data-v-504cd728"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
+  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$m], ["__scopeId", "data-v-504cd728"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
   class Http {
     constructor({
       baseURL = "http://ai.sitoai.cn",
@@ -4162,7 +4162,7 @@ This will fail in production.`);
     }
     return response;
   });
-  const _sfc_main$X = {
+  const _sfc_main$_ = {
     __name: "login",
     setup(__props) {
       const phone = vue.ref("");
@@ -4305,28 +4305,28 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-e4e4508d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/login.vue"]]);
-  const props$b = {
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-e4e4508d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/login.vue"]]);
+  const props$e = {
     props: {
       // 是否展示组件
       show: {
         type: Boolean,
-        default: props$f.transition.show
+        default: props$i.transition.show
       },
       // 使用的动画模式
       mode: {
         type: String,
-        default: props$f.transition.mode
+        default: props$i.transition.mode
       },
       // 动画的执行时间，单位ms
       duration: {
         type: [String, Number],
-        default: props$f.transition.duration
+        default: props$i.transition.duration
       },
       // 使用的动画过渡函数
       timingFunction: {
         type: String,
-        default: props$f.transition.timingFunction
+        default: props$i.transition.timingFunction
       }
     }
   };
@@ -4385,7 +4385,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$W = {
+  const _sfc_main$Z = {
     name: "u-transition",
     data() {
       return {
@@ -4417,7 +4417,7 @@ This will fail in production.`);
       }
     },
     // 将mixin挂在到组件中，uni.$u.mixin实际上为一个vue格式对象
-    mixins: [mpMixin, mixin, transition, props$b],
+    mixins: [mpMixin, mixin, transition, props$e],
     watch: {
       show: {
         handler(newVal) {
@@ -4428,7 +4428,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     return $data.inited ? (vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4446,58 +4446,58 @@ This will fail in production.`);
       /* CLASS, STYLE, HYDRATE_EVENTS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$i], ["__scopeId", "data-v-0573594d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
-  const props$a = {
+  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$l], ["__scopeId", "data-v-0573594d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
+  const props$d = {
     props: {
       // 标签类型info、primary、success、warning、error
       type: {
         type: String,
-        default: props$f.tag.type
+        default: props$i.tag.type
       },
       // 不可用
       disabled: {
         type: [Boolean, String],
-        default: props$f.tag.disabled
+        default: props$i.tag.disabled
       },
       // 标签的大小，large，medium，mini
       size: {
         type: String,
-        default: props$f.tag.size
+        default: props$i.tag.size
       },
       // tag的形状，circle（两边半圆形）, square（方形，带圆角）
       shape: {
         type: String,
-        default: props$f.tag.shape
+        default: props$i.tag.shape
       },
       // 标签文字
       text: {
         type: [String, Number],
-        default: props$f.tag.text
+        default: props$i.tag.text
       },
       // 背景颜色，默认为空字符串，即不处理
       bgColor: {
         type: String,
-        default: props$f.tag.bgColor
+        default: props$i.tag.bgColor
       },
       // 标签字体颜色，默认为空字符串，即不处理
       color: {
         type: String,
-        default: props$f.tag.color
+        default: props$i.tag.color
       },
       // 标签的边框颜色
       borderColor: {
         type: String,
-        default: props$f.tag.borderColor
+        default: props$i.tag.borderColor
       },
       // 关闭按钮图标的颜色
       closeColor: {
         type: String,
-        default: props$f.tag.closeColor
+        default: props$i.tag.closeColor
       },
       // 点击时返回的索引值，用于区分例遍的数组哪个元素被点击了
       name: {
         type: [String, Number],
-        default: props$f.tag.name
+        default: props$i.tag.name
       },
       // // 模式选择，dark|light|plain
       // mode: {
@@ -4507,33 +4507,33 @@ This will fail in production.`);
       // 镂空时是否填充背景色
       plainFill: {
         type: Boolean,
-        default: props$f.tag.plainFill
+        default: props$i.tag.plainFill
       },
       // 是否镂空
       plain: {
         type: Boolean,
-        default: props$f.tag.plain
+        default: props$i.tag.plain
       },
       // 是否可关闭
       closable: {
         type: Boolean,
-        default: props$f.tag.closable
+        default: props$i.tag.closable
       },
       // 是否显示
       show: {
         type: Boolean,
-        default: props$f.tag.show
+        default: props$i.tag.show
       },
       // 内置图标，或绝对路径的图片
       icon: {
         type: String,
-        default: props$f.tag.icon
+        default: props$i.tag.icon
       }
     }
   };
-  const _sfc_main$V = {
+  const _sfc_main$Y = {
     name: "u-tag",
-    mixins: [mpMixin, mixin, props$a],
+    mixins: [mpMixin, mixin, props$d],
     data() {
       return {};
     },
@@ -4592,7 +4592,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
     return vue.openBlock(), vue.createBlock(_component_u_transition, {
@@ -4668,43 +4668,43 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["show"]);
   }
-  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$h], ["__scopeId", "data-v-23de980f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
-  const props$9 = {
+  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$k], ["__scopeId", "data-v-23de980f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
+  const props$c = {
     props: {
       color: {
         type: String,
-        default: props$f.line.color
+        default: props$i.line.color
       },
       // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
       length: {
         type: [String, Number],
-        default: props$f.line.length
+        default: props$i.line.length
       },
       // 线条方向，col-竖向，row-横向
       direction: {
         type: String,
-        default: props$f.line.direction
+        default: props$i.line.direction
       },
       // 是否显示细边框
       hairline: {
         type: Boolean,
-        default: props$f.line.hairline
+        default: props$i.line.hairline
       },
       // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
       margin: {
         type: [String, Number],
-        default: props$f.line.margin
+        default: props$i.line.margin
       },
       // 是否虚线，true-虚线，false-实线
       dashed: {
         type: Boolean,
-        default: props$f.line.dashed
+        default: props$i.line.dashed
       }
     }
   };
-  const _sfc_main$U = {
+  const _sfc_main$X = {
     name: "u-line",
-    mixins: [mpMixin, mixin, props$9],
+    mixins: [mpMixin, mixin, props$c],
     computed: {
       lineStyle() {
         const style = {};
@@ -4727,7 +4727,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4739,69 +4739,69 @@ This will fail in production.`);
       /* STYLE */
     );
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$g], ["__scopeId", "data-v-bbd9963c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-line/u-line.vue"]]);
-  const props$8 = {
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$j], ["__scopeId", "data-v-bbd9963c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-line/u-line.vue"]]);
+  const props$b = {
     props: {
       // 是否显示组件
       show: {
         type: Boolean,
-        default: props$f.loadingIcon.show
+        default: props$i.loadingIcon.show
       },
       // 颜色
       color: {
         type: String,
-        default: props$f.loadingIcon.color
+        default: props$i.loadingIcon.color
       },
       // 提示文字颜色
       textColor: {
         type: String,
-        default: props$f.loadingIcon.textColor
+        default: props$i.loadingIcon.textColor
       },
       // 文字和图标是否垂直排列
       vertical: {
         type: Boolean,
-        default: props$f.loadingIcon.vertical
+        default: props$i.loadingIcon.vertical
       },
       // 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形
       mode: {
         type: String,
-        default: props$f.loadingIcon.mode
+        default: props$i.loadingIcon.mode
       },
       // 图标大小，单位默认px
       size: {
         type: [String, Number],
-        default: props$f.loadingIcon.size
+        default: props$i.loadingIcon.size
       },
       // 文字大小
       textSize: {
         type: [String, Number],
-        default: props$f.loadingIcon.textSize
+        default: props$i.loadingIcon.textSize
       },
       // 文字内容
       text: {
         type: [String, Number],
-        default: props$f.loadingIcon.text
+        default: props$i.loadingIcon.text
       },
       // 动画模式
       timingFunction: {
         type: String,
-        default: props$f.loadingIcon.timingFunction
+        default: props$i.loadingIcon.timingFunction
       },
       // 动画执行周期时间
       duration: {
         type: [String, Number],
-        default: props$f.loadingIcon.duration
+        default: props$i.loadingIcon.duration
       },
       // mode=circle时的暗边颜色
       inactiveColor: {
         type: String,
-        default: props$f.loadingIcon.inactiveColor
+        default: props$i.loadingIcon.inactiveColor
       }
     }
   };
-  const _sfc_main$T = {
+  const _sfc_main$W = {
     name: "u-loading-icon",
-    mixins: [mpMixin, mixin, props$8],
+    mixins: [mpMixin, mixin, props$b],
     data() {
       return {
         // Array.form可以通过一个伪数组对象创建指定长度的数组
@@ -4859,7 +4859,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.show ? (vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4922,34 +4922,34 @@ This will fail in production.`);
       /* CLASS, STYLE */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$f], ["__scopeId", "data-v-00752c6d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
-  const props$7 = {
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$i], ["__scopeId", "data-v-00752c6d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
+  const props$a = {
     props: {
       // 是否显示遮罩
       show: {
         type: Boolean,
-        default: props$f.overlay.show
+        default: props$i.overlay.show
       },
       // 层级z-index
       zIndex: {
         type: [String, Number],
-        default: props$f.overlay.zIndex
+        default: props$i.overlay.zIndex
       },
       // 遮罩的过渡时间，单位为ms
       duration: {
         type: [String, Number],
-        default: props$f.overlay.duration
+        default: props$i.overlay.duration
       },
       // 不透明度值，当做rgba的第四个参数
       opacity: {
         type: [String, Number],
-        default: props$f.overlay.opacity
+        default: props$i.overlay.opacity
       }
     }
   };
-  const _sfc_main$S = {
+  const _sfc_main$V = {
     name: "u-overlay",
-    mixins: [mpMixin, mixin, props$7],
+    mixins: [mpMixin, mixin, props$a],
     computed: {
       overlayStyle() {
         const style = {
@@ -4970,7 +4970,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
     return vue.openBlock(), vue.createBlock(_component_u_transition, {
       show: _ctx.show,
@@ -4986,18 +4986,18 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["show", "duration", "custom-style", "onClick"]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$e], ["__scopeId", "data-v-35f7c3e5"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
-  const props$6 = {
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$h], ["__scopeId", "data-v-35f7c3e5"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
+  const props$9 = {
     props: {
       bgColor: {
         type: String,
-        default: props$f.statusBar.bgColor
+        default: props$i.statusBar.bgColor
       }
     }
   };
-  const _sfc_main$R = {
+  const _sfc_main$U = {
     name: "u-status-bar",
-    mixins: [mpMixin, mixin, props$6],
+    mixins: [mpMixin, mixin, props$9],
     data() {
       return {};
     },
@@ -5010,7 +5010,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -5024,13 +5024,13 @@ This will fail in production.`);
       /* STYLE */
     );
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$d], ["__scopeId", "data-v-c0b45a48"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
-  const props$5 = {
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$g], ["__scopeId", "data-v-c0b45a48"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
+  const props$8 = {
     props: {}
   };
-  const _sfc_main$Q = {
+  const _sfc_main$T = {
     name: "u-safe-bottom",
-    mixins: [mpMixin, mixin, props$5],
+    mixins: [mpMixin, mixin, props$8],
     data() {
       return {
         safeAreaBottomHeight: 0,
@@ -5046,7 +5046,7 @@ This will fail in production.`);
     mounted() {
     }
   };
-  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -5058,89 +5058,89 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$c], ["__scopeId", "data-v-3ec581de"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
-  const props$4 = {
+  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$f], ["__scopeId", "data-v-3ec581de"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
+  const props$7 = {
     props: {
       // 是否展示弹窗
       show: {
         type: Boolean,
-        default: props$f.popup.show
+        default: props$i.popup.show
       },
       // 是否显示遮罩
       overlay: {
         type: Boolean,
-        default: props$f.popup.overlay
+        default: props$i.popup.overlay
       },
       // 弹出的方向，可选值为 top bottom right left center
       mode: {
         type: String,
-        default: props$f.popup.mode
+        default: props$i.popup.mode
       },
       // 动画时长，单位ms
       duration: {
         type: [String, Number],
-        default: props$f.popup.duration
+        default: props$i.popup.duration
       },
       // 是否显示关闭图标
       closeable: {
         type: Boolean,
-        default: props$f.popup.closeable
+        default: props$i.popup.closeable
       },
       // 自定义遮罩的样式
       overlayStyle: {
         type: [Object, String],
-        default: props$f.popup.overlayStyle
+        default: props$i.popup.overlayStyle
       },
       // 点击遮罩是否关闭弹窗
       closeOnClickOverlay: {
         type: Boolean,
-        default: props$f.popup.closeOnClickOverlay
+        default: props$i.popup.closeOnClickOverlay
       },
       // 层级
       zIndex: {
         type: [String, Number],
-        default: props$f.popup.zIndex
+        default: props$i.popup.zIndex
       },
       // 是否为iPhoneX留出底部安全距离
       safeAreaInsetBottom: {
         type: Boolean,
-        default: props$f.popup.safeAreaInsetBottom
+        default: props$i.popup.safeAreaInsetBottom
       },
       // 是否留出顶部安全距离（状态栏高度）
       safeAreaInsetTop: {
         type: Boolean,
-        default: props$f.popup.safeAreaInsetTop
+        default: props$i.popup.safeAreaInsetTop
       },
       // 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
       closeIconPos: {
         type: String,
-        default: props$f.popup.closeIconPos
+        default: props$i.popup.closeIconPos
       },
       // 是否显示圆角
       round: {
         type: [Boolean, String, Number],
-        default: props$f.popup.round
+        default: props$i.popup.round
       },
       // mode=center，也即中部弹出时，是否使用缩放模式
       zoom: {
         type: Boolean,
-        default: props$f.popup.zoom
+        default: props$i.popup.zoom
       },
       // 弹窗背景色，设置为transparent可去除白色背景
       bgColor: {
         type: String,
-        default: props$f.popup.bgColor
+        default: props$i.popup.bgColor
       },
       // 遮罩的透明度，0-1之间
       overlayOpacity: {
         type: [Number, String],
-        default: props$f.popup.overlayOpacity
+        default: props$i.popup.overlayOpacity
       }
     }
   };
-  const _sfc_main$P = {
+  const _sfc_main$S = {
     name: "u-popup",
-    mixins: [mpMixin, mixin, props$4],
+    mixins: [mpMixin, mixin, props$7],
     data() {
       return {
         overlayDuration: this.duration + 50
@@ -5251,7 +5251,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_overlay = resolveEasycom(vue.resolveDynamicComponent("u-overlay"), __easycom_0$1);
     const _component_u_status_bar = resolveEasycom(vue.resolveDynamicComponent("u-status-bar"), __easycom_1$1);
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
@@ -5316,94 +5316,94 @@ This will fail in production.`);
       }, 8, ["show", "customStyle", "mode", "duration", "onAfterEnter", "onClick"])
     ]);
   }
-  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$b], ["__scopeId", "data-v-74921bef"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
-  const props$3 = {
+  const __easycom_6 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$e], ["__scopeId", "data-v-74921bef"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
+  const props$6 = {
     props: {
       // 是否展示modal
       show: {
         type: Boolean,
-        default: props$f.modal.show
+        default: props$i.modal.show
       },
       // 标题
       title: {
         type: [String],
-        default: props$f.modal.title
+        default: props$i.modal.title
       },
       // 弹窗内容
       content: {
         type: String,
-        default: props$f.modal.content
+        default: props$i.modal.content
       },
       // 确认文案
       confirmText: {
         type: String,
-        default: props$f.modal.confirmText
+        default: props$i.modal.confirmText
       },
       // 取消文案
       cancelText: {
         type: String,
-        default: props$f.modal.cancelText
+        default: props$i.modal.cancelText
       },
       // 是否显示确认按钮
       showConfirmButton: {
         type: Boolean,
-        default: props$f.modal.showConfirmButton
+        default: props$i.modal.showConfirmButton
       },
       // 是否显示取消按钮
       showCancelButton: {
         type: Boolean,
-        default: props$f.modal.showCancelButton
+        default: props$i.modal.showCancelButton
       },
       // 确认按钮颜色
       confirmColor: {
         type: String,
-        default: props$f.modal.confirmColor
+        default: props$i.modal.confirmColor
       },
       // 取消文字颜色
       cancelColor: {
         type: String,
-        default: props$f.modal.cancelColor
+        default: props$i.modal.cancelColor
       },
       // 对调确认和取消的位置
       buttonReverse: {
         type: Boolean,
-        default: props$f.modal.buttonReverse
+        default: props$i.modal.buttonReverse
       },
       // 是否开启缩放效果
       zoom: {
         type: Boolean,
-        default: props$f.modal.zoom
+        default: props$i.modal.zoom
       },
       // 是否异步关闭，只对确定按钮有效
       asyncClose: {
         type: Boolean,
-        default: props$f.modal.asyncClose
+        default: props$i.modal.asyncClose
       },
       // 是否允许点击遮罩关闭modal
       closeOnClickOverlay: {
         type: Boolean,
-        default: props$f.modal.closeOnClickOverlay
+        default: props$i.modal.closeOnClickOverlay
       },
       // 给一个负的margin-top，往上偏移，避免和键盘重合的情况
       negativeTop: {
         type: [String, Number],
-        default: props$f.modal.negativeTop
+        default: props$i.modal.negativeTop
       },
       // modal宽度，不支持百分比，可以数值，px，rpx单位
       width: {
         type: [String, Number],
-        default: props$f.modal.width
+        default: props$i.modal.width
       },
       // 确认按钮的样式，circle-圆形，square-方形，如设置，将不会显示取消按钮
       confirmButtonShape: {
         type: String,
-        default: props$f.modal.confirmButtonShape
+        default: props$i.modal.confirmButtonShape
       }
     }
   };
-  const _sfc_main$O = {
+  const _sfc_main$R = {
     name: "u-modal",
-    mixins: [mpMixin, mixin, props$3],
+    mixins: [mpMixin, mixin, props$6],
     data() {
       return {
         loading: false
@@ -5439,10 +5439,10 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_line = resolveEasycom(vue.resolveDynamicComponent("u-line"), __easycom_0$3);
     const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_0$2);
-    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
     return vue.openBlock(), vue.createBlock(_component_u_popup, {
       mode: "center",
       zoom: _ctx.zoom,
@@ -5592,8 +5592,8 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["zoom", "show", "customStyle", "closeOnClickOverlay", "onClick"]);
   }
-  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$a], ["__scopeId", "data-v-12b77a26"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
-  const _sfc_main$N = {
+  const __easycom_7 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$d], ["__scopeId", "data-v-12b77a26"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
+  const _sfc_main$Q = {
     __name: "NoteCard",
     props: {
       title: { type: String, default: "无标题笔记" },
@@ -5623,7 +5623,7 @@ This will fail in production.`);
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$2);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_4);
+        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
         return vue.openBlock(), vue.createElementBlock("div", { class: "note-card" }, [
           vue.createCommentVNode(" 顶部信息 "),
           vue.createElementVNode("div", { class: "note-top" }, [
@@ -5761,8 +5761,8 @@ This will fail in production.`);
       };
     }
   };
-  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-ac0fe255"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/NoteCard.vue"]]);
-  const _sfc_main$M = {
+  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["__scopeId", "data-v-ac0fe255"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/NoteCard.vue"]]);
+  const _sfc_main$P = {
     __name: "notes",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5806,8 +5806,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-8b89ac5f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/notes/notes.vue"]]);
-  const _sfc_main$L = {
+  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["__scopeId", "data-v-8b89ac5f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/notes/notes.vue"]]);
+  const _sfc_main$O = {
     __name: "KnowCard",
     props: {
       name: String,
@@ -5820,19 +5820,17 @@ This will fail in production.`);
         type: Array,
         default: () => [
           { text: "标签一", type: "warning" },
-          { text: "标签二", type: "success" },
-          { text: "标签三", type: "primary" },
-          { text: "标签四", type: "primary" }
+          { text: "标签二", type: "success" }
         ]
       }
     },
     setup(__props) {
       const props2 = __props;
       const onShare = () => {
-        formatAppLog("log", "at components/cards/KnowCard.vue:67", "点击了分享");
+        formatAppLog("log", "at components/cards/KnowCard.vue:65", "点击了分享");
       };
       const onDelete = () => {
-        formatAppLog("log", "at components/cards/KnowCard.vue:71", "点击了删除");
+        formatAppLog("log", "at components/cards/KnowCard.vue:69", "点击了删除");
       };
       function openDetails() {
         uni.navigateTo({
@@ -5931,8 +5929,8 @@ This will fail in production.`);
       };
     }
   };
-  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-6e18014a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/KnowCard.vue"]]);
-  const _sfc_main$K = {
+  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["__scopeId", "data-v-6e18014a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/KnowCard.vue"]]);
+  const _sfc_main$N = {
     __name: "knows",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5974,38 +5972,38 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-652c3fcc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/knows/knows.vue"]]);
-  const _sfc_main$J = {
+  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-652c3fcc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/knows/knows.vue"]]);
+  const _sfc_main$M = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$c(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 调研智能体 ");
   }
-  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$9], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/research/research.vue"]]);
-  const _sfc_main$I = {
+  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["render", _sfc_render$c], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/research/research.vue"]]);
+  const _sfc_main$L = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$b(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 简历智能体 ");
   }
-  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$8], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/resume/resume.vue"]]);
-  const _sfc_main$H = {
+  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["render", _sfc_render$b], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/resume/resume.vue"]]);
+  const _sfc_main$K = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 新闻智能体 ");
   }
-  const News = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$7], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/news/news.vue"]]);
-  const _sfc_main$G = {
+  const News = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["render", _sfc_render$a], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/news/news.vue"]]);
+  const _sfc_main$J = {
     __name: "SubTabBar",
     props: {
       modelValue: Number,
@@ -6067,8 +6065,8 @@ This will fail in production.`);
       };
     }
   };
-  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-25def7fe"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SubTabBar.vue"]]);
-  const _sfc_main$F = {
+  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-25def7fe"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SubTabBar.vue"]]);
+  const _sfc_main$I = {
     __name: "layout",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -6147,8 +6145,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-1ce95d4b"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/layout.vue"]]);
-  const _sfc_main$E = {
+  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-1ce95d4b"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/layout.vue"]]);
+  const _sfc_main$H = {
     __name: "TabBar",
     props: {
       modelValue: Number
@@ -6197,162 +6195,162 @@ This will fail in production.`);
       };
     }
   };
-  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-89ca1f91"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/TabBar.vue"]]);
-  const props$2 = {
+  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-89ca1f91"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/TabBar.vue"]]);
+  const props$5 = {
     props: {
       // 是否细边框
       hairline: {
         type: Boolean,
-        default: props$f.button.hairline
+        default: props$i.button.hairline
       },
       // 按钮的预置样式，info，primary，error，warning，success
       type: {
         type: String,
-        default: props$f.button.type
+        default: props$i.button.type
       },
       // 按钮尺寸，large，normal，small，mini
       size: {
         type: String,
-        default: props$f.button.size
+        default: props$i.button.size
       },
       // 按钮形状，circle（两边为半圆），square（带圆角）
       shape: {
         type: String,
-        default: props$f.button.shape
+        default: props$i.button.shape
       },
       // 按钮是否镂空
       plain: {
         type: Boolean,
-        default: props$f.button.plain
+        default: props$i.button.plain
       },
       // 是否禁止状态
       disabled: {
         type: Boolean,
-        default: props$f.button.disabled
+        default: props$i.button.disabled
       },
       // 是否加载中
       loading: {
         type: Boolean,
-        default: props$f.button.loading
+        default: props$i.button.loading
       },
       // 加载中提示文字
       loadingText: {
         type: [String, Number],
-        default: props$f.button.loadingText
+        default: props$i.button.loadingText
       },
       // 加载状态图标类型
       loadingMode: {
         type: String,
-        default: props$f.button.loadingMode
+        default: props$i.button.loadingMode
       },
       // 加载图标大小
       loadingSize: {
         type: [String, Number],
-        default: props$f.button.loadingSize
+        default: props$i.button.loadingSize
       },
       // 开放能力，具体请看uniapp稳定关于button组件部分说明
       // https://uniapp.dcloud.io/component/button
       openType: {
         type: String,
-        default: props$f.button.openType
+        default: props$i.button.openType
       },
       // 用于 <form> 组件，点击分别会触发 <form> 组件的 submit/reset 事件
       // 取值为submit（提交表单），reset（重置表单）
       formType: {
         type: String,
-        default: props$f.button.formType
+        default: props$i.button.formType
       },
       // 打开 APP 时，向 APP 传递的参数，open-type=launchApp时有效
       // 只微信小程序、QQ小程序有效
       appParameter: {
         type: String,
-        default: props$f.button.appParameter
+        default: props$i.button.appParameter
       },
       // 指定是否阻止本节点的祖先节点出现点击态，微信小程序有效
       hoverStopPropagation: {
         type: Boolean,
-        default: props$f.button.hoverStopPropagation
+        default: props$i.button.hoverStopPropagation
       },
       // 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。只微信小程序有效
       lang: {
         type: String,
-        default: props$f.button.lang
+        default: props$i.button.lang
       },
       // 会话来源，open-type="contact"时有效。只微信小程序有效
       sessionFrom: {
         type: String,
-        default: props$f.button.sessionFrom
+        default: props$i.button.sessionFrom
       },
       // 会话内消息卡片标题，open-type="contact"时有效
       // 默认当前标题，只微信小程序有效
       sendMessageTitle: {
         type: String,
-        default: props$f.button.sendMessageTitle
+        default: props$i.button.sendMessageTitle
       },
       // 会话内消息卡片点击跳转小程序路径，open-type="contact"时有效
       // 默认当前分享路径，只微信小程序有效
       sendMessagePath: {
         type: String,
-        default: props$f.button.sendMessagePath
+        default: props$i.button.sendMessagePath
       },
       // 会话内消息卡片图片，open-type="contact"时有效
       // 默认当前页面截图，只微信小程序有效
       sendMessageImg: {
         type: String,
-        default: props$f.button.sendMessageImg
+        default: props$i.button.sendMessageImg
       },
       // 是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示"可能要发送的小程序"提示，
       // 用户点击后可以快速发送小程序消息，open-type="contact"时有效
       showMessageCard: {
         type: Boolean,
-        default: props$f.button.showMessageCard
+        default: props$i.button.showMessageCard
       },
       // 额外传参参数，用于小程序的data-xxx属性，通过target.dataset.name获取
       dataName: {
         type: String,
-        default: props$f.button.dataName
+        default: props$i.button.dataName
       },
       // 节流，一定时间内只能触发一次
       throttleTime: {
         type: [String, Number],
-        default: props$f.button.throttleTime
+        default: props$i.button.throttleTime
       },
       // 按住后多久出现点击态，单位毫秒
       hoverStartTime: {
         type: [String, Number],
-        default: props$f.button.hoverStartTime
+        default: props$i.button.hoverStartTime
       },
       // 手指松开后点击态保留时间，单位毫秒
       hoverStayTime: {
         type: [String, Number],
-        default: props$f.button.hoverStayTime
+        default: props$i.button.hoverStayTime
       },
       // 按钮文字，之所以通过props传入，是因为slot传入的话
       // nvue中无法控制文字的样式
       text: {
         type: [String, Number],
-        default: props$f.button.text
+        default: props$i.button.text
       },
       // 按钮图标
       icon: {
         type: String,
-        default: props$f.button.icon
+        default: props$i.button.icon
       },
       // 按钮图标
       iconColor: {
         type: String,
-        default: props$f.button.icon
+        default: props$i.button.icon
       },
       // 按钮颜色，支持传入linear-gradient渐变色
       color: {
         type: String,
-        default: props$f.button.color
+        default: props$i.button.color
       }
     }
   };
-  const _sfc_main$D = {
+  const _sfc_main$G = {
     name: "u-button",
-    mixins: [mpMixin, mixin, props$2],
+    mixins: [mpMixin, mixin, props$5],
     data() {
       return {};
     },
@@ -6474,7 +6472,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_0$2);
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock("button", {
@@ -6552,18 +6550,18 @@ This will fail in production.`);
       ))
     ], 46, ["hover-start-time", "hover-stay-time", "form-type", "open-type", "app-parameter", "hover-stop-propagation", "send-message-title", "send-message-path", "lang", "data-name", "session-from", "send-message-img", "show-message-card", "hover-class"]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$6], ["__scopeId", "data-v-461e713c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-button/u-button.vue"]]);
-  const _sfc_main$C = {};
-  function _sfc_render$5(_ctx, _cache) {
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$9], ["__scopeId", "data-v-461e713c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-button/u-button.vue"]]);
+  const _sfc_main$F = {};
+  function _sfc_render$8(_ctx, _cache) {
     return null;
   }
-  const Member = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$5], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/Member.vue"]]);
-  const _sfc_main$B = {};
-  function _sfc_render$4(_ctx, _cache) {
+  const Member = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$8], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/Member.vue"]]);
+  const _sfc_main$E = {};
+  function _sfc_render$7(_ctx, _cache) {
     return null;
   }
-  const UnMember = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$4], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/UnMember.vue"]]);
-  const _sfc_main$A = {
+  const UnMember = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["render", _sfc_render$7], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/UnMember.vue"]]);
+  const _sfc_main$D = {
     __name: "MenuItem",
     props: {
       title: String,
@@ -6602,8 +6600,8 @@ This will fail in production.`);
       };
     }
   };
-  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-a609ad39"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/MenuItem.vue"]]);
-  const _sfc_main$z = {
+  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-a609ad39"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/MenuItem.vue"]]);
+  const _sfc_main$C = {
     __name: "WidgetManager",
     props: {
       show: Boolean,
@@ -6631,7 +6629,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6671,8 +6669,8 @@ This will fail in production.`);
       };
     }
   };
-  const WidgetManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-9ba83672"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/WidgetManager.vue"]]);
-  const _sfc_main$y = {
+  const WidgetManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-9ba83672"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/WidgetManager.vue"]]);
+  const _sfc_main$B = {
     __name: "ImportNotes",
     props: {
       show: Boolean,
@@ -6700,7 +6698,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6740,8 +6738,8 @@ This will fail in production.`);
       };
     }
   };
-  const ImportNotesPanel = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-39f41623"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/ImportNotes.vue"]]);
-  const _sfc_main$x = {
+  const ImportNotesPanel = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-39f41623"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/ImportNotes.vue"]]);
+  const _sfc_main$A = {
     __name: "Sync",
     props: {
       show: Boolean,
@@ -6769,7 +6767,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6809,8 +6807,8 @@ This will fail in production.`);
       };
     }
   };
-  const SyncPanel = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-dbdaee1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Sync.vue"]]);
-  const _sfc_main$w = {
+  const SyncPanel = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-dbdaee1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Sync.vue"]]);
+  const _sfc_main$z = {
     __name: "HistoryLog",
     props: {
       show: Boolean,
@@ -6838,7 +6836,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6878,8 +6876,8 @@ This will fail in production.`);
       };
     }
   };
-  const HistoryLogPanel = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-f6b79373"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/HistoryLog.vue"]]);
-  const _sfc_main$v = {
+  const HistoryLogPanel = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-f6b79373"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/HistoryLog.vue"]]);
+  const _sfc_main$y = {
     __name: "Tags",
     props: {
       show: Boolean,
@@ -6907,7 +6905,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6947,8 +6945,8 @@ This will fail in production.`);
       };
     }
   };
-  const TagsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-5403c959"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Tags.vue"]]);
-  const _sfc_main$u = {
+  const TagsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-5403c959"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Tags.vue"]]);
+  const _sfc_main$x = {
     __name: "FileManager",
     props: {
       show: Boolean,
@@ -6977,7 +6975,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7017,8 +7015,8 @@ This will fail in production.`);
       };
     }
   };
-  const FileManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-8af38d0a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FileManager.vue"]]);
-  const _sfc_main$t = {
+  const FileManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-8af38d0a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FileManager.vue"]]);
+  const _sfc_main$w = {
     __name: "Rate",
     props: {
       show: Boolean,
@@ -7046,7 +7044,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7086,8 +7084,8 @@ This will fail in production.`);
       };
     }
   };
-  const RatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-c7bbae96"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Rate.vue"]]);
-  const _sfc_main$s = {
+  const RatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-c7bbae96"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Rate.vue"]]);
+  const _sfc_main$v = {
     __name: "Share",
     props: {
       show: Boolean,
@@ -7115,7 +7113,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7155,8 +7153,8 @@ This will fail in production.`);
       };
     }
   };
-  const SharePanel = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-dbd63f1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Share.vue"]]);
-  const _sfc_main$r = {
+  const SharePanel = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-dbd63f1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Share.vue"]]);
+  const _sfc_main$u = {
     __name: "FollowWeChat",
     props: {
       show: Boolean,
@@ -7184,7 +7182,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7224,8 +7222,8 @@ This will fail in production.`);
       };
     }
   };
-  const FollowWeChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-7a4df1a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowWeChat.vue"]]);
-  const _sfc_main$q = {
+  const FollowWeChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-7a4df1a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowWeChat.vue"]]);
+  const _sfc_main$t = {
     __name: "FollowRedBook",
     props: {
       show: Boolean,
@@ -7253,7 +7251,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7293,8 +7291,8 @@ This will fail in production.`);
       };
     }
   };
-  const FollowRedBookPanel = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-19efe357"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowRedBook.vue"]]);
-  const _sfc_main$p = {
+  const FollowRedBookPanel = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-19efe357"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowRedBook.vue"]]);
+  const _sfc_main$s = {
     __name: "Feedback",
     props: {
       show: Boolean,
@@ -7322,7 +7320,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7362,8 +7360,8 @@ This will fail in production.`);
       };
     }
   };
-  const FeedbackPanel = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-fc0b6d1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Feedback.vue"]]);
-  const _sfc_main$o = {
+  const FeedbackPanel = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-fc0b6d1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Feedback.vue"]]);
+  const _sfc_main$r = {
     __name: "Update",
     props: {
       show: Boolean,
@@ -7391,7 +7389,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7431,8 +7429,8 @@ This will fail in production.`);
       };
     }
   };
-  const UpdatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-456d7568"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Update.vue"]]);
-  const _sfc_main$n = {
+  const UpdatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-456d7568"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Update.vue"]]);
+  const _sfc_main$q = {
     __name: "Intro",
     props: {
       show: Boolean,
@@ -7460,7 +7458,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7500,8 +7498,8 @@ This will fail in production.`);
       };
     }
   };
-  const IntroPanel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-0baab9c7"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Intro.vue"]]);
-  const _sfc_main$m = {
+  const IntroPanel = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-0baab9c7"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Intro.vue"]]);
+  const _sfc_main$p = {
     __name: "Docs",
     props: {
       show: Boolean,
@@ -7529,7 +7527,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7569,8 +7567,8 @@ This will fail in production.`);
       };
     }
   };
-  const DocsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-6a6864cc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Docs.vue"]]);
-  const _sfc_main$l = {
+  const DocsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-6a6864cc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Docs.vue"]]);
+  const _sfc_main$o = {
     __name: "About",
     props: { show: Boolean },
     emits: ["update:show"],
@@ -7604,7 +7602,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           "close-on-click-overlay": false,
           show: __props.show,
@@ -7698,8 +7696,8 @@ This will fail in production.`);
       };
     }
   };
-  const AboutPanel = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9d4e19e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/About.vue"]]);
-  const _sfc_main$k = {
+  const AboutPanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-9d4e19e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/About.vue"]]);
+  const _sfc_main$n = {
     __name: "CommonPanel",
     props: { show: Boolean },
     emits: ["update:show"],
@@ -7790,7 +7788,7 @@ This will fail in production.`);
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           "close-on-click-overlay": false,
           show: __props.show,
@@ -8042,8 +8040,8 @@ This will fail in production.`);
       };
     }
   };
-  const CommonPanel = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-b1900e2d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/CommonPanel.vue"]]);
-  const _sfc_main$j = {
+  const CommonPanel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-b1900e2d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/CommonPanel.vue"]]);
+  const _sfc_main$m = {
     __name: "SearchInput",
     props: {
       modelValue: String,
@@ -8110,8 +8108,8 @@ This will fail in production.`);
       };
     }
   };
-  const SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-e7fd4a42"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchInput.vue"]]);
-  const _sfc_main$i = {
+  const SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-e7fd4a42"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchInput.vue"]]);
+  const _sfc_main$l = {
     __name: "SearchTag",
     props: {
       tags: {
@@ -8157,8 +8155,8 @@ This will fail in production.`);
       };
     }
   };
-  const SearchTag = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-ae7bcd03"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchTag.vue"]]);
-  const _sfc_main$h = {
+  const SearchTag = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-ae7bcd03"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchTag.vue"]]);
+  const _sfc_main$k = {
     __name: "SearchHistory",
     props: {
       history: {
@@ -8205,8 +8203,8 @@ This will fail in production.`);
       };
     }
   };
-  const SearchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-eef68dde"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchHistory.vue"]]);
-  const _sfc_main$g = {
+  const SearchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-eef68dde"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchHistory.vue"]]);
+  const _sfc_main$j = {
     __name: "SearchResultItem",
     props: {
       title: String,
@@ -8233,8 +8231,8 @@ This will fail in production.`);
       };
     }
   };
-  const SearchResultItem = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-2cd435a1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchResultItem.vue"]]);
-  const _sfc_main$f = {
+  const SearchResultItem = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-2cd435a1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchResultItem.vue"]]);
+  const _sfc_main$i = {
     __name: "SearchPanel",
     props: {
       show: Boolean,
@@ -8289,7 +8287,7 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -8364,8 +8362,8 @@ This will fail in production.`);
       };
     }
   };
-  const SearchPanel = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-53dcec99"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SearchPanel.vue"]]);
-  const _sfc_main$e = {
+  const SearchPanel = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-53dcec99"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SearchPanel.vue"]]);
+  const _sfc_main$h = {
     __name: "ChatPanel",
     props: {
       show: Boolean,
@@ -8393,7 +8391,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -8433,8 +8431,8 @@ This will fail in production.`);
       };
     }
   };
-  const ChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2c15c3a8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/ChatPanel.vue"]]);
-  const _sfc_main$d = {
+  const ChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-2c15c3a8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/ChatPanel.vue"]]);
+  const _sfc_main$g = {
     __name: "MainNav",
     props: {
       label: {
@@ -8477,8 +8475,8 @@ This will fail in production.`);
       };
     }
   };
-  const MainNav = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-f4ed81d8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/MainNav.vue"]]);
-  const _sfc_main$c = {
+  const MainNav = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-f4ed81d8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/MainNav.vue"]]);
+  const _sfc_main$f = {
     __name: "SelectionPanel",
     props: {
       show: Boolean,
@@ -8518,7 +8516,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "bottom",
@@ -8609,8 +8607,8 @@ This will fail in production.`);
       };
     }
   };
-  const SelectionPanel = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-33aa29a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SelectionPanel.vue"]]);
-  const _sfc_main$b = {
+  const SelectionPanel = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-33aa29a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SelectionPanel.vue"]]);
+  const _sfc_main$e = {
     __name: "layout",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -8775,8 +8773,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexLayout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-3bba2919"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/layout.vue"]]);
-  const _sfc_main$a = {
+  const PagesIndexLayout = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-3bba2919"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/layout.vue"]]);
+  const _sfc_main$d = {
     __name: "layout",
     setup(__props) {
       const userStore = useUserStore();
@@ -8792,17 +8790,17 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-6df82059"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/layout.vue"]]);
-  const _sfc_main$9 = {
+  const PagesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-6df82059"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/layout.vue"]]);
+  const _sfc_main$c = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$6(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view");
   }
-  const Pages404404 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$3], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/404/404.vue"]]);
+  const Pages404404 = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["render", _sfc_render$6], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/404/404.vue"]]);
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
   function getAugmentedNamespace(n) {
     if (n.__esModule)
@@ -15858,7 +15856,7 @@ This will fail in production.`);
     });
   })(cryptoJs);
   const CryptoJS = cryptoJsExports;
-  const _sfc_main$8 = {
+  const _sfc_main$b = {
     __name: "verify",
     setup(__props) {
       const phone = vue.ref("");
@@ -15965,58 +15963,58 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLoginVerify = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8f8fa650"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/verify.vue"]]);
-  const props$1 = {
+  const PagesLoginVerify = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-8f8fa650"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/verify.vue"]]);
+  const props$4 = {
     props: {
       // 是否显示圆点
       isDot: {
         type: Boolean,
-        default: props$f.badge.isDot
+        default: props$i.badge.isDot
       },
       // 显示的内容
       value: {
         type: [Number, String],
-        default: props$f.badge.value
+        default: props$i.badge.value
       },
       // 显示的内容
       modelValue: {
         type: [Number, String],
-        default: props$f.badge.modelValue
+        default: props$i.badge.modelValue
       },
       // 是否显示
       show: {
         type: Boolean,
-        default: props$f.badge.show
+        default: props$i.badge.show
       },
       // 最大值，超过最大值会显示 '{max}+'
       max: {
         type: [Number, String],
-        default: props$f.badge.max
+        default: props$i.badge.max
       },
       // 主题类型，error|warning|success|primary
       type: {
         type: String,
-        default: props$f.badge.type
+        default: props$i.badge.type
       },
       // 当数值为 0 时，是否展示 Badge
       showZero: {
         type: Boolean,
-        default: props$f.badge.showZero
+        default: props$i.badge.showZero
       },
       // 背景颜色，优先级比type高，如设置，type参数会失效
       bgColor: {
         type: [String, null],
-        default: props$f.badge.bgColor
+        default: props$i.badge.bgColor
       },
       // 字体颜色
       color: {
         type: [String, null],
-        default: props$f.badge.color
+        default: props$i.badge.color
       },
       // 徽标形状，circle-四角均为圆角，horn-左下角为直角
       shape: {
         type: String,
-        default: props$f.badge.shape
+        default: props$i.badge.shape
       },
       // 设置数字的显示方式，overflow|ellipsis|limit
       // overflow会根据max字段判断，超出显示`${max}+`
@@ -16024,28 +16022,28 @@ This will fail in production.`);
       // limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
       numberType: {
         type: String,
-        default: props$f.badge.numberType
+        default: props$i.badge.numberType
       },
       // 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，absolute为true时有效
       offset: {
         type: Array,
-        default: props$f.badge.offset
+        default: props$i.badge.offset
       },
       // 是否反转背景和字体颜色
       inverted: {
         type: Boolean,
-        default: props$f.badge.inverted
+        default: props$i.badge.inverted
       },
       // 是否绝对定位
       absolute: {
         type: Boolean,
-        default: props$f.badge.absolute
+        default: props$i.badge.absolute
       }
     }
   };
-  const _sfc_main$7 = {
+  const _sfc_main$a = {
     name: "u-badge",
-    mixins: [mpMixin, props$1, mixin],
+    mixins: [mpMixin, props$4, mixin],
     computed: {
       // 是否将badge中心与父组件右上角重合
       boxStyle() {
@@ -16086,7 +16084,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$5(_ctx, _cache, $props, $setup, $data, $options) {
     return _ctx.show && ((Number(_ctx.value) === 0 ? _ctx.showZero : true) || _ctx.isDot) ? (vue.openBlock(), vue.createElementBlock(
       "text",
       {
@@ -16099,74 +16097,74 @@ This will fail in production.`);
       /* TEXT, CLASS, STYLE */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$2], ["__scopeId", "data-v-aa9883b1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
-  const props = {
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5], ["__scopeId", "data-v-aa9883b1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
+  const props$3 = {
     props: {
       // 滑块的移动过渡时间，单位ms
       duration: {
         type: Number,
-        default: props$f.tabs.duration
+        default: props$i.tabs.duration
       },
       // tabs标签数组
       list: {
         type: Array,
-        default: props$f.tabs.list
+        default: props$i.tabs.list
       },
       // 滑块颜色
       lineColor: {
         type: String,
-        default: props$f.tabs.lineColor
+        default: props$i.tabs.lineColor
       },
       // 菜单选择中时的样式
       activeStyle: {
         type: [String, Object],
-        default: props$f.tabs.activeStyle
+        default: props$i.tabs.activeStyle
       },
       // 菜单非选中时的样式
       inactiveStyle: {
         type: [String, Object],
-        default: props$f.tabs.inactiveStyle
+        default: props$i.tabs.inactiveStyle
       },
       // 滑块长度
       lineWidth: {
         type: [String, Number],
-        default: props$f.tabs.lineWidth
+        default: props$i.tabs.lineWidth
       },
       // 滑块高度
       lineHeight: {
         type: [String, Number],
-        default: props$f.tabs.lineHeight
+        default: props$i.tabs.lineHeight
       },
       // 滑块背景显示大小，当滑块背景设置为图片时使用
       lineBgSize: {
         type: String,
-        default: props$f.tabs.lineBgSize
+        default: props$i.tabs.lineBgSize
       },
       // 菜单item的样式
       itemStyle: {
         type: [String, Object],
-        default: props$f.tabs.itemStyle
+        default: props$i.tabs.itemStyle
       },
       // 菜单是否可滚动
       scrollable: {
         type: Boolean,
-        default: props$f.tabs.scrollable
+        default: props$i.tabs.scrollable
       },
       // 当前选中标签的索引
       current: {
         type: [Number, String],
-        default: props$f.tabs.current
+        default: props$i.tabs.current
       },
       // 默认读取的键名
       keyName: {
         type: String,
-        default: props$f.tabs.keyName
+        default: props$i.tabs.keyName
       }
     }
   };
-  const _sfc_main$6 = {
+  const _sfc_main$9 = {
     name: "u-tabs",
-    mixins: [mpMixin, mixin, props],
+    mixins: [mpMixin, mixin, props$3],
     data() {
       return {
         firstTime: true,
@@ -16310,7 +16308,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_u_badge = resolveEasycom(vue.resolveDynamicComponent("u-badge"), __easycom_0);
     return vue.openBlock(), vue.createElementBlock("view", { class: "u-tabs" }, [
       vue.createElementVNode("view", { class: "u-tabs__wrapper" }, [
@@ -16400,8 +16398,8 @@ This will fail in production.`);
       ])
     ]);
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$1], ["__scopeId", "data-v-0546c3e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tabs/u-tabs.vue"]]);
-  const _sfc_main$5 = {
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$4], ["__scopeId", "data-v-0546c3e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tabs/u-tabs.vue"]]);
+  const _sfc_main$8 = {
     __name: "NoteDetailSumTab",
     props: {
       show: Boolean,
@@ -16429,7 +16427,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -16469,8 +16467,8 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-5ef07a45"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailSumTab.vue"]]);
-  const _sfc_main$4 = {
+  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-5ef07a45"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailSumTab.vue"]]);
+  const _sfc_main$7 = {
     __name: "NoteDetailPosterTab",
     props: {
       show: Boolean,
@@ -16498,7 +16496,7 @@ This will fail in production.`);
       }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -16538,9 +16536,9 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-617c8a5c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailPosterTab.vue"]]);
-  const _sfc_main$3 = {};
-  function _sfc_render(_ctx, _cache) {
+  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-617c8a5c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailPosterTab.vue"]]);
+  const _sfc_main$6 = {};
+  function _sfc_render$3(_ctx, _cache) {
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock("button", {
       type: "button",
@@ -16554,8 +16552,8 @@ This will fail in production.`);
       vue.createTextVNode(" 语音聊天 ")
     ]);
   }
-  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render], ["__scopeId", "data-v-7d79bddb"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/TalkButton.vue"]]);
-  const _sfc_main$2 = {
+  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3], ["__scopeId", "data-v-7d79bddb"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/TalkButton.vue"]]);
+  const _sfc_main$5 = {
     __name: "NoteDetails",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -16619,8 +16617,8 @@ This will fail in production.`);
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$2);
         const _component_u_tabs = resolveEasycom(vue.resolveDynamicComponent("u-tabs"), __easycom_2);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_4);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
         return vue.openBlock(), vue.createElementBlock("view", { class: "note-details-page" }, [
           vue.createCommentVNode(" 顶部固定区域：图标、Header、Tabs "),
           vue.createElementVNode("view", { class: "top-fixed-header" }, [
@@ -16807,66 +16805,980 @@ This will fail in production.`);
       };
     }
   };
-  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/details/NoteDetails/NoteDetails.vue"]]);
+  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/details/NoteDetails/NoteDetails.vue"]]);
+  const props$2 = {
+    props: {
+      // 搜索框形状，round-圆形，square-方形
+      shape: {
+        type: String,
+        default: props$i.search.shape
+      },
+      // 搜索框背景色，默认值#f2f2f2
+      bgColor: {
+        type: String,
+        default: props$i.search.bgColor
+      },
+      // 占位提示文字
+      placeholder: {
+        type: String,
+        default: props$i.search.placeholder
+      },
+      // 是否启用清除控件
+      clearabled: {
+        type: Boolean,
+        default: props$i.search.clearabled
+      },
+      // 是否自动聚焦
+      focus: {
+        type: Boolean,
+        default: props$i.search.focus
+      },
+      // 是否在搜索框右侧显示取消按钮
+      showAction: {
+        type: Boolean,
+        default: props$i.search.showAction
+      },
+      // 右边控件的样式
+      actionStyle: {
+        type: Object,
+        default: props$i.search.actionStyle
+      },
+      // 取消按钮文字
+      actionText: {
+        type: String,
+        default: props$i.search.actionText
+      },
+      // 输入框内容对齐方式，可选值为 left|center|right
+      inputAlign: {
+        type: String,
+        default: props$i.search.inputAlign
+      },
+      // input输入框的样式，可以定义文字颜色，大小等，对象形式
+      inputStyle: {
+        type: Object,
+        default: props$i.search.inputStyle
+      },
+      // 是否启用输入框
+      disabled: {
+        type: Boolean,
+        default: props$i.search.disabled
+      },
+      // 边框颜色
+      borderColor: {
+        type: String,
+        default: props$i.search.borderColor
+      },
+      // 搜索图标的颜色，默认同输入框字体颜色
+      searchIconColor: {
+        type: String,
+        default: props$i.search.searchIconColor
+      },
+      // 输入框字体颜色
+      color: {
+        type: String,
+        default: props$i.search.color
+      },
+      // placeholder的颜色
+      placeholderColor: {
+        type: String,
+        default: props$i.search.placeholderColor
+      },
+      // 左边输入框的图标，可以为uView图标名称或图片路径
+      searchIcon: {
+        type: String,
+        default: props$i.search.searchIcon
+      },
+      searchIconSize: {
+        type: [Number, String],
+        default: props$i.search.searchIconSize
+      },
+      // 组件与其他上下左右元素之间的距离，带单位的字符串形式，如"30px"、"30px 20px"等写法
+      margin: {
+        type: String,
+        default: props$i.search.margin
+      },
+      // 开启showAction时，是否在input获取焦点时才显示
+      animation: {
+        type: Boolean,
+        default: props$i.search.animation
+      },
+      // 输入框的初始化内容
+      modelValue: {
+        type: String,
+        default: props$i.search.value
+      },
+      value: {
+        type: String,
+        default: props$i.search.value
+      },
+      // 输入框最大能输入的长度，-1为不限制长度(来自uniapp文档)
+      maxlength: {
+        type: [String, Number],
+        default: props$i.search.maxlength
+      },
+      // 搜索框高度，单位px
+      height: {
+        type: [String, Number],
+        default: props$i.search.height
+      },
+      // 搜索框左侧文本
+      label: {
+        type: [String, Number, null],
+        default: props$i.search.label
+      }
+    }
+  };
+  const _sfc_main$4 = {
+    name: "u-search",
+    mixins: [mpMixin, mixin, props$2],
+    data() {
+      return {
+        keyword: "",
+        showClear: false,
+        // 是否显示右边的清除图标
+        show: false,
+        // 标记input当前状态是否处于聚焦中，如果是，才会显示右侧的清除控件
+        focused: this.focus
+        // 绑定输入框的值
+        // inputValue: this.value
+      };
+    },
+    watch: {
+      keyword(nVal) {
+        this.$emit("update:modelValue", nVal);
+        this.$emit("change", nVal);
+      },
+      modelValue: {
+        immediate: true,
+        handler(nVal) {
+          this.keyword = nVal;
+        }
+      }
+    },
+    computed: {
+      showActionBtn() {
+        return !this.animation && this.showAction;
+      }
+    },
+    emits: ["clear", "search", "custom", "focus", "blur", "click", "clickIcon", "update:modelValue", "change"],
+    methods: {
+      // 目前HX2.6.9 v-model双向绑定无效，故监听input事件获取输入框内容的变化
+      inputChange(e) {
+        this.keyword = e.detail.value;
+      },
+      // 清空输入
+      // 也可以作为用户通过this.$refs形式调用清空输入框内容
+      clear() {
+        this.keyword = "";
+        this.$nextTick(() => {
+          this.$emit("clear");
+        });
+      },
+      // 确定搜索
+      search(e) {
+        this.$emit("search", e.detail.value);
+        try {
+          uni.hideKeyboard();
+        } catch (e2) {
+        }
+      },
+      // 点击右边自定义按钮的事件
+      custom() {
+        this.$emit("custom", this.keyword);
+        try {
+          uni.hideKeyboard();
+        } catch (e) {
+        }
+      },
+      // 获取焦点
+      getFocus() {
+        this.focused = true;
+        if (this.animation && this.showAction)
+          this.show = true;
+        this.$emit("focus", this.keyword);
+      },
+      // 失去焦点
+      blur() {
+        setTimeout(() => {
+          this.focused = false;
+        }, 100);
+        this.show = false;
+        this.$emit("blur", this.keyword);
+      },
+      // 点击搜索框，只有disabled=true时才发出事件，因为禁止了输入，意味着是想跳转真正的搜索页
+      clickHandler() {
+        if (this.disabled)
+          this.$emit("click");
+      },
+      // 点击左边图标
+      clickIcon() {
+        this.$emit("clickIcon");
+      }
+    }
+  };
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: "u-search",
+        onClick: _cache[6] || (_cache[6] = (...args) => $options.clickHandler && $options.clickHandler(...args)),
+        style: vue.normalizeStyle([{
+          margin: _ctx.margin
+        }, _ctx.$u.addStyle(_ctx.customStyle)])
+      },
+      [
+        vue.createElementVNode(
+          "view",
+          {
+            class: "u-search__content",
+            style: vue.normalizeStyle({
+              backgroundColor: _ctx.bgColor,
+              borderRadius: _ctx.shape == "round" ? "100px" : "4px",
+              borderColor: _ctx.borderColor
+            })
+          },
+          [
+            _ctx.$slots.label || _ctx.label !== null ? vue.renderSlot(_ctx.$slots, "label", { key: 0 }, () => [
+              vue.createElementVNode(
+                "text",
+                { class: "u-search__content__label" },
+                vue.toDisplayString(_ctx.label),
+                1
+                /* TEXT */
+              )
+            ], true) : vue.createCommentVNode("v-if", true),
+            vue.createElementVNode("view", { class: "u-search__content__icon" }, [
+              vue.createVNode(_component_u_icon, {
+                onClick: $options.clickIcon,
+                size: _ctx.searchIconSize,
+                name: _ctx.searchIcon,
+                color: _ctx.searchIconColor ? _ctx.searchIconColor : _ctx.color
+              }, null, 8, ["onClick", "size", "name", "color"])
+            ]),
+            vue.createElementVNode("input", {
+              "confirm-type": "search",
+              onBlur: _cache[0] || (_cache[0] = (...args) => $options.blur && $options.blur(...args)),
+              value: $data.keyword,
+              onConfirm: _cache[1] || (_cache[1] = (...args) => $options.search && $options.search(...args)),
+              onInput: _cache[2] || (_cache[2] = (...args) => $options.inputChange && $options.inputChange(...args)),
+              disabled: _ctx.disabled,
+              onFocus: _cache[3] || (_cache[3] = (...args) => $options.getFocus && $options.getFocus(...args)),
+              focus: _ctx.focus,
+              maxlength: _ctx.maxlength,
+              "placeholder-class": "u-search__content__input--placeholder",
+              placeholder: _ctx.placeholder,
+              "placeholder-style": `color: ${_ctx.placeholderColor}`,
+              class: "u-search__content__input",
+              type: "text",
+              style: vue.normalizeStyle([{
+                textAlign: _ctx.inputAlign,
+                color: _ctx.color,
+                backgroundColor: _ctx.bgColor,
+                height: _ctx.$u.addUnit(_ctx.height)
+              }, _ctx.inputStyle])
+            }, null, 44, ["value", "disabled", "focus", "maxlength", "placeholder", "placeholder-style"]),
+            $data.keyword && _ctx.clearabled && $data.focused ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 1,
+              class: "u-search__content__icon u-search__content__close",
+              onClick: _cache[4] || (_cache[4] = (...args) => $options.clear && $options.clear(...args))
+            }, [
+              vue.createVNode(_component_u_icon, {
+                name: "close",
+                size: "11",
+                color: "#ffffff",
+                customStyle: "line-height: 12px"
+              })
+            ])) : vue.createCommentVNode("v-if", true)
+          ],
+          4
+          /* STYLE */
+        ),
+        vue.createElementVNode(
+          "text",
+          {
+            style: vue.normalizeStyle([_ctx.actionStyle]),
+            class: vue.normalizeClass(["u-search__action", [($options.showActionBtn || $data.show) && "u-search__action--active"]]),
+            onClick: _cache[5] || (_cache[5] = vue.withModifiers((...args) => $options.custom && $options.custom(...args), ["stop", "prevent"]))
+          },
+          vue.toDisplayString(_ctx.actionText),
+          7
+          /* TEXT, CLASS, STYLE */
+        )
+      ],
+      4
+      /* STYLE */
+    );
+  }
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__scopeId", "data-v-ed789780"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-search/u-search.vue"]]);
+  const MIN_DISTANCE = 10;
+  function getDirection(x, y) {
+    if (x > y && x > MIN_DISTANCE) {
+      return "horizontal";
+    }
+    if (y > x && y > MIN_DISTANCE) {
+      return "vertical";
+    }
+    return "";
+  }
+  const touch = {
+    methods: {
+      getTouchPoint(e) {
+        if (!e) {
+          return {
+            x: 0,
+            y: 0
+          };
+        }
+        if (e.touches && e.touches[0]) {
+          return {
+            x: e.touches[0].pageX,
+            y: e.touches[0].pageY
+          };
+        }
+        if (e.changedTouches && e.changedTouches[0]) {
+          return {
+            x: e.changedTouches[0].pageX,
+            y: e.changedTouches[0].pageY
+          };
+        }
+        return {
+          x: e.clientX || 0,
+          y: e.clientY || 0
+        };
+      },
+      resetTouchStatus() {
+        this.direction = "";
+        this.deltaX = 0;
+        this.deltaY = 0;
+        this.offsetX = 0;
+        this.offsetY = 0;
+      },
+      touchStart(event) {
+        this.resetTouchStatus();
+        const touch2 = this.getTouchPoint(event);
+        this.startX = touch2.x;
+        this.startY = touch2.y;
+      },
+      touchMove(event) {
+        const touch2 = this.getTouchPoint(event);
+        this.deltaX = touch2.x - this.startX;
+        this.deltaY = touch2.y - this.startY;
+        this.offsetX = Math.abs(this.deltaX);
+        this.offsetY = Math.abs(this.deltaY);
+        this.direction = this.direction || getDirection(this.offsetX, this.offsetY);
+      }
+    }
+  };
+  const props$1 = {
+    props: {
+      // 控制打开或者关闭
+      show: {
+        type: Boolean,
+        default: props$i.swipeActionItem.show
+      },
+      // 标识符，如果是v-for，可用index索引值
+      name: {
+        type: [String, Number],
+        default: props$i.swipeActionItem.name
+      },
+      // 是否禁用
+      disabled: {
+        type: Boolean,
+        default: props$i.swipeActionItem.disabled
+      },
+      // 是否自动关闭其他swipe按钮组
+      autoClose: {
+        type: Boolean,
+        default: props$i.swipeActionItem.autoClose
+      },
+      // 滑动距离阈值，只有大于此值，才被认为是要打开菜单
+      threshold: {
+        type: Number,
+        default: props$i.swipeActionItem.threshold
+      },
+      // 右侧按钮内容
+      options: {
+        type: Array,
+        default() {
+          return uni.$u.props.swipeActionItem.rightOptions;
+        }
+      },
+      // 动画过渡时间，单位ms
+      duration: {
+        type: [String, Number],
+        default: props$i.swipeActionItem.duration
+      }
+    }
+  };
+  const wxs = {
+    methods: {
+      // 关闭时执行
+      closeHandler() {
+        this.status = "close";
+      },
+      setState(status) {
+        this.status = status;
+      },
+      closeOther() {
+        this.parent && this.parent.closeOther(this);
+      }
+    }
+  };
+  const block0 = (Comp) => {
+    (Comp.$wxs || (Comp.$wxs = [])).push("wxs");
+    (Comp.$wxsModules || (Comp.$wxsModules = {}))["wxs"] = "229ea0d2";
+  };
+  const _sfc_main$3 = {
+    name: "u-swipe-action-item",
+    emits: ["click"],
+    mixins: [mpMixin, mixin, props$1, touch],
+    mixins: [mpMixin, mixin, props$1, touch, wxs],
+    data() {
+      return {
+        // 按钮的尺寸信息
+        size: {},
+        // 父组件u-swipe-action的参数
+        parentData: {
+          autoClose: true
+        },
+        // 当前状态，open-打开，close-关闭
+        status: "close"
+      };
+    },
+    watch: {
+      // 由于wxs无法直接读取外部的值，需要在外部值变化时，重新执行赋值逻辑
+      wxsInit(newValue, oldValue) {
+        this.queryRect();
+      }
+    },
+    computed: {
+      wxsInit() {
+        return [this.disabled, this.autoClose, this.threshold, this.options, this.duration];
+      }
+    },
+    mounted() {
+      this.init();
+    },
+    methods: {
+      init() {
+        this.updateParentData();
+        uni.$u.sleep().then(() => {
+          this.queryRect();
+        });
+      },
+      updateParentData() {
+        this.getParentData("u-swipe-action");
+      },
+      // 查询节点
+      queryRect() {
+        this.$uGetRect(".u-swipe-action-item__right__button", true).then((buttons) => {
+          this.size = {
+            buttons,
+            show: this.show,
+            disabled: this.disabled,
+            threshold: this.threshold,
+            duration: this.duration
+          };
+        });
+      },
+      // 按钮被点击
+      buttonClickHandler(item, index2) {
+        this.$emit("click", {
+          index: index2,
+          name: this.name
+        });
+      }
+    }
+  };
+  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: "u-swipe-action-item",
+        ref: "u-swipe-action-item"
+      },
+      [
+        vue.createElementVNode("view", { class: "u-swipe-action-item__right" }, [
+          vue.renderSlot(_ctx.$slots, "button", {}, () => [
+            (vue.openBlock(true), vue.createElementBlock(
+              vue.Fragment,
+              null,
+              vue.renderList(_ctx.options, (item, index2) => {
+                return vue.openBlock(), vue.createElementBlock("view", {
+                  key: index2,
+                  class: "u-swipe-action-item__right__button",
+                  ref_for: true,
+                  ref: `u-swipe-action-item__right__button-${index2}`,
+                  style: vue.normalizeStyle([{
+                    alignItems: item.style && item.style.borderRadius ? "center" : "stretch"
+                  }]),
+                  onClick: ($event) => $options.buttonClickHandler(item, index2)
+                }, [
+                  vue.createElementVNode(
+                    "view",
+                    {
+                      class: "u-swipe-action-item__right__button__wrapper",
+                      style: vue.normalizeStyle([{
+                        backgroundColor: item.style && item.style.backgroundColor ? item.style.backgroundColor : "#C7C6CD",
+                        borderRadius: item.style && item.style.borderRadius ? item.style.borderRadius : "0",
+                        padding: item.style && item.style.borderRadius ? "0" : "0 15px"
+                      }, item.style])
+                    },
+                    [
+                      item.icon ? (vue.openBlock(), vue.createBlock(_component_u_icon, {
+                        key: 0,
+                        name: item.icon,
+                        color: item.style && item.style.color ? item.style.color : "#ffffff",
+                        size: item.iconSize ? _ctx.$u.addUnit(item.iconSize) : item.style && item.style.fontSize ? _ctx.$u.getPx(item.style.fontSize) * 1.2 : 17,
+                        customStyle: {
+                          marginRight: item.text ? "2px" : 0
+                        }
+                      }, null, 8, ["name", "color", "size", "customStyle"])) : vue.createCommentVNode("v-if", true),
+                      item.text ? (vue.openBlock(), vue.createElementBlock(
+                        "text",
+                        {
+                          key: 1,
+                          class: "u-swipe-action-item__right__button__wrapper__text u-line-1",
+                          style: vue.normalizeStyle([{
+                            color: item.style && item.style.color ? item.style.color : "#ffffff",
+                            fontSize: item.style && item.style.fontSize ? item.style.fontSize : "16px",
+                            lineHeight: item.style && item.style.fontSize ? item.style.fontSize : "16px"
+                          }])
+                        },
+                        vue.toDisplayString(item.text),
+                        5
+                        /* TEXT, STYLE */
+                      )) : vue.createCommentVNode("v-if", true)
+                    ],
+                    4
+                    /* STYLE */
+                  )
+                ], 12, ["onClick"]);
+              }),
+              128
+              /* KEYED_FRAGMENT */
+            ))
+          ], true)
+        ]),
+        vue.createElementVNode("view", {
+          class: "u-swipe-action-item__content",
+          onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.wxs.touchstart && _ctx.wxs.touchstart(...args)),
+          onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.wxs.touchmove && _ctx.wxs.touchmove(...args)),
+          onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.wxs.touchend && _ctx.wxs.touchend(...args)),
+          status: vue.wp($data.status),
+          "change:status": _ctx.wxs.statusChange,
+          size: vue.wp($data.size),
+          "change:size": _ctx.wxs.sizeChange
+        }, [
+          vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+        ], 40, ["status", "change:status", "size", "change:size"])
+      ],
+      512
+      /* NEED_PATCH */
+    );
+  }
+  if (typeof block0 === "function")
+    block0(_sfc_main$3);
+  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-8b5d76c2"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-swipe-action-item/u-swipe-action-item.vue"]]);
+  const props = {
+    props: {
+      // 是否自动关闭其他swipe按钮组
+      autoClose: {
+        type: Boolean,
+        default: props$i.swipeAction.autoClose
+      }
+    }
+  };
+  const _sfc_main$2 = {
+    name: "u-swipe-action",
+    mixins: [mpMixin, mixin, props],
+    data() {
+      return {};
+    },
+    provide() {
+      return {
+        swipeAction: this
+      };
+    },
+    computed: {
+      // 这里computed的变量，都是子组件u-swipe-action-item需要用到的，由于头条小程序的兼容性差异，子组件无法实时监听父组件参数的变化
+      // 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(u-swipe-action-item)
+      // 拉取父组件新的变化后的参数
+      parentData() {
+        return [this.autoClose];
+      }
+    },
+    watch: {
+      // 当父组件需要子组件需要共享的参数发生了变化，手动通知子组件
+      parentData() {
+        if (this.children.length) {
+          this.children.map((child) => {
+            typeof child.updateParentData === "function" && child.updateParentData();
+          });
+        }
+      }
+    },
+    created() {
+      this.children = [];
+    },
+    methods: {
+      closeOther(child) {
+        if (this.autoClose) {
+          this.children.map((item, index2) => {
+            if (child !== item) {
+              item.closeHandler();
+            }
+          });
+        }
+      }
+    }
+  };
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock("view", { class: "u-swipe-action" }, [
+      vue.renderSlot(_ctx.$slots, "default")
+    ]);
+  }
+  const __easycom_5 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-swipe-action/u-swipe-action.vue"]]);
   const _sfc_main$1 = {
     __name: "KnowDetails",
     setup(__props) {
-      const name = vue.ref("");
-      const user = vue.ref("");
-      const prompt = vue.ref("");
-      const count = vue.ref(0);
-      const users = vue.ref(0);
+      const activeTab = vue.ref(0);
+      const lastTab = vue.ref(0);
+      const tabList = [
+        { name: "文件" },
+        { name: "知识图谱" }
+      ];
+      const files = vue.ref([
+        { id: 1, name: "文档A.pdf", type: "pdf" },
+        { id: 2, name: "图片B.png", type: "image" },
+        { id: 3, name: "表格C.xlsx", type: "excel" }
+      ]);
+      const showMore = vue.ref(false);
+      const showEdit = vue.ref(false);
+      const chatPopupVisible = vue.ref(false);
+      const title = vue.ref("");
       const time = vue.ref("");
+      const repo = vue.ref("");
+      const user = vue.ref("");
       const tags = vue.ref([]);
-      const systemInfo = uni.getSystemInfoSync();
-      const statusBarHeight = systemInfo.statusBarHeight || 20;
-      const safeAreaTop = `calc(${statusBarHeight}px + env(safe-area-inset-top))`;
       onLoad((options) => {
-        name.value = decodeURIComponent(options.name || "");
-        user.value = decodeURIComponent(options.user || "");
-        prompt.value = decodeURIComponent(options.prompt || "");
-        count.value = Number(options.count || 0);
-        users.value = Number(options.users || 0);
+        title.value = decodeURIComponent(options.name || "");
         time.value = options.time || "";
+        repo.value = decodeURIComponent(options.repo || "");
+        user.value = decodeURIComponent(options.user || "");
         try {
           tags.value = JSON.parse(decodeURIComponent(options.tags || "[]"));
         } catch (e) {
           tags.value = [];
         }
       });
+      function onTalkWithAI() {
+        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:175", "功能暂未开放");
+      }
       function goBack() {
         uni.navigateBack();
       }
+      function onShare() {
+        uni.showToast({ title: "点击分享", icon: "none" });
+      }
+      function handleTabChange(index2) {
+        lastTab.value = activeTab.value;
+        activeTab.value = index2;
+      }
+      function onSwiperChange(e) {
+        lastTab.value = activeTab.value;
+        activeTab.value = e.detail.current;
+      }
+      function getFileIcon(type) {
+        switch (type) {
+          case "pdf":
+            return "file-text";
+          case "image":
+            return "photo";
+          case "excel":
+            return "file";
+          default:
+            return "file";
+        }
+      }
+      function deleteFile(id) {
+        files.value = files.value.filter((file) => file.id !== id);
+      }
+      const searchKeyword = vue.ref("");
+      const filteredFiles = vue.computed(() => {
+        if (!searchKeyword.value.trim()) {
+          return files.value;
+        }
+        return files.value.filter(
+          (file) => file.name.toLowerCase().includes(searchKeyword.value.toLowerCase())
+        );
+      });
+      function onSearchChange(val) {
+        searchKeyword.value = val;
+      }
+      let startX = 0;
+      let startY = 0;
+      let startTabIndex = 0;
+      function onTouchStart(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startTabIndex = activeTab.value;
+      }
+      function onTouchEnd(e) {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        if (startTabIndex === 0 && activeTab.value === 0 && deltaX > 50 && deltaY < 30) {
+          goBack();
+        }
+      }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        return vue.openBlock(), vue.createElementBlock(
-          "view",
-          {
-            class: "know-details",
-            style: vue.normalizeStyle({ paddingTop: safeAreaTop })
-          },
-          [
-            vue.createElementVNode("view", { class: "details-header" }, [
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$2);
+        const _component_u_tabs = resolveEasycom(vue.resolveDynamicComponent("u-tabs"), __easycom_2);
+        const _component_u_search = resolveEasycom(vue.resolveDynamicComponent("u-search"), __easycom_3);
+        const _component_u_swipe_action_item = resolveEasycom(vue.resolveDynamicComponent("u-swipe-action-item"), __easycom_4);
+        const _component_u_swipe_action = resolveEasycom(vue.resolveDynamicComponent("u-swipe-action"), __easycom_5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
+        return vue.openBlock(), vue.createElementBlock("view", { class: "note-details-page" }, [
+          vue.createCommentVNode(" 顶部固定区域：图标、Header、Tabs "),
+          vue.createElementVNode("view", { class: "top-fixed-header" }, [
+            vue.createCommentVNode(" 顶部图标 "),
+            vue.createElementVNode("view", { class: "top-icon-row" }, [
               vue.createVNode(_component_u_icon, {
                 name: "arrow-left",
                 size: "24",
                 onClick: goBack
               }),
-              vue.createElementVNode(
-                "text",
-                { class: "details-title" },
-                vue.toDisplayString(name.value),
-                1
-                /* TEXT */
-              )
+              vue.createElementVNode("view", { class: "right-icons" }, [
+                vue.createVNode(_component_u_icon, {
+                  name: "share",
+                  size: "22",
+                  onClick: onShare
+                }),
+                vue.createVNode(_component_u_icon, {
+                  name: "more-dot-fill",
+                  size: "22",
+                  onClick: _cache[0] || (_cache[0] = ($event) => showMore.value = true)
+                })
+              ])
             ]),
-            vue.createElementVNode("view", { class: "details-body" }, [
-              vue.createElementVNode("text", null, "这里是知识库详情页，目前仅展示基础信息。")
-            ])
-          ],
-          4
-          /* STYLE */
-        );
+            vue.createCommentVNode(" Header 卡片 "),
+            vue.createElementVNode("view", { class: "note-header-card" }, [
+              vue.createElementVNode("view", { class: "note-title-row" }, [
+                vue.createElementVNode(
+                  "text",
+                  { class: "note-title" },
+                  vue.toDisplayString(title.value),
+                  1
+                  /* TEXT */
+                ),
+                vue.createVNode(_component_u_icon, {
+                  name: "edit-pen",
+                  size: "18",
+                  onClick: _cache[1] || (_cache[1] = ($event) => showEdit.value = true)
+                })
+              ]),
+              vue.createElementVNode("view", { class: "note-meta" }, [
+                vue.createElementVNode(
+                  "text",
+                  null,
+                  vue.toDisplayString(time.value),
+                  1
+                  /* TEXT */
+                ),
+                vue.createElementVNode("text", { class: "note-separator" }, "|"),
+                vue.createElementVNode(
+                  "text",
+                  null,
+                  vue.toDisplayString(user.value),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              vue.createElementVNode("view", { class: "note-tags" }, [
+                (vue.openBlock(true), vue.createElementBlock(
+                  vue.Fragment,
+                  null,
+                  vue.renderList(tags.value, (tag, i) => {
+                    return vue.openBlock(), vue.createBlock(_component_u_tag, {
+                      key: i,
+                      text: tag.text,
+                      type: tag.type,
+                      size: "mini",
+                      plain: ""
+                    }, null, 8, ["text", "type"]);
+                  }),
+                  128
+                  /* KEYED_FRAGMENT */
+                ))
+              ])
+            ]),
+            vue.createCommentVNode(" Tabs栏 "),
+            vue.createVNode(_component_u_tabs, {
+              list: tabList,
+              current: activeTab.value,
+              onChange: handleTabChange,
+              "item-style": { justifyContent: "center", padding: "20rpx 0", height: "80rpx", flex: 1, justifyContent: "center" },
+              "active-style": { fontSize: "18px", fontWeight: "600" },
+              scrollable: false
+            }, null, 8, ["current"])
+          ]),
+          vue.createCommentVNode(" Swiper 内容区 "),
+          vue.createElementVNode(
+            "view",
+            {
+              class: "tab-content-wrapper",
+              onTouchstart: onTouchStart,
+              onTouchend: onTouchEnd
+            },
+            [
+              vue.createElementVNode("swiper", {
+                class: "tab-swiper",
+                current: activeTab.value,
+                onChange: onSwiperChange,
+                "indicator-dots": false
+              }, [
+                vue.createElementVNode("swiper-item", null, [
+                  vue.createElementVNode("scroll-view", {
+                    "scroll-y": "",
+                    class: "tab-inner-scroll"
+                  }, [
+                    vue.createElementVNode("view", { class: "sum-tab-wrapper" }, [
+                      vue.createCommentVNode(" 文件列表展示区 "),
+                      vue.createElementVNode("view", { class: "file-list" }, [
+                        vue.createElementVNode("view", { class: "file-search-bar" }, [
+                          vue.createVNode(_component_u_search, {
+                            placeholder: "搜索文件名",
+                            modelValue: searchKeyword.value,
+                            "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => searchKeyword.value = $event),
+                            "show-action": false,
+                            "bg-color": "#f0f0f0",
+                            height: "64rpx",
+                            onChange: onSearchChange
+                          }, null, 8, ["modelValue"])
+                        ]),
+                        vue.createVNode(_component_u_swipe_action, null, {
+                          default: vue.withCtx(() => [
+                            (vue.openBlock(true), vue.createElementBlock(
+                              vue.Fragment,
+                              null,
+                              vue.renderList(vue.unref(filteredFiles), (file) => {
+                                return vue.openBlock(), vue.createBlock(_component_u_swipe_action_item, {
+                                  key: file.id,
+                                  options: [{ text: "删除", style: { backgroundColor: "#f56c6c", color: "#fff" } }],
+                                  onClick: ($event) => deleteFile(file.id)
+                                }, {
+                                  default: vue.withCtx(() => [
+                                    vue.createElementVNode("view", { class: "file-item" }, [
+                                      vue.createVNode(_component_u_icon, {
+                                        name: getFileIcon(file.type),
+                                        size: "20"
+                                      }, null, 8, ["name"]),
+                                      vue.createElementVNode(
+                                        "text",
+                                        { class: "file-name" },
+                                        vue.toDisplayString(file.name),
+                                        1
+                                        /* TEXT */
+                                      )
+                                    ])
+                                  ]),
+                                  _: 2
+                                  /* DYNAMIC */
+                                }, 1032, ["onClick"]);
+                              }),
+                              128
+                              /* KEYED_FRAGMENT */
+                            ))
+                          ]),
+                          _: 1
+                          /* STABLE */
+                        })
+                      ])
+                    ])
+                  ])
+                ]),
+                vue.createElementVNode("swiper-item", null, [
+                  vue.createElementVNode("scroll-view", {
+                    "scroll-y": "",
+                    class: "tab-inner-scroll"
+                  }, [
+                    vue.createVNode(NoteDetailPosterTab)
+                  ])
+                ])
+              ], 40, ["current"])
+            ],
+            32
+            /* HYDRATE_EVENTS */
+          ),
+          vue.createCommentVNode(" 底部聊天栏 "),
+          !chatPopupVisible.value ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "chatbar"
+          }, [
+            vue.createElementVNode("view", {
+              class: "fake-input",
+              onClick: _cache[3] || (_cache[3] = ($event) => chatPopupVisible.value = true)
+            }, [
+              vue.createVNode(_component_u_icon, {
+                name: "star",
+                size: "22"
+              }),
+              vue.createElementVNode("text", { class: "fake-input-text" }, "向LiveHands提问...")
+            ]),
+            vue.createVNode(TalkButton, { onClick: onTalkWithAI }, {
+              default: vue.withCtx(() => [
+                vue.createTextVNode("发送")
+              ]),
+              _: 1
+              /* STABLE */
+            })
+          ])) : vue.createCommentVNode("v-if", true),
+          vue.createCommentVNode(" 更多操作 popup "),
+          vue.createVNode(_component_u_popup, {
+            show: showMore.value,
+            mode: "bottom",
+            onClose: _cache[4] || (_cache[4] = ($event) => showMore.value = false)
+          }, null, 8, ["show"]),
+          vue.createCommentVNode(" 编辑弹窗 "),
+          vue.createVNode(_component_u_modal, {
+            show: showEdit.value,
+            title: "编辑笔记",
+            onConfirm: _cache[5] || (_cache[5] = ($event) => showEdit.value = false),
+            onCancel: _cache[6] || (_cache[6] = ($event) => showEdit.value = false)
+          }, {
+            default: vue.withCtx(() => [
+              vue.createElementVNode("view", { style: { "padding": "20px" } }, "编辑笔记弹窗内容")
+            ]),
+            _: 1
+            /* STABLE */
+          }, 8, ["show"]),
+          vue.createCommentVNode(" 聊天 popup "),
+          vue.createVNode(_component_u_popup, {
+            show: chatPopupVisible.value,
+            mode: "bottom",
+            "safe-area-inset-bottom": true,
+            overlay: true,
+            "custom-style": { height: "95vh" },
+            onClose: _cache[7] || (_cache[7] = ($event) => chatPopupVisible.value = false)
+          }, {
+            default: vue.withCtx(() => [
+              vue.createElementVNode("scroll-view", {
+                style: { "height": "100%" },
+                "scroll-y": ""
+              }, [
+                vue.createElementVNode("view", { style: { "padding": "20px" } }, "AI 聊天内容区域")
+              ])
+            ]),
+            _: 1
+            /* STABLE */
+          }, 8, ["show"])
+        ]);
       };
     }
   };
@@ -18452,7 +19364,7 @@ This will fail in production.`);
     throttle,
     mixin,
     mpMixin,
-    props: props$f,
+    props: props$i,
     ...index,
     color,
     platform: platform$1
