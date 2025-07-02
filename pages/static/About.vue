@@ -29,20 +29,14 @@
         <view class="section">
           <view class="section-title">法律信息</view>
           <view class="section-body">
-            <view @click="openUser"><MenuItem title="用户服务协议" icon="document" :isOk="true" /></view>
+            <view @click="openUser"><MenuItem title="用户服务协议" icon="file-text" :isOk="true" /></view>
             <view @click="openPrivacy"><MenuItem title="隐私政策" icon="lock" :isOk="true" /></view>
-            <view @click="openCertification"><MenuItem title="证照中心" icon="certificate" :isOk="true" /></view>
           </view>
         </view>
-
-<!--        <view class="section">
-          <view class="section-title">公司信息</view>
-          <view class="section-body">
-            <view @click="openCompanyInfo"><MenuItem title="公司简介" icon="building" :isOk="true" /></view>
-            <view @click="openTeam"><MenuItem title="研发团队" icon="users" :isOk="true" /></view>
-            <view @click="openContactUs"><MenuItem title="联系我们" icon="phone" :isOk="true" /></view>
-          </view>
-        </view> -->
+		
+		<!-- Panel -->
+		<UserPanel v-model:show="showUserPanel" />
+		<PrivacyPanel v-model:show="showPrivacyPanel" />
       </scroll-view>
 
       <!-- 底部信息 -->
@@ -60,10 +54,7 @@ import MenuItem from '../../components/children/MenuItem.vue'
 // 引入对应的Panel组件（模仿原代码结构）
 import UserPanel from './User.vue'
 import PrivacyPanel from './Privacy.vue'
-// import CertificationPanel from '../pages/static/Certification.vue'
-// import CompanyInfoPanel from '../pages/static/CompanyInfo.vue'
-// import TeamPanel from '../pages/static/Team.vue'
-// import ContactUsPanel from '../pages/static/ContactUs.vue'
+
 
 const props = defineProps({ show: Boolean })
 const emit = defineEmits(['update:show'])
@@ -73,10 +64,6 @@ const version = ref('2.0.1')
 // 定义各Panel的显示状态（模仿原代码ref声明方式）
 const showUserPanel = ref(false)
 const showPrivacyPanel = ref(false)
-const showCertificationPanel = ref(false)
-// const showCompanyInfoPanel = ref(false)
-// const showTeamPanel = ref(false)
-// const showContactUsPanel = ref(false)
 
 // 手势关闭逻辑（完全模仿原代码）
 let startX = 0, startY = 0
@@ -101,18 +88,6 @@ function openUser() {
 function openPrivacy() {
   showPrivacyPanel.value = true
 }
-function openCertification() {
-  showCertificationPanel.value = true
-}
-// function openCompanyInfo() {
-//   showCompanyInfoPanel.value = true
-// }
-// function openTeam() {
-//   showTeamPanel.value = true
-// }
-// function openContactUs() {
-//   showContactUsPanel.value = true
-// }
 </script>
 
 <style scoped>

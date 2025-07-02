@@ -3484,7 +3484,7 @@ This will fail in production.`);
     }
     return target;
   };
-  const _sfc_main$_ = {
+  const _sfc_main$Z = {
     name: "u-icon",
     data() {
       return {};
@@ -3578,7 +3578,7 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["render", _sfc_render$l], ["__scopeId", "data-v-1c933a9a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$l], ["__scopeId", "data-v-1c933a9a"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
   const props$d = {
     props: {
       // checkbox的名称
@@ -3648,7 +3648,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$Z = {
+  const _sfc_main$Y = {
     name: "u-checkbox",
     mixins: [mpMixin, mixin, props$d],
     data() {
@@ -3859,7 +3859,7 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["render", _sfc_render$k], ["__scopeId", "data-v-abd63d8e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$k], ["__scopeId", "data-v-abd63d8e"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
   const props$c = {
     props: {
       // 标识符
@@ -3939,7 +3939,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$Y = {
+  const _sfc_main$X = {
     name: "u-checkbox-group",
     mixins: [mpMixin, mixin, props$c],
     computed: {
@@ -4011,7 +4011,7 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["render", _sfc_render$j], ["__scopeId", "data-v-504cd728"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
+  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["render", _sfc_render$j], ["__scopeId", "data-v-504cd728"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
   class Http {
     constructor({
       baseURL = "http://ai.sitoai.cn",
@@ -4162,7 +4162,7 @@ This will fail in production.`);
     }
     return response;
   });
-  const _sfc_main$X = {
+  const _sfc_main$W = {
     __name: "login",
     setup(__props) {
       const phone = vue.ref("");
@@ -4205,11 +4205,29 @@ This will fail in production.`);
           }
         }, 1e3);
       }
-      function openAgreement() {
-        uni.navigateTo({ url: "/pages/agreement/user" });
+      function openUser() {
+        uni.navigateTo({
+          url: "/pages/static/User",
+          success: () => {
+            formatAppLog("log", "at pages/login/login.vue:113", "跳转成功");
+          },
+          fail: (err) => {
+            formatAppLog("error", "at pages/login/login.vue:116", "跳转失败", err);
+            uni.showToast({ title: "跳转失败", icon: "none" });
+          }
+        });
       }
       function openPrivacy() {
-        uni.navigateTo({ url: "/pages/agreement/privacy" });
+        uni.navigateTo({
+          url: "/pages/static/Privacy",
+          success: () => {
+            formatAppLog("log", "at pages/login/login.vue:125", "跳转成功");
+          },
+          fail: (err) => {
+            formatAppLog("error", "at pages/login/login.vue:128", "跳转失败", err);
+            uni.showToast({ title: "跳转失败", icon: "none" });
+          }
+        });
       }
       vue.onUnmounted(() => {
         clearInterval(timer);
@@ -4292,7 +4310,7 @@ This will fail in production.`);
               vue.createTextVNode(" 我已阅读并同意 "),
               vue.createElementVNode("text", {
                 class: "link",
-                onClick: openAgreement
+                onClick: openUser
               }, "《用户协议》"),
               vue.createTextVNode(" 和 "),
               vue.createElementVNode("text", {
@@ -4305,7 +4323,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-e4e4508d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/login.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["__scopeId", "data-v-e4e4508d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/login/login.vue"]]);
   const props$b = {
     props: {
       // 是否展示组件
@@ -4385,7 +4403,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$W = {
+  const _sfc_main$V = {
     name: "u-transition",
     data() {
       return {
@@ -4446,7 +4464,7 @@ This will fail in production.`);
       /* CLASS, STYLE, HYDRATE_EVENTS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$i], ["__scopeId", "data-v-0573594d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
+  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$i], ["__scopeId", "data-v-0573594d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
   const props$a = {
     props: {
       // 标签类型info、primary、success、warning、error
@@ -4531,7 +4549,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$V = {
+  const _sfc_main$U = {
     name: "u-tag",
     mixins: [mpMixin, mixin, props$a],
     data() {
@@ -4668,7 +4686,7 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["show"]);
   }
-  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$h], ["__scopeId", "data-v-23de980f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
+  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$h], ["__scopeId", "data-v-23de980f"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
   const props$9 = {
     props: {
       color: {
@@ -4702,7 +4720,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$U = {
+  const _sfc_main$T = {
     name: "u-line",
     mixins: [mpMixin, mixin, props$9],
     computed: {
@@ -4739,7 +4757,7 @@ This will fail in production.`);
       /* STYLE */
     );
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$g], ["__scopeId", "data-v-bbd9963c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-line/u-line.vue"]]);
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$g], ["__scopeId", "data-v-bbd9963c"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-line/u-line.vue"]]);
   const props$8 = {
     props: {
       // 是否显示组件
@@ -4799,7 +4817,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$T = {
+  const _sfc_main$S = {
     name: "u-loading-icon",
     mixins: [mpMixin, mixin, props$8],
     data() {
@@ -4922,7 +4940,7 @@ This will fail in production.`);
       /* CLASS, STYLE */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$f], ["__scopeId", "data-v-00752c6d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$f], ["__scopeId", "data-v-00752c6d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
   const props$7 = {
     props: {
       // 是否显示遮罩
@@ -4947,7 +4965,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$S = {
+  const _sfc_main$R = {
     name: "u-overlay",
     mixins: [mpMixin, mixin, props$7],
     computed: {
@@ -4986,7 +5004,7 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["show", "duration", "custom-style", "onClick"]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$e], ["__scopeId", "data-v-35f7c3e5"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$e], ["__scopeId", "data-v-35f7c3e5"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
   const props$6 = {
     props: {
       bgColor: {
@@ -4995,7 +5013,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$R = {
+  const _sfc_main$Q = {
     name: "u-status-bar",
     mixins: [mpMixin, mixin, props$6],
     data() {
@@ -5024,11 +5042,11 @@ This will fail in production.`);
       /* STYLE */
     );
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$d], ["__scopeId", "data-v-c0b45a48"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$d], ["__scopeId", "data-v-c0b45a48"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
   const props$5 = {
     props: {}
   };
-  const _sfc_main$Q = {
+  const _sfc_main$P = {
     name: "u-safe-bottom",
     mixins: [mpMixin, mixin, props$5],
     data() {
@@ -5058,7 +5076,7 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$Q, [["render", _sfc_render$c], ["__scopeId", "data-v-3ec581de"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
+  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$c], ["__scopeId", "data-v-3ec581de"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
   const props$4 = {
     props: {
       // 是否展示弹窗
@@ -5138,7 +5156,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$P = {
+  const _sfc_main$O = {
     name: "u-popup",
     mixins: [mpMixin, mixin, props$4],
     data() {
@@ -5316,7 +5334,7 @@ This will fail in production.`);
       }, 8, ["show", "customStyle", "mode", "duration", "onAfterEnter", "onClick"])
     ]);
   }
-  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$P, [["render", _sfc_render$b], ["__scopeId", "data-v-74921bef"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$b], ["__scopeId", "data-v-74921bef"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
   const props$3 = {
     props: {
       // 是否展示modal
@@ -5401,7 +5419,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$O = {
+  const _sfc_main$N = {
     name: "u-modal",
     mixins: [mpMixin, mixin, props$3],
     data() {
@@ -5592,8 +5610,8 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["zoom", "show", "customStyle", "closeOnClickOverlay", "onClick"]);
   }
-  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$O, [["render", _sfc_render$a], ["__scopeId", "data-v-12b77a26"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
-  const _sfc_main$N = {
+  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["render", _sfc_render$a], ["__scopeId", "data-v-12b77a26"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
+  const _sfc_main$M = {
     __name: "NoteCard",
     props: {
       title: { type: String, default: "无标题笔记" },
@@ -5761,8 +5779,8 @@ This will fail in production.`);
       };
     }
   };
-  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$N, [["__scopeId", "data-v-ac0fe255"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/NoteCard.vue"]]);
-  const _sfc_main$M = {
+  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-ac0fe255"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/cards/NoteCard.vue"]]);
+  const _sfc_main$L = {
     __name: "notes",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5806,8 +5824,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$M, [["__scopeId", "data-v-8b89ac5f"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/notes/notes.vue"]]);
-  const _sfc_main$L = {
+  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-8b89ac5f"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/notes/notes.vue"]]);
+  const _sfc_main$K = {
     __name: "KnowCard",
     props: {
       name: String,
@@ -5931,8 +5949,8 @@ This will fail in production.`);
       };
     }
   };
-  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-6e18014a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/cards/KnowCard.vue"]]);
-  const _sfc_main$K = {
+  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-6e18014a"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/cards/KnowCard.vue"]]);
+  const _sfc_main$J = {
     __name: "knows",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5974,8 +5992,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-652c3fcc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/knows/knows.vue"]]);
-  const _sfc_main$J = {
+  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-652c3fcc"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/knows/knows.vue"]]);
+  const _sfc_main$I = {
     data() {
       return {};
     },
@@ -5984,8 +6002,8 @@ This will fail in production.`);
   function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 调研智能体 ");
   }
-  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$9], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/research/research.vue"]]);
-  const _sfc_main$I = {
+  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$9], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/agents/research/research.vue"]]);
+  const _sfc_main$H = {
     data() {
       return {};
     },
@@ -5994,8 +6012,8 @@ This will fail in production.`);
   function _sfc_render$8(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 简历智能体 ");
   }
-  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["render", _sfc_render$8], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/resume/resume.vue"]]);
-  const _sfc_main$H = {
+  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$8], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/agents/resume/resume.vue"]]);
+  const _sfc_main$G = {
     data() {
       return {};
     },
@@ -6004,8 +6022,8 @@ This will fail in production.`);
   function _sfc_render$7(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 新闻智能体 ");
   }
-  const News = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["render", _sfc_render$7], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/news/news.vue"]]);
-  const _sfc_main$G = {
+  const News = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$7], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/agents/news/news.vue"]]);
+  const _sfc_main$F = {
     __name: "SubTabBar",
     props: {
       modelValue: Number,
@@ -6067,8 +6085,8 @@ This will fail in production.`);
       };
     }
   };
-  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-25def7fe"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SubTabBar.vue"]]);
-  const _sfc_main$F = {
+  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-25def7fe"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/SubTabBar.vue"]]);
+  const _sfc_main$E = {
     __name: "layout",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -6147,8 +6165,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-1ce95d4b"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/agents/layout.vue"]]);
-  const _sfc_main$E = {
+  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-1ce95d4b"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/agents/layout.vue"]]);
+  const _sfc_main$D = {
     __name: "TabBar",
     props: {
       modelValue: Number
@@ -6197,7 +6215,7 @@ This will fail in production.`);
       };
     }
   };
-  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-89ca1f91"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/TabBar.vue"]]);
+  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-89ca1f91"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/TabBar.vue"]]);
   const props$2 = {
     props: {
       // 是否细边框
@@ -6350,7 +6368,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$D = {
+  const _sfc_main$C = {
     name: "u-button",
     mixins: [mpMixin, mixin, props$2],
     data() {
@@ -6552,18 +6570,18 @@ This will fail in production.`);
       ))
     ], 46, ["hover-start-time", "hover-stay-time", "form-type", "open-type", "app-parameter", "hover-stop-propagation", "send-message-title", "send-message-path", "lang", "data-name", "session-from", "send-message-img", "show-message-card", "hover-class"]);
   }
-  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$6], ["__scopeId", "data-v-461e713c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-button/u-button.vue"]]);
-  const _sfc_main$C = {};
+  const __easycom_1 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$6], ["__scopeId", "data-v-461e713c"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-button/u-button.vue"]]);
+  const _sfc_main$B = {};
   function _sfc_render$5(_ctx, _cache) {
     return null;
   }
-  const Member = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$5], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/Member.vue"]]);
-  const _sfc_main$B = {};
+  const Member = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$5], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/Member.vue"]]);
+  const _sfc_main$A = {};
   function _sfc_render$4(_ctx, _cache) {
     return null;
   }
-  const UnMember = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$4], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/UnMember.vue"]]);
-  const _sfc_main$A = {
+  const UnMember = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$4], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/UnMember.vue"]]);
+  const _sfc_main$z = {
     __name: "MenuItem",
     props: {
       title: String,
@@ -6602,8 +6620,8 @@ This will fail in production.`);
       };
     }
   };
-  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-a609ad39"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/MenuItem.vue"]]);
-  const _sfc_main$z = {
+  const MenuItem = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-a609ad39"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/MenuItem.vue"]]);
+  const _sfc_main$y = {
     __name: "WidgetManager",
     props: {
       show: Boolean,
@@ -6671,8 +6689,8 @@ This will fail in production.`);
       };
     }
   };
-  const WidgetManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-9ba83672"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/WidgetManager.vue"]]);
-  const _sfc_main$y = {
+  const WidgetManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-9ba83672"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/WidgetManager.vue"]]);
+  const _sfc_main$x = {
     __name: "ImportNotes",
     props: {
       show: Boolean,
@@ -6740,8 +6758,8 @@ This will fail in production.`);
       };
     }
   };
-  const ImportNotesPanel = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-39f41623"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/ImportNotes.vue"]]);
-  const _sfc_main$x = {
+  const ImportNotesPanel = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-39f41623"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/ImportNotes.vue"]]);
+  const _sfc_main$w = {
     __name: "Sync",
     props: {
       show: Boolean,
@@ -6809,216 +6827,8 @@ This will fail in production.`);
       };
     }
   };
-  const SyncPanel = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-dbdaee1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Sync.vue"]]);
-  const _sfc_main$w = {
-    __name: "HistoryLog",
-    props: {
-      show: Boolean,
-      tab: Number
-    },
-    emits: ["update:show"],
-    setup(__props, { emit }) {
-      function closePopup() {
-        emit("update:show", false);
-      }
-      let startX = 0;
-      let startY = 0;
-      function onTouchStart(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }
-      function onTouchEnd(e) {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const deltaX = endX - startX;
-        const deltaY = Math.abs(endY - startY);
-        if (deltaX > 60 && deltaY < 30) {
-          closePopup();
-        }
-      }
-      return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
-        return vue.openBlock(), vue.createBlock(_component_u_popup, {
-          show: __props.show,
-          mode: "right",
-          overlay: true,
-          closeable: false,
-          onClose: closePopup,
-          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val)),
-          duration: 300
-        }, {
-          default: vue.withCtx(() => [
-            vue.createElementVNode(
-              "view",
-              {
-                class: "panel-wrapper",
-                onTouchstart: onTouchStart,
-                onTouchend: onTouchEnd
-              },
-              [
-                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
-                vue.createElementVNode("view", { class: "static-header" }, [
-                  vue.createVNode(_component_u_icon, {
-                    name: "arrow-left",
-                    size: "24",
-                    onClick: closePopup
-                  })
-                ]),
-                vue.createCommentVNode(" 聊天区域 "),
-                vue.createElementVNode("view", { class: "static-body" }, " 历史记录 ")
-              ],
-              32
-              /* HYDRATE_EVENTS */
-            )
-          ]),
-          _: 1
-          /* STABLE */
-        }, 8, ["show"]);
-      };
-    }
-  };
-  const HistoryLogPanel = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-f6b79373"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/HistoryLog.vue"]]);
+  const SyncPanel = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-dbdaee1d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Sync.vue"]]);
   const _sfc_main$v = {
-    __name: "Tags",
-    props: {
-      show: Boolean,
-      tab: Number
-    },
-    emits: ["update:show"],
-    setup(__props, { emit }) {
-      function closePopup() {
-        emit("update:show", false);
-      }
-      let startX = 0;
-      let startY = 0;
-      function onTouchStart(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }
-      function onTouchEnd(e) {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const deltaX = endX - startX;
-        const deltaY = Math.abs(endY - startY);
-        if (deltaX > 60 && deltaY < 30) {
-          closePopup();
-        }
-      }
-      return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
-        return vue.openBlock(), vue.createBlock(_component_u_popup, {
-          show: __props.show,
-          mode: "right",
-          overlay: true,
-          closeable: false,
-          onClose: closePopup,
-          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val)),
-          duration: 300
-        }, {
-          default: vue.withCtx(() => [
-            vue.createElementVNode(
-              "view",
-              {
-                class: "panel-wrapper",
-                onTouchstart: onTouchStart,
-                onTouchend: onTouchEnd
-              },
-              [
-                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
-                vue.createElementVNode("view", { class: "static-header" }, [
-                  vue.createVNode(_component_u_icon, {
-                    name: "arrow-left",
-                    size: "24",
-                    onClick: closePopup
-                  })
-                ]),
-                vue.createCommentVNode(" 聊天区域 "),
-                vue.createElementVNode("view", { class: "static-body" }, " 预设标签 ")
-              ],
-              32
-              /* HYDRATE_EVENTS */
-            )
-          ]),
-          _: 1
-          /* STABLE */
-        }, 8, ["show"]);
-      };
-    }
-  };
-  const TagsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-5403c959"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Tags.vue"]]);
-  const _sfc_main$u = {
-    __name: "FileManager",
-    props: {
-      show: Boolean,
-      tab: Number
-    },
-    emits: ["update:show"],
-    setup(__props, { emit }) {
-      function closePopup() {
-        emit("update:show", false);
-      }
-      let startX = 0;
-      let startY = 0;
-      function onTouchStart(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }
-      function onTouchEnd(e) {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const deltaX = endX - startX;
-        const deltaY = Math.abs(endY - startY);
-        if (deltaX > 20 && deltaY < 10) {
-          formatAppLog("log", "at pages/static/FileManager.vue:58", "现在是手势从左往右滑动，即将关闭当前页面回到通用设置页面");
-          closePopup();
-        }
-      }
-      return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
-        return vue.openBlock(), vue.createBlock(_component_u_popup, {
-          show: __props.show,
-          mode: "right",
-          overlay: true,
-          closeable: false,
-          onClose: closePopup,
-          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val)),
-          duration: 300
-        }, {
-          default: vue.withCtx(() => [
-            vue.createElementVNode(
-              "view",
-              {
-                class: "panel-wrapper",
-                onTouchstart: onTouchStart,
-                onTouchend: onTouchEnd
-              },
-              [
-                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
-                vue.createElementVNode("view", { class: "static-header" }, [
-                  vue.createVNode(_component_u_icon, {
-                    name: "arrow-left",
-                    size: "24",
-                    onClick: closePopup
-                  })
-                ]),
-                vue.createCommentVNode(" 聊天区域 "),
-                vue.createElementVNode("view", { class: "static-body" }, " 文件管理器 ")
-              ],
-              32
-              /* HYDRATE_EVENTS */
-            )
-          ]),
-          _: 1
-          /* STABLE */
-        }, 8, ["show"]);
-      };
-    }
-  };
-  const FileManagerPanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-8af38d0a"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FileManager.vue"]]);
-  const _sfc_main$t = {
     __name: "Rate",
     props: {
       show: Boolean,
@@ -7086,8 +6896,8 @@ This will fail in production.`);
       };
     }
   };
-  const RatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-c7bbae96"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Rate.vue"]]);
-  const _sfc_main$s = {
+  const RatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-c7bbae96"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Rate.vue"]]);
+  const _sfc_main$u = {
     __name: "Share",
     props: {
       show: Boolean,
@@ -7155,39 +6965,23 @@ This will fail in production.`);
       };
     }
   };
-  const SharePanel = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-dbd63f1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Share.vue"]]);
-  const _sfc_main$r = {
+  const SharePanel = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-dbd63f1d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Share.vue"]]);
+  const _sfc_main$t = {
     __name: "FollowWeChat",
     props: {
-      show: Boolean,
-      tab: Number
+      show: Boolean
     },
     emits: ["update:show"],
     setup(__props, { emit }) {
       function closePopup() {
         emit("update:show", false);
       }
-      let startX = 0;
-      let startY = 0;
-      function onTouchStart(e) {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      }
-      function onTouchEnd(e) {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        const deltaX = endX - startX;
-        const deltaY = Math.abs(endY - startY);
-        if (deltaX > 60 && deltaY < 30) {
-          closePopup();
-        }
-      }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
-          mode: "right",
+          mode: "center",
           overlay: true,
           closeable: false,
           onClose: closePopup,
@@ -7195,28 +6989,25 @@ This will fail in production.`);
           duration: 300
         }, {
           default: vue.withCtx(() => [
-            vue.createElementVNode(
-              "view",
-              {
-                class: "panel-wrapper",
-                onTouchstart: onTouchStart,
-                onTouchend: onTouchEnd
-              },
-              [
-                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
-                vue.createElementVNode("view", { class: "static-header" }, [
-                  vue.createVNode(_component_u_icon, {
-                    name: "arrow-left",
-                    size: "24",
-                    onClick: closePopup
-                  })
-                ]),
-                vue.createCommentVNode(" 聊天区域 "),
-                vue.createElementVNode("view", { class: "static-body" }, " 关注微信 ")
-              ],
-              32
-              /* HYDRATE_EVENTS */
-            )
+            vue.createElementVNode("view", { class: "panel-wrapper" }, [
+              vue.createCommentVNode(" 顶部返回按钮 "),
+              vue.createElementVNode("view", { class: "static-header" }, [
+                vue.createVNode(_component_u_icon, {
+                  name: "arrow-left",
+                  size: "20",
+                  onClick: closePopup
+                })
+              ]),
+              vue.createCommentVNode(" 内容区：图片+提示文字 "),
+              vue.createElementVNode("view", { class: "content" }, [
+                vue.createElementVNode("image", {
+                  src: "/static/wechat.jpg",
+                  class: "qr-image",
+                  mode: "widthFix"
+                }),
+                vue.createElementVNode("view", { class: "tip-text" }, "扫描二维码关注视途科技")
+              ])
+            ])
           ]),
           _: 1
           /* STABLE */
@@ -7224,15 +7015,15 @@ This will fail in production.`);
       };
     }
   };
-  const FollowWeChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-7a4df1a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowWeChat.vue"]]);
-  const _sfc_main$q = {
+  const FollowWeChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-7a4df1a6"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/FollowWeChat.vue"]]);
+  const _sfc_main$s = {
     __name: "FollowRedBook",
     props: {
-      show: Boolean,
-      tab: Number
+      show: Boolean
     },
     emits: ["update:show"],
     setup(__props, { emit }) {
+      const url2 = vue.ref("https://www.xiaohongshu.com/user/profile/5fb3d0260000000001006910");
       function closePopup() {
         emit("update:show", false);
       }
@@ -7272,7 +7063,7 @@ This will fail in production.`);
                 onTouchend: onTouchEnd
               },
               [
-                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
+                vue.createCommentVNode(" 顶部返回按钮 "),
                 vue.createElementVNode("view", { class: "static-header" }, [
                   vue.createVNode(_component_u_icon, {
                     name: "arrow-left",
@@ -7280,8 +7071,8 @@ This will fail in production.`);
                     onClick: closePopup
                   })
                 ]),
-                vue.createCommentVNode(" 聊天区域 "),
-                vue.createElementVNode("view", { class: "static-body" }, " 关注小红书 ")
+                vue.createCommentVNode(" 嵌入网页内容 "),
+                vue.createElementVNode("web-view", { src: url2.value }, null, 8, ["src"])
               ],
               32
               /* HYDRATE_EVENTS */
@@ -7293,8 +7084,8 @@ This will fail in production.`);
       };
     }
   };
-  const FollowRedBookPanel = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-19efe357"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/FollowRedBook.vue"]]);
-  const _sfc_main$p = {
+  const FollowRedBookPanel = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-19efe357"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/FollowRedBook.vue"]]);
+  const _sfc_main$r = {
     __name: "Feedback",
     props: {
       show: Boolean,
@@ -7362,8 +7153,8 @@ This will fail in production.`);
       };
     }
   };
-  const FeedbackPanel = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-fc0b6d1d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Feedback.vue"]]);
-  const _sfc_main$o = {
+  const FeedbackPanel = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-fc0b6d1d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Feedback.vue"]]);
+  const _sfc_main$q = {
     __name: "Update",
     props: {
       show: Boolean,
@@ -7431,8 +7222,8 @@ This will fail in production.`);
       };
     }
   };
-  const UpdatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-456d7568"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Update.vue"]]);
-  const _sfc_main$n = {
+  const UpdatePanel = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-456d7568"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Update.vue"]]);
+  const _sfc_main$p = {
     __name: "Intro",
     props: {
       show: Boolean,
@@ -7500,8 +7291,8 @@ This will fail in production.`);
       };
     }
   };
-  const IntroPanel = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-0baab9c7"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Intro.vue"]]);
-  const _sfc_main$m = {
+  const IntroPanel = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-0baab9c7"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Intro.vue"]]);
+  const _sfc_main$o = {
     __name: "Docs",
     props: {
       show: Boolean,
@@ -7569,7 +7360,145 @@ This will fail in production.`);
       };
     }
   };
-  const DocsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-6a6864cc"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/Docs.vue"]]);
+  const DocsPanel = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__scopeId", "data-v-6a6864cc"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Docs.vue"]]);
+  const _sfc_main$n = {
+    __name: "User",
+    props: {
+      show: Boolean
+    },
+    emits: ["update:show"],
+    setup(__props, { emit }) {
+      const url2 = vue.ref("https://www.xiaohongshu.com/user/profile/5fb3d0260000000001006910");
+      function closePopup() {
+        emit("update:show", false);
+      }
+      let startX = 0;
+      let startY = 0;
+      function onTouchStart(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+      function onTouchEnd(e) {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        if (deltaX > 60 && deltaY < 30) {
+          closePopup();
+        }
+      }
+      return (_ctx, _cache) => {
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        return vue.openBlock(), vue.createBlock(_component_u_popup, {
+          show: __props.show,
+          mode: "right",
+          overlay: true,
+          closeable: false,
+          onClose: closePopup,
+          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val)),
+          duration: 300
+        }, {
+          default: vue.withCtx(() => [
+            vue.createElementVNode(
+              "view",
+              {
+                class: "panel-wrapper",
+                onTouchstart: onTouchStart,
+                onTouchend: onTouchEnd
+              },
+              [
+                vue.createCommentVNode(" 顶部返回按钮 "),
+                vue.createElementVNode("view", { class: "static-header" }, [
+                  vue.createVNode(_component_u_icon, {
+                    name: "arrow-left",
+                    size: "24",
+                    onClick: closePopup
+                  })
+                ]),
+                vue.createCommentVNode(" 嵌入网页内容 "),
+                vue.createElementVNode("web-view", { src: url2.value }, null, 8, ["src"])
+              ],
+              32
+              /* HYDRATE_EVENTS */
+            )
+          ]),
+          _: 1
+          /* STABLE */
+        }, 8, ["show"]);
+      };
+    }
+  };
+  const PagesStaticUser = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-d7fa8918"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/User.vue"]]);
+  const _sfc_main$m = {
+    __name: "Privacy",
+    props: {
+      show: Boolean,
+      tab: Number
+    },
+    emits: ["update:show"],
+    setup(__props, { emit }) {
+      function closePopup() {
+        emit("update:show", false);
+      }
+      let startX = 0;
+      let startY = 0;
+      function onTouchStart(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+      function onTouchEnd(e) {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = Math.abs(endY - startY);
+        if (deltaX > 60 && deltaY < 30) {
+          closePopup();
+        }
+      }
+      return (_ctx, _cache) => {
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
+        return vue.openBlock(), vue.createBlock(_component_u_popup, {
+          show: __props.show,
+          mode: "right",
+          overlay: true,
+          closeable: false,
+          onClose: closePopup,
+          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val)),
+          duration: 300
+        }, {
+          default: vue.withCtx(() => [
+            vue.createElementVNode(
+              "view",
+              {
+                class: "panel-wrapper",
+                onTouchstart: onTouchStart,
+                onTouchend: onTouchEnd
+              },
+              [
+                vue.createCommentVNode(" ✅ 顶部返回按钮 "),
+                vue.createElementVNode("view", { class: "static-header" }, [
+                  vue.createVNode(_component_u_icon, {
+                    name: "arrow-left",
+                    size: "24",
+                    onClick: closePopup
+                  })
+                ]),
+                vue.createCommentVNode(" 聊天区域 "),
+                vue.createElementVNode("view", { class: "static-body" }, " 隐私政策 ")
+              ],
+              32
+              /* HYDRATE_EVENTS */
+            )
+          ]),
+          _: 1
+          /* STABLE */
+        }, 8, ["show"]);
+      };
+    }
+  };
+  const PagesStaticPrivacy = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-f82b2a5c"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/Privacy.vue"]]);
   const _sfc_main$l = {
     __name: "About",
     props: { show: Boolean },
@@ -7578,7 +7507,6 @@ This will fail in production.`);
       const version2 = vue.ref("2.0.1");
       const showUserPanel = vue.ref(false);
       const showPrivacyPanel = vue.ref(false);
-      const showCertificationPanel = vue.ref(false);
       let startX = 0, startY = 0;
       function onTouchStart(e) {
         startX = e.touches[0].clientX;
@@ -7599,9 +7527,6 @@ This will fail in production.`);
       function openPrivacy() {
         showPrivacyPanel.value = true;
       }
-      function openCertification() {
-        showCertificationPanel.value = true;
-      }
       return (_ctx, _cache) => {
         const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_3);
@@ -7613,7 +7538,7 @@ This will fail in production.`);
           closeable: false,
           "safe-area-inset-left": true,
           onClose: closePanel,
-          "onUpdate:show": _cache[0] || (_cache[0] = (val) => emit("update:show", val))
+          "onUpdate:show": _cache[2] || (_cache[2] = (val) => emit("update:show", val))
         }, {
           default: vue.withCtx(() => [
             vue.createElementVNode(
@@ -7661,7 +7586,7 @@ This will fail in production.`);
                       vue.createElementVNode("view", { onClick: openUser }, [
                         vue.createVNode(MenuItem, {
                           title: "用户服务协议",
-                          icon: "document",
+                          icon: "file-text",
                           isOk: true
                         })
                       ]),
@@ -7671,17 +7596,18 @@ This will fail in production.`);
                           icon: "lock",
                           isOk: true
                         })
-                      ]),
-                      vue.createElementVNode("view", { onClick: openCertification }, [
-                        vue.createVNode(MenuItem, {
-                          title: "证照中心",
-                          icon: "certificate",
-                          isOk: true
-                        })
                       ])
                     ])
                   ]),
-                  vue.createCommentVNode('        <view class="section">\r\n          <view class="section-title">公司信息</view>\r\n          <view class="section-body">\r\n            <view @click="openCompanyInfo"><MenuItem title="公司简介" icon="building" :isOk="true" /></view>\r\n            <view @click="openTeam"><MenuItem title="研发团队" icon="users" :isOk="true" /></view>\r\n            <view @click="openContactUs"><MenuItem title="联系我们" icon="phone" :isOk="true" /></view>\r\n          </view>\r\n        </view> ')
+                  vue.createCommentVNode(" Panel "),
+                  vue.createVNode(PagesStaticUser, {
+                    show: showUserPanel.value,
+                    "onUpdate:show": _cache[0] || (_cache[0] = ($event) => showUserPanel.value = $event)
+                  }, null, 8, ["show"]),
+                  vue.createVNode(PagesStaticPrivacy, {
+                    show: showPrivacyPanel.value,
+                    "onUpdate:show": _cache[1] || (_cache[1] = ($event) => showPrivacyPanel.value = $event)
+                  }, null, 8, ["show"])
                 ]),
                 vue.createCommentVNode(" 底部信息 "),
                 vue.createElementVNode("view", { class: "somthing-info" }, [
@@ -7698,7 +7624,7 @@ This will fail in production.`);
       };
     }
   };
-  const AboutPanel = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9d4e19e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/static/About.vue"]]);
+  const AboutPanel = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-9d4e19e4"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/static/About.vue"]]);
   const _sfc_main$k = {
     __name: "CommonPanel",
     props: { show: Boolean },
@@ -7707,9 +7633,6 @@ This will fail in production.`);
       const showWidgetManagerPanel = vue.ref(false);
       const showImportNotesPanel = vue.ref(false);
       const showSyncPanel = vue.ref(false);
-      const showHistoryLogPanel = vue.ref(false);
-      const showTagsPanel = vue.ref(false);
-      const showFileManagerPanel = vue.ref(false);
       const showRatePanel = vue.ref(false);
       const showSharePanel = vue.ref(false);
       const showFollowWeChatPanel = vue.ref(false);
@@ -7751,15 +7674,6 @@ This will fail in production.`);
       function openSync() {
         showSyncPanel.value = false;
       }
-      function openHistoryLog() {
-        showHistoryLogPanel.value = true;
-      }
-      function openTags() {
-        showTagsPanel.value = true;
-      }
-      function openFileManager() {
-        showFileManagerPanel.value = true;
-      }
       function openRate() {
         showRatePanel.value = false;
       }
@@ -7767,7 +7681,9 @@ This will fail in production.`);
         showSharePanel.value = true;
       }
       function openFollowWechat() {
-        showFileManagerPanel.value = true;
+        formatAppLog("log", "at components/CommonPanel.vue:212", "打开关注官方公众号弹窗");
+        showFollowWeChatPanel.value = true;
+        formatAppLog("log", "at components/CommonPanel.vue:214", "打开关注官方公众号弹窗1");
       }
       function openFollowRedBook() {
         showFollowRedBookPanel.value = true;
@@ -7799,7 +7715,7 @@ This will fail in production.`);
           closeable: false,
           "safe-area-inset-left": true,
           onClose: closePanel,
-          "onUpdate:show": _cache[15] || (_cache[15] = (val) => emit("update:show", val))
+          "onUpdate:show": _cache[12] || (_cache[12] = (val) => emit("update:show", val))
         }, {
           default: vue.withCtx(() => [
             vue.createElementVNode(
@@ -7850,32 +7766,7 @@ This will fail in production.`);
                     ])
                   ]),
                   vue.createCommentVNode(" 个性化设置 "),
-                  vue.createElementVNode("view", { class: "section" }, [
-                    vue.createElementVNode("view", { class: "section-title" }, "个性化设置"),
-                    vue.createElementVNode("view", { class: "section-body" }, [
-                      vue.createElementVNode("view", { onClick: openHistoryLog }, [
-                        vue.createVNode(MenuItem, {
-                          title: "历史记录",
-                          icon: "clock",
-                          isOk: true
-                        })
-                      ]),
-                      vue.createElementVNode("view", { onClick: openTags }, [
-                        vue.createVNode(MenuItem, {
-                          title: "预设标签",
-                          icon: "tags",
-                          isOk: true
-                        })
-                      ]),
-                      vue.createElementVNode("view", { onClick: openFileManager }, [
-                        vue.createVNode(MenuItem, {
-                          title: "文件管理器",
-                          icon: "folder",
-                          isOk: true
-                        })
-                      ])
-                    ])
-                  ]),
+                  vue.createCommentVNode('        <view class="section">\r\n          <view class="section-title">个性化设置</view>\r\n          <view class="section-body">\r\n            <view @click="openHistoryLog"><MenuItem title="历史记录" icon="clock" :isOk="true" /></view>\r\n            <view @click="openTags"><MenuItem title="预设标签" icon="tags" :isOk="true" /></view>\r\n            <view @click="openFileManager"><MenuItem title="文件管理器" icon="folder" :isOk="true" /></view>\r\n          </view>\r\n        </view> '),
                   vue.createCommentVNode(" 需要你的帮助 "),
                   vue.createElementVNode("view", { class: "section" }, [
                     vue.createElementVNode("view", { class: "section-title" }, "需要你的帮助"),
@@ -7982,53 +7873,42 @@ This will fail in production.`);
                     show: showSyncPanel.value,
                     "onUpdate:show": _cache[2] || (_cache[2] = ($event) => showSyncPanel.value = $event)
                   }, null, 8, ["show"]),
-                  vue.createVNode(HistoryLogPanel, {
-                    show: showHistoryLogPanel.value,
-                    "onUpdate:show": _cache[3] || (_cache[3] = ($event) => showHistoryLogPanel.value = $event)
-                  }, null, 8, ["show"]),
-                  vue.createVNode(TagsPanel, {
-                    show: showTagsPanel.value,
-                    "onUpdate:show": _cache[4] || (_cache[4] = ($event) => showTagsPanel.value = $event)
-                  }, null, 8, ["show"]),
-                  vue.createVNode(FileManagerPanel, {
-                    show: showFileManagerPanel.value,
-                    "onUpdate:show": _cache[5] || (_cache[5] = ($event) => showFileManagerPanel.value = $event)
-                  }, null, 8, ["show"]),
+                  vue.createCommentVNode(' 		<HistoryLogPanel v-model:show="showHistoryLogPanel" />\r\n		<TagsPanel v-model:show="showTagsPanel" />\r\n		<FileManagerPanel v-model:show="showFileManagerPanel" /> '),
                   vue.createVNode(RatePanel, {
                     show: showRatePanel.value,
-                    "onUpdate:show": _cache[6] || (_cache[6] = ($event) => showRatePanel.value = $event)
+                    "onUpdate:show": _cache[3] || (_cache[3] = ($event) => showRatePanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(SharePanel, {
                     show: showSharePanel.value,
-                    "onUpdate:show": _cache[7] || (_cache[7] = ($event) => showSharePanel.value = $event)
+                    "onUpdate:show": _cache[4] || (_cache[4] = ($event) => showSharePanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(FollowWeChatPanel, {
                     show: showFollowWeChatPanel.value,
-                    "onUpdate:show": _cache[8] || (_cache[8] = ($event) => showFollowWeChatPanel.value = $event)
+                    "onUpdate:show": _cache[5] || (_cache[5] = ($event) => showFollowWeChatPanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(FollowRedBookPanel, {
                     show: showFollowRedBookPanel.value,
-                    "onUpdate:show": _cache[9] || (_cache[9] = ($event) => showFollowRedBookPanel.value = $event)
+                    "onUpdate:show": _cache[6] || (_cache[6] = ($event) => showFollowRedBookPanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(FeedbackPanel, {
                     show: showFeedbackPanel.value,
-                    "onUpdate:show": _cache[10] || (_cache[10] = ($event) => showFeedbackPanel.value = $event)
+                    "onUpdate:show": _cache[7] || (_cache[7] = ($event) => showFeedbackPanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(UpdatePanel, {
                     show: showUpdatePanel.value,
-                    "onUpdate:show": _cache[11] || (_cache[11] = ($event) => showUpdatePanel.value = $event)
+                    "onUpdate:show": _cache[8] || (_cache[8] = ($event) => showUpdatePanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(IntroPanel, {
                     show: showIntroPanel.value,
-                    "onUpdate:show": _cache[12] || (_cache[12] = ($event) => showIntroPanel.value = $event)
+                    "onUpdate:show": _cache[9] || (_cache[9] = ($event) => showIntroPanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(DocsPanel, {
                     show: showDocsPanel.value,
-                    "onUpdate:show": _cache[13] || (_cache[13] = ($event) => showDocsPanel.value = $event)
+                    "onUpdate:show": _cache[10] || (_cache[10] = ($event) => showDocsPanel.value = $event)
                   }, null, 8, ["show"]),
                   vue.createVNode(AboutPanel, {
                     show: showAboutPanel.value,
-                    "onUpdate:show": _cache[14] || (_cache[14] = ($event) => showAboutPanel.value = $event)
+                    "onUpdate:show": _cache[11] || (_cache[11] = ($event) => showAboutPanel.value = $event)
                   }, null, 8, ["show"])
                 ])
               ],
@@ -8042,7 +7922,7 @@ This will fail in production.`);
       };
     }
   };
-  const CommonPanel = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-b1900e2d"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/CommonPanel.vue"]]);
+  const CommonPanel = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-b1900e2d"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/CommonPanel.vue"]]);
   const _sfc_main$j = {
     __name: "SearchInput",
     props: {
@@ -8110,7 +7990,7 @@ This will fail in production.`);
       };
     }
   };
-  const SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-e7fd4a42"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchInput.vue"]]);
+  const SearchInput = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-e7fd4a42"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/SearchInput.vue"]]);
   const _sfc_main$i = {
     __name: "SearchTag",
     props: {
@@ -8157,7 +8037,7 @@ This will fail in production.`);
       };
     }
   };
-  const SearchTag = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-ae7bcd03"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchTag.vue"]]);
+  const SearchTag = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-ae7bcd03"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/SearchTag.vue"]]);
   const _sfc_main$h = {
     __name: "SearchHistory",
     props: {
@@ -8205,7 +8085,7 @@ This will fail in production.`);
       };
     }
   };
-  const SearchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-eef68dde"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchHistory.vue"]]);
+  const SearchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-eef68dde"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/SearchHistory.vue"]]);
   const _sfc_main$g = {
     __name: "SearchResultItem",
     props: {
@@ -8233,7 +8113,7 @@ This will fail in production.`);
       };
     }
   };
-  const SearchResultItem = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-2cd435a1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/SearchResultItem.vue"]]);
+  const SearchResultItem = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-2cd435a1"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/SearchResultItem.vue"]]);
   const _sfc_main$f = {
     __name: "SearchPanel",
     props: {
@@ -8364,7 +8244,7 @@ This will fail in production.`);
       };
     }
   };
-  const SearchPanel = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-53dcec99"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SearchPanel.vue"]]);
+  const SearchPanel = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-53dcec99"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/SearchPanel.vue"]]);
   const _sfc_main$e = {
     __name: "ChatPanel",
     props: {
@@ -8433,7 +8313,7 @@ This will fail in production.`);
       };
     }
   };
-  const ChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2c15c3a8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/ChatPanel.vue"]]);
+  const ChatPanel = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2c15c3a8"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/ChatPanel.vue"]]);
   const _sfc_main$d = {
     __name: "MainNav",
     props: {
@@ -8477,7 +8357,7 @@ This will fail in production.`);
       };
     }
   };
-  const MainNav = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-f4ed81d8"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/MainNav.vue"]]);
+  const MainNav = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-f4ed81d8"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/MainNav.vue"]]);
   const _sfc_main$c = {
     __name: "SelectionPanel",
     props: {
@@ -8609,7 +8489,7 @@ This will fail in production.`);
       };
     }
   };
-  const SelectionPanel = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-33aa29a6"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/SelectionPanel.vue"]]);
+  const SelectionPanel = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-33aa29a6"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/SelectionPanel.vue"]]);
   const _sfc_main$b = {
     __name: "layout",
     setup(__props) {
@@ -8775,7 +8655,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexLayout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-3bba2919"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/index/layout.vue"]]);
+  const PagesIndexLayout = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-3bba2919"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/index/layout.vue"]]);
   const _sfc_main$a = {
     __name: "layout",
     setup(__props) {
@@ -8792,7 +8672,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-6df82059"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/layout.vue"]]);
+  const PagesLayout = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-6df82059"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/layout.vue"]]);
   const _sfc_main$9 = {
     data() {
       return {};
@@ -8802,7 +8682,7 @@ This will fail in production.`);
   function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view");
   }
-  const Pages404404 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$3], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/404/404.vue"]]);
+  const Pages404404 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$3], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/404/404.vue"]]);
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
   function getAugmentedNamespace(n) {
     if (n.__esModule)
@@ -15965,7 +15845,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLoginVerify = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8f8fa650"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/login/verify.vue"]]);
+  const PagesLoginVerify = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-8f8fa650"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/login/verify.vue"]]);
   const props$1 = {
     props: {
       // 是否显示圆点
@@ -16099,7 +15979,7 @@ This will fail in production.`);
       /* TEXT, CLASS, STYLE */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$2], ["__scopeId", "data-v-aa9883b1"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$2], ["__scopeId", "data-v-aa9883b1"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
   const props = {
     props: {
       // 滑块的移动过渡时间，单位ms
@@ -16400,7 +16280,7 @@ This will fail in production.`);
       ])
     ]);
   }
-  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$1], ["__scopeId", "data-v-0546c3e4"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/node_modules/uview-plus/components/u-tabs/u-tabs.vue"]]);
+  const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$1], ["__scopeId", "data-v-0546c3e4"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/node_modules/uview-plus/components/u-tabs/u-tabs.vue"]]);
   const _sfc_main$5 = {
     __name: "NoteDetailSumTab",
     props: {
@@ -16469,7 +16349,7 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-5ef07a45"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailSumTab.vue"]]);
+  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-5ef07a45"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/tabs/NoteDetailSumTab.vue"]]);
   const _sfc_main$4 = {
     __name: "NoteDetailPosterTab",
     props: {
@@ -16538,7 +16418,7 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-617c8a5c"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/tabs/NoteDetailPosterTab.vue"]]);
+  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-617c8a5c"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/tabs/NoteDetailPosterTab.vue"]]);
   const _sfc_main$3 = {};
   function _sfc_render(_ctx, _cache) {
     const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
@@ -16554,7 +16434,7 @@ This will fail in production.`);
       vue.createTextVNode(" 语音聊天 ")
     ]);
   }
-  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render], ["__scopeId", "data-v-7d79bddb"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/components/children/TalkButton.vue"]]);
+  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render], ["__scopeId", "data-v-7d79bddb"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/components/children/TalkButton.vue"]]);
   const _sfc_main$2 = {
     __name: "NoteDetails",
     setup(__props) {
@@ -16804,7 +16684,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/details/NoteDetails/NoteDetails.vue"]]);
+  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/details/NoteDetails/NoteDetails.vue"]]);
   const _sfc_main$1 = {
     __name: "KnowDetails",
     setup(__props) {
@@ -16867,7 +16747,7 @@ This will fail in production.`);
       };
     }
   };
-  const PagesDetailsKnowDetailsKnowDetails = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b4b682e0"], ["__file", "F:/work/HBuildersProjects/LiveHand-App/pages/details/KnowDetails/KnowDetails.vue"]]);
+  const PagesDetailsKnowDetailsKnowDetails = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-b4b682e0"], ["__file", "D:/sitoC端项目/LiveHand/Livehand-app/pages/details/KnowDetails/KnowDetails.vue"]]);
   __definePage("pages/layout", PagesLayout);
   __definePage("pages/login/login", PagesLoginLogin);
   __definePage("pages/index/layout", PagesIndexLayout);
@@ -16878,6 +16758,8 @@ This will fail in production.`);
   __definePage("pages/login/verify", PagesLoginVerify);
   __definePage("pages/details/NoteDetails/NoteDetails", PagesDetailsNoteDetailsNoteDetails);
   __definePage("pages/details/KnowDetails/KnowDetails", PagesDetailsKnowDetailsKnowDetails);
+  __definePage("pages/static/User", PagesStaticUser);
+  __definePage("pages/static/Privacy", PagesStaticPrivacy);
   const _sfc_main = {
     onLaunch: function() {
       formatAppLog("log", "at App.vue:4", "App Launch");
@@ -16889,7 +16771,7 @@ This will fail in production.`);
       formatAppLog("log", "at App.vue:10", "App Hide");
     }
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "F:/work/HBuildersProjects/LiveHand-App/App.vue"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__file", "D:/sitoC端项目/LiveHand/Livehand-app/App.vue"]]);
   const { toString } = Object.prototype;
   function isArray(val) {
     return toString.call(val) === "[object Array]";

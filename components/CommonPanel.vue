@@ -34,14 +34,14 @@
         </view>
 
         <!-- 个性化设置 -->
-        <view class="section">
+<!--        <view class="section">
           <view class="section-title">个性化设置</view>
           <view class="section-body">
             <view @click="openHistoryLog"><MenuItem title="历史记录" icon="clock" :isOk="true" /></view>
             <view @click="openTags"><MenuItem title="预设标签" icon="tags" :isOk="true" /></view>
             <view @click="openFileManager"><MenuItem title="文件管理器" icon="folder" :isOk="true" /></view>
           </view>
-        </view>
+        </view> -->
 
         <!-- 需要你的帮助 -->
         <view class="section">
@@ -92,9 +92,9 @@
 		<WidgetManagerPanel v-model:show="showWidgetManagerPanel" />
 		<ImportNotesPanel v-model:show="showImportNotesPanel" />
 		<SyncPanel v-model:show="showSyncPanel" />
-		<HistoryLogPanel v-model:show="showHistoryLogPanel" />
+<!-- 		<HistoryLogPanel v-model:show="showHistoryLogPanel" />
 		<TagsPanel v-model:show="showTagsPanel" />
-		<FileManagerPanel v-model:show="showFileManagerPanel" />
+		<FileManagerPanel v-model:show="showFileManagerPanel" /> -->
 		<RatePanel v-model:show="showRatePanel" />		
 		<SharePanel v-model:show="showSharePanel" />		
 		<FollowWeChatPanel v-model:show="showFollowWeChatPanel" />
@@ -122,9 +122,9 @@ import { useUserStore } from '../store/user.js'
 import WidgetManagerPanel from '../pages/static/WidgetManager.vue'
 import ImportNotesPanel from '../pages/static/ImportNotes.vue'
 import SyncPanel from '../pages/static/Sync.vue'
-import HistoryLogPanel from '../pages/static/HistoryLog.vue'
-import TagsPanel from '../pages/static/Tags.vue'
-import FileManagerPanel from '../pages/static/FileManager.vue'
+// import HistoryLogPanel from '../pages/static/HistoryLog.vue'
+// import TagsPanel from '../pages/static/Tags.vue'
+// import FileManagerPanel from '../pages/static/FileManager.vue'
 import RatePanel from '../pages/static/Rate.vue'
 import SharePanel from '../pages/static/Share.vue'
 import FollowWeChatPanel from '../pages/static/FollowWeChat.vue'
@@ -141,9 +141,9 @@ const emit = defineEmits(['update:show'])
 const showWidgetManagerPanel = ref(false)
 const showImportNotesPanel = ref(false)
 const showSyncPanel = ref(false)
-const showHistoryLogPanel = ref(false)
-const showTagsPanel = ref(false)
-const showFileManagerPanel = ref(false)
+// const showHistoryLogPanel = ref(false)
+// const showTagsPanel = ref(false)
+// const showFileManagerPanel = ref(false)
 const showRatePanel = ref(false)
 const showSharePanel = ref(false)
 const showFollowWeChatPanel = ref(false)
@@ -193,15 +193,15 @@ function openImportNotes() {
 function openSync() {
 	showSyncPanel.value = false
 }
-function openHistoryLog() {
-	showHistoryLogPanel.value = true
-}
-function openTags() {
-	showTagsPanel.value = true
-}
-function openFileManager() {
-	showFileManagerPanel.value = true
-}
+// function openHistoryLog() {
+// 	showHistoryLogPanel.value = true
+// }
+// function openTags() {
+// 	showTagsPanel.value = true
+// }
+// function openFileManager() {
+// 	showFileManagerPanel.value = true
+// }
 function openRate() {
 	showRatePanel.value = false
 }
@@ -209,7 +209,9 @@ function openShare() {
 	showSharePanel.value = true
 }
 function openFollowWechat() {
-	showFileManagerPanel.value = true
+	console.log('打开关注官方公众号弹窗')
+	showFollowWeChatPanel.value = true
+	console.log('打开关注官方公众号弹窗1')
 }
 function openFollowRedBook() {
 	showFollowRedBookPanel.value = true

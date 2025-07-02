@@ -13,27 +13,26 @@
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
     >
-      <!-- ✅ 顶部返回按钮 -->
-      <view class="static-header">
-        <u-icon name="arrow-left" size="24" @click="closePopup" />
-      </view>
+	  <!-- 顶部返回按钮 -->
+	  <view class="static-header">
+	    <u-icon name="arrow-left" size="24" @click="closePopup" />
+	  </view>
 
-      <!-- 聊天区域 -->
-      <view class="static-body">
-        用户协议
-      </view>
+      <!-- 嵌入网页内容 -->
+      <web-view :src="url" />
     </view>
   </u-popup>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue'
 
 const props = defineProps({
-  show: Boolean,
-  tab: Number
+  show: Boolean
 })
 const emit = defineEmits(['update:show'])
+
+const url = ref('https://www.xiaohongshu.com/user/profile/5fb3d0260000000001006910')
 
 function closePopup() {
   emit('update:show', false)
@@ -67,21 +66,16 @@ function onTouchEnd(e) {
   background: #fff;
   display: flex;
   flex-direction: column;
-  padding: 4vh 3vw 1vh 3vw;
+  padding: 0;
 }
 
 /* 顶部返回按钮 */
 .static-header {
-  height: 40px;
+  height: 44px;
   display: flex;
   align-items: center;
-}
-
-/* 聊天内容区域占满剩余空间 */
-.static-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0 12px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
 }
 </style>

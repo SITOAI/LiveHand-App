@@ -85,6 +85,22 @@
     		"navigationBarTitleText" : "",
     		"enablePullDownRefresh" : false
     	}
+    },
+	{
+		"path" : "pages/static/User",
+		"style" : 
+		{
+			"navigationBarTitleText" : "",
+			"enablePullDownRefresh" : false
+		}
+	},
+    {
+    	"path" : "pages/static/Privacy",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
     }
   ],
   "globalStyle": {

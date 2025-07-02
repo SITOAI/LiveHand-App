@@ -38,11 +38,11 @@
         <u-checkbox :name="'agree'" shape="circle" activeColor="#007AFF" />
       </u-checkbox-group>
       <text class="agreement-text">
-        我已阅读并同意
-        <text class="link" @click="openAgreement">《用户协议》</text>
-        和
-        <text class="link" @click="openPrivacy">《隐私政策》</text>
-      </text>
+          我已阅读并同意
+          <text class="link" @click="openUser">《用户协议》</text>
+          和
+          <text class="link" @click="openPrivacy">《隐私政策》</text>
+        </text>
     </view>
   </view>
 </template>
@@ -50,6 +50,7 @@
 <script setup>
 import { ref } from 'vue'
 import { onUnmounted } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import http from '../../utils/http.js'
 
 const phone = ref('')
@@ -105,12 +106,31 @@ function getVerifyCode() {
 }
 
 
-function openAgreement() {
-  uni.navigateTo({ url: '/pages/agreement/user' })
+function openUser() {
+  uni.navigateTo({
+    url: '/pages/static/User',
+    success: () => {
+      console.log('跳转成功')
+    },
+    fail: (err) => {
+      console.error('跳转失败', err)
+      uni.showToast({ title: '跳转失败', icon: 'none' })
+    }
+  })
 }
 function openPrivacy() {
-  uni.navigateTo({ url: '/pages/agreement/privacy' })
+  uni.navigateTo({
+    url: '/pages/static/Privacy',
+    success: () => {
+      console.log('跳转成功')
+    },
+    fail: (err) => {
+      console.error('跳转失败', err)
+      uni.showToast({ title: '跳转失败', icon: 'none' })
+    }
+  })
 }
+
 
 onUnmounted(() => {
   clearInterval(timer)
