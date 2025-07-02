@@ -90,11 +90,16 @@
       mode="bottom"
       :safe-area-inset-bottom="true"
       :overlay="true"
-      :custom-style="{ height: '95vh' }"
+	  :custom-style="{ height: '95vh', borderTopLeftRadius: '20rpx', borderTopRightRadius: '20rpx', overflow: 'hidden' }"
       @close="chatPopupVisible = false"
     >
       <scroll-view style="height: 100%" scroll-y>
-        <view style="padding: 20px;">AI 聊天内容区域</view>
+			<LiveChat class="note-detail-live-chat"
+			:height="'80vh'"
+			:showHeader="true"
+			:title="title"  
+			:onClose="handleCloseChat"
+			/>
       </scroll-view>
     </u-popup>
   </view>
@@ -106,6 +111,7 @@ import { onLoad } from '@dcloudio/uni-app'
 import NoteDetailSumTab from '../../../components/tabs/NoteDetailSumTab.vue'
 import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vue'
 import TalkButton from '../../../components/children/TalkButton.vue'
+import LiveChat from '../../../components/chat/LiveChat.vue'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -137,6 +143,11 @@ onLoad((options) => {
 
 function onTalkWithAI() {
   console.log("功能暂未开放")
+}
+
+function handleCloseChat() {
+	chatPopupVisible.value = false
+	console.log('用户点击了关闭按钮')
 }
 
 function goBack() {
@@ -285,5 +296,11 @@ function onTouchEnd(e) {
 .fake-input-text {
   color: #999;
   font-size: 14px;
+}
+
+.note-detail-live-chat {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  overflow: hidden;
 }
 </style>

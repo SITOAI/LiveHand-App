@@ -1,18 +1,16 @@
 <template>
   <view class="iframe-wrapper">
-    <!-- 加载中动画 -->
-    <view class="loading-container" v-if="loading">
+<!--    <view class="loading-container" v-if="loading">
       <u-loading-icon text="加载中" textSize="18"></u-loading-icon>
     </view>
 
-    <!-- iframe 内容 -->
     <iframe
       v-show="!loading"
       class="news-iframe"
       src="http://news.sitoai.cn"
       frameborder="0"
       @load="onIframeLoad"
-    ></iframe>
+    ></iframe> -->
   </view>
 </template>
 
