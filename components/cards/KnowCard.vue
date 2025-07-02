@@ -56,9 +56,7 @@ const props = defineProps({
     type: Array,
     default: () => [
       { text: '标签一', type: 'warning' },
-      { text: '标签二', type: 'success' },
-      { text: '标签三', type: 'primary' },
-	  { text: '标签四', type: 'primary' }
+      { text: '标签二', type: 'success' }
     ]
   }
 })
