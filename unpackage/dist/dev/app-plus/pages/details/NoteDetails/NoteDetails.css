@@ -1455,8 +1455,6 @@ uni-view[data-v-31e6471d], uni-scroll-view[data-v-31e6471d], uni-swiper-item[dat
   box-sizing: border-box;
   position: relative;
 }
-
-/* 固定顶部 */
 .top-fixed-header[data-v-ae9b0f4e] {
   position: fixed;
   top: 3vh;
@@ -1467,8 +1465,6 @@ uni-view[data-v-31e6471d], uni-scroll-view[data-v-31e6471d], uni-swiper-item[dat
   padding: 12px 16px 8px;
   box-sizing: border-box;
 }
-
-/* 顶部图标 */
 .top-icon-row[data-v-ae9b0f4e] {
   display: flex;
   justify-content: space-between;
@@ -1479,10 +1475,8 @@ uni-view[data-v-31e6471d], uni-scroll-view[data-v-31e6471d], uni-swiper-item[dat
   display: flex;
   gap: 12px;
 }
-
-/* Header 卡片 */
 .note-header-card[data-v-ae9b0f4e] {
-  background-color: #f5f5f5;
+  background-color: #ddd;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 10px;
@@ -1510,8 +1504,6 @@ uni-view[data-v-31e6471d], uni-scroll-view[data-v-31e6471d], uni-swiper-item[dat
   gap: 6px;
   flex-wrap: wrap;
 }
-
-/* 内容区域 - 顶部区域高度约220px */
 .tab-content-wrapper[data-v-ae9b0f4e] {
   margin-top: 220px;
   height: calc(100vh - 270px);
@@ -1525,8 +1517,6 @@ uni-view[data-v-31e6471d], uni-scroll-view[data-v-31e6471d], uni-swiper-item[dat
   padding: 10px 14px;
   box-sizing: border-box;
 }
-
-/* 底部聊天栏 */
 .chatbar[data-v-ae9b0f4e] {
   position: fixed;
   bottom: 5px;

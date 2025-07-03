@@ -3168,7 +3168,7 @@ This will fail in production.`);
       previewImage: true
     }
   };
-  const props$k = {
+  const props$i = {
     ...ActionSheet,
     ...Album,
     ...Alert,
@@ -3258,92 +3258,92 @@ This will fail in production.`);
     ...Transition,
     ...Upload
   };
-  const props$j = {
+  const props$h = {
     props: {
       // 图标类名
       name: {
         type: String,
-        default: props$k.icon.name
+        default: props$i.icon.name
       },
       // 图标颜色，可接受主题色
       color: {
         type: String,
-        default: props$k.icon.color
+        default: props$i.icon.color
       },
       // 字体大小，单位px
       size: {
         type: [String, Number],
-        default: props$k.icon.size
+        default: props$i.icon.size
       },
       // 是否显示粗体
       bold: {
         type: Boolean,
-        default: props$k.icon.bold
+        default: props$i.icon.bold
       },
       // 点击图标的时候传递事件出去的index（用于区分点击了哪一个）
       index: {
         type: [String, Number],
-        default: props$k.icon.index
+        default: props$i.icon.index
       },
       // 触摸图标时的类名
       hoverClass: {
         type: String,
-        default: props$k.icon.hoverClass
+        default: props$i.icon.hoverClass
       },
       // 自定义扩展前缀，方便用户扩展自己的图标库
       customPrefix: {
         type: String,
-        default: props$k.icon.customPrefix
+        default: props$i.icon.customPrefix
       },
       // 图标右边或者下面的文字
       label: {
         type: [String, Number],
-        default: props$k.icon.label
+        default: props$i.icon.label
       },
       // label的位置，只能右边或者下边
       labelPos: {
         type: String,
-        default: props$k.icon.labelPos
+        default: props$i.icon.labelPos
       },
       // label的大小
       labelSize: {
         type: [String, Number],
-        default: props$k.icon.labelSize
+        default: props$i.icon.labelSize
       },
       // label的颜色
       labelColor: {
         type: String,
-        default: props$k.icon.labelColor
+        default: props$i.icon.labelColor
       },
       // label与图标的距离
       space: {
         type: [String, Number],
-        default: props$k.icon.space
+        default: props$i.icon.space
       },
       // 图片的mode
       imgMode: {
         type: String,
-        default: props$k.icon.imgMode
+        default: props$i.icon.imgMode
       },
       // 用于显示图片小图标时，图片的宽度
       width: {
         type: [String, Number],
-        default: props$k.icon.width
+        default: props$i.icon.width
       },
       // 用于显示图片小图标时，图片的高度
       height: {
         type: [String, Number],
-        default: props$k.icon.height
+        default: props$i.icon.height
       },
       // 用于解决某些情况下，让图标垂直居中的用途
       top: {
         type: [String, Number],
-        default: props$k.icon.top
+        default: props$i.icon.top
       },
       // 是否阻止事件传播
       stop: {
         type: Boolean,
-        default: props$k.icon.stop
+        default: props$i.icon.stop
       }
     }
   };
@@ -3484,13 +3484,13 @@ This will fail in production.`);
     }
     return target;
   };
-  const _sfc_main$1c = {
+  const _sfc_main$1a = {
     name: "u-icon",
     data() {
       return {};
     },
     emits: ["click"],
-    mixins: [mpMixin, mixin, props$j],
+    mixins: [mpMixin, mixin, props$h],
     computed: {
       uClasses() {
         let classes = [];
@@ -3534,7 +3534,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$q(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -3578,79 +3578,79 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_0$6 = /* @__PURE__ */ _export_sfc(_sfc_main$1c, [["render", _sfc_render$q], ["__scopeId", "data-v-bedad649"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
-  const props$i = {
+  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$o], ["__scopeId", "data-v-bedad649"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-icon/u-icon.vue"]]);
+  const props$g = {
     props: {
       // checkbox的名称
       name: {
         type: [String, Number, Boolean],
-        default: props$k.checkbox.name
+        default: props$i.checkbox.name
       },
       // 形状，square为方形，circle为圆型
       shape: {
         type: String,
-        default: props$k.checkbox.shape
+        default: props$i.checkbox.shape
       },
       // 整体的大小
       size: {
         type: [String, Number],
-        default: props$k.checkbox.size
+        default: props$i.checkbox.size
       },
       // 是否默认选中
       checked: {
         type: Boolean,
-        default: props$k.checkbox.checked
+        default: props$i.checkbox.checked
       },
       // 是否禁用
       disabled: {
         type: [String, Boolean],
-        default: props$k.checkbox.disabled
+        default: props$i.checkbox.disabled
       },
       // 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
       activeColor: {
         type: String,
-        default: props$k.checkbox.activeColor
+        default: props$i.checkbox.activeColor
       },
       // 未选中的颜色
       inactiveColor: {
         type: String,
-        default: props$k.checkbox.inactiveColor
+        default: props$i.checkbox.inactiveColor
       },
       // 图标的大小，单位px
       iconSize: {
         type: [String, Number],
-        default: props$k.checkbox.iconSize
+        default: props$i.checkbox.iconSize
       },
       // 图标颜色
       iconColor: {
         type: String,
-        default: props$k.checkbox.iconColor
+        default: props$i.checkbox.iconColor
       },
       // label提示文字，因为nvue下，直接slot进来的文字，由于特殊的结构，无法修改样式
       label: {
         type: [String, Number],
-        default: props$k.checkbox.label
+        default: props$i.checkbox.label
       },
       // label的字体大小，px单位
       labelSize: {
         type: [String, Number],
-        default: props$k.checkbox.labelSize
+        default: props$i.checkbox.labelSize
       },
       // label的颜色
       labelColor: {
         type: String,
-        default: props$k.checkbox.labelColor
+        default: props$i.checkbox.labelColor
       },
       // 是否禁止点击提示语选中复选框
       labelDisabled: {
         type: [String, Boolean],
-        default: props$k.checkbox.labelDisabled
+        default: props$i.checkbox.labelDisabled
       }
     }
   };
-  const _sfc_main$1b = {
+  const _sfc_main$19 = {
     name: "u-checkbox",
-    mixins: [mpMixin, mixin, props$i],
+    mixins: [mpMixin, mixin, props$g],
     data() {
       return {
         isChecked: false,
@@ -3810,8 +3810,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$p(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -3859,89 +3859,89 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$5 = /* @__PURE__ */ _export_sfc(_sfc_main$1b, [["render", _sfc_render$p], ["__scopeId", "data-v-8b7c3dc7"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
-  const props$h = {
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["render", _sfc_render$n], ["__scopeId", "data-v-8b7c3dc7"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-checkbox/u-checkbox.vue"]]);
+  const props$f = {
     props: {
       // 标识符
       name: {
         type: String,
-        default: props$k.checkboxGroup.name
+        default: props$i.checkboxGroup.name
       },
       // 绑定的值
       modelValue: {
         type: Array,
-        default: props$k.checkboxGroup.value
+        default: props$i.checkboxGroup.value
       },
       // 形状，circle-圆形，square-方形
       shape: {
         type: String,
-        default: props$k.checkboxGroup.shape
+        default: props$i.checkboxGroup.shape
       },
       // 是否禁用全部checkbox
       disabled: {
         type: Boolean,
-        default: props$k.checkboxGroup.disabled
+        default: props$i.checkboxGroup.disabled
       },
       // 选中状态下的颜色，如设置此值，将会覆盖parent的activeColor值
       activeColor: {
         type: String,
-        default: props$k.checkboxGroup.activeColor
+        default: props$i.checkboxGroup.activeColor
       },
       // 未选中的颜色
       inactiveColor: {
         type: String,
-        default: props$k.checkboxGroup.inactiveColor
+        default: props$i.checkboxGroup.inactiveColor
       },
       // 整个组件的尺寸，默认px
       size: {
         type: [String, Number],
-        default: props$k.checkboxGroup.size
+        default: props$i.checkboxGroup.size
       },
       // 布局方式，row-横向，column-纵向
       placement: {
         type: String,
-        default: props$k.checkboxGroup.placement
+        default: props$i.checkboxGroup.placement
       },
       // label的字体大小，px单位
       labelSize: {
         type: [String, Number],
-        default: props$k.checkboxGroup.labelSize
+        default: props$i.checkboxGroup.labelSize
       },
       // label的字体颜色
       labelColor: {
         type: [String],
-        default: props$k.checkboxGroup.labelColor
+        default: props$i.checkboxGroup.labelColor
       },
       // 是否禁止点击文本操作
       labelDisabled: {
         type: Boolean,
-        default: props$k.checkboxGroup.labelDisabled
+        default: props$i.checkboxGroup.labelDisabled
       },
       // 图标颜色
       iconColor: {
         type: String,
-        default: props$k.checkboxGroup.iconColor
+        default: props$i.checkboxGroup.iconColor
       },
       // 图标的大小，单位px
       iconSize: {
         type: [String, Number],
-        default: props$k.checkboxGroup.iconSize
+        default: props$i.checkboxGroup.iconSize
       },
       // 勾选图标的对齐方式，left-左边，right-右边
       iconPlacement: {
         type: String,
-        default: props$k.checkboxGroup.iconPlacement
+        default: props$i.checkboxGroup.iconPlacement
       },
       // 竖向配列时，是否显示下划线
       borderBottom: {
         type: Boolean,
-        default: props$k.checkboxGroup.borderBottom
+        default: props$i.checkboxGroup.borderBottom
       }
     }
   };
-  const _sfc_main$1a = {
+  const _sfc_main$18 = {
     name: "u-checkbox-group",
-    mixins: [mpMixin, mixin, props$h],
+    mixins: [mpMixin, mixin, props$f],
     computed: {
       // 这里computed的变量，都是子组件u-checkbox需要用到的，由于头条小程序的兼容性差异，子组件无法实时监听父组件参数的变化
       // 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(u-checkbox-group)
@@ -3998,7 +3998,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$o(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4011,7 +4011,7 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_1$4 = /* @__PURE__ */ _export_sfc(_sfc_main$1a, [["render", _sfc_render$o], ["__scopeId", "data-v-bffd0d93"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
+  const __easycom_1$5 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$m], ["__scopeId", "data-v-bffd0d93"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-checkbox-group/u-checkbox-group.vue"]]);
   class Http {
     constructor({
       baseURL = "http://ai.sitoai.cn",
@@ -4162,7 +4162,7 @@ This will fail in production.`);
     }
     return response;
   });
-  const _sfc_main$19 = {
+  const _sfc_main$17 = {
     __name: "login",
     setup(__props) {
       const phone = vue.ref("");
@@ -4215,8 +4215,8 @@ This will fail in production.`);
         clearInterval(timer);
       });
       return (_ctx, _cache) => {
-        const _component_u_checkbox = resolveEasycom(vue.resolveDynamicComponent("u-checkbox"), __easycom_0$5);
-        const _component_u_checkbox_group = resolveEasycom(vue.resolveDynamicComponent("u-checkbox-group"), __easycom_1$4);
+        const _component_u_checkbox = resolveEasycom(vue.resolveDynamicComponent("u-checkbox"), __easycom_0$4);
+        const _component_u_checkbox_group = resolveEasycom(vue.resolveDynamicComponent("u-checkbox-group"), __easycom_1$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "login-page" }, [
           vue.createCommentVNode(" 顶部 Logo "),
           vue.createElementVNode("view", { class: "top-logo-row" }, [
@@ -4305,28 +4305,28 @@ This will fail in production.`);
       };
     }
   };
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$19, [["__scopeId", "data-v-e4e4508d"], ["__file", "F:/LiveHand/LiveHands/pages/login/login.vue"]]);
-  const props$g = {
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["__scopeId", "data-v-e4e4508d"], ["__file", "F:/LiveHand/LiveHands/pages/login/login.vue"]]);
+  const props$e = {
     props: {
       // 是否展示组件
       show: {
         type: Boolean,
-        default: props$k.transition.show
+        default: props$i.transition.show
       },
       // 使用的动画模式
       mode: {
         type: String,
-        default: props$k.transition.mode
+        default: props$i.transition.mode
       },
       // 动画的执行时间，单位ms
       duration: {
         type: [String, Number],
-        default: props$k.transition.duration
+        default: props$i.transition.duration
       },
       // 使用的动画过渡函数
       timingFunction: {
         type: String,
-        default: props$k.transition.timingFunction
+        default: props$i.transition.timingFunction
       }
     }
   };
@@ -4385,7 +4385,7 @@ This will fail in production.`);
       }
     }
   };
-  const _sfc_main$18 = {
+  const _sfc_main$16 = {
     name: "u-transition",
     data() {
       return {
@@ -4417,7 +4417,7 @@ This will fail in production.`);
       }
     },
     // 将mixin挂在到组件中，uni.$u.mixin实际上为一个vue格式对象
-    mixins: [mpMixin, mixin, transition, props$g],
+    mixins: [mpMixin, mixin, transition, props$e],
     watch: {
       show: {
         handler(newVal) {
@@ -4428,7 +4428,7 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$n(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
     return $data.inited ? (vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -4446,58 +4446,58 @@ This will fail in production.`);
       /* CLASS, STYLE, HYDRATE_EVENTS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$18, [["render", _sfc_render$n], ["__scopeId", "data-v-e9c9b9ef"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
-  const props$f = {
+  const __easycom_4$1 = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$l], ["__scopeId", "data-v-e9c9b9ef"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-transition/u-transition.vue"]]);
+  const props$d = {
     props: {
       // 标签类型info、primary、success、warning、error
       type: {
         type: String,
-        default: props$k.tag.type
+        default: props$i.tag.type
       },
       // 不可用
       disabled: {
         type: [Boolean, String],
-        default: props$k.tag.disabled
+        default: props$i.tag.disabled
       },
       // 标签的大小，large，medium，mini
       size: {
         type: String,
-        default: props$k.tag.size
+        default: props$i.tag.size
       },
       // tag的形状，circle（两边半圆形）, square（方形，带圆角）
       shape: {
         type: String,
-        default: props$k.tag.shape
+        default: props$i.tag.shape
       },
       // 标签文字
       text: {
         type: [String, Number],
-        default: props$k.tag.text
+        default: props$i.tag.text
       },
       // 背景颜色，默认为空字符串，即不处理
       bgColor: {
         type: String,
-        default: props$k.tag.bgColor
+        default: props$i.tag.bgColor
       },
       // 标签字体颜色，默认为空字符串，即不处理
       color: {
         type: String,
-        default: props$k.tag.color
+        default: props$i.tag.color
       },
       // 标签的边框颜色
       borderColor: {
         type: String,
-        default: props$k.tag.borderColor
+        default: props$i.tag.borderColor
       },
       // 关闭按钮图标的颜色
       closeColor: {
         type: String,
-        default: props$k.tag.closeColor
+        default: props$i.tag.closeColor
       },
       // 点击时返回的索引值，用于区分例遍的数组哪个元素被点击了
       name: {
         type: [String, Number],
-        default: props$k.tag.name
+        default: props$i.tag.name
       },
       // // 模式选择，dark|light|plain
       // mode: {
@@ -4507,33 +4507,33 @@ This will fail in production.`);
       // 镂空时是否填充背景色
       plainFill: {
         type: Boolean,
-        default: props$k.tag.plainFill
+        default: props$i.tag.plainFill
       },
       // 是否镂空
       plain: {
         type: Boolean,
-        default: props$k.tag.plain
+        default: props$i.tag.plain
       },
       // 是否可关闭
       closable: {
         type: Boolean,
-        default: props$k.tag.closable
+        default: props$i.tag.closable
       },
       // 是否显示
       show: {
         type: Boolean,
-        default: props$k.tag.show
+        default: props$i.tag.show
       },
       // 内置图标，或绝对路径的图片
       icon: {
         type: String,
-        default: props$k.tag.icon
+        default: props$i.tag.icon
       }
     }
   };
-  const _sfc_main$17 = {
+  const _sfc_main$15 = {
     name: "u-tag",
-    mixins: [mpMixin, mixin, props$f],
+    mixins: [mpMixin, mixin, props$d],
     data() {
       return {};
     },
@@ -4592,8 +4592,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
     return vue.openBlock(), vue.createBlock(_component_u_transition, {
       mode: "fade",
@@ -4668,932 +4668,8 @@ This will fail in production.`);
       /* FORWARDED */
     }, 8, ["show"]);
   }
-  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$17, [["render", _sfc_render$m], ["__scopeId", "data-v-26344075"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
-  const props$e = {
-    props: {
-      color: {
-        type: String,
-        default: props$k.line.color
-      },
-      // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
-      length: {
-        type: [String, Number],
-        default: props$k.line.length
-      },
-      // 线条方向，col-竖向，row-横向
-      direction: {
-        type: String,
-        default: props$k.line.direction
-      },
-      // 是否显示细边框
-      hairline: {
-        type: Boolean,
-        default: props$k.line.hairline
-      },
-      // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
-      margin: {
-        type: [String, Number],
-        default: props$k.line.margin
-      },
-      // 是否虚线，true-虚线，false-实线
-      dashed: {
-        type: Boolean,
-        default: props$k.line.dashed
-      }
-    }
-  };
-  const _sfc_main$16 = {
-    name: "u-line",
-    mixins: [mpMixin, mixin, props$e],
-    computed: {
-      lineStyle() {
-        const style = {};
-        style.margin = this.margin;
-        if (this.direction === "row") {
-          style.borderBottomWidth = "1px";
-          style.borderBottomStyle = this.dashed ? "dashed" : "solid";
-          style.width = uni.$u.addUnit(this.length);
-          if (this.hairline)
-            style.transform = "scaleY(0.5)";
-        } else {
-          style.borderLeftWidth = "1px";
-          style.borderLeftStyle = this.dashed ? "dashed" : "solid";
-          style.height = uni.$u.addUnit(this.length);
-          if (this.hairline)
-            style.transform = "scaleX(0.5)";
-        }
-        style.borderColor = this.color;
-        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
-      }
-    }
-  };
-  function _sfc_render$l(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(
-      "view",
-      {
-        class: "u-line",
-        style: vue.normalizeStyle([$options.lineStyle])
-      },
-      null,
-      4
-      /* STYLE */
-    );
-  }
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$16, [["render", _sfc_render$l], ["__scopeId", "data-v-9bcb2aa0"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-line/u-line.vue"]]);
-  const props$d = {
-    props: {
-      // 是否显示组件
-      show: {
-        type: Boolean,
-        default: props$k.loadingIcon.show
-      },
-      // 颜色
-      color: {
-        type: String,
-        default: props$k.loadingIcon.color
-      },
-      // 提示文字颜色
-      textColor: {
-        type: String,
-        default: props$k.loadingIcon.textColor
-      },
-      // 文字和图标是否垂直排列
-      vertical: {
-        type: Boolean,
-        default: props$k.loadingIcon.vertical
-      },
-      // 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形
-      mode: {
-        type: String,
-        default: props$k.loadingIcon.mode
-      },
-      // 图标大小，单位默认px
-      size: {
-        type: [String, Number],
-        default: props$k.loadingIcon.size
-      },
-      // 文字大小
-      textSize: {
-        type: [String, Number],
-        default: props$k.loadingIcon.textSize
-      },
-      // 文字内容
-      text: {
-        type: [String, Number],
-        default: props$k.loadingIcon.text
-      },
-      // 动画模式
-      timingFunction: {
-        type: String,
-        default: props$k.loadingIcon.timingFunction
-      },
-      // 动画执行周期时间
-      duration: {
-        type: [String, Number],
-        default: props$k.loadingIcon.duration
-      },
-      // mode=circle时的暗边颜色
-      inactiveColor: {
-        type: String,
-        default: props$k.loadingIcon.inactiveColor
-      }
-    }
-  };
-  const _sfc_main$15 = {
-    name: "u-loading-icon",
-    mixins: [mpMixin, mixin, props$d],
-    data() {
-      return {
-        // Array.form可以通过一个伪数组对象创建指定长度的数组
-        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-        array12: Array.from({
-          length: 12
-        }),
-        // 这里需要设置默认值为360，否则在安卓nvue上，会延迟一个duration周期后才执行
-        // 在iOS nvue上，则会一开始默认执行两个周期的动画
-        aniAngel: 360,
-        // 动画旋转角度
-        webviewHide: false,
-        // 监听webview的状态，如果隐藏了页面，则停止动画，以免性能消耗
-        loading: false
-        // 是否运行中，针对nvue使用
-      };
-    },
-    computed: {
-      // 当为circle类型时，给其另外三边设置一个更轻一些的颜色
-      // 之所以需要这么做的原因是，比如父组件传了color为红色，那么需要另外的三个边为浅红色
-      // 而不能是固定的某一个其他颜色(因为这个固定的颜色可能浅蓝，导致效果没有那么细腻良好)
-      otherBorderColor() {
-        const lightColor = uni.$u.colorGradient(this.color, "#ffffff", 100)[80];
-        if (this.mode === "circle") {
-          return this.inactiveColor ? this.inactiveColor : lightColor;
-        } else {
-          return "transparent";
-        }
-      }
-    },
-    watch: {
-      show(n) {
-      }
-    },
-    mounted() {
-      this.init();
-    },
-    methods: {
-      init() {
-        setTimeout(() => {
-          this.show && this.addEventListenerToWebview();
-        }, 20);
-      },
-      // 监听webview的显示与隐藏
-      addEventListenerToWebview() {
-        const pages2 = getCurrentPages();
-        const page2 = pages2[pages2.length - 1];
-        const currentWebview = page2.$getAppWebview();
-        currentWebview.addEventListener("hide", () => {
-          this.webviewHide = true;
-        });
-        currentWebview.addEventListener("show", () => {
-          this.webviewHide = false;
-        });
-      }
-    }
-  };
-  function _sfc_render$k(_ctx, _cache, $props, $setup, $data, $options) {
-    return _ctx.show ? (vue.openBlock(), vue.createElementBlock(
-      "view",
-      {
-        key: 0,
-        class: vue.normalizeClass(["u-loading-icon", [_ctx.vertical && "u-loading-icon--vertical"]]),
-        style: vue.normalizeStyle([_ctx.$u.addStyle(_ctx.customStyle)])
-      },
-      [
-        !$data.webviewHide ? (vue.openBlock(), vue.createElementBlock(
-          "view",
-          {
-            key: 0,
-            class: vue.normalizeClass(["u-loading-icon__spinner", [`u-loading-icon__spinner--${_ctx.mode}`]]),
-            ref: "ani",
-            style: vue.normalizeStyle({
-              color: _ctx.color,
-              width: _ctx.$u.addUnit(_ctx.size),
-              height: _ctx.$u.addUnit(_ctx.size),
-              borderTopColor: _ctx.color,
-              borderBottomColor: $options.otherBorderColor,
-              borderLeftColor: $options.otherBorderColor,
-              borderRightColor: $options.otherBorderColor,
-              "animation-duration": `${_ctx.duration}ms`,
-              "animation-timing-function": _ctx.mode === "semicircle" || _ctx.mode === "circle" ? _ctx.timingFunction : ""
-            })
-          },
-          [
-            _ctx.mode === "spinner" ? (vue.openBlock(true), vue.createElementBlock(
-              vue.Fragment,
-              { key: 0 },
-              vue.renderList($data.array12, (item, index2) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  key: index2,
-                  class: "u-loading-icon__dot"
-                });
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            )) : vue.createCommentVNode("v-if", true)
-          ],
-          6
-          /* CLASS, STYLE */
-        )) : vue.createCommentVNode("v-if", true),
-        _ctx.text ? (vue.openBlock(), vue.createElementBlock(
-          "text",
-          {
-            key: 1,
-            class: "u-loading-icon__text",
-            style: vue.normalizeStyle({
-              fontSize: _ctx.$u.addUnit(_ctx.textSize),
-              color: _ctx.textColor
-            })
-          },
-          vue.toDisplayString(_ctx.text),
-          5
-          /* TEXT, STYLE */
-        )) : vue.createCommentVNode("v-if", true)
-      ],
-      6
-      /* CLASS, STYLE */
-    )) : vue.createCommentVNode("v-if", true);
-  }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$k], ["__scopeId", "data-v-c3ec5695"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
-  const props$c = {
-    props: {
-      // 是否显示遮罩
-      show: {
-        type: Boolean,
-        default: props$k.overlay.show
-      },
-      // 层级z-index
-      zIndex: {
-        type: [String, Number],
-        default: props$k.overlay.zIndex
-      },
-      // 遮罩的过渡时间，单位为ms
-      duration: {
-        type: [String, Number],
-        default: props$k.overlay.duration
-      },
-      // 不透明度值，当做rgba的第四个参数
-      opacity: {
-        type: [String, Number],
-        default: props$k.overlay.opacity
-      }
-    }
-  };
+  const __easycom_1$4 = /* @__PURE__ */ _export_sfc(_sfc_main$15, [["render", _sfc_render$k], ["__scopeId", "data-v-26344075"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-tag/u-tag.vue"]]);
   const _sfc_main$14 = {
-    name: "u-overlay",
-    mixins: [mpMixin, mixin, props$c],
-    computed: {
-      overlayStyle() {
-        const style = {
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: this.zIndex,
-          bottom: 0,
-          "background-color": `rgba(0, 0, 0, ${this.opacity})`
-        };
-        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
-      }
-    },
-    methods: {
-      clickHandler() {
-        this.$emit("click");
-      }
-    }
-  };
-  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
-    return vue.openBlock(), vue.createBlock(_component_u_transition, {
-      show: _ctx.show,
-      "custom-class": "u-overlay",
-      duration: _ctx.duration,
-      "custom-style": $options.overlayStyle,
-      onClick: $options.clickHandler
-    }, {
-      default: vue.withCtx(() => [
-        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ]),
-      _: 3
-      /* FORWARDED */
-    }, 8, ["show", "duration", "custom-style", "onClick"]);
-  }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$j], ["__scopeId", "data-v-38c77267"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
-  const props$b = {
-    props: {
-      bgColor: {
-        type: String,
-        default: props$k.statusBar.bgColor
-      }
-    }
-  };
-  const _sfc_main$13 = {
-    name: "u-status-bar",
-    mixins: [mpMixin, mixin, props$b],
-    data() {
-      return {};
-    },
-    computed: {
-      style() {
-        const style = {};
-        style.height = uni.$u.addUnit(uni.$u.sys().statusBarHeight, "px");
-        style.backgroundColor = this.bgColor;
-        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
-      }
-    }
-  };
-  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(
-      "view",
-      {
-        style: vue.normalizeStyle([$options.style]),
-        class: "u-status-bar"
-      },
-      [
-        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-      ],
-      4
-      /* STYLE */
-    );
-  }
-  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["render", _sfc_render$i], ["__scopeId", "data-v-7dbb0f3a"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
-  const props$a = {
-    props: {}
-  };
-  const _sfc_main$12 = {
-    name: "u-safe-bottom",
-    mixins: [mpMixin, mixin, props$a],
-    data() {
-      return {
-        safeAreaBottomHeight: 0,
-        isNvue: false
-      };
-    },
-    computed: {
-      style() {
-        const style = {};
-        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
-      }
-    },
-    mounted() {
-    }
-  };
-  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock(
-      "view",
-      {
-        class: vue.normalizeClass(["u-safe-bottom", [!$data.isNvue && "u-safe-area-inset-bottom"]]),
-        style: vue.normalizeStyle([$options.style])
-      },
-      null,
-      6
-      /* CLASS, STYLE */
-    );
-  }
-  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["render", _sfc_render$h], ["__scopeId", "data-v-82d264d4"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
-  const props$9 = {
-    props: {
-      // 是否展示弹窗
-      show: {
-        type: Boolean,
-        default: props$k.popup.show
-      },
-      // 是否显示遮罩
-      overlay: {
-        type: Boolean,
-        default: props$k.popup.overlay
-      },
-      // 弹出的方向，可选值为 top bottom right left center
-      mode: {
-        type: String,
-        default: props$k.popup.mode
-      },
-      // 动画时长，单位ms
-      duration: {
-        type: [String, Number],
-        default: props$k.popup.duration
-      },
-      // 是否显示关闭图标
-      closeable: {
-        type: Boolean,
-        default: props$k.popup.closeable
-      },
-      // 自定义遮罩的样式
-      overlayStyle: {
-        type: [Object, String],
-        default: props$k.popup.overlayStyle
-      },
-      // 点击遮罩是否关闭弹窗
-      closeOnClickOverlay: {
-        type: Boolean,
-        default: props$k.popup.closeOnClickOverlay
-      },
-      // 层级
-      zIndex: {
-        type: [String, Number],
-        default: props$k.popup.zIndex
-      },
-      // 是否为iPhoneX留出底部安全距离
-      safeAreaInsetBottom: {
-        type: Boolean,
-        default: props$k.popup.safeAreaInsetBottom
-      },
-      // 是否留出顶部安全距离（状态栏高度）
-      safeAreaInsetTop: {
-        type: Boolean,
-        default: props$k.popup.safeAreaInsetTop
-      },
-      // 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
-      closeIconPos: {
-        type: String,
-        default: props$k.popup.closeIconPos
-      },
-      // 是否显示圆角
-      round: {
-        type: [Boolean, String, Number],
-        default: props$k.popup.round
-      },
-      // mode=center，也即中部弹出时，是否使用缩放模式
-      zoom: {
-        type: Boolean,
-        default: props$k.popup.zoom
-      },
-      // 弹窗背景色，设置为transparent可去除白色背景
-      bgColor: {
-        type: String,
-        default: props$k.popup.bgColor
-      },
-      // 遮罩的透明度，0-1之间
-      overlayOpacity: {
-        type: [Number, String],
-        default: props$k.popup.overlayOpacity
-      }
-    }
-  };
-  const _sfc_main$11 = {
-    name: "u-popup",
-    mixins: [mpMixin, mixin, props$9],
-    data() {
-      return {
-        overlayDuration: this.duration + 50
-      };
-    },
-    watch: {
-      show(newValue, oldValue) {
-      }
-    },
-    computed: {
-      transitionStyle() {
-        const style = {
-          zIndex: this.zIndex,
-          position: "fixed",
-          display: "flex"
-        };
-        style[this.mode] = 0;
-        if (this.mode === "left") {
-          return uni.$u.deepMerge(style, {
-            bottom: 0,
-            top: 0
-          });
-        } else if (this.mode === "right") {
-          return uni.$u.deepMerge(style, {
-            bottom: 0,
-            top: 0
-          });
-        } else if (this.mode === "top") {
-          return uni.$u.deepMerge(style, {
-            left: 0,
-            right: 0
-          });
-        } else if (this.mode === "bottom") {
-          return uni.$u.deepMerge(style, {
-            left: 0,
-            right: 0
-          });
-        } else if (this.mode === "center") {
-          return uni.$u.deepMerge(style, {
-            alignItems: "center",
-            "justify-content": "center",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
-          });
-        }
-      },
-      contentStyle() {
-        const style = {};
-        uni.$u.sys();
-        if (this.mode !== "center") {
-          style.flex = 1;
-        }
-        if (this.bgColor) {
-          style.backgroundColor = this.bgColor;
-        }
-        if (this.round) {
-          const value = uni.$u.addUnit(this.round);
-          if (this.mode === "top") {
-            style.borderBottomLeftRadius = value;
-            style.borderBottomRightRadius = value;
-          } else if (this.mode === "bottom") {
-            style.borderTopLeftRadius = value;
-            style.borderTopRightRadius = value;
-          } else if (this.mode === "center") {
-            style.borderRadius = value;
-          }
-        }
-        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
-      },
-      position() {
-        if (this.mode === "center") {
-          return this.zoom ? "fade-zoom" : "fade";
-        }
-        if (this.mode === "left") {
-          return "slide-left";
-        }
-        if (this.mode === "right") {
-          return "slide-right";
-        }
-        if (this.mode === "bottom") {
-          return "slide-up";
-        }
-        if (this.mode === "top") {
-          return "slide-down";
-        }
-      }
-    },
-    methods: {
-      // 点击遮罩
-      overlayClick() {
-        if (this.closeOnClickOverlay) {
-          this.$emit("close");
-        }
-      },
-      close(e) {
-        this.$emit("close");
-      },
-      afterEnter() {
-        this.$emit("open");
-      },
-      clickHandler() {
-        if (this.mode === "center") {
-          this.overlayClick();
-        }
-        this.$emit("click");
-      }
-    }
-  };
-  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_overlay = resolveEasycom(vue.resolveDynamicComponent("u-overlay"), __easycom_0$2);
-    const _component_u_status_bar = resolveEasycom(vue.resolveDynamicComponent("u-status-bar"), __easycom_1$2);
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-    const _component_u_safe_bottom = resolveEasycom(vue.resolveDynamicComponent("u-safe-bottom"), __easycom_3$1);
-    const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
-    return vue.openBlock(), vue.createElementBlock("view", { class: "u-popup" }, [
-      _ctx.overlay ? (vue.openBlock(), vue.createBlock(_component_u_overlay, {
-        key: 0,
-        show: _ctx.show,
-        onClick: $options.overlayClick,
-        duration: $data.overlayDuration,
-        customStyle: _ctx.overlayStyle,
-        opacity: _ctx.overlayOpacity
-      }, null, 8, ["show", "onClick", "duration", "customStyle", "opacity"])) : vue.createCommentVNode("v-if", true),
-      vue.createVNode(_component_u_transition, {
-        show: _ctx.show,
-        customStyle: $options.transitionStyle,
-        mode: $options.position,
-        duration: _ctx.duration,
-        onAfterEnter: $options.afterEnter,
-        onClick: $options.clickHandler
-      }, {
-        default: vue.withCtx(() => [
-          vue.createElementVNode(
-            "view",
-            {
-              class: "u-popup__content",
-              style: vue.normalizeStyle([$options.contentStyle]),
-              onClick: _cache[1] || (_cache[1] = vue.withModifiers((...args) => _ctx.noop && _ctx.noop(...args), ["stop"]))
-            },
-            [
-              _ctx.safeAreaInsetTop ? (vue.openBlock(), vue.createBlock(_component_u_status_bar, { key: 0 })) : vue.createCommentVNode("v-if", true),
-              vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
-              _ctx.closeable ? (vue.openBlock(), vue.createElementBlock(
-                "view",
-                {
-                  key: 1,
-                  onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => $options.close && $options.close(...args), ["stop"])),
-                  class: vue.normalizeClass(["u-popup__content__close", ["u-popup__content__close--" + _ctx.closeIconPos]]),
-                  "hover-class": "u-popup__content__close--hover",
-                  "hover-stay-time": "150"
-                },
-                [
-                  vue.createVNode(_component_u_icon, {
-                    name: "close",
-                    color: "#909399",
-                    size: "18",
-                    bold: ""
-                  })
-                ],
-                2
-                /* CLASS */
-              )) : vue.createCommentVNode("v-if", true),
-              _ctx.safeAreaInsetBottom ? (vue.openBlock(), vue.createBlock(_component_u_safe_bottom, { key: 2 })) : vue.createCommentVNode("v-if", true)
-            ],
-            4
-            /* STYLE */
-          )
-        ]),
-        _: 3
-        /* FORWARDED */
-      }, 8, ["show", "customStyle", "mode", "duration", "onAfterEnter", "onClick"])
-    ]);
-  }
-  const __easycom_6 = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["render", _sfc_render$g], ["__scopeId", "data-v-5f94edb8"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
-  const props$8 = {
-    props: {
-      // 是否展示modal
-      show: {
-        type: Boolean,
-        default: props$k.modal.show
-      },
-      // 标题
-      title: {
-        type: [String],
-        default: props$k.modal.title
-      },
-      // 弹窗内容
-      content: {
-        type: String,
-        default: props$k.modal.content
-      },
-      // 确认文案
-      confirmText: {
-        type: String,
-        default: props$k.modal.confirmText
-      },
-      // 取消文案
-      cancelText: {
-        type: String,
-        default: props$k.modal.cancelText
-      },
-      // 是否显示确认按钮
-      showConfirmButton: {
-        type: Boolean,
-        default: props$k.modal.showConfirmButton
-      },
-      // 是否显示取消按钮
-      showCancelButton: {
-        type: Boolean,
-        default: props$k.modal.showCancelButton
-      },
-      // 确认按钮颜色
-      confirmColor: {
-        type: String,
-        default: props$k.modal.confirmColor
-      },
-      // 取消文字颜色
-      cancelColor: {
-        type: String,
-        default: props$k.modal.cancelColor
-      },
-      // 对调确认和取消的位置
-      buttonReverse: {
-        type: Boolean,
-        default: props$k.modal.buttonReverse
-      },
-      // 是否开启缩放效果
-      zoom: {
-        type: Boolean,
-        default: props$k.modal.zoom
-      },
-      // 是否异步关闭，只对确定按钮有效
-      asyncClose: {
-        type: Boolean,
-        default: props$k.modal.asyncClose
-      },
-      // 是否允许点击遮罩关闭modal
-      closeOnClickOverlay: {
-        type: Boolean,
-        default: props$k.modal.closeOnClickOverlay
-      },
-      // 给一个负的margin-top，往上偏移，避免和键盘重合的情况
-      negativeTop: {
-        type: [String, Number],
-        default: props$k.modal.negativeTop
-      },
-      // modal宽度，不支持百分比，可以数值，px，rpx单位
-      width: {
-        type: [String, Number],
-        default: props$k.modal.width
-      },
-      // 确认按钮的样式，circle-圆形，square-方形，如设置，将不会显示取消按钮
-      confirmButtonShape: {
-        type: String,
-        default: props$k.modal.confirmButtonShape
-      }
-    }
-  };
-  const _sfc_main$10 = {
-    name: "u-modal",
-    mixins: [mpMixin, mixin, props$8],
-    data() {
-      return {
-        loading: false
-      };
-    },
-    watch: {
-      show(n) {
-        if (n && this.loading)
-          this.loading = false;
-      }
-    },
-    methods: {
-      // 点击确定按钮
-      confirmHandler() {
-        if (this.asyncClose) {
-          this.loading = true;
-        }
-        this.$emit("confirm");
-      },
-      // 点击取消按钮
-      cancelHandler() {
-        this.$emit("cancel");
-      },
-      // 点击遮罩
-      // 从原理上来说，modal的遮罩点击，并不是真的点击到了遮罩
-      // 因为modal依赖于popup的中部弹窗类型，中部弹窗比较特殊，虽有然遮罩，但是为了让弹窗内容能flex居中
-      // 多了一个透明的遮罩，此透明的遮罩会覆盖在灰色的遮罩上，所以实际上是点击不到灰色遮罩的，popup内部在
-      // 透明遮罩的子元素做了.stop处理，所以点击内容区，也不会导致误触发
-      clickHandler() {
-        if (this.closeOnClickOverlay) {
-          this.$emit("close");
-        }
-      }
-    }
-  };
-  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_line = resolveEasycom(vue.resolveDynamicComponent("u-line"), __easycom_0$4);
-    const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_0$3);
-    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
-    return vue.openBlock(), vue.createBlock(_component_u_popup, {
-      mode: "center",
-      zoom: _ctx.zoom,
-      show: _ctx.show,
-      customStyle: {
-        borderRadius: "6px",
-        overflow: "hidden",
-        marginTop: `-${_ctx.$u.addUnit(_ctx.negativeTop)}`
-      },
-      closeOnClickOverlay: _ctx.closeOnClickOverlay,
-      safeAreaInsetBottom: false,
-      duration: 400,
-      onClick: $options.clickHandler
-    }, {
-      default: vue.withCtx(() => [
-        vue.createElementVNode(
-          "view",
-          {
-            class: "u-modal",
-            style: vue.normalizeStyle({
-              width: _ctx.$u.addUnit(_ctx.width)
-            })
-          },
-          [
-            _ctx.title ? (vue.openBlock(), vue.createElementBlock(
-              "text",
-              {
-                key: 0,
-                class: "u-modal__title"
-              },
-              vue.toDisplayString(_ctx.title),
-              1
-              /* TEXT */
-            )) : vue.createCommentVNode("v-if", true),
-            vue.createElementVNode(
-              "view",
-              {
-                class: "u-modal__content",
-                style: vue.normalizeStyle({
-                  paddingTop: `${_ctx.title ? 12 : 25}px`
-                })
-              },
-              [
-                vue.renderSlot(_ctx.$slots, "default", {}, () => [
-                  vue.createElementVNode(
-                    "text",
-                    { class: "u-modal__content__text" },
-                    vue.toDisplayString(_ctx.content),
-                    1
-                    /* TEXT */
-                  )
-                ], true)
-              ],
-              4
-              /* STYLE */
-            ),
-            _ctx.$slots.confirmButton ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 1,
-              class: "u-modal__button-group--confirm-button"
-            }, [
-              vue.renderSlot(_ctx.$slots, "confirmButton", {}, void 0, true)
-            ])) : (vue.openBlock(), vue.createElementBlock(
-              vue.Fragment,
-              { key: 2 },
-              [
-                vue.createVNode(_component_u_line),
-                vue.createElementVNode(
-                  "view",
-                  {
-                    class: "u-modal__button-group",
-                    style: vue.normalizeStyle({
-                      flexDirection: _ctx.buttonReverse ? "row-reverse" : "row"
-                    })
-                  },
-                  [
-                    _ctx.showCancelButton ? (vue.openBlock(), vue.createElementBlock(
-                      "view",
-                      {
-                        key: 0,
-                        class: vue.normalizeClass(["u-modal__button-group__wrapper u-modal__button-group__wrapper--cancel", [_ctx.showCancelButton && !_ctx.showConfirmButton && "u-modal__button-group__wrapper--only-cancel"]]),
-                        "hover-stay-time": 150,
-                        "hover-class": "u-modal__button-group__wrapper--hover",
-                        onClick: _cache[0] || (_cache[0] = (...args) => $options.cancelHandler && $options.cancelHandler(...args))
-                      },
-                      [
-                        vue.createElementVNode(
-                          "text",
-                          {
-                            class: "u-modal__button-group__wrapper__text",
-                            style: vue.normalizeStyle({
-                              color: _ctx.cancelColor
-                            })
-                          },
-                          vue.toDisplayString(_ctx.cancelText),
-                          5
-                          /* TEXT, STYLE */
-                        )
-                      ],
-                      2
-                      /* CLASS */
-                    )) : vue.createCommentVNode("v-if", true),
-                    _ctx.showConfirmButton && _ctx.showCancelButton ? (vue.openBlock(), vue.createBlock(_component_u_line, {
-                      key: 1,
-                      direction: "column"
-                    })) : vue.createCommentVNode("v-if", true),
-                    _ctx.showConfirmButton ? (vue.openBlock(), vue.createElementBlock(
-                      "view",
-                      {
-                        key: 2,
-                        class: vue.normalizeClass(["u-modal__button-group__wrapper u-modal__button-group__wrapper--confirm", [!_ctx.showCancelButton && _ctx.showConfirmButton && "u-modal__button-group__wrapper--only-confirm"]]),
-                        "hover-stay-time": 150,
-                        "hover-class": "u-modal__button-group__wrapper--hover",
-                        onClick: _cache[1] || (_cache[1] = (...args) => $options.confirmHandler && $options.confirmHandler(...args))
-                      },
-                      [
-                        $data.loading ? (vue.openBlock(), vue.createBlock(_component_u_loading_icon, { key: 0 })) : (vue.openBlock(), vue.createElementBlock(
-                          "text",
-                          {
-                            key: 1,
-                            class: "u-modal__button-group__wrapper__text",
-                            style: vue.normalizeStyle({
-                              color: _ctx.confirmColor
-                            })
-                          },
-                          vue.toDisplayString(_ctx.confirmText),
-                          5
-                          /* TEXT, STYLE */
-                        ))
-                      ],
-                      2
-                      /* CLASS */
-                    )) : vue.createCommentVNode("v-if", true)
-                  ],
-                  4
-                  /* STYLE */
-                )
-              ],
-              64
-              /* STABLE_FRAGMENT */
-            ))
-          ],
-          4
-          /* STYLE */
-        )
-      ]),
-      _: 3
-      /* FORWARDED */
-    }, 8, ["zoom", "show", "customStyle", "closeOnClickOverlay", "onClick"]);
-  }
-  const __easycom_7 = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["render", _sfc_render$f], ["__scopeId", "data-v-ce0c51d9"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
-  const _sfc_main$$ = {
     __name: "NoteCard",
     props: {
       title: { type: String, default: "无标题笔记" },
@@ -5609,35 +4685,56 @@ This will fail in production.`);
         ]
       }
     },
-    setup(__props) {
+    emits: ["delete"],
+    setup(__props, { emit }) {
       const props2 = __props;
-      const showSetting = vue.ref(false);
-      const showTags = vue.ref(false);
-      const showDelete = vue.ref(false);
+      vue.ref(false);
       function openDetails() {
-        formatAppLog("log", "at components/cards/NoteCard.vue:107", "666");
+        formatAppLog("log", "at components/cards/NoteCard.vue:70", "打开详情页");
         uni.navigateTo({
           url: `/pages/details/NoteDetails/NoteDetails?title=${encodeURIComponent(props2.title)}&time=${props2.time}&content=${encodeURIComponent(props2.content)}&repo=${encodeURIComponent(props2.repo)}&tags=${encodeURIComponent(JSON.stringify(props2.tags))}`
         });
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$3);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
-        return vue.openBlock(), vue.createElementBlock("div", { class: "note-card" }, [
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$4);
+        return vue.openBlock(), vue.createElementBlock("div", {
+          class: "note-card",
+          style: { "position": "relative" }
+        }, [
           vue.createCommentVNode(" 顶部信息 "),
           vue.createElementVNode("div", { class: "note-top" }, [
             vue.createElementVNode("div", {
               class: "note-title",
               onClick: vue.withModifiers(openDetails, ["stop"])
             }, vue.toDisplayString(__props.title), 9, ["onClick"]),
-            vue.createElementVNode(
-              "div",
-              { class: "note-time" },
-              vue.toDisplayString(__props.time),
-              1
-              /* TEXT */
-            )
+            vue.createElementVNode("div", { class: "note-title-info" }, [
+              vue.createElementVNode("div", {
+                class: "repo-know",
+                onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
+                }, ["stop"]))
+              }, [
+                vue.createVNode(_component_u_icon, {
+                  name: "bag",
+                  size: "18",
+                  color: "#666"
+                }),
+                vue.createElementVNode(
+                  "span",
+                  { class: "repo-name" },
+                  vue.toDisplayString(__props.repo),
+                  1
+                  /* TEXT */
+                )
+              ]),
+              vue.createElementVNode(
+                "div",
+                { class: "note-time" },
+                vue.toDisplayString(__props.time),
+                1
+                /* TEXT */
+              )
+            ])
           ]),
           vue.createCommentVNode(" 分割线 "),
           vue.createElementVNode("div", { class: "note-divider" }),
@@ -5650,24 +4747,6 @@ This will fail in production.`);
             vue.createElementVNode("div", { class: "note-bottom-divider" }),
             vue.createElementVNode("div", { class: "note-footer" }, [
               vue.createElementVNode("div", { class: "note-repo" }, [
-                vue.createElementVNode("div", {
-                  class: "repo-know",
-                  onClick: _cache[0] || (_cache[0] = vue.withModifiers(() => {
-                  }, ["stop"]))
-                }, [
-                  vue.createVNode(_component_u_icon, {
-                    name: "bag",
-                    size: "18",
-                    color: "#666"
-                  }),
-                  vue.createElementVNode(
-                    "span",
-                    { class: "repo-name" },
-                    vue.toDisplayString(__props.repo),
-                    1
-                    /* TEXT */
-                  )
-                ]),
                 vue.createElementVNode("view", {
                   class: "repo-tags",
                   onClick: _cache[1] || (_cache[1] = vue.withModifiers(() => {
@@ -5690,124 +4769,98 @@ This will fail in production.`);
                     /* KEYED_FRAGMENT */
                   ))
                 ])
-              ]),
-              vue.createElementVNode("div", { class: "footer-icons" }, [
-                vue.createVNode(_component_u_icon, {
-                  name: "list-dot",
-                  color: "#2979ff",
-                  size: "22",
-                  onClick: _cache[2] || (_cache[2] = vue.withModifiers(($event) => showSetting.value = true, ["stop"]))
-                }),
-                vue.createVNode(_component_u_icon, {
-                  name: "tags",
-                  color: "#2979ff",
-                  size: "22",
-                  onClick: _cache[3] || (_cache[3] = vue.withModifiers(($event) => showTags.value = true, ["stop"]))
-                }),
-                vue.createVNode(_component_u_icon, {
-                  name: "trash",
-                  color: "#2979ff",
-                  size: "22",
-                  onClick: _cache[4] || (_cache[4] = vue.withModifiers(($event) => showDelete.value = true, ["stop"]))
-                })
               ])
             ])
-          ]),
-          vue.createCommentVNode(" 模态框们 "),
-          vue.createElementVNode("view", { class: "modal-wrapper" }, [
-            vue.createVNode(_component_u_modal, {
-              show: showSetting.value,
-              title: "设置",
-              onConfirm: _cache[5] || (_cache[5] = ($event) => showSetting.value = false),
-              onCancel: _cache[6] || (_cache[6] = ($event) => showSetting.value = false)
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("view", { style: { "padding": "20px" } }, "这里是设置模态框内容")
-              ]),
-              _: 1
-              /* STABLE */
-            }, 8, ["show"])
-          ]),
-          vue.createElementVNode("view", { class: "modal-wrapper" }, [
-            vue.createVNode(_component_u_modal, {
-              show: showTags.value,
-              title: "标签",
-              onConfirm: _cache[7] || (_cache[7] = ($event) => showTags.value = false),
-              onCancel: _cache[8] || (_cache[8] = ($event) => showTags.value = false)
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("view", { style: { "padding": "20px" } }, "这里是标签模态框内容")
-              ]),
-              _: 1
-              /* STABLE */
-            }, 8, ["show"])
-          ]),
-          vue.createElementVNode("view", { class: "modal-wrapper" }, [
-            vue.createVNode(_component_u_modal, {
-              show: showDelete.value,
-              title: "删除",
-              showCancelButton: true,
-              onConfirm: _cache[9] || (_cache[9] = ($event) => showDelete.value = false),
-              onCancel: _cache[10] || (_cache[10] = ($event) => showDelete.value = false)
-            }, {
-              default: vue.withCtx(() => [
-                vue.createElementVNode("view", { style: { "padding": "20px" } }, "确定要删除这个笔记吗？")
-              ]),
-              _: 1
-              /* STABLE */
-            }, 8, ["show"])
           ])
         ]);
       };
     }
   };
-  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["__scopeId", "data-v-ac0fe255"], ["__file", "F:/LiveHand/LiveHands/components/cards/NoteCard.vue"]]);
-  const _sfc_main$_ = {
+  const NoteCard = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["__scopeId", "data-v-ac0fe255"], ["__file", "F:/LiveHand/LiveHands/components/cards/NoteCard.vue"]]);
+  const _sfc_main$13 = {
     __name: "notes",
     setup(__props) {
+      const notes = vue.ref([
+        {
+          id: 1,
+          title: "AI研究记录",
+          time: "2025-06-26",
+          content: "西安视途科技有限公司是一家专注于 AI Agent 和 大模型核心技术研发 的人工智能企业，成立于2024年8月20号.",
+          repo: "大模型研究",
+          tags: [
+            { text: "AI", type: "warning" },
+            { text: "技术", type: "success" }
+          ]
+        },
+        {
+          id: 2,
+          title: "多模态智能体总结",
+          time: "2025-06-25",
+          content: "我们目前在多模态智能体方面的研究集中在图像、语音、文本的融合交互上，并结合 LLM 的上下文管理能力展开实验。",
+          repo: "智能体架构",
+          tags: [
+            { text: "多模态", type: "primary" },
+            { text: "架构", type: "success" }
+          ]
+        },
+        {
+          id: 3,
+          title: "知识图谱接入实验",
+          time: "2025-06-24",
+          content: "目前已完成 LiveKG 与 LiveAgent 的初步打通，验证了智能体对接图谱后的检索调用效果。",
+          repo: "知识中台",
+          tags: [
+            { text: "图谱", type: "warning" },
+            { text: "智能检索", type: "success" }
+          ]
+        },
+        {
+          id: 4,
+          title: "部署方案调研",
+          time: "2025-06-23",
+          content: "对比本地化部署、私有云、混合云三种部署方式的性能、稳定性和接入成本，为下季度客户部署做好准备。",
+          repo: "部署与运维",
+          tags: [
+            { text: "本地化", type: "success" },
+            { text: "私有云", type: "info" }
+          ]
+        },
+        {
+          id: 5,
+          title: "插件系统扩展记录",
+          time: "2025-06-22",
+          content: "新增 MCP 插件适配能力，支持按模板生成 Word、Excel 等文档，已完成测试。",
+          repo: "插件系统",
+          tags: [
+            { text: "插件", type: "primary" },
+            { text: "模板", type: "success" }
+          ]
+        }
+      ]);
       return (_ctx, _cache) => {
         return vue.openBlock(), vue.createElementBlock("div", { class: "notes-container" }, [
-          (vue.openBlock(), vue.createElementBlock(
+          (vue.openBlock(true), vue.createElementBlock(
             vue.Fragment,
             null,
-            vue.renderList(20, (n) => {
-              return vue.createVNode(
-                NoteCard,
-                {
-                  key: n,
-                  title: "AI研究记录",
-                  time: "2025-06-26 13:32",
-                  content: "西安视途科技有限公司是一家专注于 AI Agent 和 大模型核心技术研发 的人工智能企业，成立于2024年，总部位于西安市经济技术开发区。我们致力于提供本地化部署能力、行业适配性强的智能体平台解决方案，产品涵盖 智能知识管理、自动化调研、多形态智能体客户端 等领域，已服务政务、能源、企业IT、交通等多个行业客户。",
-                  repo: "大模型研究",
-                  tags: [
-                    { text: "AI", type: "warning" },
-                    { text: "技术", type: "success" }
-                  ]
-                },
-                {
-                  default: vue.withCtx(() => [
-                    vue.createTextVNode(
-                      " 笔记卡片 " + vue.toDisplayString(n),
-                      1
-                      /* TEXT */
-                    )
-                  ]),
-                  _: 2
-                  /* DYNAMIC */
-                },
-                1024
-                /* DYNAMIC_SLOTS */
-              );
+            vue.renderList(notes.value, (note) => {
+              return vue.openBlock(), vue.createBlock(NoteCard, {
+                key: note.id,
+                title: note.title,
+                time: note.time,
+                content: note.content,
+                repo: note.repo,
+                tags: note.tags
+              }, null, 8, ["title", "time", "content", "repo", "tags"]);
             }),
-            64
-            /* STABLE_FRAGMENT */
+            128
+            /* KEYED_FRAGMENT */
           ))
         ]);
       };
     }
   };
-  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-8b89ac5f"], ["__file", "F:/LiveHand/LiveHands/pages/index/notes/notes.vue"]]);
-  const _sfc_main$Z = {
+  const PagesIndexNotesNotes = /* @__PURE__ */ _export_sfc(_sfc_main$13, [["__scopeId", "data-v-8b89ac5f"], ["__file", "F:/LiveHand/LiveHands/pages/index/notes/notes.vue"]]);
+  const _sfc_main$12 = {
     __name: "KnowCard",
     props: {
       name: String,
@@ -5838,8 +4891,8 @@ This will fail in production.`);
         });
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$3);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$4);
         return vue.openBlock(), vue.createElementBlock("div", {
           class: "know-card",
           onClick: openDetails
@@ -5929,8 +4982,8 @@ This will fail in production.`);
       };
     }
   };
-  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-6e18014a"], ["__file", "F:/LiveHand/LiveHands/components/cards/KnowCard.vue"]]);
-  const _sfc_main$Y = {
+  const KnowCard = /* @__PURE__ */ _export_sfc(_sfc_main$12, [["__scopeId", "data-v-6e18014a"], ["__file", "F:/LiveHand/LiveHands/components/cards/KnowCard.vue"]]);
+  const _sfc_main$11 = {
     __name: "knows",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5972,8 +5025,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-652c3fcc"], ["__file", "F:/LiveHand/LiveHands/pages/index/knows/knows.vue"]]);
-  const _sfc_main$X = {
+  const PagesIndexKnowsKnows = /* @__PURE__ */ _export_sfc(_sfc_main$11, [["__scopeId", "data-v-652c3fcc"], ["__file", "F:/LiveHand/LiveHands/pages/index/knows/knows.vue"]]);
+  const _sfc_main$10 = {
     __name: "research",
     setup(__props) {
       vue.ref(true);
@@ -5984,18 +5037,18 @@ This will fail in production.`);
       };
     }
   };
-  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-ab307a33"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/research/research.vue"]]);
-  const _sfc_main$W = {
+  const Research = /* @__PURE__ */ _export_sfc(_sfc_main$10, [["__scopeId", "data-v-ab307a33"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/research/research.vue"]]);
+  const _sfc_main$$ = {
     data() {
       return {};
     },
     methods: {}
   };
-  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+  function _sfc_render$j(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", null, " 简历智能体 ");
   }
-  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$e], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/resume/resume.vue"]]);
-  const _sfc_main$V = {
+  const Resume = /* @__PURE__ */ _export_sfc(_sfc_main$$, [["render", _sfc_render$j], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/resume/resume.vue"]]);
+  const _sfc_main$_ = {
     __name: "news",
     setup(__props) {
       vue.ref(true);
@@ -6006,8 +5059,8 @@ This will fail in production.`);
       };
     }
   };
-  const News = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["__scopeId", "data-v-e885e564"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/news/news.vue"]]);
-  const _sfc_main$U = {
+  const News = /* @__PURE__ */ _export_sfc(_sfc_main$_, [["__scopeId", "data-v-e885e564"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/news/news.vue"]]);
+  const _sfc_main$Z = {
     __name: "SubTabBar",
     props: {
       modelValue: Number,
@@ -6069,8 +5122,8 @@ This will fail in production.`);
       };
     }
   };
-  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["__scopeId", "data-v-25def7fe"], ["__file", "F:/LiveHand/LiveHands/components/SubTabBar.vue"]]);
-  const _sfc_main$T = {
+  const SubTabBar = /* @__PURE__ */ _export_sfc(_sfc_main$Z, [["__scopeId", "data-v-25def7fe"], ["__file", "F:/LiveHand/LiveHands/components/SubTabBar.vue"]]);
+  const _sfc_main$Y = {
     __name: "layout",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -6149,8 +5202,8 @@ This will fail in production.`);
       };
     }
   };
-  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["__scopeId", "data-v-1ce95d4b"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/layout.vue"]]);
-  const _sfc_main$S = {
+  const PagesIndexAgentsLayout = /* @__PURE__ */ _export_sfc(_sfc_main$Y, [["__scopeId", "data-v-1ce95d4b"], ["__file", "F:/LiveHand/LiveHands/pages/index/agents/layout.vue"]]);
+  const _sfc_main$X = {
     __name: "TabBar",
     props: {
       modelValue: Number
@@ -6199,162 +5252,345 @@ This will fail in production.`);
       };
     }
   };
-  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["__scopeId", "data-v-89ca1f91"], ["__file", "F:/LiveHand/LiveHands/components/TabBar.vue"]]);
-  const props$7 = {
+  const TabBar = /* @__PURE__ */ _export_sfc(_sfc_main$X, [["__scopeId", "data-v-89ca1f91"], ["__file", "F:/LiveHand/LiveHands/components/TabBar.vue"]]);
+  const props$c = {
+    props: {
+      // 是否显示组件
+      show: {
+        type: Boolean,
+        default: props$i.loadingIcon.show
+      },
+      // 颜色
+      color: {
+        type: String,
+        default: props$i.loadingIcon.color
+      },
+      // 提示文字颜色
+      textColor: {
+        type: String,
+        default: props$i.loadingIcon.textColor
+      },
+      // 文字和图标是否垂直排列
+      vertical: {
+        type: Boolean,
+        default: props$i.loadingIcon.vertical
+      },
+      // 模式选择，circle-圆形，spinner-花朵形，semicircle-半圆形
+      mode: {
+        type: String,
+        default: props$i.loadingIcon.mode
+      },
+      // 图标大小，单位默认px
+      size: {
+        type: [String, Number],
+        default: props$i.loadingIcon.size
+      },
+      // 文字大小
+      textSize: {
+        type: [String, Number],
+        default: props$i.loadingIcon.textSize
+      },
+      // 文字内容
+      text: {
+        type: [String, Number],
+        default: props$i.loadingIcon.text
+      },
+      // 动画模式
+      timingFunction: {
+        type: String,
+        default: props$i.loadingIcon.timingFunction
+      },
+      // 动画执行周期时间
+      duration: {
+        type: [String, Number],
+        default: props$i.loadingIcon.duration
+      },
+      // mode=circle时的暗边颜色
+      inactiveColor: {
+        type: String,
+        default: props$i.loadingIcon.inactiveColor
+      }
+    }
+  };
+  const _sfc_main$W = {
+    name: "u-loading-icon",
+    mixins: [mpMixin, mixin, props$c],
+    data() {
+      return {
+        // Array.form可以通过一个伪数组对象创建指定长度的数组
+        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+        array12: Array.from({
+          length: 12
+        }),
+        // 这里需要设置默认值为360，否则在安卓nvue上，会延迟一个duration周期后才执行
+        // 在iOS nvue上，则会一开始默认执行两个周期的动画
+        aniAngel: 360,
+        // 动画旋转角度
+        webviewHide: false,
+        // 监听webview的状态，如果隐藏了页面，则停止动画，以免性能消耗
+        loading: false
+        // 是否运行中，针对nvue使用
+      };
+    },
+    computed: {
+      // 当为circle类型时，给其另外三边设置一个更轻一些的颜色
+      // 之所以需要这么做的原因是，比如父组件传了color为红色，那么需要另外的三个边为浅红色
+      // 而不能是固定的某一个其他颜色(因为这个固定的颜色可能浅蓝，导致效果没有那么细腻良好)
+      otherBorderColor() {
+        const lightColor = uni.$u.colorGradient(this.color, "#ffffff", 100)[80];
+        if (this.mode === "circle") {
+          return this.inactiveColor ? this.inactiveColor : lightColor;
+        } else {
+          return "transparent";
+        }
+      }
+    },
+    watch: {
+      show(n) {
+      }
+    },
+    mounted() {
+      this.init();
+    },
+    methods: {
+      init() {
+        setTimeout(() => {
+          this.show && this.addEventListenerToWebview();
+        }, 20);
+      },
+      // 监听webview的显示与隐藏
+      addEventListenerToWebview() {
+        const pages2 = getCurrentPages();
+        const page2 = pages2[pages2.length - 1];
+        const currentWebview = page2.$getAppWebview();
+        currentWebview.addEventListener("hide", () => {
+          this.webviewHide = true;
+        });
+        currentWebview.addEventListener("show", () => {
+          this.webviewHide = false;
+        });
+      }
+    }
+  };
+  function _sfc_render$i(_ctx, _cache, $props, $setup, $data, $options) {
+    return _ctx.show ? (vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        key: 0,
+        class: vue.normalizeClass(["u-loading-icon", [_ctx.vertical && "u-loading-icon--vertical"]]),
+        style: vue.normalizeStyle([_ctx.$u.addStyle(_ctx.customStyle)])
+      },
+      [
+        !$data.webviewHide ? (vue.openBlock(), vue.createElementBlock(
+          "view",
+          {
+            key: 0,
+            class: vue.normalizeClass(["u-loading-icon__spinner", [`u-loading-icon__spinner--${_ctx.mode}`]]),
+            ref: "ani",
+            style: vue.normalizeStyle({
+              color: _ctx.color,
+              width: _ctx.$u.addUnit(_ctx.size),
+              height: _ctx.$u.addUnit(_ctx.size),
+              borderTopColor: _ctx.color,
+              borderBottomColor: $options.otherBorderColor,
+              borderLeftColor: $options.otherBorderColor,
+              borderRightColor: $options.otherBorderColor,
+              "animation-duration": `${_ctx.duration}ms`,
+              "animation-timing-function": _ctx.mode === "semicircle" || _ctx.mode === "circle" ? _ctx.timingFunction : ""
+            })
+          },
+          [
+            _ctx.mode === "spinner" ? (vue.openBlock(true), vue.createElementBlock(
+              vue.Fragment,
+              { key: 0 },
+              vue.renderList($data.array12, (item, index2) => {
+                return vue.openBlock(), vue.createElementBlock("view", {
+                  key: index2,
+                  class: "u-loading-icon__dot"
+                });
+              }),
+              128
+              /* KEYED_FRAGMENT */
+            )) : vue.createCommentVNode("v-if", true)
+          ],
+          6
+          /* CLASS, STYLE */
+        )) : vue.createCommentVNode("v-if", true),
+        _ctx.text ? (vue.openBlock(), vue.createElementBlock(
+          "text",
+          {
+            key: 1,
+            class: "u-loading-icon__text",
+            style: vue.normalizeStyle({
+              fontSize: _ctx.$u.addUnit(_ctx.textSize),
+              color: _ctx.textColor
+            })
+          },
+          vue.toDisplayString(_ctx.text),
+          5
+          /* TEXT, STYLE */
+        )) : vue.createCommentVNode("v-if", true)
+      ],
+      6
+      /* CLASS, STYLE */
+    )) : vue.createCommentVNode("v-if", true);
+  }
+  const __easycom_1$3 = /* @__PURE__ */ _export_sfc(_sfc_main$W, [["render", _sfc_render$i], ["__scopeId", "data-v-c3ec5695"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-loading-icon/u-loading-icon.vue"]]);
+  const props$b = {
     props: {
       // 是否细边框
       hairline: {
         type: Boolean,
-        default: props$k.button.hairline
+        default: props$i.button.hairline
       },
       // 按钮的预置样式，info，primary，error，warning，success
       type: {
         type: String,
-        default: props$k.button.type
+        default: props$i.button.type
       },
       // 按钮尺寸，large，normal，small，mini
       size: {
         type: String,
-        default: props$k.button.size
+        default: props$i.button.size
       },
       // 按钮形状，circle（两边为半圆），square（带圆角）
       shape: {
         type: String,
-        default: props$k.button.shape
+        default: props$i.button.shape
       },
       // 按钮是否镂空
       plain: {
         type: Boolean,
-        default: props$k.button.plain
+        default: props$i.button.plain
       },
       // 是否禁止状态
       disabled: {
         type: Boolean,
-        default: props$k.button.disabled
+        default: props$i.button.disabled
       },
       // 是否加载中
       loading: {
         type: Boolean,
-        default: props$k.button.loading
+        default: props$i.button.loading
       },
       // 加载中提示文字
       loadingText: {
         type: [String, Number],
-        default: props$k.button.loadingText
+        default: props$i.button.loadingText
       },
       // 加载状态图标类型
       loadingMode: {
         type: String,
-        default: props$k.button.loadingMode
+        default: props$i.button.loadingMode
       },
       // 加载图标大小
       loadingSize: {
         type: [String, Number],
-        default: props$k.button.loadingSize
+        default: props$i.button.loadingSize
       },
       // 开放能力，具体请看uniapp稳定关于button组件部分说明
       // https://uniapp.dcloud.io/component/button
       openType: {
         type: String,
-        default: props$k.button.openType
+        default: props$i.button.openType
       },
       // 用于 <form> 组件，点击分别会触发 <form> 组件的 submit/reset 事件
       // 取值为submit（提交表单），reset（重置表单）
       formType: {
         type: String,
-        default: props$k.button.formType
+        default: props$i.button.formType
       },
       // 打开 APP 时，向 APP 传递的参数，open-type=launchApp时有效
       // 只微信小程序、QQ小程序有效
       appParameter: {
         type: String,
-        default: props$k.button.appParameter
+        default: props$i.button.appParameter
       },
       // 指定是否阻止本节点的祖先节点出现点击态，微信小程序有效
       hoverStopPropagation: {
         type: Boolean,
-        default: props$k.button.hoverStopPropagation
+        default: props$i.button.hoverStopPropagation
       },
       // 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。只微信小程序有效
       lang: {
         type: String,
-        default: props$k.button.lang
+        default: props$i.button.lang
       },
       // 会话来源，open-type="contact"时有效。只微信小程序有效
       sessionFrom: {
         type: String,
-        default: props$k.button.sessionFrom
+        default: props$i.button.sessionFrom
       },
       // 会话内消息卡片标题，open-type="contact"时有效
       // 默认当前标题，只微信小程序有效
       sendMessageTitle: {
         type: String,
-        default: props$k.button.sendMessageTitle
+        default: props$i.button.sendMessageTitle
       },
       // 会话内消息卡片点击跳转小程序路径，open-type="contact"时有效
       // 默认当前分享路径，只微信小程序有效
       sendMessagePath: {
         type: String,
-        default: props$k.button.sendMessagePath
+        default: props$i.button.sendMessagePath
       },
       // 会话内消息卡片图片，open-type="contact"时有效
       // 默认当前页面截图，只微信小程序有效
       sendMessageImg: {
         type: String,
-        default: props$k.button.sendMessageImg
+        default: props$i.button.sendMessageImg
       },
       // 是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示"可能要发送的小程序"提示，
       // 用户点击后可以快速发送小程序消息，open-type="contact"时有效
       showMessageCard: {
         type: Boolean,
-        default: props$k.button.showMessageCard
+        default: props$i.button.showMessageCard
       },
       // 额外传参参数，用于小程序的data-xxx属性，通过target.dataset.name获取
       dataName: {
         type: String,
-        default: props$k.button.dataName
+        default: props$i.button.dataName
       },
       // 节流，一定时间内只能触发一次
       throttleTime: {
         type: [String, Number],
-        default: props$k.button.throttleTime
+        default: props$i.button.throttleTime
       },
       // 按住后多久出现点击态，单位毫秒
       hoverStartTime: {
         type: [String, Number],
-        default: props$k.button.hoverStartTime
+        default: props$i.button.hoverStartTime
       },
       // 手指松开后点击态保留时间，单位毫秒
       hoverStayTime: {
         type: [String, Number],
-        default: props$k.button.hoverStayTime
+        default: props$i.button.hoverStayTime
       },
       // 按钮文字，之所以通过props传入，是因为slot传入的话
       // nvue中无法控制文字的样式
       text: {
         type: [String, Number],
-        default: props$k.button.text
+        default: props$i.button.text
       },
       // 按钮图标
       icon: {
         type: String,
-        default: props$k.button.icon
+        default: props$i.button.icon
       },
       // 按钮图标
       iconColor: {
         type: String,
-        default: props$k.button.icon
+        default: props$i.button.icon
       },
       // 按钮颜色，支持传入linear-gradient渐变色
       color: {
         type: String,
-        default: props$k.button.color
+        default: props$i.button.color
       }
     }
   };
-  const _sfc_main$R = {
+  const _sfc_main$V = {
     name: "u-button",
-    mixins: [mpMixin, mixin, props$7],
+    mixins: [mpMixin, mixin, props$b],
     data() {
       return {};
     },
@@ -6476,9 +5712,9 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_0$3);
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render$h(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_1$3);
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock("button", {
       "hover-start-time": Number(_ctx.hoverStartTime),
       "hover-stay-time": Number(_ctx.hoverStayTime),
@@ -6554,7 +5790,401 @@ This will fail in production.`);
       ))
     ], 46, ["hover-start-time", "hover-stay-time", "form-type", "open-type", "app-parameter", "hover-stop-propagation", "send-message-title", "send-message-path", "lang", "data-name", "session-from", "send-message-img", "show-message-card", "hover-class"]);
   }
-  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$d], ["__scopeId", "data-v-c6ff829e"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-button/u-button.vue"]]);
+  const __easycom_1$2 = /* @__PURE__ */ _export_sfc(_sfc_main$V, [["render", _sfc_render$h], ["__scopeId", "data-v-c6ff829e"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-button/u-button.vue"]]);
+  const props$a = {
+    props: {
+      // 是否显示遮罩
+      show: {
+        type: Boolean,
+        default: props$i.overlay.show
+      },
+      // 层级z-index
+      zIndex: {
+        type: [String, Number],
+        default: props$i.overlay.zIndex
+      },
+      // 遮罩的过渡时间，单位为ms
+      duration: {
+        type: [String, Number],
+        default: props$i.overlay.duration
+      },
+      // 不透明度值，当做rgba的第四个参数
+      opacity: {
+        type: [String, Number],
+        default: props$i.overlay.opacity
+      }
+    }
+  };
+  const _sfc_main$U = {
+    name: "u-overlay",
+    mixins: [mpMixin, mixin, props$a],
+    computed: {
+      overlayStyle() {
+        const style = {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: this.zIndex,
+          bottom: 0,
+          "background-color": `rgba(0, 0, 0, ${this.opacity})`
+        };
+        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
+      }
+    },
+    methods: {
+      clickHandler() {
+        this.$emit("click");
+      }
+    }
+  };
+  function _sfc_render$g(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
+    return vue.openBlock(), vue.createBlock(_component_u_transition, {
+      show: _ctx.show,
+      "custom-class": "u-overlay",
+      duration: _ctx.duration,
+      "custom-style": $options.overlayStyle,
+      onClick: $options.clickHandler
+    }, {
+      default: vue.withCtx(() => [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ]),
+      _: 3
+      /* FORWARDED */
+    }, 8, ["show", "duration", "custom-style", "onClick"]);
+  }
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$U, [["render", _sfc_render$g], ["__scopeId", "data-v-38c77267"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-overlay/u-overlay.vue"]]);
+  const props$9 = {
+    props: {
+      bgColor: {
+        type: String,
+        default: props$i.statusBar.bgColor
+      }
+    }
+  };
+  const _sfc_main$T = {
+    name: "u-status-bar",
+    mixins: [mpMixin, mixin, props$9],
+    data() {
+      return {};
+    },
+    computed: {
+      style() {
+        const style = {};
+        style.height = uni.$u.addUnit(uni.$u.sys().statusBarHeight, "px");
+        style.backgroundColor = this.bgColor;
+        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
+      }
+    }
+  };
+  function _sfc_render$f(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        style: vue.normalizeStyle([$options.style]),
+        class: "u-status-bar"
+      },
+      [
+        vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
+      ],
+      4
+      /* STYLE */
+    );
+  }
+  const __easycom_1$1 = /* @__PURE__ */ _export_sfc(_sfc_main$T, [["render", _sfc_render$f], ["__scopeId", "data-v-7dbb0f3a"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-status-bar/u-status-bar.vue"]]);
+  const props$8 = {
+    props: {}
+  };
+  const _sfc_main$S = {
+    name: "u-safe-bottom",
+    mixins: [mpMixin, mixin, props$8],
+    data() {
+      return {
+        safeAreaBottomHeight: 0,
+        isNvue: false
+      };
+    },
+    computed: {
+      style() {
+        const style = {};
+        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
+      }
+    },
+    mounted() {
+    }
+  };
+  function _sfc_render$e(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: vue.normalizeClass(["u-safe-bottom", [!$data.isNvue && "u-safe-area-inset-bottom"]]),
+        style: vue.normalizeStyle([$options.style])
+      },
+      null,
+      6
+      /* CLASS, STYLE */
+    );
+  }
+  const __easycom_3$1 = /* @__PURE__ */ _export_sfc(_sfc_main$S, [["render", _sfc_render$e], ["__scopeId", "data-v-82d264d4"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-safe-bottom/u-safe-bottom.vue"]]);
+  const props$7 = {
+    props: {
+      // 是否展示弹窗
+      show: {
+        type: Boolean,
+        default: props$i.popup.show
+      },
+      // 是否显示遮罩
+      overlay: {
+        type: Boolean,
+        default: props$i.popup.overlay
+      },
+      // 弹出的方向，可选值为 top bottom right left center
+      mode: {
+        type: String,
+        default: props$i.popup.mode
+      },
+      // 动画时长，单位ms
+      duration: {
+        type: [String, Number],
+        default: props$i.popup.duration
+      },
+      // 是否显示关闭图标
+      closeable: {
+        type: Boolean,
+        default: props$i.popup.closeable
+      },
+      // 自定义遮罩的样式
+      overlayStyle: {
+        type: [Object, String],
+        default: props$i.popup.overlayStyle
+      },
+      // 点击遮罩是否关闭弹窗
+      closeOnClickOverlay: {
+        type: Boolean,
+        default: props$i.popup.closeOnClickOverlay
+      },
+      // 层级
+      zIndex: {
+        type: [String, Number],
+        default: props$i.popup.zIndex
+      },
+      // 是否为iPhoneX留出底部安全距离
+      safeAreaInsetBottom: {
+        type: Boolean,
+        default: props$i.popup.safeAreaInsetBottom
+      },
+      // 是否留出顶部安全距离（状态栏高度）
+      safeAreaInsetTop: {
+        type: Boolean,
+        default: props$i.popup.safeAreaInsetTop
+      },
+      // 自定义关闭图标位置，top-left为左上角，top-right为右上角，bottom-left为左下角，bottom-right为右下角
+      closeIconPos: {
+        type: String,
+        default: props$i.popup.closeIconPos
+      },
+      // 是否显示圆角
+      round: {
+        type: [Boolean, String, Number],
+        default: props$i.popup.round
+      },
+      // mode=center，也即中部弹出时，是否使用缩放模式
+      zoom: {
+        type: Boolean,
+        default: props$i.popup.zoom
+      },
+      // 弹窗背景色，设置为transparent可去除白色背景
+      bgColor: {
+        type: String,
+        default: props$i.popup.bgColor
+      },
+      // 遮罩的透明度，0-1之间
+      overlayOpacity: {
+        type: [Number, String],
+        default: props$i.popup.overlayOpacity
+      }
+    }
+  };
+  const _sfc_main$R = {
+    name: "u-popup",
+    mixins: [mpMixin, mixin, props$7],
+    data() {
+      return {
+        overlayDuration: this.duration + 50
+      };
+    },
+    watch: {
+      show(newValue, oldValue) {
+      }
+    },
+    computed: {
+      transitionStyle() {
+        const style = {
+          zIndex: this.zIndex,
+          position: "fixed",
+          display: "flex"
+        };
+        style[this.mode] = 0;
+        if (this.mode === "left") {
+          return uni.$u.deepMerge(style, {
+            bottom: 0,
+            top: 0
+          });
+        } else if (this.mode === "right") {
+          return uni.$u.deepMerge(style, {
+            bottom: 0,
+            top: 0
+          });
+        } else if (this.mode === "top") {
+          return uni.$u.deepMerge(style, {
+            left: 0,
+            right: 0
+          });
+        } else if (this.mode === "bottom") {
+          return uni.$u.deepMerge(style, {
+            left: 0,
+            right: 0
+          });
+        } else if (this.mode === "center") {
+          return uni.$u.deepMerge(style, {
+            alignItems: "center",
+            "justify-content": "center",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0
+          });
+        }
+      },
+      contentStyle() {
+        const style = {};
+        uni.$u.sys();
+        if (this.mode !== "center") {
+          style.flex = 1;
+        }
+        if (this.bgColor) {
+          style.backgroundColor = this.bgColor;
+        }
+        if (this.round) {
+          const value = uni.$u.addUnit(this.round);
+          if (this.mode === "top") {
+            style.borderBottomLeftRadius = value;
+            style.borderBottomRightRadius = value;
+          } else if (this.mode === "bottom") {
+            style.borderTopLeftRadius = value;
+            style.borderTopRightRadius = value;
+          } else if (this.mode === "center") {
+            style.borderRadius = value;
+          }
+        }
+        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
+      },
+      position() {
+        if (this.mode === "center") {
+          return this.zoom ? "fade-zoom" : "fade";
+        }
+        if (this.mode === "left") {
+          return "slide-left";
+        }
+        if (this.mode === "right") {
+          return "slide-right";
+        }
+        if (this.mode === "bottom") {
+          return "slide-up";
+        }
+        if (this.mode === "top") {
+          return "slide-down";
+        }
+      }
+    },
+    methods: {
+      // 点击遮罩
+      overlayClick() {
+        if (this.closeOnClickOverlay) {
+          this.$emit("close");
+        }
+      },
+      close(e) {
+        this.$emit("close");
+      },
+      afterEnter() {
+        this.$emit("open");
+      },
+      clickHandler() {
+        if (this.mode === "center") {
+          this.overlayClick();
+        }
+        this.$emit("click");
+      }
+    }
+  };
+  function _sfc_render$d(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_overlay = resolveEasycom(vue.resolveDynamicComponent("u-overlay"), __easycom_0$3);
+    const _component_u_status_bar = resolveEasycom(vue.resolveDynamicComponent("u-status-bar"), __easycom_1$1);
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+    const _component_u_safe_bottom = resolveEasycom(vue.resolveDynamicComponent("u-safe-bottom"), __easycom_3$1);
+    const _component_u_transition = resolveEasycom(vue.resolveDynamicComponent("u-transition"), __easycom_4$1);
+    return vue.openBlock(), vue.createElementBlock("view", { class: "u-popup" }, [
+      _ctx.overlay ? (vue.openBlock(), vue.createBlock(_component_u_overlay, {
+        key: 0,
+        show: _ctx.show,
+        onClick: $options.overlayClick,
+        duration: $data.overlayDuration,
+        customStyle: _ctx.overlayStyle,
+        opacity: _ctx.overlayOpacity
+      }, null, 8, ["show", "onClick", "duration", "customStyle", "opacity"])) : vue.createCommentVNode("v-if", true),
+      vue.createVNode(_component_u_transition, {
+        show: _ctx.show,
+        customStyle: $options.transitionStyle,
+        mode: $options.position,
+        duration: _ctx.duration,
+        onAfterEnter: $options.afterEnter,
+        onClick: $options.clickHandler
+      }, {
+        default: vue.withCtx(() => [
+          vue.createElementVNode(
+            "view",
+            {
+              class: "u-popup__content",
+              style: vue.normalizeStyle([$options.contentStyle]),
+              onClick: _cache[1] || (_cache[1] = vue.withModifiers((...args) => _ctx.noop && _ctx.noop(...args), ["stop"]))
+            },
+            [
+              _ctx.safeAreaInsetTop ? (vue.openBlock(), vue.createBlock(_component_u_status_bar, { key: 0 })) : vue.createCommentVNode("v-if", true),
+              vue.renderSlot(_ctx.$slots, "default", {}, void 0, true),
+              _ctx.closeable ? (vue.openBlock(), vue.createElementBlock(
+                "view",
+                {
+                  key: 1,
+                  onClick: _cache[0] || (_cache[0] = vue.withModifiers((...args) => $options.close && $options.close(...args), ["stop"])),
+                  class: vue.normalizeClass(["u-popup__content__close", ["u-popup__content__close--" + _ctx.closeIconPos]]),
+                  "hover-class": "u-popup__content__close--hover",
+                  "hover-stay-time": "150"
+                },
+                [
+                  vue.createVNode(_component_u_icon, {
+                    name: "close",
+                    color: "#909399",
+                    size: "18",
+                    bold: ""
+                  })
+                ],
+                2
+                /* CLASS */
+              )) : vue.createCommentVNode("v-if", true),
+              _ctx.safeAreaInsetBottom ? (vue.openBlock(), vue.createBlock(_component_u_safe_bottom, { key: 2 })) : vue.createCommentVNode("v-if", true)
+            ],
+            4
+            /* STYLE */
+          )
+        ]),
+        _: 3
+        /* FORWARDED */
+      }, 8, ["show", "customStyle", "mode", "duration", "onAfterEnter", "onClick"])
+    ]);
+  }
+  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$R, [["render", _sfc_render$d], ["__scopeId", "data-v-5f94edb8"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-popup/u-popup.vue"]]);
   const _sfc_main$Q = {};
   function _sfc_render$c(_ctx, _cache) {
     return null;
@@ -6574,7 +6204,7 @@ This will fail in production.`);
     },
     setup(__props) {
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", {
           class: "menu-item",
           onClick: _cache[0] || (_cache[0] = ($event) => _ctx.$emit("click"))
@@ -6632,8 +6262,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6701,8 +6331,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6770,8 +6400,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6839,8 +6469,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6908,8 +6538,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -6978,8 +6608,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7047,8 +6677,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7116,8 +6746,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7185,8 +6815,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7254,8 +6884,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7323,8 +6953,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7392,8 +7022,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7461,8 +7091,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7530,8 +7160,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -7605,8 +7235,8 @@ This will fail in production.`);
         showCertificationPanel.value = true;
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           "close-on-click-overlay": false,
           show: __props.show,
@@ -7790,9 +7420,9 @@ This will fail in production.`);
         showAboutPanel.value = true;
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$1);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_button = resolveEasycom(vue.resolveDynamicComponent("u-button"), __easycom_1$2);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           "close-on-click-overlay": false,
           show: __props.show,
@@ -8071,7 +7701,7 @@ This will fail in production.`);
         formatAppLog("log", "at components/children/SearchInput.vue:57", "现在是在SearchPanel组件里面语音搜索");
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "search-header" }, [
           vue.createVNode(_component_u_icon, {
             name: "arrow-left",
@@ -8126,8 +7756,8 @@ This will fail in production.`);
         formatAppLog("log", "at components/children/SearchTag.vue:30", "搜索界面编辑标签icon被点击");
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$3);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$4);
         return vue.openBlock(), vue.createElementBlock("view", { class: "tag-wrapper" }, [
           vue.createElementVNode("view", { class: "tag-header" }, [
             vue.createElementVNode("text", { class: "tag-title" }, "笔记标签"),
@@ -8170,7 +7800,7 @@ This will fail in production.`);
     },
     setup(__props) {
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "history-wrapper" }, [
           vue.createElementVNode("view", { class: "history-header" }, [
             vue.createElementVNode("text", { class: "history-title" }, "历史记录"),
@@ -8291,7 +7921,7 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -8372,7 +8002,7 @@ This will fail in production.`);
       // 绑定的值
       modelValue: {
         type: [String, Number],
-        default: props$k.input.value
+        default: props$i.input.value
       },
       // number-数字输入键盘，app-vue下可以输入浮点数，app-nvue和小程序平台下只能输入整数
       // idcard-身份证输入键盘，微信、支付宝、百度、QQ小程序
@@ -8380,171 +8010,171 @@ This will fail in production.`);
       // text-文本输入键盘
       type: {
         type: String,
-        default: props$k.input.type
+        default: props$i.input.type
       },
       // 如果 textarea 是在一个 position:fixed 的区域，需要显示指定属性 fixed 为 true，
       // 兼容性：微信小程序、百度小程序、字节跳动小程序、QQ小程序
       fixed: {
         type: Boolean,
-        default: props$k.input.fixed
+        default: props$i.input.fixed
       },
       // 是否禁用输入框
       disabled: {
         type: Boolean,
-        default: props$k.input.disabled
+        default: props$i.input.disabled
       },
       // 禁用状态时的背景色
       disabledColor: {
         type: String,
-        default: props$k.input.disabledColor
+        default: props$i.input.disabledColor
       },
       // 是否显示清除控件
       clearable: {
         type: Boolean,
-        default: props$k.input.clearable
+        default: props$i.input.clearable
       },
       // 是否密码类型
       password: {
         type: Boolean,
-        default: props$k.input.password
+        default: props$i.input.password
       },
       // 最大输入长度，设置为 -1 的时候不限制最大长度
       maxlength: {
         type: [String, Number],
-        default: props$k.input.maxlength
+        default: props$i.input.maxlength
       },
       // 	输入框为空时的占位符
       placeholder: {
         type: String,
-        default: props$k.input.placeholder
+        default: props$i.input.placeholder
       },
       // 指定placeholder的样式类，注意页面或组件的style中写了scoped时，需要在类名前写/deep/
       placeholderClass: {
         type: String,
-        default: props$k.input.placeholderClass
+        default: props$i.input.placeholderClass
       },
       // 指定placeholder的样式
       placeholderStyle: {
         type: [String, Object],
-        default: props$k.input.placeholderStyle
+        default: props$i.input.placeholderStyle
       },
       // 是否显示输入字数统计，只在 type ="text"或type ="textarea"时有效
       showWordLimit: {
         type: Boolean,
-        default: props$k.input.showWordLimit
+        default: props$i.input.showWordLimit
       },
       // 设置右下角按钮的文字，有效值：send|search|next|go|done，兼容性详见uni-app文档
       // https://uniapp.dcloud.io/component/input
       // https://uniapp.dcloud.io/component/textarea
       confirmType: {
         type: String,
-        default: props$k.input.confirmType
+        default: props$i.input.confirmType
       },
       // 点击键盘右下角按钮时是否保持键盘不收起，H5无效
       confirmHold: {
         type: Boolean,
-        default: props$k.input.confirmHold
+        default: props$i.input.confirmHold
       },
       // focus时，点击页面的时候不收起键盘，微信小程序有效
       holdKeyboard: {
         type: Boolean,
-        default: props$k.input.holdKeyboard
+        default: props$i.input.holdKeyboard
       },
       // 自动获取焦点
       // 在 H5 平台能否聚焦以及软键盘是否跟随弹出，取决于当前浏览器本身的实现。nvue 页面不支持，需使用组件的 focus()、blur() 方法控制焦点
       focus: {
         type: Boolean,
-        default: props$k.input.focus
+        default: props$i.input.focus
       },
       // 键盘收起时，是否自动失去焦点，目前仅App3.0.0+有效
       autoBlur: {
         type: Boolean,
-        default: props$k.input.autoBlur
+        default: props$i.input.autoBlur
       },
       // 是否去掉 iOS 下的默认内边距，仅微信小程序，且type=textarea时有效
       disableDefaultPadding: {
         type: Boolean,
-        default: props$k.input.disableDefaultPadding
+        default: props$i.input.disableDefaultPadding
       },
       // 指定focus时光标的位置
       cursor: {
         type: [String, Number],
-        default: props$k.input.cursor
+        default: props$i.input.cursor
       },
       // 输入框聚焦时底部与键盘的距离
       cursorSpacing: {
         type: [String, Number],
-        default: props$k.input.cursorSpacing
+        default: props$i.input.cursorSpacing
       },
       // 光标起始位置，自动聚集时有效，需与selection-end搭配使用
       selectionStart: {
         type: [String, Number],
-        default: props$k.input.selectionStart
+        default: props$i.input.selectionStart
       },
       // 光标结束位置，自动聚集时有效，需与selection-start搭配使用
       selectionEnd: {
         type: [String, Number],
-        default: props$k.input.selectionEnd
+        default: props$i.input.selectionEnd
       },
       // 键盘弹起时，是否自动上推页面
       adjustPosition: {
         type: Boolean,
-        default: props$k.input.adjustPosition
+        default: props$i.input.adjustPosition
       },
       // 输入框内容对齐方式，可选值为：left|center|right
       inputAlign: {
         type: String,
-        default: props$k.input.inputAlign
+        default: props$i.input.inputAlign
       },
       // 输入框字体的大小
       fontSize: {
         type: [String, Number],
-        default: props$k.input.fontSize
+        default: props$i.input.fontSize
       },
       // 输入框字体颜色
       color: {
         type: String,
-        default: props$k.input.color
+        default: props$i.input.color
       },
       // 输入框前置图标
       prefixIcon: {
         type: String,
-        default: props$k.input.prefixIcon
+        default: props$i.input.prefixIcon
       },
       // 前置图标样式，对象或字符串
       prefixIconStyle: {
         type: [String, Object],
-        default: props$k.input.prefixIconStyle
+        default: props$i.input.prefixIconStyle
       },
       // 输入框后置图标
       suffixIcon: {
         type: String,
-        default: props$k.input.suffixIcon
+        default: props$i.input.suffixIcon
       },
       // 后置图标样式，对象或字符串
       suffixIconStyle: {
         type: [String, Object],
-        default: props$k.input.suffixIconStyle
+        default: props$i.input.suffixIconStyle
       },
       // 边框类型，surround-四周边框，bottom-底部边框，none-无边框
       border: {
         type: String,
-        default: props$k.input.border
+        default: props$i.input.border
       },
       // 是否只读，与disabled不同之处在于disabled会置灰组件，而readonly则不会
       readonly: {
         type: Boolean,
-        default: props$k.input.readonly
+        default: props$i.input.readonly
       },
       // 输入框形状，circle-圆形，square-方形
       shape: {
         type: String,
-        default: props$k.input.shape
+        default: props$i.input.shape
       },
       // 用于处理或者过滤输入框内容的方法
       formatter: {
         type: [Function, null],
-        default: props$k.input.formatter
+        default: props$i.input.formatter
       },
       // 是否忽略组件内对文本合成系统事件的处理
       ignoreCompositionEvent: {
@@ -8690,7 +8320,7 @@ This will fail in production.`);
     }
   };
   function _sfc_render$a(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -8839,38 +8469,38 @@ This will fail in production.`);
       content: String,
       copyLink: {
         type: Boolean,
-        default: props$k.parse.copyLink
+        default: props$i.parse.copyLink
       },
       domain: String,
       errorImg: {
         type: String,
-        default: props$k.parse.errorImg
+        default: props$i.parse.errorImg
       },
       lazyLoad: {
         type: Boolean,
-        default: props$k.parse.lazyLoad
+        default: props$i.parse.lazyLoad
       },
       loadingImg: {
         type: String,
-        default: props$k.parse.loadingImg
+        default: props$i.parse.loadingImg
       },
       pauseVideo: {
         type: Boolean,
-        default: props$k.parse.pauseVideo
+        default: props$i.parse.pauseVideo
       },
       previewImg: {
         type: Boolean,
-        default: props$k.parse.previewImg
+        default: props$i.parse.previewImg
       },
       scrollTable: Boolean,
       selectable: Boolean,
       setTitle: {
         type: Boolean,
-        default: props$k.parse.setTitle
+        default: props$i.parse.setTitle
       },
       showImgMenu: {
         type: Boolean,
-        default: props$k.parse.showImgMenu
+        default: props$i.parse.showImgMenu
       },
       tagStyle: Object,
       useAnchor: null
@@ -9721,7 +9351,7 @@ This will fail in production.`);
     } else
       this.i++;
   };
-  const block0$1 = (Comp) => {
+  const block0 = (Comp) => {
     (Comp.$wxs || (Comp.$wxs = [])).push("handler");
     (Comp.$wxsModules || (Comp.$wxsModules = {}))["handler"] = "49b63d90";
   };
@@ -10148,8 +9778,8 @@ This will fail in production.`);
       ))
     ], 14, ["id"]);
   }
-  if (typeof block0$1 === "function")
-    block0$1(_sfc_main$q);
+  if (typeof block0 === "function")
+    block0(_sfc_main$q);
   const node = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["render", _sfc_render$8], ["__scopeId", "data-v-b872b65a"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-parse/node/node.vue"]]);
   const plugins = [];
   const _sfc_main$p = {
@@ -10322,7 +9952,7 @@ This will fail in production.`);
       /* CLASS */
     );
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$7], ["__scopeId", "data-v-fd155d76"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-parse/u-parse.vue"]]);
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["render", _sfc_render$7], ["__scopeId", "data-v-fd155d76"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-parse/u-parse.vue"]]);
   const _sfc_main$o = {
     __name: "MarkdownBlock",
     props: {
@@ -10331,7 +9961,7 @@ This will fail in production.`);
     },
     setup(__props) {
       return (_ctx, _cache) => {
-        const _component_u_parse = resolveEasycom(vue.resolveDynamicComponent("u-parse"), __easycom_0$1);
+        const _component_u_parse = resolveEasycom(vue.resolveDynamicComponent("u-parse"), __easycom_0$2);
         return vue.openBlock(), vue.createElementBlock("view", { class: "markdown-block" }, [
           __props.markdown ? (vue.openBlock(), vue.createBlock(_component_u_parse, {
             key: 0,
@@ -10414,7 +10044,7 @@ This will fail in production.`);
         });
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock(
           "view",
           {
@@ -10615,7 +10245,7 @@ This will fail in production.`);
         }
       };
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         const _component_u__input = resolveEasycom(vue.resolveDynamicComponent("u--input"), __easycom_1);
         return vue.openBlock(), vue.createElementBlock(
           "view",
@@ -10744,8 +10374,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -10816,7 +10446,7 @@ This will fail in production.`);
         }
       });
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("button", { onClick: handleClick }, [
           vue.createElementVNode("span", null, [
             vue.createVNode(_component_u_icon, {
@@ -10874,8 +10504,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "bottom",
@@ -11044,7 +10674,7 @@ This will fail in production.`);
           ;
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "index-page" }, [
           vue.createElementVNode("view", { class: "index-header" }, [
             vue.createVNode(_component_u_icon, {
@@ -18273,7 +17903,7 @@ This will fail in production.`);
         clearInterval(timer);
       });
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "verify-page" }, [
           vue.createCommentVNode(" 顶部返回按钮 "),
           vue.createElementVNode("view", { class: "top-bar" }, [
@@ -18328,52 +17958,52 @@ This will fail in production.`);
       // 是否显示圆点
       isDot: {
         type: Boolean,
-        default: props$k.badge.isDot
+        default: props$i.badge.isDot
       },
       // 显示的内容
       value: {
         type: [Number, String],
-        default: props$k.badge.value
+        default: props$i.badge.value
       },
       // 显示的内容
       modelValue: {
         type: [Number, String],
-        default: props$k.badge.modelValue
+        default: props$i.badge.modelValue
       },
       // 是否显示
       show: {
         type: Boolean,
-        default: props$k.badge.show
+        default: props$i.badge.show
       },
       // 最大值，超过最大值会显示 '{max}+'
       max: {
         type: [Number, String],
-        default: props$k.badge.max
+        default: props$i.badge.max
       },
       // 主题类型，error|warning|success|primary
       type: {
         type: String,
-        default: props$k.badge.type
+        default: props$i.badge.type
       },
       // 当数值为 0 时，是否展示 Badge
       showZero: {
         type: Boolean,
-        default: props$k.badge.showZero
+        default: props$i.badge.showZero
       },
       // 背景颜色，优先级比type高，如设置，type参数会失效
       bgColor: {
         type: [String, null],
-        default: props$k.badge.bgColor
+        default: props$i.badge.bgColor
       },
       // 字体颜色
       color: {
         type: [String, null],
-        default: props$k.badge.color
+        default: props$i.badge.color
       },
       // 徽标形状，circle-四角均为圆角，horn-左下角为直角
       shape: {
         type: String,
-        default: props$k.badge.shape
+        default: props$i.badge.shape
       },
       // 设置数字的显示方式，overflow|ellipsis|limit
       // overflow会根据max字段判断，超出显示`${max}+`
@@ -18381,22 +18011,22 @@ This will fail in production.`);
       // limit会依据1000作为判断条件，超出1000，显示`${value/1000}K`，比如2.2k、3.34w，最多保留2位小数
       numberType: {
         type: String,
-        default: props$k.badge.numberType
+        default: props$i.badge.numberType
       },
       // 设置badge的位置偏移，格式为 [x, y]，也即设置的为top和right的值，absolute为true时有效
       offset: {
         type: Array,
-        default: props$k.badge.offset
+        default: props$i.badge.offset
       },
       // 是否反转背景和字体颜色
       inverted: {
         type: Boolean,
-        default: props$k.badge.inverted
+        default: props$i.badge.inverted
       },
       // 是否绝对定位
       absolute: {
         type: Boolean,
-        default: props$k.badge.absolute
+        default: props$i.badge.absolute
       }
     }
   };
@@ -18456,68 +18086,68 @@ This will fail in production.`);
       /* TEXT, CLASS, STYLE */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5], ["__scopeId", "data-v-55e551d7"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$5], ["__scopeId", "data-v-55e551d7"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-badge/u-badge.vue"]]);
   const props$3 = {
     props: {
       // 滑块的移动过渡时间，单位ms
       duration: {
         type: Number,
-        default: props$k.tabs.duration
+        default: props$i.tabs.duration
       },
       // tabs标签数组
       list: {
         type: Array,
-        default: props$k.tabs.list
+        default: props$i.tabs.list
       },
       // 滑块颜色
       lineColor: {
         type: String,
-        default: props$k.tabs.lineColor
+        default: props$i.tabs.lineColor
       },
       // 菜单选择中时的样式
       activeStyle: {
         type: [String, Object],
-        default: props$k.tabs.activeStyle
+        default: props$i.tabs.activeStyle
       },
       // 菜单非选中时的样式
       inactiveStyle: {
         type: [String, Object],
-        default: props$k.tabs.inactiveStyle
+        default: props$i.tabs.inactiveStyle
       },
       // 滑块长度
       lineWidth: {
         type: [String, Number],
-        default: props$k.tabs.lineWidth
+        default: props$i.tabs.lineWidth
       },
       // 滑块高度
       lineHeight: {
         type: [String, Number],
-        default: props$k.tabs.lineHeight
+        default: props$i.tabs.lineHeight
       },
       // 滑块背景显示大小，当滑块背景设置为图片时使用
       lineBgSize: {
         type: String,
-        default: props$k.tabs.lineBgSize
+        default: props$i.tabs.lineBgSize
       },
       // 菜单item的样式
       itemStyle: {
         type: [String, Object],
-        default: props$k.tabs.itemStyle
+        default: props$i.tabs.itemStyle
       },
       // 菜单是否可滚动
       scrollable: {
         type: Boolean,
-        default: props$k.tabs.scrollable
+        default: props$i.tabs.scrollable
       },
       // 当前选中标签的索引
       current: {
         type: [Number, String],
-        default: props$k.tabs.current
+        default: props$i.tabs.current
       },
       // 默认读取的键名
       keyName: {
         type: String,
-        default: props$k.tabs.keyName
+        default: props$i.tabs.keyName
       }
     }
   };
@@ -18668,7 +18298,7 @@ This will fail in production.`);
     }
   };
   function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_badge = resolveEasycom(vue.resolveDynamicComponent("u-badge"), __easycom_0);
+    const _component_u_badge = resolveEasycom(vue.resolveDynamicComponent("u-badge"), __easycom_0$1);
     return vue.openBlock(), vue.createElementBlock("view", { class: "u-tabs" }, [
       vue.createElementVNode("view", { class: "u-tabs__wrapper" }, [
         vue.renderSlot(_ctx.$slots, "left", {}, void 0, true),
@@ -18758,7 +18388,354 @@ This will fail in production.`);
     ]);
   }
   const __easycom_2 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$4], ["__scopeId", "data-v-33d80d51"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-tabs/u-tabs.vue"]]);
+  const props$2 = {
+    props: {
+      color: {
+        type: String,
+        default: props$i.line.color
+      },
+      // 长度，竖向时表现为高度，横向时表现为长度，可以为百分比，带px单位的值等
+      length: {
+        type: [String, Number],
+        default: props$i.line.length
+      },
+      // 线条方向，col-竖向，row-横向
+      direction: {
+        type: String,
+        default: props$i.line.direction
+      },
+      // 是否显示细边框
+      hairline: {
+        type: Boolean,
+        default: props$i.line.hairline
+      },
+      // 线条与上下左右元素的间距，字符串形式，如"30px"、"20px 30px"
+      margin: {
+        type: [String, Number],
+        default: props$i.line.margin
+      },
+      // 是否虚线，true-虚线，false-实线
+      dashed: {
+        type: Boolean,
+        default: props$i.line.dashed
+      }
+    }
+  };
   const _sfc_main$8 = {
+    name: "u-line",
+    mixins: [mpMixin, mixin, props$2],
+    computed: {
+      lineStyle() {
+        const style = {};
+        style.margin = this.margin;
+        if (this.direction === "row") {
+          style.borderBottomWidth = "1px";
+          style.borderBottomStyle = this.dashed ? "dashed" : "solid";
+          style.width = uni.$u.addUnit(this.length);
+          if (this.hairline)
+            style.transform = "scaleY(0.5)";
+        } else {
+          style.borderLeftWidth = "1px";
+          style.borderLeftStyle = this.dashed ? "dashed" : "solid";
+          style.height = uni.$u.addUnit(this.length);
+          if (this.hairline)
+            style.transform = "scaleX(0.5)";
+        }
+        style.borderColor = this.color;
+        return uni.$u.deepMerge(style, uni.$u.addStyle(this.customStyle));
+      }
+    }
+  };
+  function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+    return vue.openBlock(), vue.createElementBlock(
+      "view",
+      {
+        class: "u-line",
+        style: vue.normalizeStyle([$options.lineStyle])
+      },
+      null,
+      4
+      /* STYLE */
+    );
+  }
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$3], ["__scopeId", "data-v-9bcb2aa0"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-line/u-line.vue"]]);
+  const props$1 = {
+    props: {
+      // 是否展示modal
+      show: {
+        type: Boolean,
+        default: props$i.modal.show
+      },
+      // 标题
+      title: {
+        type: [String],
+        default: props$i.modal.title
+      },
+      // 弹窗内容
+      content: {
+        type: String,
+        default: props$i.modal.content
+      },
+      // 确认文案
+      confirmText: {
+        type: String,
+        default: props$i.modal.confirmText
+      },
+      // 取消文案
+      cancelText: {
+        type: String,
+        default: props$i.modal.cancelText
+      },
+      // 是否显示确认按钮
+      showConfirmButton: {
+        type: Boolean,
+        default: props$i.modal.showConfirmButton
+      },
+      // 是否显示取消按钮
+      showCancelButton: {
+        type: Boolean,
+        default: props$i.modal.showCancelButton
+      },
+      // 确认按钮颜色
+      confirmColor: {
+        type: String,
+        default: props$i.modal.confirmColor
+      },
+      // 取消文字颜色
+      cancelColor: {
+        type: String,
+        default: props$i.modal.cancelColor
+      },
+      // 对调确认和取消的位置
+      buttonReverse: {
+        type: Boolean,
+        default: props$i.modal.buttonReverse
+      },
+      // 是否开启缩放效果
+      zoom: {
+        type: Boolean,
+        default: props$i.modal.zoom
+      },
+      // 是否异步关闭，只对确定按钮有效
+      asyncClose: {
+        type: Boolean,
+        default: props$i.modal.asyncClose
+      },
+      // 是否允许点击遮罩关闭modal
+      closeOnClickOverlay: {
+        type: Boolean,
+        default: props$i.modal.closeOnClickOverlay
+      },
+      // 给一个负的margin-top，往上偏移，避免和键盘重合的情况
+      negativeTop: {
+        type: [String, Number],
+        default: props$i.modal.negativeTop
+      },
+      // modal宽度，不支持百分比，可以数值，px，rpx单位
+      width: {
+        type: [String, Number],
+        default: props$i.modal.width
+      },
+      // 确认按钮的样式，circle-圆形，square-方形，如设置，将不会显示取消按钮
+      confirmButtonShape: {
+        type: String,
+        default: props$i.modal.confirmButtonShape
+      }
+    }
+  };
+  const _sfc_main$7 = {
+    name: "u-modal",
+    mixins: [mpMixin, mixin, props$1],
+    data() {
+      return {
+        loading: false
+      };
+    },
+    watch: {
+      show(n) {
+        if (n && this.loading)
+          this.loading = false;
+      }
+    },
+    methods: {
+      // 点击确定按钮
+      confirmHandler() {
+        if (this.asyncClose) {
+          this.loading = true;
+        }
+        this.$emit("confirm");
+      },
+      // 点击取消按钮
+      cancelHandler() {
+        this.$emit("cancel");
+      },
+      // 点击遮罩
+      // 从原理上来说，modal的遮罩点击，并不是真的点击到了遮罩
+      // 因为modal依赖于popup的中部弹窗类型，中部弹窗比较特殊，虽有然遮罩，但是为了让弹窗内容能flex居中
+      // 多了一个透明的遮罩，此透明的遮罩会覆盖在灰色的遮罩上，所以实际上是点击不到灰色遮罩的，popup内部在
+      // 透明遮罩的子元素做了.stop处理，所以点击内容区，也不会导致误触发
+      clickHandler() {
+        if (this.closeOnClickOverlay) {
+          this.$emit("close");
+        }
+      }
+    }
+  };
+  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_line = resolveEasycom(vue.resolveDynamicComponent("u-line"), __easycom_0);
+    const _component_u_loading_icon = resolveEasycom(vue.resolveDynamicComponent("u-loading-icon"), __easycom_1$3);
+    const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
+    return vue.openBlock(), vue.createBlock(_component_u_popup, {
+      mode: "center",
+      zoom: _ctx.zoom,
+      show: _ctx.show,
+      customStyle: {
+        borderRadius: "6px",
+        overflow: "hidden",
+        marginTop: `-${_ctx.$u.addUnit(_ctx.negativeTop)}`
+      },
+      closeOnClickOverlay: _ctx.closeOnClickOverlay,
+      safeAreaInsetBottom: false,
+      duration: 400,
+      onClick: $options.clickHandler
+    }, {
+      default: vue.withCtx(() => [
+        vue.createElementVNode(
+          "view",
+          {
+            class: "u-modal",
+            style: vue.normalizeStyle({
+              width: _ctx.$u.addUnit(_ctx.width)
+            })
+          },
+          [
+            _ctx.title ? (vue.openBlock(), vue.createElementBlock(
+              "text",
+              {
+                key: 0,
+                class: "u-modal__title"
+              },
+              vue.toDisplayString(_ctx.title),
+              1
+              /* TEXT */
+            )) : vue.createCommentVNode("v-if", true),
+            vue.createElementVNode(
+              "view",
+              {
+                class: "u-modal__content",
+                style: vue.normalizeStyle({
+                  paddingTop: `${_ctx.title ? 12 : 25}px`
+                })
+              },
+              [
+                vue.renderSlot(_ctx.$slots, "default", {}, () => [
+                  vue.createElementVNode(
+                    "text",
+                    { class: "u-modal__content__text" },
+                    vue.toDisplayString(_ctx.content),
+                    1
+                    /* TEXT */
+                  )
+                ], true)
+              ],
+              4
+              /* STYLE */
+            ),
+            _ctx.$slots.confirmButton ? (vue.openBlock(), vue.createElementBlock("view", {
+              key: 1,
+              class: "u-modal__button-group--confirm-button"
+            }, [
+              vue.renderSlot(_ctx.$slots, "confirmButton", {}, void 0, true)
+            ])) : (vue.openBlock(), vue.createElementBlock(
+              vue.Fragment,
+              { key: 2 },
+              [
+                vue.createVNode(_component_u_line),
+                vue.createElementVNode(
+                  "view",
+                  {
+                    class: "u-modal__button-group",
+                    style: vue.normalizeStyle({
+                      flexDirection: _ctx.buttonReverse ? "row-reverse" : "row"
+                    })
+                  },
+                  [
+                    _ctx.showCancelButton ? (vue.openBlock(), vue.createElementBlock(
+                      "view",
+                      {
+                        key: 0,
+                        class: vue.normalizeClass(["u-modal__button-group__wrapper u-modal__button-group__wrapper--cancel", [_ctx.showCancelButton && !_ctx.showConfirmButton && "u-modal__button-group__wrapper--only-cancel"]]),
+                        "hover-stay-time": 150,
+                        "hover-class": "u-modal__button-group__wrapper--hover",
+                        onClick: _cache[0] || (_cache[0] = (...args) => $options.cancelHandler && $options.cancelHandler(...args))
+                      },
+                      [
+                        vue.createElementVNode(
+                          "text",
+                          {
+                            class: "u-modal__button-group__wrapper__text",
+                            style: vue.normalizeStyle({
+                              color: _ctx.cancelColor
+                            })
+                          },
+                          vue.toDisplayString(_ctx.cancelText),
+                          5
+                          /* TEXT, STYLE */
+                        )
+                      ],
+                      2
+                      /* CLASS */
+                    )) : vue.createCommentVNode("v-if", true),
+                    _ctx.showConfirmButton && _ctx.showCancelButton ? (vue.openBlock(), vue.createBlock(_component_u_line, {
+                      key: 1,
+                      direction: "column"
+                    })) : vue.createCommentVNode("v-if", true),
+                    _ctx.showConfirmButton ? (vue.openBlock(), vue.createElementBlock(
+                      "view",
+                      {
+                        key: 2,
+                        class: vue.normalizeClass(["u-modal__button-group__wrapper u-modal__button-group__wrapper--confirm", [!_ctx.showCancelButton && _ctx.showConfirmButton && "u-modal__button-group__wrapper--only-confirm"]]),
+                        "hover-stay-time": 150,
+                        "hover-class": "u-modal__button-group__wrapper--hover",
+                        onClick: _cache[1] || (_cache[1] = (...args) => $options.confirmHandler && $options.confirmHandler(...args))
+                      },
+                      [
+                        $data.loading ? (vue.openBlock(), vue.createBlock(_component_u_loading_icon, { key: 0 })) : (vue.openBlock(), vue.createElementBlock(
+                          "text",
+                          {
+                            key: 1,
+                            class: "u-modal__button-group__wrapper__text",
+                            style: vue.normalizeStyle({
+                              color: _ctx.confirmColor
+                            })
+                          },
+                          vue.toDisplayString(_ctx.confirmText),
+                          5
+                          /* TEXT, STYLE */
+                        ))
+                      ],
+                      2
+                      /* CLASS */
+                    )) : vue.createCommentVNode("v-if", true)
+                  ],
+                  4
+                  /* STYLE */
+                )
+              ],
+              64
+              /* STABLE_FRAGMENT */
+            ))
+          ],
+          4
+          /* STYLE */
+        )
+      ]),
+      _: 3
+      /* FORWARDED */
+    }, 8, ["zoom", "show", "customStyle", "closeOnClickOverlay", "onClick"]);
+  }
+  const __easycom_5 = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render$2], ["__scopeId", "data-v-ce0c51d9"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-modal/u-modal.vue"]]);
+  const _sfc_main$6 = {
     __name: "NoteDetailSumTab",
     props: {
       show: Boolean,
@@ -18785,8 +18762,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -18826,8 +18803,8 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-5ef07a45"], ["__file", "F:/LiveHand/LiveHands/components/tabs/NoteDetailSumTab.vue"]]);
-  const _sfc_main$7 = {
+  const NoteDetailSumTab = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["__scopeId", "data-v-5ef07a45"], ["__file", "F:/LiveHand/LiveHands/components/tabs/NoteDetailSumTab.vue"]]);
+  const _sfc_main$5 = {
     __name: "NoteDetailPosterTab",
     props: {
       show: Boolean,
@@ -18854,8 +18831,8 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
         return vue.openBlock(), vue.createBlock(_component_u_popup, {
           show: __props.show,
           mode: "right",
@@ -18895,10 +18872,10 @@ This will fail in production.`);
       };
     }
   };
-  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-617c8a5c"], ["__file", "F:/LiveHand/LiveHands/components/tabs/NoteDetailPosterTab.vue"]]);
-  const _sfc_main$6 = {};
-  function _sfc_render$3(_ctx, _cache) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  const NoteDetailPosterTab = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-617c8a5c"], ["__file", "F:/LiveHand/LiveHands/components/tabs/NoteDetailPosterTab.vue"]]);
+  const _sfc_main$4 = {};
+  function _sfc_render$1(_ctx, _cache) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock("button", {
       type: "button",
       class: "talk-button"
@@ -18911,8 +18888,8 @@ This will fail in production.`);
       vue.createTextVNode(" 语音聊天 ")
     ]);
   }
-  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["render", _sfc_render$3], ["__scopeId", "data-v-7d79bddb"], ["__file", "F:/LiveHand/LiveHands/components/children/TalkButton.vue"]]);
-  const _sfc_main$5 = {
+  const TalkButton = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$1], ["__scopeId", "data-v-7d79bddb"], ["__file", "F:/LiveHand/LiveHands/components/children/TalkButton.vue"]]);
+  const _sfc_main$3 = {
     __name: "NoteDetails",
     setup(__props) {
       const activeTab = vue.ref(0);
@@ -18939,11 +18916,11 @@ This will fail in production.`);
         }
       });
       function onTalkWithAI() {
-        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:145", "功能暂未开放");
+        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:155", "功能暂未开放");
       }
       function handleCloseChat() {
         chatPopupVisible.value = false;
-        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:150", "用户点击了关闭按钮");
+        formatAppLog("log", "at pages/details/NoteDetails/NoteDetails.vue:160", "用户点击了关闭按钮");
       }
       function goBack() {
         uni.navigateBack();
@@ -18951,9 +18928,9 @@ This will fail in production.`);
       function onShare() {
         uni.showToast({ title: "点击分享", icon: "none" });
       }
-      function handleTabChange(index2) {
+      function handleTabChange(tab) {
         lastTab.value = activeTab.value;
-        activeTab.value = index2;
+        activeTab.value = tab.index;
       }
       function onSwiperChange(e) {
         lastTab.value = activeTab.value;
@@ -18977,11 +18954,11 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$3);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$4);
         const _component_u_tabs = resolveEasycom(vue.resolveDynamicComponent("u-tabs"), __easycom_2);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
+        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "note-details-page" }, [
           vue.createCommentVNode(" 顶部固定区域：图标、Header、Tabs "),
           vue.createElementVNode("view", { class: "top-fixed-header" }, [
@@ -19056,15 +19033,25 @@ This will fail in production.`);
                 ))
               ])
             ]),
-            vue.createCommentVNode(" Tabs栏 "),
+            vue.createCommentVNode(" Tabs栏（已修改样式） "),
             vue.createVNode(_component_u_tabs, {
               list: tabList,
               current: activeTab.value,
+              lineWidth: "150",
+              lineColor: "#000",
               onChange: handleTabChange,
-              "item-style": { justifyContent: "center", padding: "20rpx 0", height: "80rpx", flex: 1, justifyContent: "center" },
-              "active-style": { fontSize: "18px", fontWeight: "600" },
+              activeStyle: {
+                color: "#303133",
+                fontWeight: "bold",
+                transform: "scale(1.05)"
+              },
+              inactiveStyle: {
+                color: "#606266",
+                transform: "scale(1)"
+              },
+              itemStyle: "padding-left: 15px; padding-right: 15px; height: 34px;",
               scrollable: false
-            }, null, 8, ["current"])
+            }, null, 8, ["current", "activeStyle", "inactiveStyle"])
           ]),
           vue.createCommentVNode(" Swiper 内容区 "),
           vue.createElementVNode(
@@ -19174,132 +19161,132 @@ This will fail in production.`);
       };
     }
   };
-  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "F:/LiveHand/LiveHands/pages/details/NoteDetails/NoteDetails.vue"]]);
-  const props$2 = {
+  const PagesDetailsNoteDetailsNoteDetails = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-ae9b0f4e"], ["__file", "F:/LiveHand/LiveHands/pages/details/NoteDetails/NoteDetails.vue"]]);
+  const props = {
     props: {
       // 搜索框形状，round-圆形，square-方形
       shape: {
         type: String,
-        default: props$k.search.shape
+        default: props$i.search.shape
       },
       // 搜索框背景色，默认值#f2f2f2
       bgColor: {
         type: String,
-        default: props$k.search.bgColor
+        default: props$i.search.bgColor
       },
       // 占位提示文字
       placeholder: {
         type: String,
-        default: props$k.search.placeholder
+        default: props$i.search.placeholder
       },
       // 是否启用清除控件
       clearabled: {
         type: Boolean,
-        default: props$k.search.clearabled
+        default: props$i.search.clearabled
       },
       // 是否自动聚焦
       focus: {
         type: Boolean,
-        default: props$k.search.focus
+        default: props$i.search.focus
       },
       // 是否在搜索框右侧显示取消按钮
       showAction: {
         type: Boolean,
-        default: props$k.search.showAction
+        default: props$i.search.showAction
       },
       // 右边控件的样式
       actionStyle: {
         type: Object,
-        default: props$k.search.actionStyle
+        default: props$i.search.actionStyle
       },
       // 取消按钮文字
       actionText: {
         type: String,
-        default: props$k.search.actionText
+        default: props$i.search.actionText
       },
       // 输入框内容对齐方式，可选值为 left|center|right
       inputAlign: {
         type: String,
-        default: props$k.search.inputAlign
+        default: props$i.search.inputAlign
       },
       // input输入框的样式，可以定义文字颜色，大小等，对象形式
       inputStyle: {
         type: Object,
-        default: props$k.search.inputStyle
+        default: props$i.search.inputStyle
       },
       // 是否启用输入框
       disabled: {
         type: Boolean,
-        default: props$k.search.disabled
+        default: props$i.search.disabled
       },
       // 边框颜色
       borderColor: {
         type: String,
-        default: props$k.search.borderColor
+        default: props$i.search.borderColor
       },
       // 搜索图标的颜色，默认同输入框字体颜色
       searchIconColor: {
         type: String,
-        default: props$k.search.searchIconColor
+        default: props$i.search.searchIconColor
       },
       // 输入框字体颜色
       color: {
         type: String,
-        default: props$k.search.color
+        default: props$i.search.color
       },
       // placeholder的颜色
       placeholderColor: {
         type: String,
-        default: props$k.search.placeholderColor
+        default: props$i.search.placeholderColor
       },
       // 左边输入框的图标，可以为uView图标名称或图片路径
       searchIcon: {
         type: String,
-        default: props$k.search.searchIcon
+        default: props$i.search.searchIcon
       },
       searchIconSize: {
         type: [Number, String],
-        default: props$k.search.searchIconSize
+        default: props$i.search.searchIconSize
       },
       // 组件与其他上下左右元素之间的距离，带单位的字符串形式，如"30px"、"30px 20px"等写法
       margin: {
         type: String,
-        default: props$k.search.margin
+        default: props$i.search.margin
       },
       // 开启showAction时，是否在input获取焦点时才显示
       animation: {
         type: Boolean,
-        default: props$k.search.animation
+        default: props$i.search.animation
       },
       // 输入框的初始化内容
       modelValue: {
         type: String,
-        default: props$k.search.value
+        default: props$i.search.value
       },
       value: {
         type: String,
-        default: props$k.search.value
+        default: props$i.search.value
       },
       // 输入框最大能输入的长度，-1为不限制长度(来自uniapp文档)
       maxlength: {
         type: [String, Number],
-        default: props$k.search.maxlength
+        default: props$i.search.maxlength
       },
       // 搜索框高度，单位px
       height: {
         type: [String, Number],
-        default: props$k.search.height
+        default: props$i.search.height
       },
       // 搜索框左侧文本
       label: {
         type: [String, Number, null],
-        default: props$k.search.label
+        default: props$i.search.label
       }
     }
   };
-  const _sfc_main$4 = {
+  const _sfc_main$2 = {
     name: "u-search",
-    mixins: [mpMixin, mixin, props$2],
+    mixins: [mpMixin, mixin, props],
     data() {
       return {
         keyword: "",
@@ -19385,8 +19372,8 @@ This will fail in production.`);
       }
     }
   };
-  function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
+  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
     return vue.openBlock(), vue.createElementBlock(
       "view",
       {
@@ -19479,337 +19466,7 @@ This will fail in production.`);
       /* STYLE */
     );
   }
-  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["render", _sfc_render$2], ["__scopeId", "data-v-3f741648"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-search/u-search.vue"]]);
-  const MIN_DISTANCE = 10;
-  function getDirection(x, y) {
-    if (x > y && x > MIN_DISTANCE) {
-      return "horizontal";
-    }
-    if (y > x && y > MIN_DISTANCE) {
-      return "vertical";
-    }
-    return "";
-  }
-  const touch = {
-    methods: {
-      getTouchPoint(e) {
-        if (!e) {
-          return {
-            x: 0,
-            y: 0
-          };
-        }
-        if (e.touches && e.touches[0]) {
-          return {
-            x: e.touches[0].pageX,
-            y: e.touches[0].pageY
-          };
-        }
-        if (e.changedTouches && e.changedTouches[0]) {
-          return {
-            x: e.changedTouches[0].pageX,
-            y: e.changedTouches[0].pageY
-          };
-        }
-        return {
-          x: e.clientX || 0,
-          y: e.clientY || 0
-        };
-      },
-      resetTouchStatus() {
-        this.direction = "";
-        this.deltaX = 0;
-        this.deltaY = 0;
-        this.offsetX = 0;
-        this.offsetY = 0;
-      },
-      touchStart(event) {
-        this.resetTouchStatus();
-        const touch2 = this.getTouchPoint(event);
-        this.startX = touch2.x;
-        this.startY = touch2.y;
-      },
-      touchMove(event) {
-        const touch2 = this.getTouchPoint(event);
-        this.deltaX = touch2.x - this.startX;
-        this.deltaY = touch2.y - this.startY;
-        this.offsetX = Math.abs(this.deltaX);
-        this.offsetY = Math.abs(this.deltaY);
-        this.direction = this.direction || getDirection(this.offsetX, this.offsetY);
-      }
-    }
-  };
-  const props$1 = {
-    props: {
-      // 控制打开或者关闭
-      show: {
-        type: Boolean,
-        default: props$k.swipeActionItem.show
-      },
-      // 标识符，如果是v-for，可用index索引值
-      name: {
-        type: [String, Number],
-        default: props$k.swipeActionItem.name
-      },
-      // 是否禁用
-      disabled: {
-        type: Boolean,
-        default: props$k.swipeActionItem.disabled
-      },
-      // 是否自动关闭其他swipe按钮组
-      autoClose: {
-        type: Boolean,
-        default: props$k.swipeActionItem.autoClose
-      },
-      // 滑动距离阈值，只有大于此值，才被认为是要打开菜单
-      threshold: {
-        type: Number,
-        default: props$k.swipeActionItem.threshold
-      },
-      // 右侧按钮内容
-      options: {
-        type: Array,
-        default() {
-          return uni.$u.props.swipeActionItem.rightOptions;
-        }
-      },
-      // 动画过渡时间，单位ms
-      duration: {
-        type: [String, Number],
-        default: props$k.swipeActionItem.duration
-      }
-    }
-  };
-  const wxs = {
-    methods: {
-      // 关闭时执行
-      closeHandler() {
-        this.status = "close";
-      },
-      setState(status) {
-        this.status = status;
-      },
-      closeOther() {
-        this.parent && this.parent.closeOther(this);
-      }
-    }
-  };
-  const block0 = (Comp) => {
-    (Comp.$wxs || (Comp.$wxs = [])).push("wxs");
-    (Comp.$wxsModules || (Comp.$wxsModules = {}))["wxs"] = "988e6018";
-  };
-  const _sfc_main$3 = {
-    name: "u-swipe-action-item",
-    emits: ["click"],
-    mixins: [mpMixin, mixin, props$1, touch],
-    mixins: [mpMixin, mixin, props$1, touch, wxs],
-    data() {
-      return {
-        // 按钮的尺寸信息
-        size: {},
-        // 父组件u-swipe-action的参数
-        parentData: {
-          autoClose: true
-        },
-        // 当前状态，open-打开，close-关闭
-        status: "close"
-      };
-    },
-    watch: {
-      // 由于wxs无法直接读取外部的值，需要在外部值变化时，重新执行赋值逻辑
-      wxsInit(newValue, oldValue) {
-        this.queryRect();
-      }
-    },
-    computed: {
-      wxsInit() {
-        return [this.disabled, this.autoClose, this.threshold, this.options, this.duration];
-      }
-    },
-    mounted() {
-      this.init();
-    },
-    methods: {
-      init() {
-        this.updateParentData();
-        uni.$u.sleep().then(() => {
-          this.queryRect();
-        });
-      },
-      updateParentData() {
-        this.getParentData("u-swipe-action");
-      },
-      // 查询节点
-      queryRect() {
-        this.$uGetRect(".u-swipe-action-item__right__button", true).then((buttons) => {
-          this.size = {
-            buttons,
-            show: this.show,
-            disabled: this.disabled,
-            threshold: this.threshold,
-            duration: this.duration
-          };
-        });
-      },
-      // 按钮被点击
-      buttonClickHandler(item, index2) {
-        this.$emit("click", {
-          index: index2,
-          name: this.name
-        });
-      }
-    }
-  };
-  function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-    return vue.openBlock(), vue.createElementBlock(
-      "view",
-      {
-        class: "u-swipe-action-item",
-        ref: "u-swipe-action-item"
-      },
-      [
-        vue.createElementVNode("view", { class: "u-swipe-action-item__right" }, [
-          vue.renderSlot(_ctx.$slots, "button", {}, () => [
-            (vue.openBlock(true), vue.createElementBlock(
-              vue.Fragment,
-              null,
-              vue.renderList(_ctx.options, (item, index2) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  key: index2,
-                  class: "u-swipe-action-item__right__button",
-                  ref_for: true,
-                  ref: `u-swipe-action-item__right__button-${index2}`,
-                  style: vue.normalizeStyle([{
-                    alignItems: item.style && item.style.borderRadius ? "center" : "stretch"
-                  }]),
-                  onClick: ($event) => $options.buttonClickHandler(item, index2)
-                }, [
-                  vue.createElementVNode(
-                    "view",
-                    {
-                      class: "u-swipe-action-item__right__button__wrapper",
-                      style: vue.normalizeStyle([{
-                        backgroundColor: item.style && item.style.backgroundColor ? item.style.backgroundColor : "#C7C6CD",
-                        borderRadius: item.style && item.style.borderRadius ? item.style.borderRadius : "0",
-                        padding: item.style && item.style.borderRadius ? "0" : "0 15px"
-                      }, item.style])
-                    },
-                    [
-                      item.icon ? (vue.openBlock(), vue.createBlock(_component_u_icon, {
-                        key: 0,
-                        name: item.icon,
-                        color: item.style && item.style.color ? item.style.color : "#ffffff",
-                        size: item.iconSize ? _ctx.$u.addUnit(item.iconSize) : item.style && item.style.fontSize ? _ctx.$u.getPx(item.style.fontSize) * 1.2 : 17,
-                        customStyle: {
-                          marginRight: item.text ? "2px" : 0
-                        }
-                      }, null, 8, ["name", "color", "size", "customStyle"])) : vue.createCommentVNode("v-if", true),
-                      item.text ? (vue.openBlock(), vue.createElementBlock(
-                        "text",
-                        {
-                          key: 1,
-                          class: "u-swipe-action-item__right__button__wrapper__text u-line-1",
-                          style: vue.normalizeStyle([{
-                            color: item.style && item.style.color ? item.style.color : "#ffffff",
-                            fontSize: item.style && item.style.fontSize ? item.style.fontSize : "16px",
-                            lineHeight: item.style && item.style.fontSize ? item.style.fontSize : "16px"
-                          }])
-                        },
-                        vue.toDisplayString(item.text),
-                        5
-                        /* TEXT, STYLE */
-                      )) : vue.createCommentVNode("v-if", true)
-                    ],
-                    4
-                    /* STYLE */
-                  )
-                ], 12, ["onClick"]);
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            ))
-          ], true)
-        ]),
-        vue.createElementVNode("view", {
-          class: "u-swipe-action-item__content",
-          onTouchstart: _cache[0] || (_cache[0] = (...args) => _ctx.wxs.touchstart && _ctx.wxs.touchstart(...args)),
-          onTouchmove: _cache[1] || (_cache[1] = (...args) => _ctx.wxs.touchmove && _ctx.wxs.touchmove(...args)),
-          onTouchend: _cache[2] || (_cache[2] = (...args) => _ctx.wxs.touchend && _ctx.wxs.touchend(...args)),
-          status: vue.wp($data.status),
-          "change:status": _ctx.wxs.statusChange,
-          size: vue.wp($data.size),
-          "change:size": _ctx.wxs.sizeChange
-        }, [
-          vue.renderSlot(_ctx.$slots, "default", {}, void 0, true)
-        ], 40, ["status", "change:status", "size", "change:size"])
-      ],
-      512
-      /* NEED_PATCH */
-    );
-  }
-  if (typeof block0 === "function")
-    block0(_sfc_main$3);
-  const __easycom_4 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["render", _sfc_render$1], ["__scopeId", "data-v-4bb6e771"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-swipe-action-item/u-swipe-action-item.vue"]]);
-  const props = {
-    props: {
-      // 是否自动关闭其他swipe按钮组
-      autoClose: {
-        type: Boolean,
-        default: props$k.swipeAction.autoClose
-      }
-    }
-  };
-  const _sfc_main$2 = {
-    name: "u-swipe-action",
-    mixins: [mpMixin, mixin, props],
-    data() {
-      return {};
-    },
-    provide() {
-      return {
-        swipeAction: this
-      };
-    },
-    computed: {
-      // 这里computed的变量，都是子组件u-swipe-action-item需要用到的，由于头条小程序的兼容性差异，子组件无法实时监听父组件参数的变化
-      // 所以需要手动通知子组件，这里返回一个parentData变量，供watch监听，在其中去通知每一个子组件重新从父组件(u-swipe-action-item)
-      // 拉取父组件新的变化后的参数
-      parentData() {
-        return [this.autoClose];
-      }
-    },
-    watch: {
-      // 当父组件需要子组件需要共享的参数发生了变化，手动通知子组件
-      parentData() {
-        if (this.children.length) {
-          this.children.map((child) => {
-            typeof child.updateParentData === "function" && child.updateParentData();
-          });
-        }
-      }
-    },
-    created() {
-      this.children = [];
-    },
-    methods: {
-      closeOther(child) {
-        if (this.autoClose) {
-          this.children.map((item, index2) => {
-            if (child !== item) {
-              item.closeHandler();
-            }
-          });
-        }
-      }
-    }
-  };
-  function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-    return vue.openBlock(), vue.createElementBlock("view", { class: "u-swipe-action" }, [
-      vue.renderSlot(_ctx.$slots, "default")
-    ]);
-  }
-  const __easycom_5 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-swipe-action/u-swipe-action.vue"]]);
+  const __easycom_3 = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render], ["__scopeId", "data-v-3f741648"], ["__file", "F:/LiveHand/LiveHands/node_modules/.pnpm/uview-plus@3.1.23/node_modules/uview-plus/components/u-search/u-search.vue"]]);
   const _sfc_main$1 = {
     __name: "KnowDetails",
     setup(__props) {
@@ -19820,9 +19477,27 @@ This will fail in production.`);
         { name: "知识图谱" }
       ];
       const files = vue.ref([
-        { id: 1, name: "文档A.pdf", type: "pdf" },
-        { id: 2, name: "图片B.png", type: "image" },
-        { id: 3, name: "表格C.xlsx", type: "excel" }
+        {
+          id: 1,
+          name: "2025年AI技术趋势深度报告.pdf",
+          type: "pdf",
+          uploadTime: "2025-06-01 14:23",
+          preview: "/static/previews/pdf-preview.png"
+        },
+        {
+          id: 2,
+          name: "项目流程图设计稿.png",
+          type: "image",
+          uploadTime: "2025-05-29 09:11",
+          preview: "/static/previews/image-preview.png"
+        },
+        {
+          id: 3,
+          name: "数据统计表2025年Q2.xlsx",
+          type: "excel",
+          uploadTime: "2025-06-15 16:45",
+          preview: "/static/previews/excel-preview.png"
+        }
       ]);
       const showMore = vue.ref(false);
       const showEdit = vue.ref(false);
@@ -19832,11 +19507,14 @@ This will fail in production.`);
       const repo = vue.ref("");
       const user = vue.ref("");
       const tags = vue.ref([]);
+      const prompt = vue.ref([]);
       onLoad((options) => {
+        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:227", options);
         title.value = decodeURIComponent(options.name || "");
         time.value = options.time || "";
         repo.value = decodeURIComponent(options.repo || "");
         user.value = decodeURIComponent(options.user || "");
+        prompt.value = decodeURIComponent(options.prompt || "");
         try {
           tags.value = JSON.parse(decodeURIComponent(options.tags || "[]"));
         } catch (e) {
@@ -19844,11 +19522,11 @@ This will fail in production.`);
         }
       });
       function onTalkWithAI() {
-        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:181", "功能暂未开放");
+        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:241", "功能暂未开放");
       }
       function handleCloseChat() {
         chatPopupVisible.value = false;
-        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:186", "用户点击了关闭按钮");
+        formatAppLog("log", "at pages/details/KnowDetails/KnowDetails.vue:246", "用户点击了关闭按钮");
       }
       function goBack() {
         uni.navigateBack();
@@ -19856,9 +19534,9 @@ This will fail in production.`);
       function onShare() {
         uni.showToast({ title: "点击分享", icon: "none" });
       }
-      function handleTabChange(index2) {
+      function handleTabChange(tab) {
         lastTab.value = activeTab.value;
-        activeTab.value = index2;
+        activeTab.value = tab.index;
       }
       function onSwiperChange(e) {
         lastTab.value = activeTab.value;
@@ -19871,10 +19549,22 @@ This will fail in production.`);
           case "image":
             return "photo";
           case "excel":
-            return "file";
+            return "file-excel";
           default:
             return "file";
         }
+      }
+      function confirmDelete(id) {
+        uni.showModal({
+          title: "确认删除",
+          content: "是否要删除该文件？",
+          confirmColor: "#f56c6c",
+          success(res) {
+            if (res.confirm) {
+              deleteFile(id);
+            }
+          }
+        });
       }
       function deleteFile(id) {
         files.value = files.value.filter((file) => file.id !== id);
@@ -19909,14 +19599,12 @@ This will fail in production.`);
         }
       }
       return (_ctx, _cache) => {
-        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$6);
-        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$3);
+        const _component_u_icon = resolveEasycom(vue.resolveDynamicComponent("u-icon"), __easycom_0$5);
+        const _component_u_tag = resolveEasycom(vue.resolveDynamicComponent("u-tag"), __easycom_1$4);
         const _component_u_tabs = resolveEasycom(vue.resolveDynamicComponent("u-tabs"), __easycom_2);
         const _component_u_search = resolveEasycom(vue.resolveDynamicComponent("u-search"), __easycom_3);
-        const _component_u_swipe_action_item = resolveEasycom(vue.resolveDynamicComponent("u-swipe-action-item"), __easycom_4);
-        const _component_u_swipe_action = resolveEasycom(vue.resolveDynamicComponent("u-swipe-action"), __easycom_5);
-        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_6);
-        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_7);
+        const _component_u_popup = resolveEasycom(vue.resolveDynamicComponent("u-popup"), __easycom_4);
+        const _component_u_modal = resolveEasycom(vue.resolveDynamicComponent("u-modal"), __easycom_5);
         return vue.openBlock(), vue.createElementBlock("view", { class: "note-details-page" }, [
           vue.createCommentVNode(" 顶部固定区域：图标、Header、Tabs "),
           vue.createElementVNode("view", { class: "top-fixed-header" }, [
@@ -19956,50 +19644,71 @@ This will fail in production.`);
                   onClick: _cache[1] || (_cache[1] = ($event) => showEdit.value = true)
                 })
               ]),
-              vue.createElementVNode("view", { class: "note-meta" }, [
+              vue.createCommentVNode(" 新增 prompt 显示 "),
+              vue.createElementVNode(
+                "view",
+                { class: "note-prompt" },
+                vue.toDisplayString(prompt.value),
+                1
+                /* TEXT */
+              ),
+              vue.createCommentVNode(" 底部一行，标签 | 时间 | @用户名 "),
+              vue.createElementVNode("view", { class: "note-footer-row" }, [
+                vue.createElementVNode("view", { class: "note-tags" }, [
+                  (vue.openBlock(true), vue.createElementBlock(
+                    vue.Fragment,
+                    null,
+                    vue.renderList(tags.value, (tag, i) => {
+                      return vue.openBlock(), vue.createBlock(_component_u_tag, {
+                        shape: "circle",
+                        key: i,
+                        text: tag.text,
+                        type: tag.type,
+                        size: "mini",
+                        plain: ""
+                      }, null, 8, ["text", "type"]);
+                    }),
+                    128
+                    /* KEYED_FRAGMENT */
+                  ))
+                ]),
+                vue.createElementVNode("text", { class: "note-footer-separator" }, "|"),
                 vue.createElementVNode(
                   "text",
-                  null,
+                  { class: "note-time" },
                   vue.toDisplayString(time.value),
                   1
                   /* TEXT */
                 ),
-                vue.createElementVNode("text", { class: "note-separator" }, "|"),
+                vue.createElementVNode("text", { class: "note-footer-separator" }, "|"),
                 vue.createElementVNode(
                   "text",
-                  null,
-                  vue.toDisplayString(user.value),
+                  { class: "note-user" },
+                  "@" + vue.toDisplayString(user.value),
                   1
                   /* TEXT */
                 )
-              ]),
-              vue.createElementVNode("view", { class: "note-tags" }, [
-                (vue.openBlock(true), vue.createElementBlock(
-                  vue.Fragment,
-                  null,
-                  vue.renderList(tags.value, (tag, i) => {
-                    return vue.openBlock(), vue.createBlock(_component_u_tag, {
-                      key: i,
-                      text: tag.text,
-                      type: tag.type,
-                      size: "mini",
-                      plain: ""
-                    }, null, 8, ["text", "type"]);
-                  }),
-                  128
-                  /* KEYED_FRAGMENT */
-                ))
               ])
             ]),
             vue.createCommentVNode(" Tabs栏 "),
             vue.createVNode(_component_u_tabs, {
               list: tabList,
               current: activeTab.value,
+              lineWidth: "150",
+              lineColor: "#000",
               onChange: handleTabChange,
-              "item-style": { justifyContent: "center", padding: "20rpx 0", height: "80rpx", flex: 1, justifyContent: "center" },
-              "active-style": { fontSize: "18px", fontWeight: "600" },
+              activeStyle: {
+                color: "#303133",
+                fontWeight: "bold",
+                transform: "scale(1.05)"
+              },
+              inactiveStyle: {
+                color: "#606266",
+                transform: "scale(1)"
+              },
+              itemStyle: "padding-left: 15px; padding-right: 15px; height: 34px;",
               scrollable: false
-            }, null, 8, ["current"])
+            }, null, 8, ["current", "activeStyle", "inactiveStyle"])
           ]),
           vue.createCommentVNode(" Swiper 内容区 "),
           vue.createElementVNode(
@@ -20035,43 +19744,59 @@ This will fail in production.`);
                             onChange: onSearchChange
                           }, null, 8, ["modelValue"])
                         ]),
-                        vue.createVNode(_component_u_swipe_action, null, {
-                          default: vue.withCtx(() => [
-                            (vue.openBlock(true), vue.createElementBlock(
-                              vue.Fragment,
-                              null,
-                              vue.renderList(vue.unref(filteredFiles), (file) => {
-                                return vue.openBlock(), vue.createBlock(_component_u_swipe_action_item, {
-                                  key: file.id,
-                                  options: [{ text: "删除", style: { backgroundColor: "#f56c6c", color: "#fff" } }],
-                                  onClick: ($event) => deleteFile(file.id)
-                                }, {
-                                  default: vue.withCtx(() => [
-                                    vue.createElementVNode("view", { class: "file-item" }, [
+                        vue.createElementVNode("scroll-view", {
+                          "scroll-y": "",
+                          class: "file-list-scroll",
+                          "enable-flex": ""
+                        }, [
+                          (vue.openBlock(true), vue.createElementBlock(
+                            vue.Fragment,
+                            null,
+                            vue.renderList(vue.unref(filteredFiles), (file) => {
+                              return vue.openBlock(), vue.createElementBlock("view", {
+                                class: "file-item",
+                                key: file.id,
+                                onLongpress: ($event) => confirmDelete(file.id)
+                              }, [
+                                vue.createElementVNode("image", {
+                                  src: file.preview,
+                                  class: "file-preview",
+                                  mode: "aspectFill"
+                                }, null, 8, ["src"]),
+                                vue.createElementVNode("view", { class: "file-info" }, [
+                                  vue.createElementVNode("view", {
+                                    class: "file-name",
+                                    title: file.name
+                                  }, vue.toDisplayString(file.name), 9, ["title"]),
+                                  vue.createElementVNode("view", { class: "file-meta" }, [
+                                    vue.createElementVNode("view", { class: "file-meta-left" }, [
                                       vue.createVNode(_component_u_icon, {
                                         name: getFileIcon(file.type),
-                                        size: "20"
+                                        size: "18"
                                       }, null, 8, ["name"]),
                                       vue.createElementVNode(
                                         "text",
-                                        { class: "file-name" },
-                                        vue.toDisplayString(file.name),
+                                        { class: "file-type-text" },
+                                        vue.toDisplayString(file.type),
                                         1
                                         /* TEXT */
                                       )
-                                    ])
-                                  ]),
-                                  _: 2
-                                  /* DYNAMIC */
-                                }, 1032, ["onClick"]);
-                              }),
-                              128
-                              /* KEYED_FRAGMENT */
-                            ))
-                          ]),
-                          _: 1
-                          /* STABLE */
-                        })
+                                    ]),
+                                    vue.createElementVNode(
+                                      "view",
+                                      { class: "file-meta-right" },
+                                      vue.toDisplayString(file.uploadTime),
+                                      1
+                                      /* TEXT */
+                                    )
+                                  ])
+                                ])
+                              ], 40, ["onLongpress"]);
+                            }),
+                            128
+                            /* KEYED_FRAGMENT */
+                          ))
+                        ])
                       ])
                     ])
                   ])
@@ -20081,7 +19806,7 @@ This will fail in production.`);
                     "scroll-y": "",
                     class: "tab-inner-scroll"
                   }, [
-                    vue.createVNode(NoteDetailPosterTab)
+                    vue.createCommentVNode(" 这里是第二个标签页内容，可以补充你的内容 ")
                   ])
                 ])
               ], 40, ["current"])
@@ -20137,7 +19862,12 @@ This will fail in production.`);
             mode: "bottom",
             "safe-area-inset-bottom": true,
             overlay: true,
-            "custom-style": { height: "95vh", borderTopLeftRadius: "20rpx", borderTopRightRadius: "20rpx", overflow: "hidden" },
+            "custom-style": {
+              height: "95vh",
+              borderTopLeftRadius: "20rpx",
+              borderTopRightRadius: "20rpx",
+              overflow: "hidden"
+            },
             onClose: _cache[7] || (_cache[7] = ($event) => chatPopupVisible.value = false)
           }, {
             default: vue.withCtx(() => [
@@ -20150,7 +19880,7 @@ This will fail in production.`);
                   height: "80vh",
                   showHeader: true,
                   title: title.value,
-                  onClose: handleCloseChat
+                  onOnClose: handleCloseChat
                 }, null, 8, ["title"])
               ])
             ]),
@@ -21743,7 +21473,7 @@ This will fail in production.`);
     throttle,
     mixin,
     mpMixin,
-    props: props$k,
+    props: props$i,
     ...index,
     color,
     platform: platform$1
