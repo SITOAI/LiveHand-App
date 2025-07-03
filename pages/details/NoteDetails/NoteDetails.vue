@@ -34,16 +34,29 @@
         </view>
       </view>
 
-      <!-- Tabs栏 -->
-      <u-tabs :list="tabList" :current="activeTab" @change="handleTabChange" />
+      <!-- Tabs栏（已修改样式） -->
+      <u-tabs
+        :list="tabList"
+        :current="activeTab"
+		lineWidth="150"
+		lineColor="#000"
+        @change="handleTabChange"
+        :activeStyle="{
+            color: '#303133',
+            fontWeight: 'bold',
+            transform: 'scale(1.05)'
+        }"
+        :inactiveStyle="{
+            color: '#606266',
+            transform: 'scale(1)'
+        }"
+		itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+        :scrollable="false"
+      />
     </view>
 
     <!-- Swiper 内容区 -->
-    <view
-      class="tab-content-wrapper"
-      @touchstart="onTouchStart"
-      @touchend="onTouchEnd"
-    >
+    <view class="tab-content-wrapper" @touchstart="onTouchStart" @touchend="onTouchEnd">
       <swiper
         class="tab-swiper"
         :current="activeTab"
@@ -66,7 +79,7 @@
     <!-- 底部聊天栏 -->
     <view class="chatbar" v-if="!chatPopupVisible">
       <view class="fake-input" @click="chatPopupVisible = true">
-        <u-icon name="star" size="22"/>
+        <u-icon name="star" size="22" />
         <text class="fake-input-text">向LiveHands提问...</text>
       </view>
       <TalkButton @click="onTalkWithAI">发送</TalkButton>
@@ -86,11 +99,17 @@
       mode="bottom"
       :safe-area-inset-bottom="true"
       :overlay="true"
-      :custom-style="{ height: '95vh' }"
+      :custom-style="{ height: '95vh', borderTopLeftRadius: '20rpx', borderTopRightRadius: '20rpx', overflow: 'hidden' }"
       @close="chatPopupVisible = false"
     >
       <scroll-view style="height: 100%" scroll-y>
-        <view style="padding: 20px;">AI 聊天内容区域</view>
+        <LiveChat
+          class="note-detail-live-chat"
+          :height="'80vh'"
+          :showHeader="true"
+          :title="title"
+          :onClose="handleCloseChat"
+        />
       </scroll-view>
     </u-popup>
   </view>
@@ -102,6 +121,7 @@ import { onLoad } from '@dcloudio/uni-app'
 import NoteDetailSumTab from '../../../components/tabs/NoteDetailSumTab.vue'
 import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vue'
 import TalkButton from '../../../components/children/TalkButton.vue'
+import LiveChat from '../../../components/chat/LiveChat.vue'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -132,7 +152,12 @@ onLoad((options) => {
 })
 
 function onTalkWithAI() {
-  console.log("功能暂未开放")
+  console.log('功能暂未开放')
+}
+
+function handleCloseChat() {
+  chatPopupVisible.value = false
+  console.log('用户点击了关闭按钮')
 }
 
 function goBack() {
@@ -142,9 +167,9 @@ function onShare() {
   uni.showToast({ title: '点击分享', icon: 'none' })
 }
 
-function handleTabChange(index) {
+function handleTabChange(tab) {
   lastTab.value = activeTab.value
-  activeTab.value = index
+  activeTab.value = tab.index
 }
 function onSwiperChange(e) {
   lastTab.value = activeTab.value
@@ -167,12 +192,7 @@ function onTouchEnd(e) {
   const deltaX = endX - startX
   const deltaY = Math.abs(endY - startY)
 
-  if (
-    startTabIndex === 0 &&
-    activeTab.value === 0 &&
-    deltaX > 50 &&
-    deltaY < 30
-  ) {
+  if (startTabIndex === 0 && activeTab.value === 0 && deltaX > 50 && deltaY < 30) {
     goBack()
   }
 }
@@ -186,7 +206,6 @@ function onTouchEnd(e) {
   position: relative;
 }
 
-/* 固定顶部 */
 .top-fixed-header {
   position: fixed;
   top: 3vh;
@@ -198,7 +217,6 @@ function onTouchEnd(e) {
   box-sizing: border-box;
 }
 
-/* 顶部图标 */
 .top-icon-row {
   display: flex;
   justify-content: space-between;
@@ -210,13 +228,13 @@ function onTouchEnd(e) {
   gap: 12px;
 }
 
-/* Header 卡片 */
 .note-header-card {
-  background-color: #f5f5f5;
+  background-color: #ddd;
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 4vh;
 }
 .note-title-row {
   display: flex;
@@ -240,7 +258,6 @@ function onTouchEnd(e) {
   flex-wrap: wrap;
 }
 
-/* 内容区域 - 顶部区域高度约220px */
 .tab-content-wrapper {
   margin-top: 220px;
   height: calc(100vh - 270px);
@@ -255,7 +272,6 @@ function onTouchEnd(e) {
   box-sizing: border-box;
 }
 
-/* 底部聊天栏 */
 .chatbar {
   position: fixed;
   bottom: 5px;
@@ -280,5 +296,11 @@ function onTouchEnd(e) {
 .fake-input-text {
   color: #999;
   font-size: 14px;
+}
+
+.note-detail-live-chat {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  overflow: hidden;
 }
 </style>

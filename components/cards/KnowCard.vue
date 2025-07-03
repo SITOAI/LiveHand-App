@@ -56,9 +56,7 @@ const props = defineProps({
     type: Array,
     default: () => [
       { text: '标签一', type: 'warning' },
-      { text: '标签二', type: 'success' },
-      { text: '标签三', type: 'primary' },
-	  { text: '标签四', type: 'primary' }
+      { text: '标签二', type: 'success' }
     ]
   }
 })
@@ -81,7 +79,7 @@ function openDetails() {
 <style scoped>
 .know-card {
   width: 100vw;
-  height: 27vh;
+  height: 20vh;
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -149,7 +147,7 @@ function openDetails() {
   position: relative;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

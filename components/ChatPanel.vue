@@ -7,6 +7,7 @@
     @close="closePopup"
     @update:show="val => emit('update:show', val)"
     :duration="300"
+    :custom-style="{ height: '100vh' }"
   >
     <view
       class="panel-wrapper"
@@ -18,16 +19,19 @@
         <u-icon name="arrow-left" size="24" @click="closePopup" />
       </view>
 
-      <!-- 聊天区域 -->
-      <view class="chat-body">
-        聊天界面
-      </view>
+      <!-- 聊天区域，LiveChat高度100vh减去header高度40px -->
+      <LiveChat
+        :height="'calc(100vh - 40px)'"
+        :showHeader="false"
+        :onClose="closePopup"
+      />
     </view>
   </u-popup>
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from 'vue'
+import LiveChat from '@/components/chat/LiveChat.vue' // 路径根据你项目调整
 
 const props = defineProps({
   show: Boolean,
@@ -62,12 +66,13 @@ function onTouchEnd(e) {
 
 <style scoped>
 .panel-wrapper {
-  width: 96vw;
+  width: 100vw;
   height: 100vh;
   background: #fff;
   display: flex;
   flex-direction: column;
   padding: 4vh 3vw 1vh 3vw;
+  box-sizing: border-box;
 }
 
 /* 顶部返回按钮 */
@@ -77,11 +82,5 @@ function onTouchEnd(e) {
   align-items: center;
 }
 
-/* 聊天内容区域占满剩余空间 */
-.chat-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* 这里不用额外设置chat-body了，因为LiveChat自己撑满高度 */
 </style>
