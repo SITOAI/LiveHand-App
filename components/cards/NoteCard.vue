@@ -1,9 +1,15 @@
 <template>
-  <div class="note-card">
+  <div class="note-card" style="position: relative;">
     <!-- 顶部信息 -->
     <div class="note-top">
       <div class="note-title" @click.stop="openDetails">{{ title }}</div>
-      <div class="note-time">{{ time }}</div>
+	  <div class="note-title-info">
+		  <div class="repo-know" @click.stop>
+		    <u-icon name="bag" size="18" color="#666" />
+		    <span class="repo-name">{{ repo }}</span>
+		  </div>
+		  <div class="note-time">{{ time }}</div>
+	  </div>
     </div>
 
     <!-- 分割线 -->
@@ -19,10 +25,7 @@
 
       <div class="note-footer">
         <div class="note-repo">
-          <div class="repo-know" @click.stop>
-            <u-icon name="bag" size="18" color="#666" />
-            <span class="repo-name">{{ repo }}</span>
-          </div>
+          
           <view class="repo-tags" @click.stop>
             <u-tag
               v-for="(tag, index) in tags"
@@ -35,54 +38,14 @@
             />
           </view>
         </div>
-
-        <div class="footer-icons">
-          <u-icon name="list-dot" color="#2979ff" size="22" @click.stop="showSetting = true" />
-          <u-icon name="tags" color="#2979ff" size="22" @click.stop="showTags = true" />
-          <u-icon name="trash" color="#2979ff" size="22" @click.stop="showDelete = true" />
-        </div>
       </div>
     </div>
-
-    <!-- 模态框们 -->
-    <view class="modal-wrapper">
-      <u-modal
-        :show="showSetting"
-        title="设置"
-        @confirm="showSetting = false"
-        @cancel="showSetting = false"
-      >
-        <view style="padding: 20px;">这里是设置模态框内容</view>
-      </u-modal>
-    </view>
-
-    <view class="modal-wrapper">
-      <u-modal
-        :show="showTags"
-        title="标签"
-        @confirm="showTags = false"
-        @cancel="showTags = false"
-      >
-        <view style="padding: 20px;">这里是标签模态框内容</view>
-      </u-modal>
-    </view>
-
-    <view class="modal-wrapper">
-      <u-modal
-        :show="showDelete"
-        title="删除"
-        :showCancelButton="true"
-        @confirm="showDelete = false"
-        @cancel="showDelete = false"
-      >
-        <view style="padding: 20px;">确定要删除这个笔记吗？</view>
-      </u-modal>
-    </view>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { defineEmits } from 'vue'
 
 const props = defineProps({
   title: { type: String, default: '无标题笔记' },
@@ -99,15 +62,20 @@ const props = defineProps({
   }
 })
 
-const showSetting = ref(false)
-const showTags = ref(false)
+const emit = defineEmits(['delete'])
+
 const showDelete = ref(false)
 
 function openDetails() {
-	console.log("666")
+  console.log('打开详情页')
   uni.navigateTo({
     url: `/pages/details/NoteDetails/NoteDetails?title=${encodeURIComponent(props.title)}&time=${props.time}&content=${encodeURIComponent(props.content)}&repo=${encodeURIComponent(props.repo)}&tags=${encodeURIComponent(JSON.stringify(props.tags))}`
   })
+}
+
+function handleDeleteConfirm() {
+  showDelete.value = false
+  emit('delete')
 }
 </script>
 
@@ -120,9 +88,10 @@ function openDetails() {
   height: 0;
   overflow: hidden;
 }
+
 .note-card {
   width: 45vw;
-  height: 28vh;
+  height: 30vh;
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -131,7 +100,23 @@ function openDetails() {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
+
+/* 右上角删除按钮样式 */
+.delete-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+  z-index: 10;
+}
+.delete-icon:hover {
+  color: #f56c6c;
+}
+
 .note-top {
   display: flex;
   flex-direction: column;
@@ -148,10 +133,17 @@ function openDetails() {
   text-overflow: ellipsis;
   margin-bottom: 4px;
 }
+
+.note-title-info {
+	display: flex;
+	font-size: 12px;
+	align-items: center;
+	color: #888;
+	gap: 10rpx;
+}
 .note-time {
   font-size: 12px;
   color: #888;
-  white-space: nowrap;
 }
 .note-divider {
   height: 1px;
@@ -172,14 +164,14 @@ function openDetails() {
   position: relative;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
 .note-bottom-divider {
   height: 1px;
   background-color: #ddd;
-  margin: 4px 0;
+  margin-bottom: 10px;
 }
 .note-footer {
   display: flex;
@@ -196,15 +188,9 @@ function openDetails() {
 .repo-know {
   display: flex;
 }
-.footer-icons {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-}
 .repo-tags {
   display: flex;
-  gap: 4px;
-  margin-left: 8px;
+  gap: 10px;
   flex-wrap: nowrap;
   align-items: center;
 }

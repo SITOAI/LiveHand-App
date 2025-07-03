@@ -77,7 +77,7 @@ function resolveComponent(type) {
   background-color: #f9f9f9;
   color: #333;
   border-top-left-radius: 0;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   margin-left: 12rpx;
 }
 
