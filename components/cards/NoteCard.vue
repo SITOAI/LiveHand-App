@@ -122,7 +122,7 @@ function openDetails() {
 }
 .note-card {
   width: 45vw;
-  height: calc((100vh - 96px) / 3);
+  height: 28vh;
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
