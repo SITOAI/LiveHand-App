@@ -79,7 +79,7 @@ function openDetails() {
 <style scoped>
 .know-card {
   width: 100vw;
-  height: 27vh;
+  height: 20vh;
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -147,7 +147,7 @@ function openDetails() {
   position: relative;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

@@ -122,7 +122,7 @@ function openDetails() {
 }
 .note-card {
   width: 45vw;
-  min-height: 40vh;
+  height: calc((100vh - 96px) / 3);
   background-color: #ffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -130,6 +130,7 @@ function openDetails() {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .note-top {
   display: flex;
@@ -171,7 +172,7 @@ function openDetails() {
   position: relative;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

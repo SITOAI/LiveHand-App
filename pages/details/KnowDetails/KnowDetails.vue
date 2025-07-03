@@ -55,7 +55,6 @@
         :indicator-dots="false"
       >
         <swiper-item>
-          <scroll-view scroll-y class="tab-inner-scroll">
             <view class="sum-tab-wrapper">
                 <!-- 文件列表展示区 -->
                 <view class="file-list">
@@ -69,27 +68,23 @@
 					      @change="onSearchChange"
 					    />
 					  </view>
-					
-                    <u-swipe-action>
-                      <u-swipe-action-item
+				<scroll-view scroll-y class="file-list-scroll" enable-flex>	
+                    <view
+                        class="file-item"
                         v-for="file in filteredFiles"
                         :key="file.id"
-                        :options="[{ text: '删除', style: { backgroundColor: '#f56c6c', color: '#fff' } }]"
-                        @click="deleteFile(file.id)"
+                        @longpress="confirmDelete(file.id)"
                       >
-                        <view class="file-item">
                           <u-icon :name="getFileIcon(file.type)" size="20" />
                           <text class="file-name">{{ file.name }}</text>
-                        </view>
-                      </u-swipe-action-item>
-                    </u-swipe-action>
+					</view>
+				</scroll-view>
                 </view>
             </view>
-          </scroll-view>
         </swiper-item>
         <swiper-item>
           <scroll-view scroll-y class="tab-inner-scroll">
-            <NoteDetailPosterTab />
+            <!-- <NoteDetailPosterTab /> -->
           </scroll-view>
         </swiper-item>
       </swiper>
@@ -136,8 +131,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
-import NoteDetailSumTab from '../../../components/tabs/NoteDetailSumTab.vue'
-import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vue'
+// import NoteDetailSumTab from '../../../components/tabs/NoteDetailSumTab.vue'
+// import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vue'
 import TalkButton from '../../../components/children/TalkButton.vue'
 import LiveChat from '../../../components/chat/LiveChat.vue'
 
@@ -209,6 +204,19 @@ function getFileIcon(type) {
     case 'excel': return 'file';
     default: return 'file';
   }
+}
+
+function confirmDelete(id) {
+  uni.showModal({
+    title: '确认删除',
+    content: '是否要删除该文件？',
+    confirmColor: '#f56c6c',
+    success(res) {
+      if (res.confirm) {
+        deleteFile(id)
+      }
+    }
+  })
 }
 
 function deleteFile(id) {
@@ -371,7 +379,7 @@ function onTouchEnd(e) {
 }
 
 .file-list {
-  margin-top: 5vh;
+  margin-top: 8vh;
 }
 
 .file-item {
@@ -393,6 +401,11 @@ function onTouchEnd(e) {
   margin-top: 10px;
   padding: 0 14px;
   margin: 0 14px 10px;
+}
+
+.file-list-scroll {
+  height: calc(100vh - 270px); 
+  box-sizing: border-box;
 }
 
 .note-detail-live-chat {
