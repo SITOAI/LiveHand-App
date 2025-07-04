@@ -116,7 +116,7 @@ function onTouchEnd(e) {
   console.log(deltaX)
   console.log(deltaY)
 
-  if (deltaX > -60 && deltaY < 30) {
+  if (deltaX > 60 && deltaY < 30) {
     closePopup()
   }
 }

@@ -25,7 +25,7 @@ function handleClick() {
 const labelText = computed(() => {
   switch (props.label) {
     case 0:
-      return '资料'
+      return '笔记'
     case 1:
       return '知识库'
     default:
@@ -36,8 +36,8 @@ const labelText = computed(() => {
 
 <style scoped>
 button {
-  border: 2px solid #24b4fb;
-  background-color: #24b4fb;
+  border: 2px solid #888;
+  background-color: #888;
   border-radius: 0.9em;
   cursor: pointer;
   padding: 0.8em 1.2em 0.8em 1em;

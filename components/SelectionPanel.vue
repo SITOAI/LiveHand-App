@@ -5,6 +5,7 @@
     :round="10"
     closeOnClickOverlay
     overlay
+	@close="emit('update:show', false)"
   >
     <view
       class="popup-panel"

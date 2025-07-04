@@ -16,7 +16,7 @@
 
       <!-- 内容区：图片+提示文字 -->
       <view class="content">
-        <image src="../static/wechat.jpg" class="qr-image" mode="widthFix" />
+        <image src="/static/wechat.jpg" class="qr-image" mode="widthFix" />
         <view class="tip-text">扫描二维码关注视途科技</view>
       </view>
     </view>
