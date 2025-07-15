@@ -72,6 +72,17 @@ const notes = ref([
       { text: '插件', type: 'primary' },
       { text: '模板', type: 'success' }
     ]
+  },
+  {
+    id: 6,
+    title: '知识专利',
+    time: '2025-06-22',
+    content: '本知识专利记录了某领域核心技术的创新方法与实现路径，涵盖算法设计、系统架构及应用场景，具有独创性与实用价值，为相关技术研发与产业化提供知识产权保障。',
+    repo: '知识专利',
+    tags: [
+      { text: '知识专利', type: 'primary' },
+      { text: '法律', type: 'success' }
+    ]
   }
 ])
 </script>
