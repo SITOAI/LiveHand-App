@@ -1,6 +1,6 @@
 class Http {
   constructor({
-    baseURL = 'http://ai.sitoai.cn',
+    baseURL = 'http://192.168.1.246:8082',
     timeout = 10000,
     headers = { 'Content-Type': 'application/json' },
   } = {}) {
@@ -138,8 +138,8 @@ class Http {
 }
 
 const http = new Http({
-  baseURL: 'http://ai.sitoai.cn',
-  timeout: 15000,
+  baseURL: 'http://192.168.1.246:8082',
+  timeout: 60000,
 })
 
 // 请求拦截器：自动附加 token

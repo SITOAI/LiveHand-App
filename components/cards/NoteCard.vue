@@ -59,7 +59,8 @@ const props = defineProps({
       { text: '标签二', type: 'success' },
       { text: '标签三', type: 'primary' }
     ]
-  }
+  },
+  summary: { type: String, default: '这里是笔记的内容区域，超过部分会被省略显示，保持卡片整洁。' }
 })
 
 const emit = defineEmits(['delete'])
@@ -69,7 +70,7 @@ const showDelete = ref(false)
 function openDetails() {
   console.log('打开详情页')
   uni.navigateTo({
-    url: `/pages/details/NoteDetails/NoteDetails?title=${encodeURIComponent(props.title)}&time=${props.time}&content=${encodeURIComponent(props.content)}&repo=${encodeURIComponent(props.repo)}&tags=${encodeURIComponent(JSON.stringify(props.tags))}`
+    url: `/pages/details/NoteDetails/NoteDetails?title=${encodeURIComponent(props.title)}&time=${props.time}&content=${encodeURIComponent(props.content)}&repo=${encodeURIComponent(props.repo)}&tags=${encodeURIComponent(JSON.stringify(props.tags))}&summary=${encodeURIComponent(JSON.stringify(props.summary))}`
   })
 }
 

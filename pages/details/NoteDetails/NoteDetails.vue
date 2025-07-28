@@ -65,7 +65,7 @@
       >
         <swiper-item>
           <scroll-view scroll-y class="tab-inner-scroll">
-            <NoteDetailSumTab />
+            <NoteDetailSumTab :summary="content" />
           </scroll-view>
         </swiper-item>
         <swiper-item>
@@ -109,6 +109,8 @@
           :showHeader="true"
           :title="title"
           :onClose="handleCloseChat"
+		  :inType="'NoteAnswerAgentKey'"
+		  :noteSummary="content"
         />
       </scroll-view>
     </u-popup>
@@ -125,6 +127,7 @@ import LiveChat from '../../../components/chat/LiveChat.vue'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
+const inType = ref('NoteAnswerAgentKey')
 
 const tabList = [
   { name: '总结' },
@@ -139,11 +142,15 @@ const title = ref('')
 const time = ref('')
 const repo = ref('')
 const tags = ref([])
+const summary = ref('')
+const content = ref('')
 
 onLoad((options) => {
   title.value = decodeURIComponent(options.title || '')
   time.value = options.time || ''
   repo.value = decodeURIComponent(options.repo || '')
+  summary.value = decodeURIComponent(options.summary || '')
+  content.value = decodeURIComponent(options.content || '')
   try {
     tags.value = JSON.parse(decodeURIComponent(options.tags || '[]'))
   } catch (e) {

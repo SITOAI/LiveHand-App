@@ -76,13 +76,15 @@ function resendCode() {
 async function onInput() {
   if (code.value.length === 6) {
 	const encryptedCode = encryptCaptcha(code.value)
-	var result = await http.post("/user/loginByCaptcha", {
+	var result = await http.post("/user/loginByCaptchaForKnowledge", {
 		  phonenumber: phone.value,
 		  captcha: encryptedCode
 	})
 	if(result.code === 200 && result.data.isSuccess === 1){
-		const token = result.data.user_id
-		userStore.login(token)
+		userStore.login({token:result.data.token,
+						user_id:result.data.user_id,
+						knowledge_user_id:result.data.knowledge_user_id
+						})
 		uni.showToast({ title: '登录成功', icon: 'none' })
 		uni.reLaunch({ url: '/pages/index/layout' })
 	}else{

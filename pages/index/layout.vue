@@ -72,6 +72,8 @@ import SearchPanel from '../../components/SearchPanel.vue'
 import ChatPanel from '../../components/ChatPanel.vue'
 import MainNav from '../../components/MainNav.vue'
 import SelectionPanel from '../../components/SelectionPanel.vue'
+import { useUserStore } from '@/store/user.js'
+const userStore = useUserStore()
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -112,6 +114,9 @@ function handleCreateClick(label) {
 
 function handleItemSelect(item) {
   popupVisible.value = false
+  if(item.title === '上传文件'){
+	  chooseAndUploadFile()
+  }
   console.log('你点击了：', item)
 }
 
@@ -135,6 +140,37 @@ function onSearchClick() {
 
 function onAIClickInAgent() {
   console.log('你现在点击的是智能体页面的 搜索按钮')
+}
+
+function chooseAndUploadFile() {
+  uni.chooseFile({
+    count: 1,
+    success: async (res) => {
+      const file = res.tempFiles[0]
+      console.log('选择的文件:', file)
+
+      uni.uploadFile({
+        url: 'http://ai.sitoai.cn/livehands/dataset/upload/'+userStore.knowledge_user_id, // 替换为你的后端上传接口地址
+        filePath: file.path,
+        name: 'file', // 🔴 这个字段很重要，对应后端的参数名
+        formData: {
+          // 你可以额外携带一些参数
+          description: '这是一个上传的文件',
+        },
+        success: (uploadRes) => {
+          console.log('上传成功：', uploadRes)
+          uni.showToast({ title: '上传成功', icon: 'success' })
+        },
+        fail: (err) => {
+          console.error('上传失败：', err)
+          uni.showToast({ title: '上传失败', icon: 'error' })
+        }
+      })
+    },
+    fail: (err) => {
+      console.error('选择文件失败：', err)
+    }
+  })
 }
 
 // 手势处理

@@ -13,6 +13,9 @@
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
     >
+	  <view class="note-summary-tab">
+	    <text class="note-summary-content">{{ summary }}</text>
+	  </view>
       <!-- ✅ 顶部返回按钮 -->
       <view class="chat-header">
         <u-icon name="arrow-left" size="24" @click="closePopup" />
@@ -31,7 +34,8 @@ import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   show: Boolean,
-  tab: Number
+  tab: Number,
+  summary: String
 })
 const emit = defineEmits(['update:show'])
 

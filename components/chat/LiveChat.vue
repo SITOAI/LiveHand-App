@@ -57,7 +57,10 @@
 <script setup>
 import { ref, nextTick } from 'vue'
 import MessageItem from './components/MessageItem.vue'
+import { useUserStore } from '@/store/user.js'
+import http from '../../utils/http.js'
 
+const userStore = useUserStore()
 const props = defineProps({
   height: {
     type: String,
@@ -74,9 +77,20 @@ const props = defineProps({
   onClose: {
     type: Function,
     default: null
+  },
+  inType: {
+    type: String,
+    default: null
+  },
+  noteSummary: {
+    type: String,
+    default: null
+  },
+  datasetId: {
+    type: String,
+    default: null
   }
 })
-
 const input = ref('')
 const messages = ref([
   {
@@ -104,13 +118,30 @@ const send = async () => {
   // 模拟AI回复
   isTyping.value = true
   await delay(1000)
+  // 根据inType是否有值判断笔记聊天还是知识库聊天
+  const payload = {
+    token: userStore.token
+  } 
+  console.log('props.inType', props.inType)
+  if(props.inType){
+	  payload.in_type = props.inType
+	  payload.content = [props.noteSummary,content]
+  }else{
+	  payload.datasetId = props.datasetId
+	  payload.content = [content]
+  }
+  var res = await http.post("/livehands/knowledge/chat", payload)
+  console.log('res--->：', res)
+  const result = res.data
+  
+  console.log('result--->：', result)
   isTyping.value = false
 
   messages.value.push({
     role: 'assistant',
     blocks: [
-      { type: 'text', content: '收到，这是AI的模拟回复。' },
-      { type: 'image', url: 'https://www.sitoai.cn/livehand/assets/images/sito_logo.png' }
+      { type: 'text', content: result }
+      //{ type: 'image', url: 'https://www.sitoai.cn/livehand/assets/images/sito_logo.png' }
     ]
   })
   updateScroll()
