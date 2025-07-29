@@ -1,6 +1,6 @@
 class Http {
   constructor({
-    baseURL = 'http://192.168.1.246:8082',
+    baseURL = 'http://ai.sitoai.cn',
     timeout = 10000,
     headers = { 'Content-Type': 'application/json' },
   } = {}) {
@@ -138,7 +138,7 @@ class Http {
 }
 
 const http = new Http({
-  baseURL: 'http://192.168.1.246:8082',
+  baseURL: 'http://ai.sitoai.cn',
   timeout: 60000,
 })
 

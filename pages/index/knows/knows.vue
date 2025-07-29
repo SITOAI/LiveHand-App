@@ -23,7 +23,7 @@
 	</KnowCard>
   </div>
 </template>
-
+//知识库列表查询接口：/livehands/knowledge/query
 <script setup>
 import { ref } from 'vue'
 import KnowCard from '@/components/cards/KnowCard.vue' // 按需调整路径

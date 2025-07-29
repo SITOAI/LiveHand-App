@@ -143,6 +143,7 @@ function onAIClickInAgent() {
 }
 
 function chooseAndUploadFile() {
+  var file_Path
   uni.chooseFile({
     count: 1,
     success: async (res) => {
@@ -159,13 +160,38 @@ function chooseAndUploadFile() {
         },
         success: (uploadRes) => {
           console.log('上传成功：', uploadRes)
-          uni.showToast({ title: '上传成功', icon: 'success' })
+		  const data = JSON.parse(uploadRes.data)
+		  file_Path = data.file_path
+		  console.log('filePath：', file_Path)
+		  
         },
         fail: (err) => {
           console.error('上传失败：', err)
           uni.showToast({ title: '上传失败', icon: 'error' })
         }
       })
+	  
+	  uni.uploadFile({
+	    url: 'http://ai.sitoai.cn/livehands/files', // 替换为你的后端上传接口地址
+	    filePath: file.path,
+	    name: 'file', // 🔴 这个字段很重要，对应后端的参数名
+	    formData: {
+	      token: userStore.token,
+		  user_id: userStore.knowledge_user_id,
+	      service_url: file_Path
+	    },
+	    success: (uploadRes) => {
+	      console.log('files上传成功：', uploadRes)
+	  	  const data = JSON.parse(uploadRes.data)
+	  	  console.log('data：', data)
+	  	  
+	      uni.showToast({ title: '上传成功', icon: 'success' })
+	    },
+	    fail: (err) => {
+	      console.error('上传失败：', err)
+	      uni.showToast({ title: '上传失败', icon: 'error' })
+	    }
+	  })
     },
     fail: (err) => {
       console.error('选择文件失败：', err)
