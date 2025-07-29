@@ -143,59 +143,66 @@ function onAIClickInAgent() {
 }
 
 function chooseAndUploadFile() {
-  var file_Path
-  uni.chooseFile({
-    count: 1,
-    success: async (res) => {
-      const file = res.tempFiles[0]
-      console.log('选择的文件:', file)
+  // 判断平台是否是 App
+  const platform = uni.getSystemInfoSync().platform
+  if (platform !== 'android' && platform !== 'ios') {
+    uni.showToast({ title: '仅支持 App', icon: 'none' })
+    return
+  }
+	console.log('你现在点击的是智能体页面的 搜索按钮')
+  // 调用 plus.io.chooseFile 方法
+  plus.io.chooseFile({
+    title: '选择文件',
+    multiple: false,
+    filter: '' // 可选：限制类型如 '.pdf,.docx'
+  }, (entry) => {
+	console.log('✅ 选择文件成功 entry:', entry)
+    const filePath = entry.files?.[0] // 获取真实本地路径
 
-      uni.uploadFile({
-        url: 'http://ai.sitoai.cn/livehands/dataset/upload/'+userStore.knowledge_user_id, // 替换为你的后端上传接口地址
-        filePath: file.path,
-        name: 'file', // 🔴 这个字段很重要，对应后端的参数名
-        formData: {
-          // 你可以额外携带一些参数
-          description: '这是一个上传的文件',
-        },
-        success: (uploadRes) => {
-          console.log('上传成功：', uploadRes)
-		  const data = JSON.parse(uploadRes.data)
-		  file_Path = data.file_path
-		  console.log('filePath：', file_Path)
-		  
-        },
-        fail: (err) => {
-          console.error('上传失败：', err)
-          uni.showToast({ title: '上传失败', icon: 'error' })
-        }
-      })
-	  
-	  uni.uploadFile({
-	    url: 'http://ai.sitoai.cn/livehands/files', // 替换为你的后端上传接口地址
-	    filePath: file.path,
-	    name: 'file', // 🔴 这个字段很重要，对应后端的参数名
-	    formData: {
-	      token: userStore.token,
-		  user_id: userStore.knowledge_user_id,
-	      service_url: file_Path
-	    },
-	    success: (uploadRes) => {
-	      console.log('files上传成功：', uploadRes)
-	  	  const data = JSON.parse(uploadRes.data)
-	  	  console.log('data：', data)
-	  	  
-	      uni.showToast({ title: '上传成功', icon: 'success' })
-	    },
-	    fail: (err) => {
-	      console.error('上传失败：', err)
-	      uni.showToast({ title: '上传失败', icon: 'error' })
-	    }
-	  })
-    },
-    fail: (err) => {
-      console.error('选择文件失败：', err)
-    }
+    console.log('选中的文件路径:', filePath)
+
+    // 第一步上传到 dataset 接口
+    uni.uploadFile({
+      url: 'http://ai.sitoai.cn/livehands/dataset/upload/' + userStore.knowledge_user_id,
+      filePath: filePath,
+      name: 'file',
+      formData: {
+        description: '这是一个上传的文件',
+      },
+      success: (res) => {
+        const data = JSON.parse(res.data)
+        const uploadedPath = data.file_path
+        console.log('第一步上传成功，路径：', uploadedPath)
+
+        // 第二步上传到 files 接口
+        uni.uploadFile({
+          url: 'http://ai.sitoai.cn/livehands/files',
+          filePath: filePath,
+          name: 'file',
+          formData: {
+            token: userStore.token,
+            user_id: userStore.knowledge_user_id,
+            service_url: uploadedPath
+          },
+          success: (res2) => {
+            const data2 = JSON.parse(res2.data)
+            console.log('第二步上传成功：', data2)
+            uni.showToast({ title: '上传成功', icon: 'success' })
+          },
+          fail: (err2) => {
+            console.error('第二步上传失败：', err2)
+            uni.showToast({ title: '上传失败', icon: 'error' })
+          }
+        })
+      },
+      fail: (err) => {
+        console.error('第一步上传失败：', err)
+        uni.showToast({ title: '上传失败', icon: 'error' })
+      }
+    })
+  }, (err) => {
+    console.error('文件选择失败：', err)
+    uni.showToast({ title: '取消选择', icon: 'none' })
   })
 }
 

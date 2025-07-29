@@ -50,7 +50,7 @@ import { defineEmits } from 'vue'
 const props = defineProps({
   title: { type: String, default: '无标题笔记' },
   time: { type: String, default: '2025-06-26' },
-  content: { type: String, default: '这里是笔记的内容区域，超过部分会被省略显示，保持卡片整洁。' },
+  description: { type: String, default: '这里是笔记的描述，超过部分会被省略显示，保持卡片整洁。' },
   repo: { type: String, default: '默认知识库' },
   tags: {
     type: Array,
@@ -60,7 +60,8 @@ const props = defineProps({
       { text: '标签三', type: 'primary' }
     ]
   },
-  summary: { type: String, default: '这里是笔记的内容区域，超过部分会被省略显示，保持卡片整洁。' }
+  content: { type: String, default: '这里是笔记的内容。' },
+  summary: { type: String, default: '这里是笔记的原文。' }
 })
 
 const emit = defineEmits(['delete'])

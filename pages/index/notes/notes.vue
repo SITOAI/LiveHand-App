@@ -5,9 +5,11 @@
       :key="note.id"
       :title="note.title"
       :time="note.time"
-      :content="note.content"
+      :description="note.description"
       :repo="note.repo"
       :tags="note.tags"
+	  :summary="note.summary"
+	  :content="note.content"
     />
   </div>
 </template>
@@ -40,15 +42,17 @@ const fetchNotes = async () => {
     return {
         id: info.note_id,
         title: info.note_title,
-        time: info.note_created_datetime?.split('T')[0] || '',
-        content: content.note_summary || '',
-        repo: info.note_type || '默认分组',
+        time: info.note_created_datetime?.split(' ')[0] || '',
+        description: info.note_description || '',
+        repo: "默认库",
         tags: Array.isArray(info.note_tags)
           ? info.note_tags.map(tag => ({
               text: tag,
               type: 'primary'
             }))
-          : []
+          : [],
+		summary: content.note_summary,
+		content: content.note_content
       }
     })
 	console.log('✅ 最终 notes 列表:', notes.value)

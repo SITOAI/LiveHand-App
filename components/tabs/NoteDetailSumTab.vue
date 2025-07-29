@@ -14,7 +14,7 @@
       @touchend="onTouchEnd"
     >
 	  <view class="note-summary-tab">
-	    <text class="note-summary-content">{{ summary }}</text>
+	    <text class="note-summary-content">{{ props.summary }}</text>
 	  </view>
       <!-- ✅ 顶部返回按钮 -->
       <view class="chat-header">
@@ -31,12 +31,14 @@
 
 <script setup>
 import { defineProps, defineEmits } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   show: Boolean,
   tab: Number,
   summary: String
 })
+console.log('summary', props.summary)
 const emit = defineEmits(['update:show'])
 
 function closePopup() {

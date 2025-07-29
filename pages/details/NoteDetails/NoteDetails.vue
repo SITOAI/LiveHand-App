@@ -65,7 +65,7 @@
       >
         <swiper-item>
           <scroll-view scroll-y class="tab-inner-scroll">
-            <NoteDetailSumTab :summary="content" />
+            <NoteDetailSumTab :summary="summary" />
           </scroll-view>
         </swiper-item>
         <swiper-item>
