@@ -14,7 +14,7 @@
       @touchend="onTouchEnd"
     >
 	  <view class="note-summary-tab">
-	    <text class="note-summary-content">{{ props.summary }}</text>
+	    <view class="note-summary-content">{{ props.summary || '⚠️ summary 为空' }}</view>
 	  </view>
       <!-- ✅ 顶部返回按钮 -->
       <view class="chat-header">
@@ -89,5 +89,20 @@ function onTouchEnd(e) {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.note-summary-tab {
+  padding: 16rpx;
+  background-color: #f0f0f0;
+  border: 1px solid red;
+  min-height: 200rpx;
+}
+
+.note-summary-content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
 }
 </style>

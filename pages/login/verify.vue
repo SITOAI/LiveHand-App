@@ -83,7 +83,8 @@ async function onInput() {
 	if(result.code === 200 && result.data.isSuccess === 1){
 		userStore.login({token:result.data.token,
 						user_id:result.data.user_id,
-						knowledge_user_id:result.data.knowledge_user_id
+						knowledge_user_id:result.data.knowledge_user_id,
+						nickname:result.data.nickName
 						})
 		uni.showToast({ title: '登录成功', icon: 'none' })
 		uni.reLaunch({ url: '/pages/index/layout' })

@@ -94,6 +94,7 @@
                     class="file-item"
                     v-for="file in filteredFiles"
                     :key="file.id"
+					@click="downloadFile(file.id)"
                     @longpress="confirmDelete(file.id)"
                   >
                     <image
@@ -168,6 +169,7 @@
           :showHeader="true"
           :title="title"
           @onClose="handleCloseChat"
+		  :datasetId = "knowId"
         />
       </scroll-view>
     </u-popup>
@@ -179,7 +181,10 @@ import { ref, computed } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import TalkButton from '../../../components/children/TalkButton.vue'
 import LiveChat from '../../../components/chat/LiveChat.vue'
+import http from '../../../utils/http.js'
+import { useUserStore } from '@/store/user.js'
 
+const userStore = useUserStore()
 const activeTab = ref(0)
 const lastTab = ref(0)
 
@@ -188,34 +193,45 @@ const tabList = [
   { name: '知识图谱' }
 ]
 
-const files = ref([
-  {
-    id: 1,
-    name: '2025年AI技术趋势深度报告.pdf',
-    type: 'pdf',
-    uploadTime: '2025-06-01 14:23',
-    preview: '/static/previews/pdf-preview.png'
-  },
-  {
-    id: 2,
-    name: '项目流程图设计稿.png',
-    type: 'image',
-    uploadTime: '2025-05-29 09:11',
-    preview: '/static/previews/image-preview.png'
-  },
-  {
-    id: 3,
-    name: '数据统计表2025年Q2.xlsx',
-    type: 'excel',
-    uploadTime: '2025-06-15 16:45',
-    preview: '/static/previews/excel-preview.png'
+const files = ref([])
+const fetchFiles = async () => {
+  try {
+    var res = await http.post("/livehands/dataset/search", {
+    	  dataset_id: knowId.value
+    })
+    const result = res.data.data
+
+    // 如果是数组返回：遍历处理
+    const rawList = Array.isArray(result) ? result : [result]
+
+    files.value = rawList.map(item => {
+    return {
+        id: item.datasetfile_id,
+        name: item.datasetfile_name,
+        preview: item.service_url || '',
+        time: item.datasetfile_uploaded_datetime,
+		type: getFileType(item.datasetfile_name)
+      }
+    })
+	console.log('✅ 最终 files 列表:', files.value)
+  } catch (error) {
+    console.error('获取文件失败:', error)
   }
-])
+}
+
+function getFileType(datasetfile_name) {
+  if (!datasetfile_name) return 'unknown'
+  const parts = datasetfile_name.split('.')
+  if (parts.length < 2) return 'unknown'
+  return parts.pop()?.toLowerCase() || 'unknown'
+}
+
 
 const showMore = ref(false)
 const showEdit = ref(false)
 const chatPopupVisible = ref(false)
 
+const knowId = ref('')
 const title = ref('')
 const time = ref('')
 const repo = ref('')
@@ -225,6 +241,7 @@ const prompt = ref([])
 
 onLoad((options) => {
 	console.log(options)
+  knowId.value = decodeURIComponent(options.knowId || '')
   title.value = decodeURIComponent(options.name || '')
   time.value = options.time || ''
   repo.value = decodeURIComponent(options.repo || '')
@@ -235,6 +252,7 @@ onLoad((options) => {
   } catch (e) {
     tags.value = []
   }
+  fetchFiles()
 })
 
 function onTalkWithAI() {
@@ -291,6 +309,44 @@ function confirmDelete(id) {
 
 function deleteFile(id) {
   files.value = files.value.filter(file => file.id !== id)
+}
+
+function downloadFile(id) {
+  if (!id) {
+    uni.showToast({ title: '文件ID无效', icon: 'none' })
+    return
+  }
+
+  const url = `http://ai.sitoai.cn/livehands/dataset/download/${id}`
+
+  uni.downloadFile({
+    url,
+    success: (res) => {
+      if (res.statusCode === 200) {
+        // 文件临时路径（可用于保存到本地）
+        const tempFilePath = res.tempFilePath
+        console.log('下载成功，路径:', tempFilePath)
+
+        // 打开文件（适合 PDF、文档、图片等）
+        uni.openDocument({
+          filePath: tempFilePath,
+          success: () => {
+            console.log('打开文档成功')
+          },
+          fail: (err) => {
+            console.error('打开文档失败', err)
+          }
+        })
+      } else {
+        uni.showToast({ title: '下载失败', icon: 'none' })
+        console.error('下载失败', res)
+      }
+    },
+    fail: (err) => {
+      uni.showToast({ title: '下载出错', icon: 'none' })
+      console.error('下载出错', err)
+    }
+  })
 }
 
 const searchKeyword = ref('')

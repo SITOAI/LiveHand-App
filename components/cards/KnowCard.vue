@@ -23,11 +23,11 @@
       <div class="know-footer">
         <div class="know-info">
           <span class="know-time">{{ time }}</span>
-          <span class="know-separator">|</span>
-          <span class="know-usage">{{ count }}个内容 · {{ users }}人在用</span>
+          <!-- <span class="know-separator">|</span>
+          <span class="know-usage">{{ count }}个内容 · {{ users }}人在用</span> -->
         </div>
         <div class="know-tags">
-          <u-tag
+          <!-- <u-tag
             v-for="(tag, index) in tags"
             :key="index"
             :text="tag.text"
@@ -35,7 +35,7 @@
             size="mini"
             plain
             class="tag-item"
-          />
+          /> -->
         </div>
       </div>
     </div>
@@ -46,19 +46,14 @@
 import { defineProps } from 'vue'
 
 const props = defineProps({
+  knowId: String,
   name: String,
   user: String,
   prompt: String,
   count: Number,
   users: Number,
-  time: String,
-  tags: {
-    type: Array,
-    default: () => [
-      { text: '标签一', type: 'warning' },
-      { text: '标签二', type: 'success' }
-    ]
-  }
+  time: String
+  
 })
 
 const onShare = () => {
@@ -71,7 +66,7 @@ const onDelete = () => {
 
 function openDetails() {
   uni.navigateTo({
-    url: `/pages/details/KnowDetails/KnowDetails?name=${encodeURIComponent(props.name)}&user=${encodeURIComponent(props.user)}&prompt=${encodeURIComponent(props.prompt)}&count=${props.count}&users=${props.users}&time=${props.time}&tags=${encodeURIComponent(JSON.stringify(props.tags))}`
+    url: `/pages/details/KnowDetails/KnowDetails?knowId=${encodeURIComponent(props.knowId)}&name=${encodeURIComponent(props.name)}&user=${encodeURIComponent(props.user)}&prompt=${encodeURIComponent(props.prompt)}&count=${props.count}&users=${props.users}&time=${props.time}&tags=${encodeURIComponent(JSON.stringify(props.tags))}`
   })
 }
 </script>
@@ -147,7 +142,7 @@ function openDetails() {
   position: relative;
   flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }

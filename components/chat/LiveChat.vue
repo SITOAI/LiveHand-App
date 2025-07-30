@@ -122,7 +122,7 @@ const send = async () => {
   const payload = {
     token: userStore.token
   } 
-  console.log('props.inType', props.inType)
+  console.log('props.datasetId', props.datasetId)
   if(props.inType){
 	  payload.in_type = props.inType
 	  payload.content = [props.noteSummary,content]
@@ -130,6 +130,7 @@ const send = async () => {
 	  payload.datasetId = props.datasetId
 	  payload.content = [content]
   }
+  console.log('payload--->：', payload)
   var res = await http.post("/livehands/knowledge/chat", payload)
   console.log('res--->：', res)
   const result = res.data
