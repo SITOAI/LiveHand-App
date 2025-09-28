@@ -1,7 +1,7 @@
 <template>
   <view class="tabbar">
     <view
-      v-for="(tab, i) in ['笔记', '知识库', '智能体']"
+      v-for="(tab, i) in ['笔记', '知识库']"
       :key="i"
       class="tab"
       :class="{ active: activeIndex === i }"

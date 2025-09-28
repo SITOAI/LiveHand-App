@@ -23,7 +23,7 @@
       }
     },
     {
-      // index layout 页面：控制 notes 和 knows
+      // index layout 页面：控制整个页面布局
       "path": "pages/index/layout",
       "style": {
         "navigationBarTitleText": "",
@@ -31,8 +31,24 @@
       }
     },
     {
+      // 探索 layout 页面
+      "path": "pages/index/explore/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 知识库 layout 页面
+      "path": "pages/index/knowledge/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
       // 笔记页面
-      "path": "pages/index/notes/notes",
+      "path": "pages/index/knowledge/notes/notes",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
@@ -40,15 +56,23 @@
     },
     {
       // 知识页面
-      "path": "pages/index/knows/knows",
+      "path": "pages/index/knowledge/knows/knows",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
       }
     },
     {
-      // 智能体主要页面
+      // 智能体 layout 页面
       "path": "pages/index/agents/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 我的 layout 页面
+      "path": "pages/index/mine/layout",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"

@@ -2,11 +2,10 @@
   <view class="login-page">
     <!-- 顶部 Logo -->
     <view class="top-logo-row">
-      <image class="logo" src="/static/logo.png" mode="widthFix" />
+      <image class="logo" src="/static/logo-group.png" mode="widthFix" />
     </view>
 
     <!-- 标题 -->
-    <view class="title">手机号验证码登录</view>
     <view class="subtitle">未注册手机号验证后即自动注册账号</view>
 
     <!-- 手机号输入区域 -->
@@ -29,7 +28,7 @@
       :disabled="countdown > 0"
       @click="getVerifyCode"
     >
-      {{ countdown > 0 ? `${countdown}s后重新获取` : '获取短信验证码' }}
+      {{ countdown > 0 ? `${countdown}s后重新获取` : '验证码登录' }}
     </button>
 
     <!-- 协议勾选 -->
@@ -38,12 +37,17 @@
         <u-checkbox :name="'agree'" shape="circle" activeColor="#007AFF" />
       </u-checkbox-group>
       <text class="agreement-text">
-          我已阅读并同意
+          未注册号码将自动注册，勾选即代表您阅读并同意
           <text class="link" @click="openUser">《用户协议》</text>
           和
           <text class="link" @click="openPrivacy">《隐私政策》</text>
         </text>
     </view>
+	
+	<!-- 微信登录快捷按钮 -->
+	<view class="wechat-login-area">
+	  <image class="wechat-login-button" src="/static/weichat-icon.png" mode="widthFix" />
+	</view>
   </view>
 </template>
 
@@ -142,50 +146,53 @@ onUnmounted(() => {
   padding: 100rpx 60rpx;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  background-color: #ffffff;
+  align-items: center;
+  background-image: url('../../static/background-login.png');
+  background-size: cover;
+  background-position: center;
+  width: 84%;
 }
 
-.top-logo-row {
+/* .top-logo-row {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-}
+  justify-content:  center;
+} */
 
 .logo {
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 20rpx;
+  width: 250px;
+  margin-top: 38px;
 }
 
 .title {
-  margin-top: 40rpx;
+ margin-top: 40rpx;
   font-size: 40rpx;
   font-weight: bold;
   color: #333;
+  display: flex;
+  justify-content: center;
 }
 
 .subtitle {
-  font-size: 26rpx;
+  font-size: 16px;
   color: #999;
   margin-top: 10rpx;
-  margin-bottom: 40rpx;
+  margin-bottom: 47px;
 }
 
 /* 统一输入框行高度 */
 .phone-input-row {
-  height: 80rpx;            /* 固定高度 */
+  height: 55px;            /* 固定高度 */
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 10rpx;
+  border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 20rpx;
+  margin-bottom: 34px;
   width: 100%;
 }
 
 .area-code {
-  height: 100%;
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,18 +206,19 @@ onUnmounted(() => {
 
 .phone-input {
   flex: 1;
-  height: 100%;
+  height: 55px;
   font-size: 30rpx;
   border: none;
   padding: 0 20rpx;
   outline: none;
   line-height: 80rpx;       /* 文字垂直居中 */
+  background-color: #F7F7F7;
 }
 
 /* 按钮高度和输入框行高度一致 */
 .verify-btn {
   width: 100%;
-  height: 80rpx;            /* 和输入框高度一致 */
+  height: 55px;            /* 和输入框高度一致 */
   font-size: 30rpx;
   border-radius: 10rpx;
   background-color: #007aff;
@@ -220,6 +228,9 @@ onUnmounted(() => {
   margin-bottom: 30rpx;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .verify-btn:disabled {
@@ -245,5 +256,11 @@ onUnmounted(() => {
 .link {
   color: #007aff;
   text-decoration: underline;
+}
+
+.wechat-login-button {
+	cursor: pointer;
+	margin-top: 170px;
+	width: 60px;
 }
 </style>

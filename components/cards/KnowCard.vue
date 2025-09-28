@@ -49,8 +49,8 @@ const props = defineProps({
   name: String,
   user: String,
   prompt: String,
-  count: Number,
-  users: Number,
+  count: String,
+  users: String,
   time: String,
   tags: {
     type: Array,
