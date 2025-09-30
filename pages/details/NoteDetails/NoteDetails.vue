@@ -99,13 +99,13 @@
           </view>
           
           <!-- 复制笔记 -->
-          <view class="more-popup-item">
+          <view class="more-popup-item" @click="copyNoteSummary()">
             <image src="../../../static/copy.png" class="more-popup-item-image" mode="aspectFit"></image>
             <text class="more-popup-item-text">复制笔记</text>
           </view>
           
           <!-- 删除笔记 -->
-          <view class="more-popup-item">
+          <view class="more-popup-item" @click="deleteNote">
             <image src="../../../static/delete.png" class="more-popup-item-image" mode="aspectFit"></image>
             <text class="more-popup-item-text">删除笔记</text>
           </view>
@@ -191,6 +191,7 @@ import NoteDetailSumTab from '../../../components/tabs/NoteDetailSumTab.vue'
 import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vue'
 import TalkButton from '../../../components/children/TalkButton.vue'
 import LiveChat from '../../../components/chat/LiveChat.vue'
+import http from '../../../utils/http.js'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -251,6 +252,7 @@ const repo = ref('')
 const tags = ref([])
 const musice = ref(false)
 const audioName = ref('音频文件')
+const noteId = ref('') // 笔记ID
 
 // 路由参数
 const summary = ref('')
@@ -262,6 +264,8 @@ onLoad((options) => {
   repo.value = decodeURIComponent(options.repo || '')
   musice.value = options.musice === 'true'
   audioName.value = decodeURIComponent(options.audioName || '音频文件')
+  // 获取笔记ID
+  noteId.value = options.id || ''
   // 获取summary参数
   summary.value = decodeURIComponent(options.summary || '')
   // 获取handmould参数
@@ -313,13 +317,17 @@ function onTouchEnd(e) {
   const endY = e.changedTouches[0].clientY
   const deltaX = endX - startX
   const deltaY = Math.abs(endY - startY)
+  
+  // 处理手势滑动退出逻辑
+  if (startTabIndex === 0 && activeTab.value === 0 && deltaX > 50 && deltaY < 30) {
+    goBack()
+  }
 }
 
 // 选择知识库相关函数
 function showRepoSelectionModal() {
   // 确保显示时选中id为1的选项
   selectedRepo.value = '1'
-  console.log("🚀 ~ showRepoSelectionModal ~ selectedRepo:", selectedRepo)
   showRepoSelection.value = true
 }
 
@@ -363,15 +371,96 @@ function handleRepoSelect(value) {
 
 function handleCreateRepo() {
   uni.showToast({ title: '新建知识库功能暂未开放', icon: 'none' })
-
-  if (startTabIndex === 0 && activeTab.value === 0 && deltaX > 50 && deltaY < 30) {
-    goBack()
-  }
 }
 
 // AI提问按钮点击事件
 function showAiChat() {
   chatPopupVisible.value = true
+}
+
+// 删除笔记功能
+function deleteNote() {
+            uni.showToast({ title: '功能暂未开放', icon: 'none' }); return
+  // 显示确认对话框
+  // uni.showModal({
+  //   title: '确认删除',
+  //   content: '确定要删除这条笔记吗？删除后将无法恢复。',
+  //   success: async (res) => {
+  //     if (res.confirm) {
+  //       try {
+          // 检查笔记ID是否存在
+          // if (!noteId.value) {
+          //   uni.showToast({ title: '笔记ID缺失', icon: 'none' });
+          //   return;
+          // }
+          
+          // // 显示加载状态
+          // uni.showLoading({ title: '删除中...' });
+          
+          // // 发送删除请求
+          // await http.delete(`/api/notes/${noteId.value}`);
+          
+          // // 隐藏加载状态
+          // uni.hideLoading();
+          
+          // // 显示删除成功提示
+          // uni.showToast({
+          //   title: '笔记已删除',
+          //   icon: 'success',
+          //   duration: 2000,
+          //   success: () => {
+          //     // 隐藏更多操作弹窗
+          //     showMore.value = false;
+          //     // 延迟返回上一页，确保用户看到成功提示
+          //     setTimeout(() => {
+          //       goBack();
+          //     }, 500);
+          //   }
+          // });
+        // } catch (error) {
+        //   // 隐藏加载状态
+        //   uni.hideLoading();
+          
+        //   // 显示错误提示
+        //   uni.showToast({
+        //     title: error.message || '删除失败，请重试',
+        //     icon: 'none',
+        //     duration: 2000
+        //   });
+        // }
+      // }
+    // }
+  // });
+}
+
+// 复制笔记总结内容
+function copyNoteSummary() {
+          uni.showToast({ title: '功能暂未开放', icon: 'none' }); return
+  // if (summary.value) {
+  //   uni.setClipboardData({
+  //     data: summary.value,
+  //     success: () => {
+  //       uni.showToast({
+  //         title: '笔记总结已复制',
+  //         icon: 'success',
+  //         duration: 2000
+  //       })
+  //     },
+  //     fail: () => {
+  //       uni.showToast({
+  //         title: '复制失败，请重试',
+  //         icon: 'none',
+  //         duration: 2000
+  //       })
+  //     }
+  //   })
+  // } else {
+  //   uni.showToast({
+  //     title: '暂无笔记总结内容',
+  //     icon: 'none',
+  //     duration: 2000
+  //   })
+  // }
 }
 </script>
 
@@ -382,7 +471,7 @@ function showAiChat() {
   box-sizing: border-box;
   position: relative;
   padding: 0 16px;
-  padding-top: 30rpx;
+  padding-top: 2vh;
 }
 
 /* 顶部图标行 */
