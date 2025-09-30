@@ -1,0 +1,153 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      // 一级 layout 页面：入口页面
+      "path": "pages/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 登录页
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // index layout 页面：控制整个页面布局
+      "path": "pages/index/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 探索 layout 页面
+      "path": "pages/index/explore/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 知识库 layout 页面
+      "path": "pages/index/knowledge/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 笔记页面
+      "path": "pages/index/knowledge/notes/notes",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 知识页面
+      "path": "pages/index/knowledge/knows/knows",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 智能体 layout 页面
+      "path": "pages/index/agents/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 我的 layout 页面
+      "path": "pages/index/mine/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 404 页面
+      "path": "pages/404/404",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+    	"path" : "pages/login/verify",
+    	"style" : 
+    	{
+			"navigationBarTitleText": "",
+			"navigationStyle": "custom"
+    	}
+    },
+    {
+      "path": "components/SearchPage",
+      "style": {
+        "navigationBarTitleText": "搜索",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#ffffff"
+      }
+    },
+    {
+    	"path" : "pages/details/NoteDetails/NoteDetails",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
+    },
+    {
+    	"path" : "pages/details/KnowDetails/KnowDetails",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
+    },
+	{
+		"path" : "pages/static/User",
+		"style" : 
+		{
+			"navigationBarTitleText" : "",
+			"enablePullDownRefresh" : false
+		}
+	},
+    {
+    	"path" : "pages/static/Privacy",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false
+    	}
+    }
+  ],
+  "globalStyle": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#ffffff"
+  },
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

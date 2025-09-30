@@ -1,0 +1,229 @@
+<template>
+  <u-popup 
+  :close-on-click-overlay="false"
+    :show="show"
+    mode="left"
+    :overlay="true"
+    :closeable="false"
+    :safe-area-inset-left="true"
+    @close="closePanel"
+    @update:show="val => emit('update:show', val)"
+  >
+    <view class="panel-wrapper" @touchstart="onTouchStart" @touchend="onTouchEnd">
+
+      <!-- 顶部栏 -->
+      <view class="panel-header">
+        <text class="header-title">通用</text>
+        <u-icon name="close-circle" size="28" @click="closePanel" />
+      </view>
+
+      <!-- 内容区域 -->
+      <scroll-view scroll-y class="common-wrapper">
+
+        <Member v-if="isMember" />
+        <UnMember v-else />
+
+        <!-- 快捷操作 -->
+        <view class="section">
+          <view class="section-title">快捷操作</view>
+          <view class="section-body">
+            <view @click="openWidget"><MenuItem title="小组件" icon="attach" /></view>
+            <view @click="openImport"><MenuItem title="导入笔记" icon="plus-circle" /></view>
+            <view @click="openSynchronize"><MenuItem title="同步 LiveKnowledge" icon="reload" /></view>
+          </view>
+        </view>
+
+        <!-- 个性化设置 -->
+        <view class="section">
+          <view class="section-title">个性化设置</view>
+          <view class="section-body">
+            <view @click="openHistory"><MenuItem title="历史记录" icon="clock" :isOk="true" /></view>
+            <view @click="openTags"><MenuItem title="预设标签" icon="tags" :isOk="true" /></view>
+            <view @click="openFiles"><MenuItem title="文件管理器" icon="folder" /></view>
+          </view>
+        </view>
+
+        <!-- 需要你的帮助 -->
+        <view class="section">
+          <view class="section-title">需要你的帮助</view>
+          <view class="section-body">
+            <view @click="openRate"><MenuItem title="去应用商城给个好评" icon="star" /></view>
+            <view @click="openShare"><MenuItem title="分享 LiveHands 给好友" icon="share" :isOk="true" /></view>
+            <view @click="openWechat"><MenuItem title="关注官方公众号" icon="weixin-fill" :isOk="true" /></view>
+            <view @click="openRedbook"><MenuItem title="关注官方小红书" icon="heart" :isOk="true" /></view>
+            <view @click="openFeedback"><MenuItem title="吐槽专用" icon="chat" :isOk="true" /></view>
+          </view>
+        </view>
+
+        <!-- 版本信息 -->
+        <view class="section">
+          <view class="section-title">版本信息</view>
+          <view class="section-body">
+            <view @click="openUpdate"><MenuItem title="版本更新" icon="checkmark-circle" :isOk="true" /></view>
+            <view @click="openIntro"><MenuItem title="版本介绍" icon="info-circle" :isOk="true" /></view>
+          </view>
+        </view>
+
+        <!-- 帮助中心 -->
+        <view class="section">
+          <view class="section-title">帮助中心</view>
+          <view class="section-body">
+            <view @click="openDocs"><MenuItem title="使用文档" icon="file-text" :isOk="true" /></view>
+            <view @click="openAbout"><MenuItem title="关于我们" icon="integral" :isOk="true" /></view>
+          </view>
+        </view>
+
+        <!-- 退出登录 -->
+        <view class="logout-wrapper">
+          <u-button
+            type="error"
+            shape="circle"
+            size="medium"
+            text="退出登录"
+            @click="logout"
+          />
+        </view>
+
+        <view class="somthing-info">
+          <text>西安视途科技有限公司 AI 技术支撑</text>
+        </view>
+      </scroll-view>
+    </view>
+  </u-popup>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import Member from './children/Member.vue'
+import UnMember from './children/UnMember.vue'
+import MenuItem from './children/MenuItem.vue'
+import { useUserStore } from '../store/user.js'
+
+const props = defineProps({ show: Boolean })
+const emit = defineEmits(['update:show'])
+
+const isMember = ref(false)
+const userStore = useUserStore()
+
+function closePanel() {
+  emit('update:show', false)
+}
+
+function logout() {
+  userStore.logout()
+  emit('update:show', false)
+  setTimeout(() => {
+    uni.reLaunch({ url: '/pages/layout' })
+  }, 300)
+}
+
+// 手势关闭
+let startX = 0, startY = 0
+function onTouchStart(e) {
+  startX = e.touches[0].clientX
+  startY = e.touches[0].clientY
+}
+function onTouchEnd(e) {
+  const deltaX = e.changedTouches[0].clientX - startX
+  const deltaY = Math.abs(e.changedTouches[0].clientY - startY)
+  if (deltaX < -60 && deltaY < 30) closePanel()
+}
+
+// 页面跳转函数
+function openWidget() {
+  uni.navigateTo({ url: '/pages/static/WidgetManager' })
+}
+function openImport() {
+  uni.navigateTo({ url: '/pages/static/ImportNotes' })
+}
+function openSynchronize() {
+  uni.navigateTo({ url: '/pages/static/sync' })
+}
+function openHistory() {
+  uni.navigateTo({ url: '/pages/static/HistoryLog' })
+}
+function openTags() {
+  uni.navigateTo({ url: '/pages/static/Tags' })
+}
+function openFiles() {
+  uni.navigateTo({ url: '/pages/static/FileBrowser' })
+}
+function openRate() {
+  uni.navigateTo({ url: '/pages/static/rate' })
+}
+function openShare() {
+  uni.navigateTo({ url: '/pages/static/share' })
+}
+function openWechat() {
+  uni.navigateTo({ url: '/pages/static/wechat' })
+}
+function openRedbook() {
+  uni.navigateTo({ url: '/pages/static/redbook' })
+}
+function openFeedback() {
+  uni.navigateTo({ url: '/pages/static/feedback' })
+}
+function openUpdate() {
+  uni.navigateTo({ url: '/pages/static/update' })
+}
+function openIntro() {
+  uni.navigateTo({ url: '/pages/static/intro' })
+}
+function openDocs() {
+  uni.navigateTo({ url: '/pages/static/docs' })
+}
+function openAbout() {
+  uni.navigateTo({ url: '/pages/static/about' })
+}
+</script>
+
+<style scoped>
+.panel-wrapper {
+  width: 90vw;
+  height: 95vh;
+  background-color: #ebeff2;
+  display: flex;
+  flex-direction: column;
+  padding: 5vh 5vw 0;
+  border-radius: 10px;
+}
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 3vw;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(204,204,204,0.53);
+}
+.header-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.common-wrapper {
+  flex: 1;
+  overflow-y: scroll;
+}
+.section {
+  margin-top: 16px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 8px;
+}
+.section-body {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.logout-wrapper {
+  margin: 24px 16px;
+}
+.somthing-info {
+  padding-bottom: 2vh;
+  font-size: 10px;
+  color: #ccc;
+  text-align: center;
+}
+</style>
