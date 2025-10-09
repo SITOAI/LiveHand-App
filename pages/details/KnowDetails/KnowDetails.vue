@@ -703,7 +703,6 @@ function onTouchEnd(e) {
   font-size: 14px;
   color: #444;
   line-height: 1.4;
-
 }
 
 /* 底部一行，水平排列 */

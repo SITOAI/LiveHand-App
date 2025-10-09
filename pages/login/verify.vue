@@ -81,7 +81,6 @@ async function onInput() {
 		  phonenumber: phone.value,
 		  captcha: encryptedCode
 	})
-	console.log("🚀 ~ onInput ~ result:", result)
 	if(result.code === 200 && result.data.isSuccess === 1){
 		const token = result.data.token
 		userStore.login(token)
