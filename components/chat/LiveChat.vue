@@ -6,12 +6,13 @@
       <u-icon name="close-circle" size="28" class="chat-close-icon" @click="handleClose" />
     </view>
 
-    <!-- 聊天滚动区 -->
+    <!-- 聊天滚动区 - 确保内容区域在键盘弹出时可见 -->
     <scroll-view
       scroll-y
       class="chat-scroll"
       :scroll-into-view="scrollTarget"
       scroll-with-animation
+      adjust-position="false"
     >
       <MessageItem
         v-for="(msg, index) in messages"
@@ -34,7 +35,7 @@
     </scroll-view>
 
     <!-- 底部输入区 -->
-    <view class="chatbar">
+    <view class="chatbar" @tap="focusInput">
       <u--input
         v-model="input"
         placeholder="向LiveHands提问"
@@ -42,6 +43,7 @@
         prefixIconStyle="font-size: 22px;color: #909399"
         border="none"
         :customStyle="{ background: '#ddd', flex: 1 }"
+        ref="inputRef"
       />
       <view
         class="send-icon-wrapper"
@@ -55,9 +57,31 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import MessageItem from './components/MessageItem.vue'
 import http from '../../utils/http.js'
+
+// 输入框引用
+const inputRef = ref(null)
+// 监听键盘高度变化，确保内容区域可见
+const handleKeyboardHeight = (e) => {
+  // 添加错误检查，确保e和e.detail存在
+  if (e && e.detail && typeof e.detail.height === 'number' && e.detail.height > 0) {
+    // 键盘弹出时，保持滚动到底部
+    updateScroll()
+  }
+}
+
+// 组件挂载时添加键盘事件监听
+onMounted(() => {
+  // 监听键盘高度变化
+  uni.onKeyboardHeightChange(handleKeyboardHeight)
+})
+
+// 组件卸载时移除事件监听
+onUnmounted(() => {
+  uni.offKeyboardHeightChange(handleKeyboardHeight)
+})
 
 const props = defineProps({
   height: {
@@ -102,6 +126,15 @@ const messages = ref([
 ])
 const isTyping = ref(false)
 const scrollTarget = ref('msg-0')
+
+// 点击chatbar区域时聚焦输入框
+const focusInput = () => {
+  if (inputRef.value) {
+    nextTick(() => {
+      inputRef.value.focus()
+    })
+  }
+}
 
 // 设置请求超时时间（毫秒）
 const REQUEST_TIMEOUT = 600000 // 
@@ -220,6 +253,7 @@ const send = async () => {
     })
     console.error('发送聊天请求失败:', error)
   } finally {
+    // 发送消息后滚动到底部，但不重新聚焦输入框
     updateScroll()
   }
 }
@@ -245,7 +279,16 @@ const handleClose = () => {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
+  height: 100%;
   padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* 确保在键盘弹出时页面内容不会被挤压 */
+page {
+  overflow: auto;
+  height: 100vh;
 }
 
 /* Header */
@@ -270,13 +313,21 @@ const handleClose = () => {
   transform: translateY(-50%);
 }
 
-/* 聊天滚动区 */
+/* 聊天滚动区 - 确保内容区域在键盘弹出时可见 */
 .chat-scroll {
   flex: 1;
   overflow: scroll;
   padding: 30rpx 20rpx;
   background-color: #ffffff;
   border-radius: 16rpx;
+  /* 防止滚动条在某些设备上影响布局 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* 确保内容区域始终可见 */
+  min-height: 0;
+}
+.chat-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* Typing 动画 */
@@ -318,7 +369,7 @@ const handleClose = () => {
   40% { transform: scale(1); }
 }
 
-/* 输入栏 */
+/* 输入栏 - 确保在底部固定显示 */
 .chatbar {
   position: relative;
   bottom: 0;
