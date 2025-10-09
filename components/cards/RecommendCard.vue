@@ -149,10 +149,14 @@ defineProps({
 /* 图片区域 */
 .recommend_card_images_area{
   display: flex;
-  flex-wrap: wrap;
   gap: 13rpx;
   margin-top: 10rpx;
   margin-bottom: 10rpx;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4rpx;
 }
 .recommend_card_image{
   width: 193rpx;

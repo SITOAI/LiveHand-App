@@ -56,7 +56,8 @@ function handleClick(current_label) {
 <style scoped>
 .main-bottom-bar {
 	width: 100vw;
-	height: 90rpx;
+	height: 150rpx;
+	padding-top: 16rpx;
 	background-color: #ffffff;
 	display: flex;
     align-items: center;
@@ -72,22 +73,23 @@ function handleClick(current_label) {
 }
 
 .main-bottom-bar-icon-area {
-	display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1; /* 每个区域均等分配宽度 */
   height: 100%;
+  margin-bottom: 50rpx;
 }
 
 .main-bottom-bar-icon {
-	width: 30rpx;
-	height: 30rpx;
+	width: 46rpx;
+	height: 46rpx;
 	margin-bottom: 4rpx;
 }
 
 .main-bottom-bar-span {
-	font-size: 12rpx;
+	font-size: 22rpx;
 	color: #666666;
 }
 
@@ -98,8 +100,8 @@ function handleClick(current_label) {
 }
 
 .main-bottom-bar-create-icon {
-	width: 45rpx;
-	height: 45rpx;
+	width: 60rpx;
+	height: 60rpx;
 	/* 使用负值margin让创建按钮突出显示 */
 	margin-bottom: 10rpx;
 }
