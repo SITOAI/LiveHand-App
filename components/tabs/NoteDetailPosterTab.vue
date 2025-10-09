@@ -4,7 +4,7 @@
     <view class="content-wrapper">
       <!-- 使用从路由传递的handmould参数 -->
       <view v-if="handmould" class="handmould-content">
-        <text class="paragraph">{{ handmould }}</text>
+        <rich-text :nodes="processedHandmould"></rich-text>
       </view>
       
       <!-- 当handmould为空时显示默认内容 -->
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, computed } from 'vue'
 
 const props = defineProps({
   show: Boolean,
@@ -28,6 +28,63 @@ const props = defineProps({
     type: String,
     default: ''
   }
+})
+
+// 简单的markdown解析函数
+function parseMarkdown(text) {
+  if (!text) return ''
+  
+  // 将文本处理为markdown格式
+  let mdText = text
+  
+  // 处理标题，设置字体大小为36rpx
+  mdText = mdText.replace(/^# (.*$)/gm, '<h1 style="margin: 16px 0; font-size: 36rpx;">$1</h1>')
+  mdText = mdText.replace(/^## (.*$)/gm, '<h2 style="margin: 14px 0; font-size: 30rpx;">$1</h2>')
+  mdText = mdText.replace(/^### (.*$)/gm, '<h3 style="margin: 12px 0; font-size: 24rpx;">$1</h3>')
+  
+  // 处理粗体
+  mdText = mdText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+  mdText = mdText.replace(/\*(.*?)\*/g, '<em>$1</em>')
+  
+  // 首先处理所有图片链接，确保在任何URL处理之前
+  // 1. 处理 ![]() 格式（标准Markdown图片链接）
+  mdText = mdText.replace(/!\[.*?\]\(\s*[`]?([^\s"'<>"]*(?:\.(jpg|jpeg|png|gif|svg|webp)|wx_fmt=\w+)[^"'<>")\s]*?)[`]?\s*\)/gi, '<div style="margin: 12px 0;"><img src="$1" style="max-width: 100%; height: auto; border-radius: 8px;"></div>')
+  
+  // 2. 处理 !url 格式（简化版图片链接）
+  mdText = mdText.replace(/!\s*[`]?([^\s"'<>"]*(?:\.(jpg|jpeg|png|gif|svg|webp)|wx_fmt=\w+)[^"'<>")\s]*?)[`]?/gi, '<div style="margin: 12px 0;"><img src="$1" style="max-width: 100%; height: auto; border-radius: 8px;"></div>')
+  
+  // 处理普通链接 [链接文本](链接URL)
+  mdText = mdText.replace(/\[(.*?)\]\((https?:\/\/[^\s"'<>"]+)\)/g, '<a href="$2" class="markdown-link" target="_blank">$1</a>')
+  
+  // 处理纯URL链接 http:// 或 https://，只处理非图片链接
+  // 确保不会覆盖已经处理成图片的链接
+  mdText = mdText.replace(/(^|[^!`])(https?:\/\/[^\s"'<>"]+)/g, function(match, prefix, url) {
+    // 检查URL是否是图片链接
+    const imageExtensions = /\.(jpg|jpeg|png|gif|svg|webp)$/i;
+    const hasImageParam = /[?&](wx_fmt|format)=\w+/i.test(url);
+    // 如果URL是图片链接，但没有被之前的处理捕获，则不转换为普通链接
+    if (imageExtensions.test(url) || hasImageParam) {
+      return prefix + url;
+    }
+    return prefix + '<a href="' + url + '" class="markdown-link" target="_blank">' + url + '</a>';
+  });
+  
+  // 处理列表
+  mdText = mdText.replace(/^- (.*$)/gm, '<div style="display: flex; align-items: flex-start; margin-bottom: 8px;"><span style="margin-right: 8px; margin-top: 4px;">•</span><div>$1</div></div>')
+  
+  // 处理段落
+  mdText = mdText.replace(/^(?!<h[1-3]>)(?!<div)(?!•)(.*$)/gm, '<p style="margin: 8px 0; line-height: 1.6;">$1</p>')
+  
+  // 处理换行
+  mdText = mdText.replace(/\n/g, '')
+  
+  return mdText
+}
+
+// 计算属性：处理handmould数据为markdown格式
+const processedHandmould = computed(() => {
+  if (!props.handmould) return ''
+  return parseMarkdown(props.handmould)
 })
 const emit = defineEmits(['update:show'])
 
@@ -111,5 +168,11 @@ function onTouchEnd(e) {
   font-size: 14px;
   color: #333;
   line-height: 1.6;
+}
+
+/* Markdown链接样式 */
+.markdown-link {
+  color: #0066cc;
+  text-decoration: underline;
 }
 </style>

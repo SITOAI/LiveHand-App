@@ -1,6 +1,6 @@
 <template>
-	<view class="main-bottom-bar">
-		<view class="main-bottom-bar-icon-area" @click="handleClick(1)">
+  <view class="main-bottom-bar">
+	<view class="main-bottom-bar-icon-area" @click="handleClick(1)">
 		<image v-if="label == 1" class="main-bottom-bar-icon" src="../static/expolre_selected.png" mode="aspectFit"></image>
 		<image v-else class="main-bottom-bar-icon" src="../static/expolre.png" mode="aspectFit"></image>
 		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 1 }">
@@ -57,12 +57,14 @@ function handleClick(current_label) {
 .main-bottom-bar {
 	width: 100vw;
 	height: 150rpx;
-	padding-top: 16rpx;
+	/* padding-top: 16rpx; */
 	background-color: #ffffff;
 	display: flex;
     align-items: center;
 	justify-content: space-around;
 	box-sizing: border-box;
+	/* 添加上边框阴影效果 */
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* 确保在小屏幕上也能完全显示 */
@@ -79,29 +81,30 @@ function handleClick(current_label) {
   justify-content: center;
   flex: 1; /* 每个区域均等分配宽度 */
   height: 100%;
-  margin-bottom: 50rpx;
+  /* margin-bottom: 50rpx; */
 }
 
 .main-bottom-bar-icon {
-	width: 46rpx;
-	height: 46rpx;
-	margin-bottom: 4rpx;
+	width: 50rpx;
+	height: 50rpx;
+	margin-bottom: 8rpx;
 }
 
 .main-bottom-bar-span {
 	font-size: 22rpx;
 	color: #666666;
+	font-weight: 500;
 }
 
 /* 选中状态的样式 */
 .active-span {
-	color: #69EDDD !important;
+	color:#2E5CE7 !important;
 	font-weight: 500;
 }
 
 .main-bottom-bar-create-icon {
-	width: 60rpx;
-	height: 60rpx;
+	width: 65rpx;
+	height: 65rpx;
 	/* 使用负值margin让创建按钮突出显示 */
 	margin-bottom: 10rpx;
 }

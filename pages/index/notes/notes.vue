@@ -92,7 +92,8 @@ const notes = ref([
   display: flex;
   flex-wrap: wrap;
   gap: 4vw;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 20rpx;
+  box-sizing: border-box;
 }
 
 .delete-icon {

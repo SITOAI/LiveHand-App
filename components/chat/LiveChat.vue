@@ -2,7 +2,7 @@
   <view class="livechat-page" :style="{ height: height }">
     <!-- 顶部 Header -->
     <view class="chat-header" v-if="showHeader">
-      <text class="chat-title">{{ title+props.datasetId }}</text>
+      <text class="chat-title">{{ title }}</text>
       <u-icon name="close-circle" size="28" class="chat-close-icon" @click="handleClose" />
     </view>
 
@@ -265,8 +265,8 @@ const handleClose = () => {
 }
 .chat-close-icon {
   position: absolute;
-  right: -9rpx;
-  top: 20%;
+  right: -25rpx;
+  top: 10%;
   transform: translateY(-50%);
 }
 

@@ -115,13 +115,14 @@
     </view>
 
     <!-- 底部聊天栏 -->
-    <!-- <view class="chatbar" v-if="!chatPopupVisible">
+    <view class="chatbar" v-if="!chatPopupVisible">
       <view class="fake-input" @click="chatPopupVisible = true">
         <u-icon name="star" size="22" />
         <text class="fake-input-text">向LiveHands提问...</text>
       </view>
       <TalkButton @click="onTalkWithAI">发送</TalkButton>
-    </view> -->
+    </view>
+
 
     <!-- 更多操作 popup -->
     <u-popup :show="showMore" mode="bottom" @close="showMore = false" />
@@ -156,19 +157,12 @@
           :height="'80vh'"
           :showHeader="true"
           :title="title"
-          @onClose="handleCloseChat"
+          :onClose="handleCloseChat"
           :sourcePage="'knowDetails'"
           :datasetId="itemId"
         />
       </scroll-view>
     </u-popup>
-    <!-- AI提问浮动按钮 -->
-    <view class="ai-question-button" @click="showAiChat">
-      <view class="ai-icon-wrapper">
-        <image src="../../../static/AI.png" class="ai-icon" mode="aspectFit"></image>
-      </view>
-      <text class="question-text">提问</text>
-    </view>
   </view>
 </template>
 
@@ -528,12 +522,6 @@ function onShare() {
   uni.showToast({ title: '点击分享', icon: 'none' })
 }
 
-// AI提问按钮点击事件
-function showAiChat() {
-  chatPopupVisible.value = true
-  console.log('打开AI聊天面板')
-}
-
 // 文件标签切换方法
 function handleFileTabChange(tabType) {
   activeFileTab.value = tabType
@@ -626,7 +614,7 @@ function onTouchEnd(e) {
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
-  padding-top: 2vh;
+  padding-top: 4vh;
 }
 
 /* 固定顶部 */
@@ -829,17 +817,30 @@ function onTouchEnd(e) {
 /* 底部聊天栏 */
 .chatbar {
   position: fixed;
-  bottom: 5px;
+  bottom: 0rpx;
   left: 0;
-  width: 95vw;
+  right: 0;
   display: flex;
   padding: 10px 14px;
   border-radius: 15px;
   margin: 2.5vw;
   background: #ddd;
-  z-index: 999;
+  z-index: 999; 
   box-sizing: border-box;
   gap: 10px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  /* 为了完全遮挡下方内容，添加一个额外的伪元素 */
+}
+
+.chatbar::before {
+  content: '';
+  position: absolute;
+  bottom: -200rpx;
+  left: -200rpx;
+  right: -200rpx;
+  height: 200rpx;
+  background: #ffffff;
+  z-index: -1;
 }
 .fake-input {
   flex: 1;

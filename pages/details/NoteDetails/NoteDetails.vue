@@ -42,23 +42,25 @@
         </div>
       </view>
 
-      <!-- Tabs栏（已修改样式） -->
       <u-tabs
         :list="tabList"
         :current="activeTab"
-      	lineWidth="150"
-      	lineColor="#000"
+      	lineWidth="100"
+      	lineColor="#131313"
+        lineHeight="1.5"
         @change="handleTabChange"
         :activeStyle="{
-            color: '#303133',
-            fontWeight: 'bold',
+            fontSize: '30rpx',
+            color: '#131313',
+            fontWeight: '500',
             transform: 'scale(1.05)'
         }"
         :inactiveStyle="{
-            color: '#606266',
+            fontSize: '30rpx',
+            color: '#565656',
             transform: 'scale(1)'
         }"
-		itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
+	    	itemStyle="padding-left: 15px; padding-right: 15px; height: 34px;"
         :scrollable="false"
       />
     </view>
@@ -83,6 +85,9 @@
         </swiper-item>
       </swiper>
     </view>
+    
+    <!-- 底部占位元素，确保内容不被聊天栏遮挡 -->
+    <view class="bottom-spacer"></view>
 
     <!-- 更多操作 popup -->
     <u-popup :show="showMore" mode="bottom" class="more-popup" @close="showMore = false" :safe-area-inset-bottom="true">
@@ -174,12 +179,13 @@
         />
       </scroll-view>
     </u-popup>
-    <!-- AI提问浮动按钮 -->
-    <view class="ai-question-button" @click="showAiChat">
-      <view class="ai-icon-wrapper">
-        <image src="../../../static/AI.png" class="ai-icon" mode="aspectFit"></image>
+    <!-- 底部聊天栏 -->
+    <view class="chatbar" v-if="!chatPopupVisible">
+      <view class="fake-input" @click="chatPopupVisible = true">
+        <u-icon name="star" size="22" />
+        <text class="fake-input-text">向LiveHands提问...</text>
       </view>
-      <text class="question-text">提问</text>
+      <TalkButton @click="onTalkWithAI">发送</TalkButton>
     </view>
   </view>
 </template>
@@ -471,7 +477,7 @@ function copyNoteSummary() {
   box-sizing: border-box;
   position: relative;
   padding: 0 16px;
-  padding-top: 2vh;
+  padding-top: 4vh;
 }
 
 /* 顶部图标行 */
@@ -633,7 +639,7 @@ function copyNoteSummary() {
 
 /* Swiper 内容区 */
 .tab-content-wrapper {
-  height: calc(100vh - 300px);
+  height: calc(100vh - 380px);
 }
 
 .tab-swiper {
@@ -642,9 +648,10 @@ function copyNoteSummary() {
 
 .tab-inner-scroll {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: auto; /* 内容多时自动显示滚动条，内容少时不显示 */
   padding: 0;
   box-sizing: border-box;
+  /* 移除任何可能存在的自定义滚动条样式影响 */
 }
 
 /* AI提问按钮 - 公用组件 */
@@ -862,5 +869,57 @@ function copyNoteSummary() {
 }
 ::v-deep .u-tabs__wrapper__nav__item__text {
   font-size: 26rpx;
+}
+
+/* 底部聊天栏 */
+.chatbar {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 10px 14px;
+  border-radius: 15px;
+  margin: 2.5vw;
+  margin-top: 20rpx;
+  background: #ddd;
+  z-index: 999; 
+  box-sizing: border-box;
+  gap: 10px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatbar::before {
+  content: '';
+  position: absolute;
+  bottom: -200rpx;
+  left: -200rpx;
+  right: -200rpx;
+  height: 200rpx;
+  background: #ffffff;
+  z-index: -1;
+}
+.fake-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+.fake-input-text {
+  color: #999;
+  font-size: 14px;
+}
+
+.note-detail-live-chat {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  overflow: hidden;
+}
+
+/* 底部占位元素 */
+.bottom-spacer {
+  height: 100px;
+  width: 100%;
 }
 </style>

@@ -1,50 +1,56 @@
 <template>
-	<view class="explore_area">
-		<view class="explore_header">
-			<image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image>
-			<image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image>
-		</view>
-		
-		<view class="explore_logo_area">
-			<image class="explore_logo" src="../../../static/logo-group.png" mode="widthFix"></image>
-		</view>
-		
-		<view class="explore_input">
-			<input type="text" placeholder="把问题和任务告诉我"/>
-			<view class="explore_input_search_button">
-				<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
+	<view class="explore_container">
+		<!-- 固定部分：explore_input 区域以上内容 -->
+		<view class="fixed_header">
+			<view class="explore_header">
+				<image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image>
+				<image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image>
+			</view>
+			
+			<view class="explore_logo_area">
+				<image class="explore_logo" src="../../../static/logo-group.png" mode="widthFix"></image>
+			</view>
+			
+			<view class="explore_input">
+				<input type="text" placeholder="把问题和任务告诉我"/>
+				<view class="explore_input_search_button">
+					<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
+				</view>
 			</view>
 		</view>
 		
-		<view class="ask_question_area">
-			<image src="../../../static/wen.png" class="ask_question_image" mode="widthFix"></image>
-			<text class="ask_question_text">问一问</text>
-		</view>
-		
-		<view class="explore_content">
-		  <!-- 循环 -->
-		  <template v-for="(item, idx) in data" :key="idx">
-		    <RecommendCard
-		      :title="item.title"
-		      :owner_logo="item.owner_logo"
-		      :owner_name="item.owner_name"
-		      :summarize="item.summarize"
-		      :cover_image="item.cover_image"
-		      :cite="item.kol.cite"
-		      :like="item.kol.like"
-		      :reply="item.kol.reply"
-		    />
-		    <!-- 只要不是最后一项，就插分割线 -->
-		    <u-divider
-		      v-if="idx !== data.length - 1"
-		      lineColor="#e0e0e0"
-		      halfWidth="90%"
-		      margin="12px 0"
-		    ></u-divider>
-		  </template>
-		
-		  <!-- 最后一个元素结束后的“收尾” divider -->
-		  <u-divider text="分割线" :dot="true"></u-divider>
+		<!-- 滚动部分 -->
+		<view class="scroll_content">
+			<view class="ask_question_area">
+				<image src="../../../static/wen.png" class="ask_question_image" mode="widthFix"></image>
+				<text class="ask_question_text">问一问</text>
+			</view>
+			
+			<view class="explore_content">
+			  <!-- 循环 -->
+			  <template v-for="(item, idx) in data" :key="idx">
+			    <RecommendCard
+			      :title="item.title"
+			      :owner_logo="item.owner_logo"
+			      :owner_name="item.owner_name"
+			      :summarize="item.summarize"
+			      :cover_image="item.cover_image"
+			      :cite="item.kol.cite"
+			      :like="item.kol.like"
+			      :reply="item.kol.reply"
+			    />
+			    <!-- 只要不是最后一项，就插分割线 -->
+			    <u-divider
+			      v-if="idx !== data.length - 1"
+			      lineColor="#e0e0e0"
+			      halfWidth="90%"
+			      margin="12px 0"
+			    ></u-divider>
+			  </template>
+			
+			  <!-- 最后一个元素结束后的“收尾” divider -->
+			  <u-divider text="分割线" :dot="true"></u-divider>
+			</view>
 		</view>
 	</view>
 </template>
@@ -101,15 +107,40 @@ const data = ref([
 </script>
 
 <style scoped>
-.explore_area {
-  min-height: 100vh;          /* 至少一屏高，内容变多时可继续滚 */
+.explore_container {
+  position: relative;
+  min-height: 100vh;
   background: #f5f5f5;        /* 默认全部灰背景 */
   background-image: url('../../static/background-login.png');
   background-size: 100% auto; /* 宽度撑满，高度按比例 */
   background-repeat: no-repeat;
   background-position: top center;
-  padding: 40px 20px calc(60px + 20px) 20px; /* 底部栏 60px + 自己再留 20px */
 }
+
+/* 固定部分样式 */
+.fixed_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #f5f5f5;
+  background-image: url('../../static/background-login.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  padding: 40px 20px 0 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.01);
+}
+
+/* 滚动部分样式 */
+.scroll_content {
+  padding: calc(250px + 40px) 20px calc(60px + 20px) 20px; /* 顶部固定高度 + 底部栏高度 + 边距 */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 原 explore_area 相关样式调整 */
 
 .explore_header {
 	display: flex;
@@ -138,6 +169,7 @@ const data = ref([
 	border-radius: 10px;
 	margin-top: 50px;
 	padding: 15px;
+	margin-bottom: 20rpx;
 }
 
 .explore_input_search_button {
