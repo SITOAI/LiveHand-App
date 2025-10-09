@@ -1,36 +1,36 @@
 <template>
 	<view class="main-bottom-bar">
 		<view class="main-bottom-bar-icon-area" @click="handleClick(1)">
-			<image v-if="label == 1" class="main-bottom-bar-icon" src="../static/expolre_selected.png" mode="widthFix"></image>
-			<image v-else class="main-bottom-bar-icon" src="../static/expolre.png" mode="widthFix"></image>
-			<span class="main-bottom-bar-span">
-				探索
-			</span>
-		</view>
+		<image v-if="label == 1" class="main-bottom-bar-icon" src="../static/explore_selected.png" mode="aspectFit"></image>
+		<image v-else class="main-bottom-bar-icon" src="../static/explore.png" mode="aspectFit"></image>
+		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 1 }">
+			探索
+		</span>
+	</view>
 		<view class="main-bottom-bar-icon-area" @click="handleClick(2)">
-			<image v-if="label == 2" class="main-bottom-bar-icon" src="../static/knowledge_selected.png" mode="widthFix"></image>
-			<image v-else class="main-bottom-bar-icon" src="../static/knowledge.png" mode="widthFix"></image>
-			<span class="main-bottom-bar-span">
-				知识
-			</span>
-		</view>
-		  <view class="main-bottom-bar-icon-area" @click="handleClick(0)">
-			<image class="main-bottom-bar-create-icon" src="../static/main_create.png" mode="widthFix"></image>
-		</view>
-		  <view class="main-bottom-bar-icon-area" @click="handleClick(3)">
-			<image v-if="label == 3" class="main-bottom-bar-icon" src="../static/agents_selected.png" mode="widthFix"></image>
-			<image v-else class="main-bottom-bar-icon" src="../static/agents.png" mode="widthFix"></image>
-			<span class="main-bottom-bar-span">
-				智能体
-			</span>
-		</view>
-		  <view class="main-bottom-bar-icon-area" @click="handleClick(4)">
-			<image v-if="label == 4" class="main-bottom-bar-icon" src="../static/mine_selected.png" mode="widthFix"></image>
-			<image v-else class="main-bottom-bar-icon" src="../static/mine.png" mode="widthFix"></image>
-			<span class="main-bottom-bar-span">
-				我的
-			</span>
-		</view>
+		<image v-if="label == 2" class="main-bottom-bar-icon" src="../static/knowledge_selected.png" mode="aspectFit"></image>
+		<image v-else class="main-bottom-bar-icon" src="../static/knowledge.png" mode="aspectFit"></image>
+		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 2 }">
+			知识
+		</span>
+	</view>
+	<view class="main-bottom-bar-icon-area" @click="handleClick(0)">
+		<image class="main-bottom-bar-create-icon" src="../static/main_create.png" mode="aspectFit"></image>
+	</view>
+	<view class="main-bottom-bar-icon-area" @click="handleClick(3)">
+		<image v-if="label == 3" class="main-bottom-bar-icon" src="../static/agents_selected.png" mode="aspectFit"></image>
+		<image v-else class="main-bottom-bar-icon" src="../static/agents.png" mode="aspectFit"></image>
+		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 3 }">
+			智能体
+		</span>
+	</view>
+	<view class="main-bottom-bar-icon-area" @click="handleClick(4)">
+		<image v-if="label == 4" class="main-bottom-bar-icon" src="../static/mine_selected.png" mode="aspectFit"></image>
+		<image v-else class="main-bottom-bar-icon" src="../static/mine.png" mode="aspectFit"></image>
+		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 4 }">
+			我的
+		</span>
+	</view>
 	</view>
 </template>
 
@@ -56,31 +56,51 @@ function handleClick(current_label) {
 <style scoped>
 .main-bottom-bar {
 	width: 100vw;
-	height: 90px;
+	height: 90rpx;
 	background-color: #ffffff;
 	display: flex;
     align-items: center;
-	padding-left: 30px;
-	padding-right: 30px;
-	gap: 50px;
+	justify-content: space-around;
+	box-sizing: border-box;
+}
+
+/* 确保在小屏幕上也能完全显示 */
+@media screen and (max-width: 360px) {
+	.main-bottom-bar {
+		height: 80rpx;
+	}
 }
 
 .main-bottom-bar-icon-area {
 	display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  flex: 1; /* 每个区域均等分配宽度 */
+  height: 100%;
 }
 
 .main-bottom-bar-icon {
-	width: 35px;
+	width: 30rpx;
+	height: 30rpx;
+	margin-bottom: 4rpx;
 }
 
 .main-bottom-bar-span {
-	font-size: 14px;
+	font-size: 12rpx;
+	color: #666666;
+}
+
+/* 选中状态的样式 */
+.active-span {
+	color: #69EDDD !important;
+	font-weight: 500;
 }
 
 .main-bottom-bar-create-icon {
-	width: 40px;
-	bottom: 5px;
+	width: 45rpx;
+	height: 45rpx;
+	/* 使用负值margin让创建按钮突出显示 */
+	margin-bottom: 10rpx;
 }
 </style>

@@ -87,11 +87,25 @@ function handleMainNavClick(label) {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  /* 为底部导航栏留出空间 */
+  padding-bottom: 90rpx;
+  box-sizing: border-box;
 }
 
 .main-nav {
   position: fixed;
-  /* z-index: 9999; */
   bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  /* 确保在iPhone等有底部安全区域的设备上也能正常显示 */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* 适配不同尺寸的屏幕 */
+@media screen and (max-width: 360px) {
+  .index-page {
+    padding-bottom: 80rpx;
+  }
 }
 </style>
