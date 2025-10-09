@@ -1,8 +1,8 @@
 <template>
 	<view class="main-bottom-bar">
 		<view class="main-bottom-bar-icon-area" @click="handleClick(1)">
-		<image v-if="label == 1" class="main-bottom-bar-icon" src="../static/explore_selected.png" mode="aspectFit"></image>
-		<image v-else class="main-bottom-bar-icon" src="../static/explore.png" mode="aspectFit"></image>
+		<image v-if="label == 1" class="main-bottom-bar-icon" src="../static/expolre_selected.png" mode="aspectFit"></image>
+		<image v-else class="main-bottom-bar-icon" src="../static/expolre.png" mode="aspectFit"></image>
 		<span class="main-bottom-bar-span" :class="{ 'active-span': label == 1 }">
 			探索
 		</span>
