@@ -105,7 +105,7 @@
                     <text class="file-item-name">{{ file.name }}</text>
                     <text class="file-item-meta">{{ file.uploadTime || formatDate(new Date()) }}</text>
                   </view>
-                  <u-icon name="arrow-downward" size="16" color="#2E5CE7" class="file-item-more"></u-icon>
+                  <u-icon name="arrow-downward" size="16" color="#2E5CE7" class="file-item-more" @click="downloadFile(file)"></u-icon>
                 </view>
               </view>
             </view>
@@ -348,7 +348,6 @@ function getNotesData() {
         summary: item.content.note_summary || '',
         repo: item.info.dataset_name || '暂无知识库分类',
         musice: item.musice || false,
-        // 确保tags格式正确，转换为NoteCard组件期望的格式
         tags: formatTags(item.info.note_tags)
       }))
       
@@ -378,30 +377,33 @@ function getFilesData() {
   // 调用接口获取文件列表
   http.post("/livehands/dataset/search", params).then(result => {
     // 检查响应状态
-    if (result.code === 200 && result.data && Array.isArray(result.data)) {
+    if (result.code === 200 && result.data && result.data.data && Array.isArray(result.data.data)) {
       // 处理接口返回的数据，转换为需要的格式
-      const formattedFiles = result.data.map((item, index) => ({
-        id: item.id || index + 1,
-        name: item.name || '未命名文件',
-        type: getItemType(item.type || 'file'), // 转换为我们需要的类型
-        uploadTime: item.uploadTime || formatDate(new Date())
+      const formattedFiles = result.data.data.map((item, index) => ({
+        id: item.datasetfile_id || index + 1,
+        name: item.datasetfile_name || '未命名文件',
+        type: getItemType(item.datasetfile_is_url || 'file'), // 根据datasetfile_is_url判断文件类型
+        uploadTime: item.datasetfile_uploaded_datetime || formatDate(new Date()),
+        downloadUrl: `/livehands/dataset/download/${item.datasetfile_id}` // 添加下载地址
       }))
       
       files.value = formattedFiles
     } else {
-      // 如果接口返回的数据格式不正确，使用mock数据
-      // uni.showToast({ title: '获取文件数据失败，使用本地数据', icon: 'none' })
+
       files.value = mockFiles
     }
   }).catch(error => {
-    // 请求失败时使用mock数据
-    // uni.showToast({ title: '网络错误，使用本地数据', icon: 'error' })
     files.value = mockFiles
   })
 }
 
 // 获取文件图标路径
 function getFileIconPath(type) {
+  // 添加null/undefined检查，防止访问null的type属性
+  if (type === undefined || type === null) {
+    return '/static/folder.png';
+  }
+  
   switch (type) {
     case 'file':
       return '/static/folder.png';
@@ -426,9 +428,27 @@ function formatDate(date) {
 
 // 转换文件类型
 function getItemType(originalType) {
-  if (!originalType) return 'file';
+  // 如果是undefined或null，返回file
+  if (originalType === undefined || originalType === null) return 'file';
   
-  const type = originalType.toLowerCase();
+  // 处理数字类型的datasetfile_is_url
+  const typeValue = Number(originalType);
+  if (!isNaN(typeValue)) {
+    // 根据数值判断文件类型
+    if (typeValue === 4) {
+      // datasetfile_is_url=4 表示图片
+      return 'image';
+    } else if (typeValue === 3) {
+      // datasetfile_is_url=3 表示音频
+      return 'audio';
+    } else {
+      // 其他情况视为普通文件
+      return 'file';
+    }
+  }
+  
+  // 保留原有的字符串处理逻辑作为后备
+  const type = String(originalType).toLowerCase();
   if (type.includes('audio') || type.includes('video') || type.includes('sound')) {
     return 'audio';
   } else if (type.includes('image') || type.includes('photo') || type.includes('picture')) {
@@ -440,10 +460,19 @@ function getItemType(originalType) {
 
 // 根据文件标签过滤文件
 const filteredFilesList = computed(() => {
+  if (!files.value || !Array.isArray(files.value)) {
+    return [];
+  }
+  
   if (activeFileTab.value === 'all') {
-    return files.value;
+    // 过滤掉null或undefined的文件对象
+    return files.value.filter(file => file !== null && file !== undefined);
   } else {
-    return files.value.filter(file => file.type === activeFileTab.value);
+    // 过滤文件类型并确保文件对象有效
+    return files.value.filter(file => 
+      file !== null && file !== undefined && 
+      file.type === activeFileTab.value
+    );
   }
 })
 
@@ -569,6 +598,65 @@ function confirmDelete(id) {
 
 function deleteFile(id) {
   files.value = files.value.filter(file => file.id !== id)
+}
+
+// 下载文件函数
+function downloadFile(file) {
+  // 全面的null/undefined检查
+  if (!file || typeof file !== 'object') {
+    uni.showToast({ title: '文件信息无效', icon: 'error' })
+    return
+  }
+  
+  if (!file.downloadUrl || typeof file.downloadUrl !== 'string' || file.downloadUrl.trim() === '') {
+    uni.showToast({ title: '下载地址无效', icon: 'error' })
+    return
+  }
+  
+  // 显示加载提示
+  uni.showLoading({ title: '正在下载...' })
+  
+  // 从本地存储获取token
+  const token = uni.getStorageSync('token')
+  
+  // 构建完整的下载URL，使用http工具类的baseURL
+  const fullDownloadUrl = http.baseURL + file.downloadUrl
+  
+
+  
+  // 使用uni.downloadFile进行文件下载
+  uni.downloadFile({
+    url: fullDownloadUrl,
+    header: {
+      'Authorization': `Bearer ${token}`
+    },
+    success: (res) => {
+      // 输出响应状态
+      // 确保res和res.tempFilePath有效
+      if (res && res.statusCode === 200 && res.tempFilePath) {
+        // 下载成功后打开文件
+        uni.openDocument({
+          filePath: res.tempFilePath,
+          showMenu: true,
+          success: () => {
+          },
+          fail: (err) => {
+            uni.showToast({ title: '文件打开失败', icon: 'error' })
+          }
+        })
+      } else {
+        const errorMsg = res?.statusCode === 401 ? '未授权，请重新登录' : '下载失败'
+        uni.showToast({ title: errorMsg, icon: 'error' })
+      }
+    },
+    fail: (err) => {
+      uni.showToast({ title: '网络请求失败', icon: 'error' })
+    },
+    complete: () => {
+      // 隐藏加载提示
+      uni.hideLoading()
+    }
+  })
 }
 
 const searchKeyword = ref('')

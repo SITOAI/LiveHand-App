@@ -111,14 +111,14 @@ function onTouchEnd(e) {
   const endY = e.changedTouches[0].clientY
   const deltaX = endX - startX
   const deltaY = Math.abs(endY - startY)
-  console.log(deltaX)
-  console.log(deltaY)
 
-  if (deltaX > 30 && activeTab.value === 0 && lastTab.value === 0) {
+  // 只有当滑动主要是水平方向（垂直滑动远小于水平滑动）且向右滑动足够距离时，才打开CommonPanel
+  // 这可以防止上下滑动时意外触发CommonPanel
+  if (deltaX > 50 && deltaY < deltaX / 2 && activeTab.value === 0 && lastTab.value === 0) {
     showCommonPanel.value = true
   }
 
-  if (deltaX < 30 && activeTab.value === 2 && lastTab.value === 2) {
+  if (deltaX < -50 && deltaY < Math.abs(deltaX) / 2 && activeTab.value === 2 && lastTab.value === 2) {
     // 预留扩展
   }
 }
