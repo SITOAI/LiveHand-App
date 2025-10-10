@@ -114,13 +114,15 @@
       </swiper>
     </view>
 
+    <!-- 底部占位元素，确保内容不被聊天栏遮挡 -->
+    <view class="bottom-spacer"></view>
+
     <!-- 底部聊天栏 -->
     <view class="chatbar" v-if="!chatPopupVisible">
       <view class="fake-input" @click="chatPopupVisible = true">
         <u-icon name="star" size="22" />
         <text class="fake-input-text">向LiveHands提问...</text>
       </view>
-      <TalkButton @click="onTalkWithAI">发送</TalkButton>
     </view>
 
 
@@ -1004,5 +1006,58 @@ function onTouchEnd(e) {
 }
 ::v-deep .u-tabs__wrapper__nav__item__text {
   font-size: 30rpx;
+}
+/* 底部聊天栏 */
+.chatbar {
+  position: fixed;
+  bottom: 0rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 10px 14px;
+  border-radius: 15px;
+  margin: 2.5vw;
+  margin-top: 20rpx;
+  background: #ddd;
+  z-index: 999;
+  box-sizing: border-box;
+  gap: 10px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chatbar::before {
+  content: '';
+  position: absolute;
+  bottom: -200rpx;
+  left: -200rpx;
+  right: -200rpx;
+  height: 200rpx;
+  background: #ffffff;
+  z-index: -1;
+}
+.fake-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+.fake-input-text {
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+
+.note-detail-live-chat {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  overflow: hidden;
+}
+
+/* 底部占位元素 */
+.bottom-spacer {
+  height: 30px;
+  width: 100%;
 }
 </style>

@@ -120,7 +120,11 @@
     	"style" : 
     	{
     		"navigationBarTitleText" : "",
-    		"enablePullDownRefresh" : false
+    		"enablePullDownRefresh" : false,
+        "app-plus": {
+            "softinputMode": "adjustResize",
+            "softinputNavBar": "none"
+        }
     	}
     },
 	{
