@@ -58,6 +58,7 @@ function parseMarkdown(text) {
   mdText = mdText.replace(/^# (.*$)/gm, '<h1 style="margin: 16px 0;">$1</h1>')
   mdText = mdText.replace(/^## (.*$)/gm, '<h2 style="margin: 14px 0;">$1</h2>')
   mdText = mdText.replace(/^### (.*$)/gm, '<h3 style="margin: 12px 0;">$1</h3>')
+
   
   // 处理粗体
   mdText = mdText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -90,6 +91,7 @@ function parseMarkdown(text) {
   mdText = mdText.replace(/^- (.*$)/gm, '<div style="display: flex; align-items: flex-start; margin-bottom: 8px;"><span style="margin-right: 8px; margin-top: 4px;">•</span><div>$1</div></div>')
   
   // 处理段落
+  // mdText = mdText.replace(/^(?!<h[1-3]>)(?!<div)(?!•)(.*$)/gm, '<p style="margin: 8px 0; line-height: 1.6; font-size: 27rpx;">$1</p>')
   mdText = mdText.replace(/^(?!<h[1-3]>)(?!<div)(?!•)(.*$)/gm, '<p style="margin: 8px 0; line-height: 1.6;">$1</p>')
   
   // 处理换行
@@ -179,7 +181,7 @@ function onTouchEnd(e) {
 }
 
 .paragraph {
-  font-size: 14px;
+  font-size: 27rpx;
   color: #333;
   line-height: 1.6;
   margin-bottom: 12px;
@@ -195,7 +197,7 @@ function onTouchEnd(e) {
 }
 
 .bullet {
-  font-size: 14px;
+  font-size: 27rpx;
   color: #333;
   margin-right: 6px;
   margin-top: 2px;
@@ -203,7 +205,7 @@ function onTouchEnd(e) {
 }
 
 .bullet-content {
-  font-size: 14px;
+  font-size: 27rpx;
   color: #333;
   flex: 1;
 }
@@ -214,14 +216,14 @@ function onTouchEnd(e) {
 }
 
 .comment-author {
-  font-size: 14px;
+  font-size: 27rpx;
   color: #333;
   display: block;
   margin-bottom: 6px;
 }
 
 .comment-content {
-  font-size: 14px;
+  font-size: 27rpx;
   color: #333;
   display: block;
   padding-left: 16px;

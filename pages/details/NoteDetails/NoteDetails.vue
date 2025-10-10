@@ -185,7 +185,7 @@
         <u-icon name="star" size="22" />
         <text class="fake-input-text">向LiveHands提问...</text>
       </view>
-      <TalkButton @click="onTalkWithAI">发送</TalkButton>
+      <!-- <TalkButton @click="onTalkWithAI">发送</TalkButton> -->
     </view>
   </view>
 </template>
@@ -624,8 +624,8 @@ function copyNoteSummary() {
 }
 
 .audio-name {
-  font-size: 14px;
-  color: #333;
+  font-size: 28rpx;
+  color: #131313;
   max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -903,12 +903,14 @@ function copyNoteSummary() {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 14px;
   box-sizing: border-box;
 }
 .fake-input-text {
   color: #999;
   font-size: 14px;
+  text-align: center;
 }
 
 .note-detail-live-chat {

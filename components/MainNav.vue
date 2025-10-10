@@ -103,8 +103,8 @@ function handleClick(current_label) {
 }
 
 .main-bottom-bar-create-icon {
-	width: 65rpx;
-	height: 65rpx;
+	width: 70rpx;
+	height: 70rpx;
 	/* 使用负值margin让创建按钮突出显示 */
 	margin-bottom: 10rpx;
 }

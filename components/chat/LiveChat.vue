@@ -66,9 +66,13 @@ const inputRef = ref(null)
 // 监听键盘高度变化，确保内容区域可见
 const handleKeyboardHeight = (e) => {
   // 添加错误检查，确保e和e.detail存在
-  if (e && e.detail && typeof e.detail.height === 'number' && e.detail.height > 0) {
-    // 键盘弹出时，保持滚动到底部
-    updateScroll()
+  if (e && e.detail && typeof e.detail.height === 'number') {
+    if (e.detail.height > 0) {
+      // 键盘弹出时，保持滚动到底部
+      updateScroll()
+    } else {
+
+    }
   }
 }
 
@@ -127,12 +131,17 @@ const messages = ref([
 const isTyping = ref(false)
 const scrollTarget = ref('msg-0')
 
-// 点击chatbar区域时聚焦输入框
+
+// 点击chatbar区域时聚焦输入框并调整页面高度
 const focusInput = () => {
   if (inputRef.value) {
     nextTick(() => {
       inputRef.value.focus()
+      // 将滚动操作与聚焦操作放在同一个nextTick中，减少DOM更新次数
+      updateScroll()
     })
+  } else {
+    updateScroll()
   }
 }
 
@@ -173,7 +182,6 @@ const send = async () => {
       }
     } else if (props.sourcePage === 'knowDetails') {
       // 从KnowDetails页面进入的请求参数
-      console.log('66666',props.datasetId)
       requestParams = {
         token: token,
         datasetId: props.datasetId,
@@ -261,6 +269,7 @@ const send = async () => {
 const updateScroll = () => {
   nextTick(() => {
     scrollTarget.value = 'msg-' + (messages.value.length - 1)
+    console.log("🚀 ~ updateScroll ~ scrollTarget.value:", scrollTarget.value)
   })
 }
 
