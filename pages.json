@@ -6,6 +6,39 @@
     }
   },
   "pages": [
+    // tabbar页面放在前面
+    {
+      // 探索 layout 页面
+      "path": "pages/index/explore/layout",
+      "style": {
+        "navigationBarTitleText": "探索",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 知识库 layout 页面
+      "path": "pages/index/knowledge/layout",
+      "style": {
+       "navigationBarTitleText": "知识库",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 智能体 layout 页面
+      "path": "pages/index/agents/layout",
+      "style": {
+        "navigationBarTitleText": "智能体",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      // 我的 layout 页面
+      "path": "pages/index/mine/layout",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
     {
       // 一级 layout 页面：入口页面
       "path": "pages/layout",
@@ -31,22 +64,6 @@
       }
     },
     {
-      // 探索 layout 页面
-      "path": "pages/index/explore/layout",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      // 知识库 layout 页面
-      "path": "pages/index/knowledge/layout",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
       // 笔记页面
       "path": "pages/index/knowledge/notes/notes",
       "style": {
@@ -57,22 +74,6 @@
     {
       // 知识页面
       "path": "pages/index/knowledge/knows/knows",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      // 智能体 layout 页面
-      "path": "pages/index/agents/layout",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      // 我的 layout 页面
-      "path": "pages/index/mine/layout",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
@@ -157,5 +158,47 @@
 				"query": "" //启动参数，在页面的onLoad函数里面得到
 			}
 		]
+	},
+	"tabBar": {
+		"color": "#2D3548",
+		"selectedColor": "#2E5CE7",
+		"backgroundColor": "#ffffff",
+		"borderStyle": "black",
+    "fontSize":"12px",
+		"position": "bottom",
+    "height":"60px",
+		"list": [
+			{
+				"pagePath": "pages/index/explore/layout",
+				"text": "探索",
+				"iconPath": "static/explore.png",
+				"selectedIconPath": "static/expolre_selected.png"
+			},
+			{
+				"pagePath": "pages/index/knowledge/layout",
+				"text": "知识库",
+				"iconPath": "static/knowledge.png",
+				"selectedIconPath": "static/knowledge_selected.png"
+			},
+			{
+				"pagePath": "pages/index/agents/layout",
+				"text": "智能体",
+				"iconPath": "static/agents.png",
+				"selectedIconPath": "static/agents_selected.png"
+			},
+			{
+				"pagePath": "pages/index/mine/layout",
+				"text": "我的",
+				"iconPath": "static/mine.png",
+				"selectedIconPath": "static/mine_selected.png"
+			}
+		],
+		"midButton": {
+			"iconPath": "static/main_create.png",
+			"selectedIconPath": "static/main_create.png",
+			"width": "60px",
+			"height": "50px",
+      "iconWidth":"36px"
+		}
 	}
 }

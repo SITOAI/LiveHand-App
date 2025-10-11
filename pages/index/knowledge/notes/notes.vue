@@ -177,8 +177,7 @@ onLoad(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 4vw;
-  min-height: 70vh;
-  max-height: calc(100vh - 240rpx); /* 考虑底部tabbar高度 */
+  padding-bottom: 120rpx; /* 增加底部内边距，确保内容不被tabbar遮挡 */
 }
 
 /* 支持网格布局的替代方案 */

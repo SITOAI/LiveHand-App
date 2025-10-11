@@ -95,7 +95,7 @@ function handleDeleteConfirm() {
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
   padding: 32rpx;
   box-sizing: border-box;
-  margin-bottom: 4vw;
+  margin-bottom: 2vw;
 }
 
 .note-top {

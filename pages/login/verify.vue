@@ -122,7 +122,7 @@ onUnmounted(() => {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -145,6 +145,8 @@ onUnmounted(() => {
   font-weight: bold;
   color: #333;
   margin-bottom: 10rpx;
+  text-align: center;
+  width: 100%;
 }
 
 .subtitle {
@@ -153,6 +155,8 @@ onUnmounted(() => {
   margin-bottom: 40rpx;
   line-height: 36rpx;
   word-break: break-word;
+  text-align: center;
+  width: 100%;
 }
 
 /* 验证码输入框样式 */
@@ -160,6 +164,7 @@ onUnmounted(() => {
   width: 100%;
   height: 80rpx;
   font-size: 30rpx;
+  font-weight: 500;
   border: 1px solid #ddd;
   border-radius: 10rpx;
   padding: 0 20rpx;
@@ -167,7 +172,8 @@ onUnmounted(() => {
   outline: none;
   margin-bottom: 30rpx;
   text-align: center;
-  letter-spacing: 15px;
+  /* 移除过大的字符间距，让6位验证码作为整体显示 */
+  letter-spacing: 0;
 }
 
 /* 重新获取按钮 */

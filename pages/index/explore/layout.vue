@@ -135,7 +135,7 @@ const data = ref([
 
 /* 滚动部分样式 */
 .scroll_content {
-  padding: calc(250px + 40px) 20px calc(60px + 20px) 20px; /* 顶部固定高度 + 底部栏高度 + 边距 */
+  padding: calc(250px + 40px) 20px 20px 20px; /* 顶部固定高度 + 底部栏高度 + 边距 */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }

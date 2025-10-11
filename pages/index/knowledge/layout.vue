@@ -39,7 +39,7 @@
 	        class="knowledge-layout-swiper"
 	      >
 	        <swiper-item>
-	          <Notes class="knowledge-layout-container" />
+	          <Notes class="notes-layout-container" />
 	        </swiper-item>
 	        <swiper-item>
 	          <Knows class="knowledge-layout-container" />
@@ -120,6 +120,7 @@ function onTouchEnd(e) {
 <style scoped>
 .knowledge-layout {
 	height: 100vh;
+  padding-top: 4vh;
 }
 
 .knowledge-layout-header {
@@ -139,22 +140,31 @@ function onTouchEnd(e) {
 }
 
 .knowledge-layout-content {
-  margin-top: 60px; /* 留出 header 高度 */
-  height: calc(100vh - 60px);
+  margin-top: 9vh; /* 留出 header 高度 + 顶部边距 */
+  height: calc(100vh - 9vh); /* 减去 header 高度 */
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
+  box-sizing: border-box;
 }
 
 .knowledge-layout-swiper {
-  width: 100vw;
+  width: 100%;
   height: 100%;
-  top: 5vh;
-  position: relative;
+  position: static;
+  box-sizing: border-box;
 }
 
 .knowledge-layout-container {
   padding: 3px 10px 10px 10px;
   height: 100%;
   overflow: auto;
+}
+.notes-layout-container {
+  padding: 3px 20rpx 30rpx 20rpx;
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 </style>
