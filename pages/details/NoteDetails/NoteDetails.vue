@@ -7,7 +7,7 @@
         <u-icon name="arrow-left" size="24" @click="goBack" />
         <view class="right-icons">
         <image  src="../../../static/share.png" class="folder-icon" mode="aspectFit" @click="onShare"></image>
-        <image  src="../../../static/more_explore.png" class="folder-icon" mode="aspectFit" @click="showMore = true"></image>
+        <image  src="../../../static/more_explore.png" class="more-icon" mode="aspectFit" @click="showMore = true"></image>
         </view>
       </view>
 
@@ -502,6 +502,10 @@ function copyNoteSummary() {
 
 /* folder-icon尺寸设置 */
 .folder-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.more-icon {
   width: 40rpx;
   height: 40rpx;
 }

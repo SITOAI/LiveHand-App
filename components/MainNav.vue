@@ -55,8 +55,8 @@ function handleClick(current_label) {
 
 <style scoped>
 .main-bottom-bar {
-	width: 100vw;
-	height: 150rpx;
+	width: 100%;
+	height: 130rpx;
 	/* padding-top: 16rpx; */
 	background-color: #ffffff;
 	display: flex;

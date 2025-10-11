@@ -11,7 +11,7 @@
 	      />
 	      <u-icon
 	        v-else-if="activeTab == 1"
-	        name="chat"
+	        name="search"
 	        size="28"
 	        @click="onSearchClick"
 	      />
@@ -29,8 +29,8 @@
 	      @touchend="onTouchEnd"
 	    >
 	      <CommonPanel v-model:show="showCommonPanel" />
-	      <SearchPanel v-if="activeTab === 0" v-model:show="showSearchPanel" />
-	      <ChatPanel v-if="activeTab === 1" v-model:show="showChatPanel" />
+	      <SearchPanel v-if="activeTab === 0" v-model:show="showSearchPanel" search-type="notes" />
+	      <SearchPanel v-if="activeTab === 1" v-model:show="showSearchPanel" search-type="knowledge" />
 	
 	      <swiper
 	        :current="activeTab"
@@ -57,15 +57,11 @@ import Knows from './knows/knows.vue'
 import TabBar from '../../../components/TabBar.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import SearchPanel from '../../../components/SearchPanel.vue'
-import ChatPanel from '../../../components/ChatPanel.vue'
 
 const activeTab = ref(1)
 const lastTab = ref(0)
 const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
-const showChatPanel = ref(false)
-const popupVisible = ref(false)
-const popupItems = ref([])
 
 onMounted(() => {
   uni.$on('swipeFromInnerFirstTab', () => {
@@ -86,11 +82,8 @@ function onSwiperChange(e) {
 }
 
 function onSearchClick() {
-  if (activeTab.value === 0) {
-    showSearchPanel.value = true
-  } else if (activeTab.value === 1) {
-    showChatPanel.value = true
-  }
+  // 根据当前激活的标签页显示对应类型的搜索面板
+  showSearchPanel.value = true
 }
 
 function onAIClickInAgent() {

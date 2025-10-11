@@ -26,7 +26,7 @@
       <view class="search-body">
         <!-- 未搜索状态 -->
         <template v-if="!isSearched">
-          <SearchTag :tags="tagList" @search="onSearch" />
+          <SearchTag :tags="tagList" @search="onSearch" :title="tagTitle" />
           <SearchHistory
             :history="searchHistory"
             @search="onSearch"
@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import SearchInput from './children/SearchInput.vue'
 import SearchTag from './children/SearchTag.vue'
 import SearchHistory from './children/SearchHistory.vue'
@@ -57,13 +57,28 @@ import SearchResultItem from './children/SearchResultItem.vue'
 
 const props = defineProps({
   show: Boolean,
-  placeholder: { type: String, default: '请输入搜索内容' }
+  placeholder: { type: String, default: '请输入搜索内容' },
+  searchType: { type: String, default: 'notes', validator: (value) => ['notes', 'knowledge'].includes(value) }
 })
 const emit = defineEmits(['update:show'])
 
 const isSearched = ref(false)
 const keyword = ref('')
 const modelValue = ref('')
+
+// 根据搜索类型动态计算标签标题
+const tagTitle = computed(() => {
+  return props.searchType === 'notes' ? '笔记标签' : '知识库标签'
+})
+
+// 根据搜索类型提供不同的标签列表
+const tagList = computed(() => {
+  if (props.searchType === 'notes') {
+    return ['AIGC', 'Agent', 'LLM', 'VLM']
+  } else {
+    return ['技术文档', '产品方案', '设计指南', 'API文档']
+  }
+})
 
 function closePopup() {
   emit('update:show', false)
@@ -75,7 +90,8 @@ function onSearch(val) {
   keyword.value = val
   modelValue.value = val
   isSearched.value = val.trim().length > 0
-  console.log('搜索内容：', val)
+  console.log(`${props.searchType === 'notes' ? '笔记' : '知识库'}搜索内容：`, val)
+  // 这里可以根据搜索类型调用不同的搜索API
 }
 
 function clearHistory() {
@@ -94,8 +110,6 @@ const searchResults = ref([
 ])
 
 const searchHistory = ref(['AI智能', 'Vue3组件', '笔记标签', '语音识别'])
-
-const tagList = ref(['AIGC', 'Agent', 'LLM', 'VLM'])
 
 // 手势关闭逻辑
 let startX = 0

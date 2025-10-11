@@ -6,7 +6,7 @@
       <view class="top-icon-row">
         <u-icon name="arrow-left" size="24" @click="goBack" />
         <view class="right-icons">
-          <image src="../../../static/share.png" class="folder-icon" mode="aspectFit" @click="onShare"></image>
+          <u-icon name="search" size="24" @click="onSearchClick" />
           <image src="../../../static/more_explore.png" class="folder-icon" mode="aspectFit" @click="showMore = true"></image>
         </view>
       </view>
@@ -52,6 +52,9 @@
         :scrollable="false"
       />
     </view>
+
+    <!-- 搜索面板 -->
+    <SearchPanel v-model:show="showSearchPanel" search-type="knowledgeItem" />
 
     <!-- Swiper 内容区 -->
     <view
@@ -127,7 +130,37 @@
 
 
     <!-- 更多操作 popup -->
-    <u-popup :show="showMore" mode="bottom" @close="showMore = false" />
+    <u-popup 
+      :show="showMore" 
+      mode="bottom" 
+      @close="showMore = false" 
+      class="more-popup"
+      :overlay="true"
+      :safe-area-inset-bottom="true"
+      animation-duration="300"
+      close-on-click-overlay
+    >
+      <view class="more-popup-container">
+        <text class="more-popup-title">更多</text>
+           
+          <view class="more-popup-content">
+            <view class="more-popup-item" @click="handleShare()">
+              <image src="../../../static/share.png" class="more-popup-item-image" mode="aspectFit"></image>
+              <text class="more-popup-item-text">分享知识库</text>
+              <u-icon name="arrow-right" size="18" color="#999" style="margin-left: auto;"></u-icon>
+            </view>
+            <view class="more-popup-item" @click="handleDelete()">
+              <image src="../../../static/delete.png" class="more-popup-item-image" mode="aspectFit"></image>
+              <text class="more-popup-item-text" >删除知识库</text>
+              <u-icon name="arrow-right" size="18" color="#999" style="margin-left: auto;"></u-icon>
+            </view>
+          </view>
+        
+        <view class="more-popup-cancel" @click="showMore = false">
+          <text class="more-popup-cancel-text">取消</text>
+        </view>
+      </view>
+    </u-popup>
 
     <!-- 编辑弹窗 -->
     <u-modal
@@ -174,6 +207,7 @@ import { onLoad } from '@dcloudio/uni-app'
 import TalkButton from '../../../components/children/TalkButton.vue'
 import LiveChat from '../../../components/chat/LiveChat.vue'
 import NoteCard from '../../../components/cards/NoteCard.vue'
+import SearchPanel from '../../../components/SearchPanel.vue'
 import http from '../../../utils/http.js'
 
 const activeTab = ref(0)
@@ -214,6 +248,7 @@ const files = ref([
 const showMore = ref(false)
 const showEdit = ref(false)
 const chatPopupVisible = ref(false)
+const showSearchPanel = ref(false)
 
 // 笔记数据
 const notes = ref([])
@@ -406,7 +441,7 @@ function getFileIconPath(type) {
   
   switch (type) {
     case 'file':
-      return '/static/folder.png';
+      return '/static/fill.png';
     case 'audio':
       return '/static/notes/audio.png';
     case 'image':
@@ -549,8 +584,45 @@ function handleCloseChat() {
 function goBack() {
   uni.navigateBack()
 }
+
+// 搜索知识库内容
+function onSearchClick() {
+  // 显示搜索面板
+  showSearchPanel.value = true
+}
 function onShare() {
   uni.showToast({ title: '点击分享', icon: 'none' })
+}
+
+// 分享知识库功能
+function handleShare() {
+  // 关闭当前弹窗
+  showMore.value = false
+  // 显示分享成功提示
+  uni.showToast({ 
+    title: '分享功能即将开放', 
+    icon: 'none' 
+  })
+}
+
+// 删除知识库功能
+function handleDelete() {
+  // 关闭当前弹窗
+  showMore.value = false
+  // 显示确认对话框
+  uni.showModal({
+    title: '确认删除',
+    content: '确定要删除这个知识库吗？删除后将无法恢复。',
+    success: (res) => {
+      if (res.confirm) {
+        // 显示删除提示
+        uni.showToast({ 
+          title: '删除功能即将开放', 
+          icon: 'none' 
+        })
+      }
+    }
+  })
 }
 
 // 文件标签切换方法
@@ -1147,5 +1219,90 @@ function onTouchEnd(e) {
 .bottom-spacer {
   height: 30px;
   width: 100%;
+}
+
+/* 无文件提示样式 - 上下左右居中显示 */
+.no-files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 更多操作弹窗样式 */
+.more-popup-container {
+  width: 750rpx;
+  height: 587rpx;
+  background: #F5F5F5;
+  border-radius: 30rpx 30rpx 0rpx 0rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.more-popup-title {
+  font-weight: 500;
+  font-size: 32rpx;
+  color: #131313;
+  line-height: 100rpx;
+  text-align: left;
+  display: block;
+  height: 100rpx;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.more-popup-content {
+  width: 690rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+  margin-bottom: 50rpx;
+}
+
+.more-popup-item {
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #ECECEC;
+  padding: 0 30rpx;
+}
+
+.more-popup-item:last-child {
+  border-bottom: none;
+}
+
+.more-popup-item-image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.more-popup-item-text {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #131313;
+}
+
+.more-popup-cancel {
+  width: 690rpx;
+  height: 100rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx 20rpx 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.more-popup-cancel-text {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #131313;
+}
+
+/* 设置弹窗内容背景透明 */
+::v-deep .more-popup .u-popup__content {
+  background-color: transparent;
 }
 </style>

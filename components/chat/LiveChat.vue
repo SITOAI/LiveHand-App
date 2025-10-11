@@ -63,7 +63,7 @@
         :class="{ active: input.length > 0  }"
         @click="send"
       >
-        <u-icon name="arrow-upward" size="22" color="#fff" />
+        <image  src="../../static/send.png" class="send-icon" mode="aspectFit"></image>
       </view>
     </view>
     </view>
@@ -513,7 +513,6 @@ page {
   width: 48rpx;
   height: 48rpx;
   border-radius: 50%;
-  background-color: rgb(239, 239, 239);
   display: flex;
   align-items: center;
   justify-content: center;

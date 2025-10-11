@@ -1,7 +1,7 @@
 <template>
   <view class="tag-wrapper">
     <view class="tag-header">
-      <text class="tag-title">笔记标签</text>
+      <text class="tag-title">{{ title }}</text>
       <u-icon name="edit-pen" size="20" @click="onEditClick" />
     </view>
     <view class="tag-list">
@@ -19,10 +19,16 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
+
 defineProps({
   tags: {
     type: Array,
     default: () => []
+  },
+  title: {
+    type: String,
+    default: '标签'
   }
 })
 

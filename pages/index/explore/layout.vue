@@ -4,7 +4,7 @@
 		<view class="fixed_header">
 			<view class="explore_header">
 				<image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image>
-				<image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image>
+				<!-- <image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image> -->
 			</view>
 			
 			<view class="explore_logo_area">

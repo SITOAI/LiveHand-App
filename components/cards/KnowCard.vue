@@ -16,7 +16,7 @@
         <div class="description-row">
           <div class="know-description">{{ prompt }}</div>
           <!-- 右侧更多按钮 -->
-          <div class="more-icon-container" @click.stop="onMore">
+          <div class="more-icon-container" @click.stop="openDetails">
             <image  src="../../static/extra.png" class="more-icon" mode="aspectFit"></image>
           </div>
         </div>

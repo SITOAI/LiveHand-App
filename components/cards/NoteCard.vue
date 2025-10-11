@@ -91,42 +91,42 @@ function handleDeleteConfirm() {
 .note-card {
   width: 100%;
   background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  padding: 16px;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  padding: 32rpx;
   box-sizing: border-box;
   margin-bottom: 4vw;
 }
 
 .note-top {
-  margin-bottom: 12px;
+  margin-bottom: 24rpx;
 }
 
 .note-title {
   font-size: 32rpx;
   font-weight: 700;
   color: #222222;
-  margin-bottom: 6px;
+  margin-bottom: 12rpx;
   line-height: 1.3;
 }
 
 .note-title-info {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
+  gap: 16rpx;
+  font-size: 24rpx;
   color: #888888;
 }
 
 .repo-know {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
 }
 
 .folder-icon {
-  width: 16px;
-  height: 16px;
+  width: 32rpx;
+  height: 32rpx;
   vertical-align: middle;
 }
 
@@ -138,44 +138,46 @@ function handleDeleteConfirm() {
 }
 
 .note-time {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #888888;
 }
 
 .note-divider {
-  height: 1px;
+  height: 2rpx;
   background-color: #f0f0f0;
-  margin-bottom: 12px;
+  margin-bottom: 24rpx;
 }
 
 .note-main {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24rpx;
 }
 
 .note-content {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #444444;
   line-height: 1.6;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+  /* 修改为标准CSS属性确保文本占满整行后再换行 */
+  display: block;
+  max-height: calc(1.6em * 5); /* 保持最多显示5行 */
+  text-align: justify;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .audio-icon-wrapper {
   background-color: #f8f9fc;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 8px;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
 }
 
 .audio-icon {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20rpx;
   }
 
 .audio-icon image{
@@ -185,24 +187,24 @@ function handleDeleteConfirm() {
 }
 
 .audio-icon span {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #888888;
   vertical-align: middle;
 }
 
 .audio-name {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #333;
-  max-width: 200px;
+  max-width: 400rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .note-bottom-divider {
-  height: 1px;
+  height: 2rpx;
   background-color: #f0f0f0;
-  margin-bottom: 2px;
+  margin-bottom: 4rpx;
 }
 
 .note-footer {
@@ -221,28 +223,28 @@ function handleDeleteConfirm() {
 .repo-info {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8rpx;
   color: #4d8fff;
 }
 
 .repo-tags {
   display: flex;
-  gap: 8px;
+  gap: 16rpx;
   flex-wrap: wrap;
 }
 
 .note-tag {
-  font-size: 12px;
-  padding: 2px 2px;
+  font-size: 24rpx;
+  padding: 4rpx 4rpx;
 }
 
 .iconfont {
-  font-size: 16px;
+  font-size: 32rpx;
 }
 
 .icon-yuyin {
-  width: 24px;
-  height: 24px;
+  width: 48rpx;
+  height: 48rpx;
   background-color: #4d8fff;
   border-radius: 50%;
   display: flex;
