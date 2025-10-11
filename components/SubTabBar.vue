@@ -1,7 +1,7 @@
 <template>
   <view class="subtabbar" :style="{ paddingTop: statusBarHeight + 'px' }">
     <view
-      v-for="(tab, i) in ['新闻', '调研', '简历']"
+      v-for="(tab, i) in ['新闻', '调研']"
       :key="i"
       class="subtab"
       :class="{ active: activeIndex === i }"
@@ -52,9 +52,9 @@ function onTabClick(index) {
 
 .subtab {
   white-space: nowrap;
-  font-size: 13px;
+  font-size: 30rpx;
   text-align: center;
-  padding: 10px 8px;
+  padding: 10rpx 8rpx;
   position: relative;
   cursor: pointer;
   color: #333;

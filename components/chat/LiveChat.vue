@@ -15,6 +15,7 @@
       adjust-position="false"
       :style="{ paddingBottom: isKeyboardVisible ? keyboardHeight + 'px' : '0px' }"
       @scrolltolower="handleScrollToLower"
+      @touchmove.stop.prevent=""
     >
       <MessageItem
         v-for="(msg, index) in messages"
@@ -34,6 +35,9 @@
           </view>
         </view>
       </view>
+      
+      <!-- 底部占位元素，确保最后一条消息和输入框之间有20rpx的距离 -->
+      <view class="bottom-spacing"></view>
     </scroll-view>
 
     <!-- 底部输入区 -->
@@ -375,12 +379,14 @@ const handleClose = () => {
   padding: 1rem;
   box-sizing: border-box;
   overflow: hidden; /* 防止内容溢出 */
+  touch-action: none; /* 防止整个页面的触摸滑动 */
 }
 
 /* 确保在键盘弹出时页面内容不会被挤压 */
 page {
   overflow: hidden;
   height: 100vh;
+  touch-action: none;
 }
 
 /* Header */
@@ -422,6 +428,11 @@ page {
 }
 .chat-scroll::-webkit-scrollbar {
   display: none;
+}
+
+/* 底部占位元素样式 */
+.bottom-spacing {
+  height: 20rpx;
 }
 
 /* Typing 动画 */

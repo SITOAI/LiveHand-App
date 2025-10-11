@@ -90,7 +90,7 @@ console.log("statusBarHeight:"+statusBarHeight)
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  top: -2vh !important;
+  top: 4vh !important;
   position: relative !important;
   background-color: #f5f5f5;
 }
