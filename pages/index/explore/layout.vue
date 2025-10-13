@@ -1,5 +1,5 @@
 <template>
-	<view class="explore_container">
+  <view class="container">
 		<!-- 固定部分：explore_input 区域以上内容 -->
 		<view class="fixed_header">
 			<view class="explore_header">
@@ -48,24 +48,23 @@
 			    ></u-divider>
 			  </template>
 			
-			  <!-- 最后一个元素结束后的“收尾” divider -->
+			  <!-- 最后一个元素结束后的"收尾" divider -->
 			  <u-divider text="分割线" :dot="true"></u-divider>
 			</view>
-		</view>
-	</view>
+		  </view>
+  
+  <!-- 引入SelectionPanel组件 - 移除items属性 -->
+  <SelectionPanel v-model:show="showCenterModal" />
+</view>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import SelectionPanel from "../../../components/SelectionPanel.vue"
 import RecommendCard from "../../../components/cards/RecommendCard.vue"
 
-// 跳转到搜索页面
-function navigateToSearch() {
-  uni.navigateTo({
-    url: '/components/SearchPage'
-  })
-}
-
+// 响应式数据 - 移除popupItems变量
+const showCenterModal = ref(false)
 const data = ref([
 	{
 		title: "C++中string如何实现字符串分割函数split()——4种方法",
@@ -103,16 +102,55 @@ const data = ref([
 			reply: "600"
 		}
 	},
+	{
+		title: "C++中string如何实现字符串分割函数split()——4种方法",
+		owner_logo: "../../static/owner_logo.png",
+		owner_name: "秀儿同学来了",
+		summarize: "本文介绍了在C++中实现字符串分割的四种方法，包括使用stringstream流、string类的find与substr方法、C库函数strtok以及regex_token_iterator(正则表达式)，并给出了各方法的函数原型、使用注意事项和测试用例。",
+		cover_image: "../../static/test_cover.png",
+		kol: {
+			cite: "1000",
+			like: "200",
+			reply: "600"
+		}
+	}
 ])
+
+// 监听TabBar中间按钮点击
+let modalListener = null
+
+onMounted(() => {
+  // 直接监听TabBar中间按钮点击事件
+  modalListener = uni.onTabBarMidButtonTap(() => {
+    showCenterModal.value = true
+  })
+})
+
+onUnmounted(() => {
+  // 移除事件监听并重置状态
+  if (modalListener) {
+    uni.$off('showCenterModal', modalListener)
+  }
+  showCenterModal.value = false
+})
+
+
+
+function navigateToSearch() {
+  console.log('跳转搜索页面')
+  uni.navigateTo({
+    url: '/pages/search/index'
+  })
+}
 </script>
 
 <style scoped>
-.explore_container {
+.container {
   position: relative;
   min-height: 100vh;
   background: #f5f5f5;        /* 默认全部灰背景 */
   background-image: url('../../static/background-login.png');
-  background-size: 100% auto; /* 宽度撑满，高度按比例 */
+  background-size: 100% 200px;
   background-repeat: no-repeat;
   background-position: top center;
 }

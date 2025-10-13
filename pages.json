@@ -56,14 +56,6 @@
       }
     },
     {
-      // index layout 页面：控制整个页面布局
-      "path": "pages/index/layout",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
       // 笔记页面
       "path": "pages/index/knowledge/notes/notes",
       "style": {
@@ -79,6 +71,7 @@
         "navigationStyle": "custom"
       }
     },
+
     {
       // 404 页面
       "path": "pages/404/404",

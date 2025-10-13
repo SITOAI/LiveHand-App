@@ -5,7 +5,8 @@
     :round="10"
     closeOnClickOverlay
     overlay
-	@close="emit('update:show', false)"
+    @close="handleClose"
+    :safeAreaInsetBottom="true"
   >
     <view
       class="popup-panel"
@@ -19,8 +20,8 @@
       <!-- 头部 -->
       <view class="popup-header">
         <view class="header-title">{{ title }}</view>
-        <view class="header-close" @click="$emit('update:show', false)">
-          <u-icon name="close" size="20" color="#fff" />
+        <view class="header-close" @click="handleClose">
+          <u-icon name="close" size="18" color="#fff" />
         </view>
       </view>
 
@@ -46,21 +47,62 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps, defineEmits, watch } from 'vue'
 
-defineProps({
+// 定义属性，保留show属性用于v-model绑定
+const props = defineProps({
   show: Boolean,
-  title: Number,
-  items: {
-    type: Array,
-    default: () => []
+  title: {
+    type: String,
+    default: '创建内容'
   }
 })
 
+// 定义事件
 const emit = defineEmits(['update:show', 'select'])
 
+// 内部定义items数据，不再从外部传入
+const items = ref([
+  { title: '粘贴链接', desc: '从剪贴板粘贴链接内容', icon: 'attach' },
+  { title: '拍照', desc: '打开相机拍摄照片', icon: 'camera' },
+  { title: '上传图片', desc: '从相册选择图片上传', icon: 'photo' },
+  { title: '实时录音', desc: '录制语音备忘', icon: 'mic' },
+  { title: '导入音视频', desc: '导入本地音视频文件', icon: 'play-circle' },
+  { title: '上传文件', desc: '上传各种文件', icon: 'file-text' },
+  { title: '新建知识库', desc: '创建新的知识库空间', icon: 'bag' }
+])
+
+// 处理选择事件
 function handleSelect(item) {
-  emit('select', item)
+  // 内部实现跳转逻辑
+  switch (item.title) {
+    case '粘贴链接':
+      uni.navigateTo({ url: '/pages/index/create/link/create' })
+      break
+    case '拍照':
+      uni.navigateTo({ url: '/pages/index/create/camera/create' })
+      break
+    case '上传图片':
+      uni.navigateTo({ url: '/pages/index/create/picture/create' })
+      break
+    case '实时录音':
+      uni.navigateTo({ url: '/pages/index/create/audio/create' })
+      break
+    case '导入音视频':
+      uni.navigateTo({ url: '/pages/index/create/video/create' })
+      break
+    case '上传文件':
+      uni.navigateTo({ url: '/pages/index/create/file/create' })
+      break
+    case '新建知识库':
+      uni.navigateTo({ url: '/pages/index/create/knowledge/create' })
+      break
+  }
+  handleClose()
+}
+
+// 处理关闭事件
+function handleClose() {
   emit('update:show', false)
 }
 
@@ -87,14 +129,14 @@ function onTouchEnd(e) {
   const deltaY = endY - startY.value
 
   if (deltaY > 50) {
-    emit('update:show', false)
+    handleClose()
   }
 }
 </script>
 
 <style scoped>
 .popup-panel {
-  background: #fff;
+  background: #f5f5f5;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   padding: 12px 20px 24px; /* 上右下内边距，顶部留点给拖拽条 */

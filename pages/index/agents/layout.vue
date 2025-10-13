@@ -26,17 +26,37 @@
       </swiper>
     </view>
   </view>
+  <SelectionPanel v-model:show="showCenterModal" />
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import Research from './research/research.vue'
 import Resume from './resume/resume.vue'
 import News from './news/news.vue'
 import SubTabBar from '../../../components/SubTabBar.vue'
+import SelectionPanel from '../../../components/SelectionPanel.vue'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
+const showCenterModal = ref(false)
+let modalListener = null
+
+// 监听TabBar中间按钮点击
+onMounted(() => {
+  // 直接监听TabBar中间按钮点击事件
+  modalListener = uni.onTabBarMidButtonTap(() => {
+    showCenterModal.value = true
+  })
+})
+
+onUnmounted(() => {
+  // 移除事件监听并重置状态
+  if (modalListener) {
+    uni.$off('showCenterModal', modalListener)
+  }
+  showCenterModal.value = false
+})
 
 function handleTabChange(index) {
   lastTab.value = activeTab.value

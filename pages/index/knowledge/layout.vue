@@ -22,7 +22,7 @@
 	        @click="onAIClickInAgent"
 	      />
 	    </view>
-	
+
 	    <view
 	      class="knowledge-layout-content"
 	      @touchstart="onTouchStart"
@@ -31,7 +31,7 @@
 	      <CommonPanel v-model:show="showCommonPanel" />
 	      <SearchPanel v-if="activeTab === 0" v-model:show="showSearchPanel" search-type="notes" />
 	      <SearchPanel v-if="activeTab === 1" v-model:show="showSearchPanel" search-type="knowledge" />
-	
+
 	      <swiper
 	        :current="activeTab"
 	        @change="onSwiperChange"
@@ -46,22 +46,29 @@
 	        </swiper-item>
 	      </swiper>
 	    </view>
+	    
+	    <SelectionPanel v-model:show="showCenterModal" />
 	</view>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import Notes from './notes/notes.vue'
 import Knows from './knows/knows.vue'
 import TabBar from '../../../components/TabBar.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import SearchPanel from '../../../components/SearchPanel.vue'
+import SelectionPanel from '../../../components/SelectionPanel.vue'
 
 const activeTab = ref(1)
 const lastTab = ref(0)
 const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
+
+// 添加响应式数据用于SelectionPanel - 移除popupItems变量
+const showCenterModal = ref(false)
+let modalListener = null
 
 onMounted(() => {
   uni.$on('swipeFromInnerFirstTab', () => {
@@ -69,7 +76,23 @@ onMounted(() => {
       activeTab.value--
     }
   })
+  
+  // 直接监听TabBar中间按钮点击事件
+  modalListener = uni.onTabBarMidButtonTap(() => {
+    showCenterModal.value = true
+  })
 })
+
+onUnmounted(() => {
+  // 移除事件监听并重置状态，避免内存泄漏
+  if (modalListener) {
+    uni.$off('showCenterModal', modalListener)
+  }
+  showCenterModal.value = false
+})
+
+// 处理选择事件
+
 
 function handleTabChange(index) {
   lastTab.value = activeTab.value
@@ -77,43 +100,28 @@ function handleTabChange(index) {
 }
 
 function onSwiperChange(e) {
-  lastTab.value = activeTab.value
   activeTab.value = e.detail.current
 }
 
-function onSearchClick() {
-  // 根据当前激活的标签页显示对应类型的搜索面板
-  showSearchPanel.value = true
-}
-
-function onAIClickInAgent() {
-  console.log('你现在点击的是智能体页面的 搜索按钮')
-}
-
-// 手势处理
-let startX = 0
-let startY = 0
-
 function onTouchStart(e) {
-  startX = e.touches[0].clientX
-  startY = e.touches[0].clientY
+  this.startX = e.touches[0].clientX
 }
 
 function onTouchEnd(e) {
   const endX = e.changedTouches[0].clientX
-  const endY = e.changedTouches[0].clientY
-  const deltaX = endX - startX
-  const deltaY = Math.abs(endY - startY)
-
-  // 只有当滑动主要是水平方向（垂直滑动远小于水平滑动）且向右滑动足够距离时，才打开CommonPanel
-  // 这可以防止上下滑动时意外触发CommonPanel
-  if (deltaX > 50 && deltaY < deltaX / 2 && activeTab.value === 0 && lastTab.value === 0) {
-    showCommonPanel.value = true
+  if (endX - this.startX > 50 && activeTab.value === 0) {
+    // 向右滑动，通知父组件
+    uni.$emit('swipeFromInnerFirstTab')
   }
+}
 
-  if (deltaX < -50 && deltaY < Math.abs(deltaX) / 2 && activeTab.value === 2 && lastTab.value === 2) {
-    // 预留扩展
-  }
+function onSearchClick() {
+  showSearchPanel.value = true
+}
+
+function onAIClickInAgent() {
+  // 这里是点击AI按钮的逻辑
+  console.log('点击AI按钮')
 }
 </script>
 
@@ -164,7 +172,5 @@ function onTouchEnd(e) {
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
-  position: relative;
-  z-index: 1;
 }
 </style>
