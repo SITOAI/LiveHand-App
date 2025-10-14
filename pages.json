@@ -98,6 +98,18 @@
       }
     },
     {
+      "path": "pages/search/explore",
+      "style": {
+        "navigationBarTitleText": "搜索",
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": false,
+        "backgroundColor": "#ffffff",
+        "app-plus": {
+          "softinputMode": "adjustResize"
+        }
+      }
+    },
+    {
     	"path" : "pages/details/NoteDetails/NoteDetails",
     	"style" : 
     	{

@@ -11,8 +11,8 @@
 				<image class="explore_logo" src="../../../static/logo-group.png" mode="widthFix"></image>
 			</view>
 			
-			<view class="explore_input">
-				<input type="text" placeholder="把问题和任务告诉我"/>
+			<view class="explore_input" @click="navigateToSearch">
+				<input type="text" placeholder="把问题和任务告诉我" disabled/>
 				<view class="explore_input_search_button">
 					<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
 				</view>
@@ -144,7 +144,7 @@ onUnmounted(() => {
 function navigateToSearch() {
   console.log('跳转搜索页面')
   uni.navigateTo({
-    url: '/pages/search/index'
+    url: '/pages/search/explore'
   })
 }
 </script>

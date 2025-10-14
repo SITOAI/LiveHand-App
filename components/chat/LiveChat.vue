@@ -115,11 +115,8 @@ import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 import MessageItem from './components/MessageItem.vue'
 import http from '../../utils/http.js'
 
-// 输入框引用
 const inputRef = ref(null)
-// 键盘高度 - 用于响应式地调整布局
 const keyboardHeight = ref(0)
-// 计算键盘是否可见
 const isKeyboardVisible = computed(() => keyboardHeight.value > 0)
 // 语音模式相关状态
 const isVoiceMode = ref(false)
@@ -130,6 +127,7 @@ const innerAudioContext = uni.createInnerAudioContext()
 let socketTask = null
 let audioStreamInterval = null
 const isWebSocketConnected = ref(false)
+const isFormatSent = ref(false) // 标记格式参数是否已发送成功
 const partialText = ref('') // 存储实时反馈的文本
 const wsConnectionStatus = ref('正在录音...松开结束') // WebSocket连接状态提示
 
@@ -187,8 +185,8 @@ onMounted(() => {
     if (res.isLastFrame) {
       // 最后一帧数据
       console.log('录音结束')
-    } else if (isWebSocketConnected.value && socketTask) {
-      // 发送音频数据到WebSocket
+    } else if (isWebSocketConnected.value && socketTask && isFormatSent.value) {
+      // 确保格式参数发送成功后再发送音频数据到WebSocket
       try {
         socketTask.send({
           data: res.frameBuffer,
@@ -204,7 +202,7 @@ onMounted(() => {
       }
     }
   })
-    })
+})
 
 // 组件卸载时移除事件监听
 onUnmounted(() => {
@@ -316,9 +314,11 @@ const initWebSocket = () => {
               data: JSON.stringify({ type: 'format', mime: 'mpeg' }), 
               success: () => {
                 console.log('格式参数发送成功')
+                isFormatSent.value = true
               },
               fail: (err) => {
                 console.error('格式参数发送失败:', err)
+                isFormatSent.value = false
               }
             })
           }, 100)
@@ -423,6 +423,7 @@ const stopWebSocket = () => {
     }
     
     isWebSocketConnected.value = false
+    isFormatSent.value = false // 重置格式参数发送状态
   } catch (error) {
     console.error('停止WebSocket连接失败:', error)
   }
