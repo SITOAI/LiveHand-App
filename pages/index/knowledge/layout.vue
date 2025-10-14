@@ -65,6 +65,7 @@ const activeTab = ref(1)
 const lastTab = ref(0)
 const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
+const startX = ref(0)
 
 // 添加响应式数据用于SelectionPanel - 移除popupItems变量
 const showCenterModal = ref(false)
@@ -77,16 +78,20 @@ onMounted(() => {
     }
   })
   
-  // 直接监听TabBar中间按钮点击事件
-  modalListener = uni.onTabBarMidButtonTap(() => {
-    showCenterModal.value = true
-  })
+  // 监听特定的自定义事件
+modalListener = uni.$on('showKnowledgeModal', () => {
+  showCenterModal.value = true
 })
 
+// 监听tabbar切换事件，关闭弹框
+uni.$on('closeAllModals', () => {
+  showCenterModal.value = false
+})
+})
 onUnmounted(() => {
   // 移除事件监听并重置状态，避免内存泄漏
   if (modalListener) {
-    uni.$off('showCenterModal', modalListener)
+    uni.$off('showKnowledgeModal', modalListener)
   }
   showCenterModal.value = false
 })
@@ -104,12 +109,12 @@ function onSwiperChange(e) {
 }
 
 function onTouchStart(e) {
-  this.startX = e.touches[0].clientX
+  startX.value = e.touches[0].clientX
 }
 
 function onTouchEnd(e) {
   const endX = e.changedTouches[0].clientX
-  if (endX - this.startX > 50 && activeTab.value === 0) {
+  if (endX - startX.value > 50 && activeTab.value === 0) {
     // 向右滑动，通知父组件
     uni.$emit('swipeFromInnerFirstTab')
   }

@@ -20,18 +20,23 @@ import SelectionPanel from "../../../components/SelectionPanel.vue"
 const showCenterModal = ref(false)
 let modalListener = null
 
-// 监听TabBar中间按钮点击
+// 监听自定义事件
 onMounted(() => {
-  // 直接监听TabBar中间按钮点击事件
-  modalListener = uni.onTabBarMidButtonTap(() => {
+  // 监听特定的自定义事件
+  modalListener = uni.$on('showMineModal', () => {
     showCenterModal.value = true
+  })
+  
+  // 监听tabbar切换事件，关闭弹框
+  uni.$on('closeAllModals', () => {
+    showCenterModal.value = false
   })
 })
 
 onUnmounted(() => {
   // 移除事件监听并重置状态
   if (modalListener) {
-    uni.$off('showCenterModal', modalListener)
+    uni.$off('showMineModal', modalListener)
   }
   showCenterModal.value = false
 })

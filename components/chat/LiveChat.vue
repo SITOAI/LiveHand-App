@@ -48,24 +48,64 @@
         :class="{ 'chatbar-disabled': isLoading }"
         :style="{ pointerEvents: isLoading ? 'none' : 'auto' }"
       >
-      <u--input
-        v-model="input"
-        placeholder="向LiveHands提问"
-        :prefixIcon="input.length > 0 ? 'star-fill' : 'star'"
-        prefixIconStyle="font-size: 22px;color: #909399"
-        border="none"
-        :customStyle="{ background: '#ddd', flex: 1 }"
-        :adjust-position="false"
-        ref="inputRef"
-      />
-      <view
-        class="send-icon-wrapper"
-        :class="{ active: input.length > 0  }"
-        @click="send"
-      >
-        <image  src="../../static/send.png" class="send-icon" mode="aspectFit"></image>
+        <!-- 文字输入模式 -->
+        <template v-if="!isVoiceMode">
+          <u--input
+            v-model="input"
+            placeholder="向LiveHands提问"
+            :prefixIcon="input.length > 0 ? 'star-fill' : 'star'"
+            prefixIconStyle="font-size: 22px;color: #909399"
+            border="none"
+            :customStyle="{ background: '#ddd', flex: 1 }"
+            :adjust-position="false"
+            ref="inputRef"
+          />
+          <view
+            class="voice-toggle-btn"
+            @click.stop="toggleVoiceMode"
+          >
+            <image src="../../static/micro.png" class="voice-icon" mode="aspectFit"></image>
+          </view>
+          <view
+            class="send-icon-wrapper"
+            :class="{ active: input.length > 0  }"
+            @click="send"
+            v-if="input.length > 0"
+          >
+            <image src="../../static/send.png" class="send-icon" mode="aspectFit"></image>
+          </view>
+        </template>
+        
+        <!-- 语音输入模式 -->
+        <template v-else>
+          <view class="voice-mode-indicator">按住 说话</view>
+          <view
+            class="voice-toggle-btn"
+            @click.stop="toggleVoiceMode"
+          >
+            <image src="../../static/keyboard.png" class="voice-icon" mode="aspectFit"></image>
+          </view>
+        </template>
+        
+        <!-- 按住说话区域 - 覆盖整个输入栏 -->
+        <view 
+          class="voice-hold-area" 
+          v-if="isVoiceMode"
+          :class="{ 'recording': isRecording }"
+          @touchstart="startVoiceRecording"
+          @touchend="stopVoiceRecording"
+          @touchcancel="cancelVoiceRecording"
+        >
+        </view>
       </view>
     </view>
+    
+    <!-- 录音提示弹窗 -->
+    <view class="recording-toast" v-if="isRecording">
+      <view class="recording-icon"></view>
+      <text class="recording-text">{{ wsConnectionStatus }}</text>
+      <!-- 实时识别文本显示 -->
+      <text class="partial-text" v-if="partialText">{{ partialText }}</text>
     </view>
   </view>
 </template>
@@ -81,6 +121,17 @@ const inputRef = ref(null)
 const keyboardHeight = ref(0)
 // 计算键盘是否可见
 const isKeyboardVisible = computed(() => keyboardHeight.value > 0)
+// 语音模式相关状态
+const isVoiceMode = ref(false)
+const isRecording = ref(false)
+const recorderManager = uni.getRecorderManager()
+const innerAudioContext = uni.createInnerAudioContext()
+// WebSocket相关变量
+let socketTask = null
+let audioStreamInterval = null
+const isWebSocketConnected = ref(false)
+const partialText = ref('') // 存储实时反馈的文本
+const wsConnectionStatus = ref('正在录音...松开结束') // WebSocket连接状态提示
 
 // 监听键盘高度变化，响应式调整布局
 const handleKeyboardHeight = (e) => {
@@ -95,15 +146,71 @@ const handleKeyboardHeight = (e) => {
   }
 }
 
-// 组件挂载时添加键盘事件监听
+// 组件挂载时添加键盘事件监听和录音事件监听
 onMounted(() => {
   // 监听键盘高度变化
   uni.onKeyboardHeightChange(handleKeyboardHeight)
-})
+  
+  // 监听录音停止事件
+  recorderManager.onStop((res) => {
+    console.log("🚀 ~ res:", res)
+    
+    // 先更新状态
+    isRecording.value = false
+    
+    // 判断录音是否有效：检查是否有临时文件路径，且partialText不为空
+    const hasValidRecording = res && res.tempFilePath && partialText.value.trim() !== ''
+    
+    // 如果录音无效（没有生成内容），提示用户
+    if (!hasValidRecording) {
+      uni.showToast({
+        title: '未检测到有效语音，请重试',
+        icon: 'none'
+      })
+      // 停止WebSocket连接
+      stopWebSocket()
+      return
+    }
+    
+    // 处理最终识别结果
+    handleRecognizeResult({ result: partialText.value })
+    
+    // 停止WebSocket连接
+    stopWebSocket()
+  })
+  
+  // 监听录音错误事件
+  recorderManager.onError(handleRecordError)
+  
+  // 监听录音实时数据事件
+  recorderManager.onFrameRecorded((res) => {
+    if (res.isLastFrame) {
+      // 最后一帧数据
+      console.log('录音结束')
+    } else if (isWebSocketConnected.value && socketTask) {
+      // 发送音频数据到WebSocket
+      try {
+        socketTask.send({
+          data: res.frameBuffer,
+          success: () => {
+            // 成功发送
+          },
+          fail: (err) => {
+            console.error('发送音频数据失败:', err)
+          }
+        })
+      } catch (error) {
+        console.error('发送音频数据失败:', error)
+      }
+    }
+  })
+    })
 
 // 组件卸载时移除事件监听
 onUnmounted(() => {
   uni.offKeyboardHeightChange(handleKeyboardHeight)
+  // 清理WebSocket连接
+  stopWebSocket()
 })
 
 const props = defineProps({
@@ -153,47 +260,328 @@ const scrollTarget = ref('msg-0')
 
 
 // 点击chatbar区域时聚焦输入框并调整页面高度
-const focusInput = () => {
-  try {
-    if (inputRef.value) {
-      nextTick(() => {
-        // 添加50ms延迟确保DOM更新完成，防止黑屏闪烁
-        setTimeout(() => {
-          // 首选方案：使用uView组件提供的setFocus方法
-          if (typeof inputRef.value.setFocus === 'function') {
-            inputRef.value.setFocus()
-          } 
-          // 降级方案1：检查是否有focus方法直接调用
-          else if (typeof inputRef.value.focus === 'function') {
-            inputRef.value.focus()
-          } 
-          // 降级方案2：对于手机App环境，尝试访问组件内部元素
-          else if (inputRef.value.$el) {
-            try {
-              // 尝试访问内部input元素（适用于大多数框架）
-              const nativeInput = inputRef.value.$el.querySelector ? 
-                inputRef.value.$el.querySelector('input') : null
-              
-              if (nativeInput && typeof nativeInput.focus === 'function') {
-                nativeInput.focus()
-              } else if (typeof inputRef.value.$el.click === 'function') {
-                // 最后降级：直接点击组件区域
-                inputRef.value.$el.click()
-              }
-            } catch (e) {
-              console.warn('访问组件内部元素失败:', e)
-            }
-          }
-          // 确保内容滚动到底部
-          updateScroll()
-        }, 50)
-      })
-    } else {
+const focusInput = () => { 
+  if (!isVoiceMode.value && inputRef.value) {
+    nextTick(() => {
+      inputRef.value.focus()
       updateScroll()
-    }
-  } catch (error) {
-    console.warn('聚焦输入框失败:', error)
+    })
   }
+}
+
+// 切换语音/文字输入模式
+const toggleVoiceMode = () => {
+  if (isLoading.value) return
+  
+  // 隐藏键盘
+  uni.hideKeyboard()
+  
+  // 切换模式
+  isVoiceMode.value = !isVoiceMode.value
+  
+  console.log(`已切换到${isVoiceMode.value ? '语音' : '文字'}输入模式`)
+}
+
+// 初始化WebSocket连接
+const initWebSocket = () => {
+  try {
+    wsConnectionStatus.value = '正在连接服务器...'
+    socketTask = uni.connectSocket({
+      url: 'ws://192.168.1.246:8082/livehands/asr/ws',
+      success: () => {
+      },
+      fail: (err) => {
+        wsConnectionStatus.value = '连接失败，请检查网络'
+        setTimeout(() => {
+          if (isRecording.value) {
+            stopWebSocket()
+            initWebSocket()
+          }
+        }, 2000)
+      }
+    })
+    
+    // 监听连接打开
+    socketTask.onOpen(() => {
+      isWebSocketConnected.value = true
+      wsConnectionStatus.value = '正在录音...松开结束'
+      
+      // 发送开始参数
+      socketTask.send({
+        data: JSON.stringify({ type: 'start', lang: 'zh' }),
+        success: () => {
+          // 设置格式参数
+          setTimeout(() => {
+            socketTask.send({
+              data: JSON.stringify({ type: 'format', mime: 'mpeg' }), 
+              success: () => {
+                console.log('格式参数发送成功')
+              },
+              fail: (err) => {
+                console.error('格式参数发送失败:', err)
+              }
+            })
+          }, 100)
+        },
+        fail: (err) => {
+          console.error('开始参数发送失败:', err)
+        }
+      })
+    })
+    
+    // 监听接收到消息
+    socketTask.onMessage((res) => {
+      // 处理接收到的消息
+      try {
+        const data = JSON.parse(res.data)
+        console.log('接收到WebSocket消息6666666666:', res)
+        wsConnectionStatus.value = '正在录音...松开结束'
+        if (data.type === 'partial' && data.text) {
+          partialText.value = data.text
+        }
+      } catch (error) {
+        console.error('解析WebSocket消息失败:', error)
+      }
+    })
+    
+    // 监听连接关闭
+    socketTask.onClose(() => {
+      console.log('WebSocket连接已关闭')
+      isWebSocketConnected.value = false
+    })
+    
+    // 监听连接错误
+    socketTask.onError((error) => {
+      console.error('WebSocket错误:', error)
+      isWebSocketConnected.value = false
+      wsConnectionStatus.value = '连接失败，正在重试...'
+      
+      // 尝试重新连接
+      setTimeout(() => {
+        if (isRecording.value) {
+          console.log('尝试重新连接WebSocket')
+          stopWebSocket()
+          initWebSocket()
+        }
+      }, 2000)
+    })
+    
+    // 设置连接超时
+    setTimeout(() => {
+      if (socketTask && !isWebSocketConnected.value) {
+        console.error('WebSocket连接超时')
+        stopWebSocket()
+        wsConnectionStatus.value = '连接超时，正在重试...'
+        
+        // 尝试重新连接
+        setTimeout(() => {
+          if (isRecording.value) {
+            console.log('尝试重新连接WebSocket')
+            initWebSocket()
+          }
+        }, 2000)
+      }
+    }, 5000)
+  } catch (error) {
+    console.error('初始化WebSocket失败:', error)
+    wsConnectionStatus.value = '连接失败，请检查网络'
+  }
+}
+
+// 停止WebSocket连接
+const stopWebSocket = () => {
+  try {
+    if (socketTask && isWebSocketConnected.value) {
+      // 发送停止命令
+      socketTask.send({
+        data: JSON.stringify({ type: 'stop' }),
+        success: () => {
+          console.log('停止命令发送成功')
+        },
+        fail: (err) => {
+          console.error('停止命令发送失败:', err)
+        }
+      })
+      // 关闭连接
+      setTimeout(() => {
+        socketTask.close({
+          success: () => {
+            console.log('WebSocket连接已关闭')
+          },
+          fail: (err) => {
+            console.error('关闭WebSocket失败:', err)
+          }
+        })
+        socketTask = null
+      }, 300)
+    }
+    
+    // 确保清除定时器
+    if (audioStreamInterval) {
+      clearInterval(audioStreamInterval)
+      audioStreamInterval = null
+    }
+    
+    isWebSocketConnected.value = false
+  } catch (error) {
+    console.error('停止WebSocket连接失败:', error)
+  }
+}
+
+// 开始录音流程 - 定义在调用之前
+const startRecordingProcess = () => {
+  // 录音配置 - 优化参数以提高兼容性，简化配置以适应App环境
+  const options = {
+    duration: 60000, // 最大录音时长60秒
+    sampleRate: 16000,
+    numberOfChannels: 1,
+    encodeBitRate: 96000,
+    format: 'mp3', // 在App环境中mp3格式兼容性更好
+    frameSize: 50
+  }
+  
+  // 初始化WebSocket连接
+  initWebSocket()
+  
+  // 开始录音
+  recorderManager.start(options)
+  isRecording.value = true
+  
+  console.log('开始录音')
+}
+
+// 开始语音录音
+const startVoiceRecording = () => {
+  if (isLoading.value || isRecording.value) return
+  
+  // 重置状态
+  partialText.value = ''
+  wsConnectionStatus.value = '正在准备录音...'
+  startRecordingProcess()
+}
+// 停止语音录音
+const stopVoiceRecording = () => {
+  if (!isRecording.value) return
+  
+  // 停止录音
+  recorderManager.stop()
+  
+  // 确保发送停止命令
+  if (socketTask && isWebSocketConnected.value) {
+    socketTask.send({
+      data: JSON.stringify({ type: 'stop' }),
+      success: () => {
+        console.log('停止命令发送成功')
+      },
+      fail: (err) => {
+        console.error('停止命令发送失败:', err)
+      }
+    })
+  }
+  
+  console.log('停止录音')
+}
+
+// 取消语音录音
+const cancelVoiceRecording = () => {
+  if (isRecording.value) {
+    recorderManager.stop()
+    isRecording.value = false
+    stopWebSocket()
+    partialText.value = ''
+    console.log('取消录音')
+  }
+}
+
+// 录音错误处理
+const handleRecordError = (err) => {
+  console.error('录音失败:', err)
+  isRecording.value = false
+  stopWebSocket()
+  partialText.value = ''
+  uni.showToast({
+    title: '录音失败，请重试',
+    icon: 'none'
+  })
+}
+
+// 语音识别结果处理
+const handleRecognizeResult = (res) => {
+  // 优先使用partialText中的识别结果
+  const finalResult = partialText.value.trim() || (res && res.result && res.result.trim()) || ''
+  
+  if (finalResult) {
+    // 将识别结果回填到输入框
+    input.value = finalResult
+    // 自动切换回文字模式并聚焦输入框
+    isVoiceMode.value = false
+    nextTick(() => {
+      if (inputRef.value) {
+        inputRef.value.focus()
+      }
+    })
+    console.log('语音识别结果:', finalResult)
+  } else {
+    console.error('语音识别失败或结果为空:', res, 'partialText:', partialText.value)
+    // 尝试使用uni-app内置的语音识别作为备选方案
+    fallbackVoiceRecognition()
+  }
+  // 重置部分文本
+  partialText.value = ''
+}
+
+// 备选语音识别方案
+const fallbackVoiceRecognition = () => {
+  // 显示加载提示
+  uni.showLoading({
+    title: '尝试备选识别方案...'
+  })
+  
+  // 使用uni-app内置的语音识别API作为备选
+  uni.getRecorderManager().stop()
+  
+  // 获取最近一次录音的临时文件
+  const tempFilePath = uni.getRecorderManager().tempFilePath || ''
+  
+  if (tempFilePath) {
+    uni.recognizeVoice({
+      filePath: tempFilePath,
+      lang: 'zh_CN',
+      success: (result) => {
+        uni.hideLoading()
+        if (result && result.result) {
+          input.value = result.result
+          isVoiceMode.value = false
+          nextTick(() => {
+            if (inputRef.value) {
+              inputRef.value.focus()
+            }
+          })
+          console.log('备选语音识别成功:', result.result)
+        } else {
+          showRecognitionError()
+        }
+      },
+      fail: (err) => {
+        uni.hideLoading()
+        console.error('备选语音识别也失败:', err)
+        showRecognitionError()
+      }
+    })
+  } else {
+    uni.hideLoading()
+    showRecognitionError()
+  }
+}
+
+// 显示识别错误提示
+const showRecognitionError = () => {
+  uni.showToast({
+    title: '语音识别失败，请重试',
+    icon: 'none'
+  })
+  // 自动切换回文字模式
+  isVoiceMode.value = false
 }
 
 // 设置请求超时时间（毫秒）
@@ -254,7 +642,6 @@ const send = async () => {
       }, REQUEST_TIMEOUT)
     })
     
-    // 发送POST请求到/livehands/knowledge/chat接口，使用Promise.race处理超时
     const result = await Promise.race([
       http.post('/livehands/knowledge/chat', requestParams),
       timeoutPromise
@@ -330,18 +717,21 @@ const updateScroll = () => {
     // 无论键盘是否可见，都尝试滚动到底部
     setTimeout(() => {
       try {
-        const scrollView = document.querySelector('.chat-scroll')
-        if (scrollView) {
-          // 强制滚动到底部
-          scrollView.scrollTop = scrollView.scrollHeight
-          
-          // 如果通过ID滚动失败，再尝试直接滚动到底部
-          setTimeout(() => {
-            if (scrollView.scrollTop < scrollView.scrollHeight - 100) {
-              scrollView.scrollTop = scrollView.scrollHeight
-            }
-          }, 50)
-        }
+        // 使用uni-app的选择器API，不使用this（在setup中不可用）
+        const query = uni.createSelectorQuery()
+        query.select('.chat-scroll').fields({
+          scrollHeight: true,
+          scrollOffset: true
+        }, (res) => {
+          if (res) {
+            // 尝试使用页面滚动
+            uni.pageScrollTo({
+              scrollTop: res.scrollHeight,
+              duration: 0
+            })
+          }
+        })
+        query.exec()
       } catch (e) {
         console.warn('滚动到底部失败:', e)
       }
@@ -357,11 +747,8 @@ const handleClose = () => {
   }
 }
 
-// 处理滚动到底部事件，可以用于加载更多历史消息
   const handleScrollToLower = () => {
-    // 这里可以添加加载历史消息的逻辑
     // 如果需要分页加载历史聊天记录，可以在这里触发加载
-    console.log('滚动到底部，可以加载更多历史消息')
   }
 
   // 用于控制发送按钮的禁用状态
@@ -498,6 +885,109 @@ page {
   box-sizing: border-box;
   user-select: none; /* 防止用户选择文本 */
   transition: all 0.3s ease;
+  position: relative;
+  min-height: 80rpx;
+}
+
+/* 语音模式指示器 */
+.voice-mode-indicator {
+  flex: 1;
+  color: #666;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+/* 语音模式切换按钮 */
+.voice-toggle-btn {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.voice-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 按住说话区域 */
+.voice-hold-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 28rpx;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.voice-hold-area.recording {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 录音提示弹窗 */
+.recording-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 30rpx;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9999;
+}
+
+.recording-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #ff4d4f;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  animation: pulse 1s infinite;
+}
+
+.recording-text {
+  font-size: 28rpx;
+  color: white;
+  margin-bottom: 10rpx;
+}
+
+/* 实时识别文本样式 */
+.partial-text {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 10rpx;
+  max-width: 600rpx;
+  word-break: break-word;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* 输入栏禁用状态 */
