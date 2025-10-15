@@ -256,4 +256,9 @@ function navigateToSearch() {
   --divider-margin: 12px 0;
   --divider-color: #e0e0e0;
 }
+
+::v-deep .uni-input-placeholder {
+  color: #ccc;
+  opacity: 1;
+}
 </style>
