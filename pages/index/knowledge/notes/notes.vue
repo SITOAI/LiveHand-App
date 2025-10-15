@@ -175,9 +175,10 @@ onLoad(() => {
 <style scoped>
 .notes-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4vw;
-  padding-bottom: 120rpx; /* 增加底部内边距，确保内容不被tabbar遮挡 */
+  flex-direction: column;
+  padding: 0 20rpx;
+  padding-bottom: 120rpx; /* 保留底部内边距，确保内容不被tabbar遮挡 */
+  gap: 20rpx; /* 减少卡片之间的间距 */
 }
 
 /* 支持网格布局的替代方案 */

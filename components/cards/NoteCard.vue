@@ -96,10 +96,13 @@ function handleDeleteConfirm() {
   padding: 32rpx;
   box-sizing: border-box;
   margin-bottom: 2vw;
+  /* 确保卡片根据内容自适应高度 */
+  min-height: auto;
+  height: auto;
 }
 
 .note-top {
-  margin-bottom: 24rpx;
+  margin-bottom: 16rpx; /* 减少顶部区域与内容区域的间距 */
 }
 
 .note-title {
@@ -151,7 +154,7 @@ function handleDeleteConfirm() {
 .note-main {
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
+  gap: 16rpx; /* 减少内部间距 */
 }
 
 .note-content {
@@ -159,9 +162,8 @@ function handleDeleteConfirm() {
   color: #444444;
   line-height: 1.6;
   overflow: hidden;
-  /* 修改为标准CSS属性确保文本占满整行后再换行 */
+  /* 移除最大高度限制，让内容完全显示 */
   display: block;
-  max-height: calc(1.6em * 5); /* 保持最多显示5行 */
   text-align: justify;
   word-wrap: break-word;
   word-break: break-word;
