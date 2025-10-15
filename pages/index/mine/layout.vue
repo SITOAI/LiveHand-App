@@ -1,98 +1,261 @@
 <template>
-  <view class="agent-not-available">
-    <view class="not-available-content">
-      <image class="icon" src="/static/AI.png" mode="aspectFit"></image>
-      <view class="title">我的页面功能暂未开放</view>
-      <view class="subtitle">正在努力开发中，敬请期待！</view>
-      <view class="tip">我们正在努力为您提供更好的功能体验</view>
+  <view class="page-container">
+    <!-- 固定的个人信息模块 -->
+    <view class="user-info-section">
+      <Member />
+      <!-- <UnMember v-else /> -->
     </view>
-  
-    <!-- 添加SelectionPanel组件 -->
-    <SelectionPanel v-model:show="showCenterModal" />
+    
+    <!-- 可滚动的内容区域 -->
+    <scroll-view scroll-y class="content-wrapper">
+      <!-- 快捷操作 -->
+      <view class="section">
+        <view class="section-title">快捷操作</view>
+        <view class="section-body">
+          <view @click="openWidget"><MenuItem title="小组件" icon="attach" /></view>
+          <view @click="openImport"><MenuItem title="导入笔记" icon="plus-circle" /></view>
+          <view @click="openSynchronize"><MenuItem title="同步 LiveKnowledge" icon="reload" /></view>
+        </view>
+      </view>
+
+      <!-- 个性化设置 -->
+      <view class="section">
+        <view class="section-title">个性化设置</view>
+        <view class="section-body">
+          <view @click="openHistory"><MenuItem title="历史记录" icon="clock" :isOk="true" /></view>
+          <view @click="openTags"><MenuItem title="预设标签" icon="tags" :isOk="true" /></view>
+          <view @click="openFiles"><MenuItem title="文件管理器" icon="folder" /></view>
+        </view>
+      </view>
+
+      <!-- 需要你的帮助 -->
+      <view class="section">
+        <view class="section-title">需要你的帮助</view>
+        <view class="section-body">
+          <view @click="openRate"><MenuItem title="去应用商城给个好评" icon="star" /></view>
+          <view @click="openShare"><MenuItem title="分享 LiveHands 给好友" icon="share" :isOk="true" /></view>
+          <view @click="openWechat"><MenuItem title="关注官方公众号" icon="weixin-fill" :isOk="true" /></view>
+          <view @click="openRedbook"><MenuItem title="关注官方小红书" icon="heart" :isOk="true" /></view>
+          <view @click="openFeedback"><MenuItem title="吐槽专用" icon="chat" :isOk="true" /></view>
+        </view>
+      </view>
+
+      <!-- 版本信息 -->
+      <view class="section">
+        <view class="section-title">版本信息</view>
+        <view class="section-body">
+          <view @click="openUpdate"><MenuItem title="版本更新" icon="checkmark-circle" :isOk="true" /></view>
+          <view @click="openIntro"><MenuItem title="版本介绍" icon="info-circle" :isOk="true" /></view>
+        </view>
+      </view>
+
+      <!-- 帮助中心 -->
+      <view class="section">
+        <view class="section-title">帮助中心</view>
+        <view class="section-body">
+          <view @click="openDocs"><MenuItem title="使用文档" icon="file-text" :isOk="true" /></view>
+          <view @click="openAbout"><MenuItem title="关于我们" icon="integral" :isOk="true" /></view>
+        </view>
+      </view>
+
+      <!-- Panel -->
+      <FollowWeChatPanel v-model:show="showFollowWeChatPanel" />
+      <FollowRedBookPanel v-model:show="showFollowRedBookPanel" />
+      <AboutPanel v-model:show="showAboutPanel" />
+
+      <!-- 退出登录 -->
+      <view class="logout-wrapper">
+        <u-button
+          type="primary"
+          shape="circle"
+          size="medium"
+          text="退出登录"
+          @click="logout"
+        />
+      </view>
+
+      <view class="somthing-info">
+        <text>西安视途科技有限公司 AI 技术支撑</text>
+      </view>
+    </scroll-view>
   </view>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import SelectionPanel from "../../../components/SelectionPanel.vue"
+import Member from '../../../components/children/Member.vue'
+import UnMember from '../../../components/children/UnMember.vue'
+import MenuItem from '../../../components/children/MenuItem.vue'
+import FollowWeChatPanel from '../../../pages/static/FollowWeChat.vue'
+import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
+import AboutPanel from '../../../pages/static/About.vue'
+import { useUserStore } from '../../../store/user.js'
 
 // 响应式数据
-const showCenterModal = ref(false)
-let modalListener = null
+const isMember = ref(false)
+const userStore = useUserStore()
+const showFollowWeChatPanel = ref(false)
+const showFollowRedBookPanel = ref(false)
+const showAboutPanel = ref(false)
 
-// 监听自定义事件
+// 页面加载时检查用户状态
 onMounted(() => {
-  // 监听特定的自定义事件
-  modalListener = uni.$on('showMineModal', () => {
-    showCenterModal.value = true
-  })
+  // 这里可以添加用户状态检查逻辑
+  // isMember.value = userStore.isMember
   
-  // 监听tabbar切换事件，关闭弹框
+  // 监听全局事件，当切换tabbar时关闭所有弹窗
   uni.$on('closeAllModals', () => {
-    showCenterModal.value = false
+    showFollowRedBookPanel.value = false
+    showFollowWeChatPanel.value = false
+    showAboutPanel.value = false
   })
 })
 
 onUnmounted(() => {
-  // 移除事件监听并重置状态
-  if (modalListener) {
-    uni.$off('showMineModal', modalListener)
-  }
-  showCenterModal.value = false
+  // 移除事件监听，避免内存泄漏
+  uni.$off('closeAllModals')
 })
 
-// 处理选择事件
+function logout() {
+  userStore.logout()
+  setTimeout(() => {
+    uni.reLaunch({ url: '/pages/layout' })
+  }, 300)
+}
 
+// 页面跳转函数
+function openWidget() {
+  uni.navigateTo({ url: '/pages/static/WidgetManager' })
+}
+function openImport() {
+  uni.navigateTo({ url: '/pages/static/ImportNotes' })
+}
+function openSynchronize() {
+  uni.navigateTo({ url: '/pages/static/Sync' })
+}
+function openHistory() {
+  uni.navigateTo({ url: '/pages/static/HistoryLog' })
+}
+function openTags() {
+  uni.navigateTo({ url: '/pages/static/Tags' })
+}
+function openFiles() {
+  uni.navigateTo({ url: '/pages/static/FileBrowser' })
+}
+function openRate() {
+  uni.navigateTo({ url: '/pages/static/Rate' })
+}
+function openShare() {
+  uni.navigateTo({ url: '/pages/static/Share' })
+}
+function openWechat() {
+  showFollowWeChatPanel.value = true
+}
+function openRedbook() {
+  showFollowRedBookPanel.value = true
+}
+function openFeedback() {
+  uni.navigateTo({ url: '/pages/static/Feedback' })
+}
+function openUpdate() {
+  uni.navigateTo({ url: '/pages/static/Update' })
+}
+function openIntro() {
+  uni.navigateTo({ url: '/pages/static/Intro' })
+}
+function openDocs() {
+  uni.navigateTo({ url: '/pages/static/Docs' })
+}
+function openAbout() {
+  showAboutPanel.value = true
+}
 </script>
 
 <style scoped>
-.agent-not-available {
-  width: 100vw;
-  height: 100vh;
-  background: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.page-container {
+  width: 100%;
+  height: auto;
+  padding-top: 6vh;
+  background-color: #ebeff2;
   box-sizing: border-box;
 }
 
-.not-available-content {
-  padding-top: 35vh;
+.user-info-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ebeff2;
+  padding: 32rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.page-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  padding: 24rpx 0;
+  background-color: #fff;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 32rpx;
+  box-sizing: border-box;
   width: 100%;
-  max-width: 400px;
+  margin-top: 0;
 }
 
-.icon {
-  width: 120px;
-  height: 120px;
+.section {
   margin-bottom: 30rpx;
-  opacity: 0.7;
+  background-color: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  margin-top: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.title {
+.section-title {
   font-size: 32rpx;
   font-weight: bold;
   color: #333;
-  margin-bottom: 20rpx;
+  padding: 24rpx 32rpx 16rpx;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-.subtitle {
-  font-size: 28rpx;
-  color: #666;
-  margin-bottom: 16rpx;
-  line-height: 1.5;
+.section-body {
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.tip {
+.logout-wrapper {
+  margin: 48rpx 0;
+  margin-top: 70rpx;
+  padding: 0 32rpx;
+}
+
+.somthing-info {
+  padding: 40rpx 32rpx;
   font-size: 24rpx;
   color: #999;
-  line-height: 1.5;
+  text-align: center;
 }
 </style>

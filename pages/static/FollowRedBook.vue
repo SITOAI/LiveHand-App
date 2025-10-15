@@ -1,25 +1,30 @@
 <template>
   <u-popup
     :show="show"
-    mode="right"
+    mode="bottom"
+    :safe-area-inset-top="true"
     :overlay="true"
-    :closeable="false"
+    :closeable="true"
+    :close-on-click-overlay="true"
     @close="closePopup"
     @update:show="val => emit('update:show', val)"
     :duration="300"
+    ref="popupRef"
   >
     <view
       class="panel-wrapper"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
     >
-	  <!-- 顶部返回按钮 -->
-	  <view class="static-header">
+	  <!-- 顶部返回按钮 - 确保在web-view上方 -->
+	  <view class="static-header" style="z-index: 999;">
 	    <u-icon name="arrow-left" size="24" @click="closePopup" />
 	  </view>
 
       <!-- 嵌入网页内容 -->
-      <web-view :src="url" />
+      <view style="flex: 1; position: relative;">000000000000000
+        <web-view :src="url" :webview-styles="{ width: '100%', height: '100%' }" :fullscreen="false" :update-title="false" />
+      </view>
     </view>
   </u-popup>
 </template>
@@ -33,10 +38,16 @@ const props = defineProps({
 const emit = defineEmits(['update:show'])
 
 const url = ref('https://www.xiaohongshu.com/user/profile/5fb3d0260000000001006910')
+const popupRef = ref(null)
 
 function closePopup() {
   emit('update:show', false)
 }
+
+// 暴露closePopup方法供父组件调用
+defineExpose({
+  closePopup
+})
 
 // 手势滑动关闭逻辑
 let startX = 0
@@ -61,12 +72,14 @@ function onTouchEnd(e) {
 
 <style scoped>
 .panel-wrapper {
-  width: 96vw;
+  padding-top: 7vh;
+  width: 100vw;
   height: 100vh;
   background: #fff;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding-left: 4vw;
+  box-sizing: border-box;
 }
 
 /* 顶部返回按钮 */
@@ -75,7 +88,5 @@ function onTouchEnd(e) {
   display: flex;
   align-items: center;
   padding: 0 12px;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #eee;
 }
 </style>

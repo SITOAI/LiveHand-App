@@ -35,8 +35,7 @@
       // 我的 layout 页面
       "path": "pages/index/mine/layout",
       "style": {
-        "navigationBarTitleText": "我的",
-        "navigationStyle": "custom"
+        "navigationBarTitleText": "我的"
       }
     },
     {

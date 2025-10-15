@@ -1,6 +1,6 @@
 <template>
   <u-popup
-    :close-on-click-overlay="false"
+    :close-on-click-overlay="true"
     :show="show"
     mode="left"
     :overlay="true"

@@ -8,21 +8,26 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watch } from 'vue'
 import { useUserStore } from '../store/user.js'
 import Login from './login/login.vue'
 
 const userStore = useUserStore()
 const isLogin = computed(() => userStore.isLogin)
 
+// 监听登录状态变化，确保登录成功后立即跳转到探索页面
+watch(isLogin, (newVal) => {
+  if (newVal) {
+    uni.switchTab({ url: '/pages/index/explore/layout' })
+  }
+}, { immediate: true })
+
 onMounted(() => {
-  // 登录成功后，如果不在tabbar页面，则自动跳转到第一个tabbar页面
-  if (isLogin.value && getCurrentPages().length === 1) {
+  // 如果已经登录，直接跳转到探索页面
+  if (isLogin.value) {
     uni.switchTab({ url: '/pages/index/explore/layout' })
   }
 })
-
-console.log("isLogin", isLogin.value)
 </script>
 
 <style scoped>

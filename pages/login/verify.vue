@@ -91,7 +91,8 @@ async function onInput() {
 		delete userInfo.token // 已单独存储token
 		uni.setStorageSync('userInfo', userInfo)
 		uni.showToast({ title: '登录成功', icon: 'none' })
-		uni.reLaunch({ url: '/pages/index/layout' })
+		// 登录成功后直接跳转到探索页面
+		uni.switchTab({ url: '/pages/index/explore/layout' })
 	}else{
 		uni.showToast({ title: result.data.msg || '验证码错误', icon: 'error' })
 	}
