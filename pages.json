@@ -103,10 +103,7 @@
         "navigationBarTitleText": "搜索",
         "navigationStyle": "custom",
         "enablePullDownRefresh": false,
-        "backgroundColor": "#ffffff",
-        "app-plus": {
-          "softinputMode": "adjustResize"
-        }
+        "backgroundColor": "#ffffff"
       }
     },
     {

@@ -113,7 +113,7 @@
 <script setup>
 import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
 import MessageItem from './components/MessageItem.vue'
-import http from '../../utils/http.js'
+import http from '@/utils/http.js';
 
 const inputRef = ref(null)
 const keyboardHeight = ref(0)
@@ -285,7 +285,7 @@ const initWebSocket = () => {
   try {
     wsConnectionStatus.value = '正在连接服务器...'
     socketTask = uni.connectSocket({
-      url: 'ws://192.168.1.246:8082/livehands/asr/ws',
+      url: `${http.baseURL.replace('http://', 'ws://')}/livehands/asr/ws`,
       success: () => {
       },
       fail: (err) => {

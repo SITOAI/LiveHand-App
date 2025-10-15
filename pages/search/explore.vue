@@ -2,9 +2,8 @@
   <view class="search-explore-container">
     <!-- 搜索栏 -->
     <view class="search-header">
-      <u-icon name="arrow-left" size="28" @click="onBack" />
+      <u-icon class="search-icon" name="arrow-left" size="28" @click="onBack" />
       <view class="search-box">
-        <u-icon name="search" size="18" />
         <input
           class="input"
           placeholder="把问题和任务告诉我"
@@ -19,14 +18,19 @@
           size="18"
           @click="clearInput"
         />
+        <text class="search-btn" @click="onSearch">
+          <u-icon name="search" color="#ffffff" size="22" />
+        </text>
       </view>
-      <text class="search-btn" @click="onSearch">搜索</text>
     </view>
 
     <!-- 主体内容区域 -->
     <view class="search-content">
       <!-- 未搜索状态 -->
       <template v-if="!isSearched && !isFocused">
+        <view class="hot-recommend-header">
+          <text class="hot-recommend-title">热门推荐</text>
+        </view>
         <view class="recommend-section">
           <view class="section-header">
             <text class="section-title">人工智能</text>
@@ -141,14 +145,25 @@
         </view>
         <scroll-view scroll-y class="result-list">
           <template v-if="filteredResults.length > 0">
-            <view 
-              v-for="(item, index) in filteredResults" 
-              :key="index"
-              class="item-card"
-              @click="navigateToDetail(item)"
-            >
-              <text class="title">{{ item.title }}</text>
-              <text class="desc">{{ item.desc }}</text>
+            <view class="result-section">
+              <view class="section-header">
+                <rich-text class="section-title" :nodes="highlightText(keyword, keyword) + ' - 划线'"></rich-text>
+                <text class="more-btn">更多></text>
+              </view>
+              <view 
+                v-for="(item, index) in filteredResults" 
+                :key="index"
+                class="item-card"
+                @click="navigateToDetail(item)"
+              >
+                <rich-text class="title" :nodes="highlightText(item.title, keyword)"></rich-text>
+                <rich-text class="desc" :nodes="highlightText(item.desc, keyword) + '<span style=\'font-weight: bold; font-size: 24rpx; color: #2D5DE4;\'>展开</span>'"></rich-text>
+                <text class="expand-link">什么是人工智能概念，涵盖哪些产业链</text>
+                <view class="item-footer">
+                  <text class="source">科技学院 48分钟</text>
+                </view>
+                <view class="divider" v-if="index < filteredResults.length - 1"></view>
+              </view>
             </view>
           </template>
           <view v-else class="no-results">
@@ -217,6 +232,19 @@ const tabs = ref([
   { label: '问一问', value: 'qa' },
   { label: '视频', value: 'video' }
 ])
+
+// 高亮函数 - 高亮匹配的关键词
+function highlightText(text, keyword) {
+  if (!keyword || !text) return text
+  
+  const regex = new RegExp(`(${keyword})`, 'gi')
+  return text.split(regex).map((part, index) => {
+    if (part.toLowerCase() === keyword.toLowerCase()) {
+      return `<span class="highlight">${part}</span>`
+    }
+    return part
+  }).join('')
+}
 
 // 计算过滤后的搜索结果
 const filteredResults = computed(() => {
@@ -315,97 +343,113 @@ function navigateToDetail(item) {
 
 <style scoped>
 .search-explore-container {
-  height: 100vh;
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   padding-top: 6vh;
+  padding: 6vh 30rpx 0;
 }
 
 /* 搜索栏样式 */
 .search-header {
   display: flex;
   align-items: center;
-  background-color: #fff;
-  padding: 10px 16px;
-  gap: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  justify-content: flex-start;
+  width: 670rpx;
+  height: 86rpx;
+  padding: 0 12rpx;
+  gap: 10rpx;
+  box-shadow: 0rpx 0rpx 23rpx 0rpx rgba(204,204,204,0.18);
+  border-radius: 16rpx;
+  box-sizing: border-box;
 }
 
 .search-box {
+  background-color: #fff;
+  border-radius: 16rpx;
   flex: 1;
   display: flex;
   align-items: center;
-  background: #f5f5f5;
-  padding: 8px 12px;
-  border-radius: 16px;
-  gap: 8px;
+  padding: 16rpx 24rpx;
+  border-radius: 16rpx;
+  box-sizing: border-box;
 }
 
 .input {
   flex: 1;
-  padding: 4px 0;
-  font-size: 15px;
+  padding: 8rpx 0;
+  font-size: 30rpx;
   border: none;
   background-color: transparent;
+  margin-right: 30rpx;
 }
 
 .search-btn {
-  color: #007aff;
-  font-size: 16px;
+  width: 122rpx;
+  height: 50rpx;
+  background: linear-gradient(140deg, #D8C1FF, #9FE2FC);
+  box-shadow: 0rpx 0rpx 23rpx 0rpx rgba(204,204,204,0.18);
+  border-radius: 25rpx;
+  color: #fff;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  margin-left: 20rpx;
 }
 
 /* 主体内容样式 */
 .search-content {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  padding: 20rpx 0 0;
 }
 
 /* 推荐区域样式 */
 .recommend-section {
   background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin: 0 30rpx 32rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 32rpx;
 }
 
 .section-title {
-  font-size: 18px;
+  font-size: 36rpx;
   font-weight: bold;
   color: #333;
 }
 
 .more-btn {
-  font-size: 14px;
+  font-size: 28rpx;
   color: #007aff;
 }
 
 /* 账号卡片样式 */
 .account-card {
-  background: #f8f8f8;
-  border-radius: 8px;
+  background: #f8f8fd;
+  border-radius: 16rpx;
   padding: 16px;
 }
 
 .account-info {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
 }
 
 .account-avatar {
-  width: 50px;
-  height: 50px;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
 }
 
@@ -424,7 +468,7 @@ function navigateToDetail(item) {
   font-size: 14px;
   color: #666;
   display: block;
-  margin-top: 4px;
+  margin-top: 8rpx;
 }
 
 .account-stats {
@@ -437,18 +481,22 @@ function navigateToDetail(item) {
 }
 
 .follow-buttons {
+  height: 50rpx;
   display: flex;
   gap: 12px;
 }
 
 .follow-btn {
   flex: 1;
-  padding: 8px 16px;
-  border: 1px solid #007aff;
-  border-radius: 16px;
+  padding: 16rpx 32rpx;
+  border: 2rpx solid #007aff;
+  border-radius: 32rpx;
   background: transparent;
   color: #007aff;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
 }
 
 .follow-btn.primary {
@@ -458,8 +506,8 @@ function navigateToDetail(item) {
 
 /* 最近读过样式 */
 .recent-item {
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #f0f0f0;
 }
 
 .recent-item:last-child {
@@ -469,7 +517,7 @@ function navigateToDetail(item) {
 .item-content {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12rpx;
 }
 
 .item-title {
@@ -479,7 +527,7 @@ function navigateToDetail(item) {
 }
 
 .item-source {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #999;
 }
 
@@ -493,7 +541,7 @@ function navigateToDetail(item) {
 .video-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16rpx;
 }
 
 .video-thumbnail {
@@ -519,13 +567,13 @@ function navigateToDetail(item) {
 
 .video-duration {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 16rpx;
+  right: 16rpx;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
 }
 
 .video-title {
@@ -546,18 +594,18 @@ function navigateToDetail(item) {
 /* 搜索结果标签样式 */
 .result-tabs {
   display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding-bottom: 12px;
+  justify-content: space-around;
+  padding-bottom: 24rpx;
   margin-bottom: 16px;
-  gap: 16px;
 }
 
 .tab-item {
+  flex: 1;
   font-size: 15px;
   color: #666;
-  padding: 4px 0;
+  padding: 8rpx 0;
   position: relative;
+  text-align: center;
 }
 
 .tab-item.active {
@@ -571,33 +619,53 @@ function navigateToDetail(item) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 4rpx;
   background: #007aff;
+}
+
+/* 热门推荐标题样式 */
+.hot-recommend-header {
+  padding: 10rpx 0;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+  padding-left: 20rpx;
+}
+
+.hot-recommend-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1a1919;
+}
+
+/* 高亮样式 */
+:deep(.highlight) {
+  color: #2D5DE4;
+  font-weight: 600;
 }
 
 /* 无结果样式 */
 .no-results {
   text-align: center;
-  padding: 60px 20px;
+  padding: 120rpx 40rpx;
   color: #999;
   font-size: 15px;
 }
 
 /* 结果列表样式 */
 .result-list {
-  height: calc(100vh - 200px);
+  height: calc(100vh - 400rpx);
 }
 
 /* 搜索历史样式 */
 .history-wrapper {
-  padding: 16px 0;
+  padding: 32rpx 0;
 }
 
 .history-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 16rpx;
 }
 
 .history-title {
@@ -612,7 +680,7 @@ function navigateToDetail(item) {
 }
 
 .history-item {
-  padding: 6px 12px;
+  padding: 12rpx 24rpx;
   background: #cccccc30;
   border-radius: 16px;
   font-size: 16px;
@@ -623,7 +691,7 @@ function navigateToDetail(item) {
   font-size: 14px;
   color: #999;
   text-align: center;
-  padding: 20px 0;
+  padding: 40rpx 0;
 }
 
 /* 搜索标签样式 */
@@ -651,11 +719,65 @@ function navigateToDetail(item) {
 
 /* 搜索结果项样式 */
 .item-card {
-  background: #f9f9f9;
-  padding: 16px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  padding: 20rpx 0;
+  background-color: #fff;
+}
+
+.result-section {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2D5DE4;
+}
+
+.item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12rpx;
+}
+
+.source {
+  font-size: 24rpx;
+  color: #8E929D;
+}
+
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+.like-count {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.expand-link {
+  display: block;
+  font-size: 20rpx;
+  color: #8E929D;
+  margin-top: 8rpx;
+}
+
+.divider {
+  height: 2rpx;
+  background-color: #f0f0f0;
+  margin-top: 20rpx;
+  width: 100%;
 }
 
 .title {
@@ -666,6 +788,6 @@ function navigateToDetail(item) {
 .desc {
   font-size: 14px;
   color: #666;
-  margin-top: 6px;
+  margin-top: 12rpx;
 }
 </style>
