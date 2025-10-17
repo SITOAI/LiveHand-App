@@ -1,15 +1,16 @@
 <template>
   <view class="member-container">
     <view class="avatar-wrapper">
-      <image class="avatar" src="../../static/my.png" mode="aspectFill"></image>
+      <image class="avatar" src="../../static/test/test2.png" mode="aspectFill"></image>
+      <!-- <image class="avatar" src="../../static/my.png" mode="aspectFill"></image> -->
     </view>
     <view class="user-info">
       <view class="username">{{ username || 'LiveHands用户' }}</view>
-      <view class="user-desc">已登录会员账号</view>
+      <view class="user-desc">已登录</view>
     </view>
     <view class="member-badge">
       <image class="badge-icon" src="../../static/star_icon.png" mode="aspectFit"></image>
-      <text class="badge-text">会员</text>
+      <text class="badge-text">用户认证</text>
     </view>
   </view>
 </template>

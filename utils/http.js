@@ -1,7 +1,7 @@
 class Http {
   constructor({
     baseURL = 'http://ai.sitoai.cn',
-    timeout = 10000,
+    timeout = 300000, // 修改为5分钟超时
     headers = { 'Content-Type': 'application/json' },
   } = {}) {
     this.baseURL = baseURL
@@ -57,6 +57,7 @@ class Http {
         method: config.method || 'GET',
         header: config.headers,
         data: config.body ? JSON.parse(config.body) : {},
+        timeout: this.timeout, // 直接在uni.request中设置超时时间
         success: async (res) => {
           clearTimeout(timeoutTimer)
 
@@ -139,7 +140,7 @@ class Http {
 
 const http = new Http({
   baseURL: 'http://ai.sitoai.cn',
-  timeout: 150000,
+  timeout: 1500000,
 })
 
 // 请求拦截器：自动附加 token

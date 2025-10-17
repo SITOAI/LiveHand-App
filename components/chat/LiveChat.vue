@@ -151,8 +151,6 @@ onMounted(() => {
   
   // 监听录音停止事件
   recorderManager.onStop((res) => {
-    console.log("🚀 ~ res:", res)
-    
     // 先更新状态
     isRecording.value = false
     
@@ -240,6 +238,14 @@ const props = defineProps({
   datasetId: {
     type: String,
     default: '' // 知识库ID
+  },
+  appId: {
+    type: String,
+    default: ''
+  },
+  agentApiKey: {
+    type: String,
+    default: ''
   }
 })
 
@@ -254,6 +260,7 @@ const messages = ref([
 ])
 const isTyping = ref(false)
 const scrollTarget = ref('msg-0')
+const chatId = ref('') // 聊天窗口ID，初始为空
 
 
 
@@ -334,7 +341,6 @@ const initWebSocket = () => {
       // 处理接收到的消息
       try {
         const data = JSON.parse(res.data)
-        console.log('接收到WebSocket消息6666666666:', res)
         wsConnectionStatus.value = '正在录音...松开结束'
         if (data.type === 'partial' && data.text) {
           partialText.value = data.text
@@ -521,9 +527,7 @@ const handleRecognizeResult = (res) => {
         inputRef.value.focus()
       }
     })
-    console.log('语音识别结果:', finalResult)
   } else {
-    console.error('语音识别失败或结果为空:', res, 'partialText:', partialText.value)
     // 尝试使用uni-app内置的语音识别作为备选方案
     fallbackVoiceRecognition()
   }
@@ -586,7 +590,7 @@ const showRecognitionError = () => {
 }
 
 // 设置请求超时时间（毫秒）
-const REQUEST_TIMEOUT = 600000 // 
+const REQUEST_TIMEOUT = 60000000 // 
 
 const send = async () => {
   const content = input.value.trim()
@@ -611,11 +615,25 @@ const send = async () => {
       throw new Error('未登录，请先登录')
     }
     
+    // 构建请求参数 - 仅用于searchDetail页面
+    let baseParams = {}
+    if (props.sourcePage === 'searchDetail') {
+      baseParams = {
+        token: token,
+        content: [content]
+      }
+      
+      // 只有在第一次请求返回后，且chatId有值时才添加到请求参数中
+      if (chatId.value) {
+        baseParams.chatId = chatId.value
+      }
+    }
+    
     // 根据来源页面构建不同的请求参数
     let requestParams = {}
     
     if (props.sourcePage === 'noteDetails') {
-      // 从NoteDetails页面进入的请求参数
+      // 从NoteDetails页面进入的请求参数，保持原有逻辑
       requestParams = {
         token: token,
         in_type: 'NoteAnswerAgentKey',
@@ -626,7 +644,16 @@ const send = async () => {
       requestParams = {
         token: token,
         datasetId: props.datasetId,
-        content: [content] // AI提问页面的输入内容
+        content: [content]
+      }
+    } else if (props.sourcePage === 'searchDetail') {
+      // 从SearchDetail页面进入的请求参数
+      requestParams = {
+        ...baseParams,
+        // appId: props.appId,
+        // agent_api_key: props.agentApiKey
+       "appId":"68ecca35942f643c45d2fe5b",
+       "agent_api_key":"openapi-h1hp4LFYmhHL4rO2KrZlDu94JGjEHUSMFeve221Ne7Z2WSO7IfCxFgmhBrTa9",
       }
     } else {
       // 默认请求参数
@@ -643,20 +670,45 @@ const send = async () => {
       }, REQUEST_TIMEOUT)
     })
     
+    // 根据不同页面使用不同的请求地址
+    let apiUrl = '/livehands/knowledge/chat'
+    if (props.sourcePage === 'searchDetail') {
+      apiUrl = '/livehands/home/chat'
+    }
+    
     const result = await Promise.race([
-      http.post('/livehands/knowledge/chat', requestParams),
+      http.post(apiUrl, requestParams),
       timeoutPromise
     ])
     
     // 隐藏正在输入状态
     isTyping.value = false
+    isLoading.value = false
+    
+    if (props.sourcePage === 'searchDetail' && (result.chatId || (result.data && result.data.chatId))) {
+      chatId.value = result.chatId || result.data.chatId
+    }
     
     // 处理接口返回结果
-    if (result && result.code === 200 && result.data) {
+    // 根据实际返回的数据结构修改检查条件
+    const hasValidResponse = result && (result.code === 200 || (result.data && result.data.code === 0)) && 
+                           (result.answer || result.data || (result.data && result.data.answer));
+    
+    if (hasValidResponse) {
+      // 获取答案内容，根据实际返回的数据结构获取
+      let answerContent = '';
+      if (result.answer) {
+        answerContent = result.answer;
+      } else if (result.data && result.data.answer) {
+        answerContent = result.data.answer;
+      } else {
+        answerContent = result.data;
+      }
+      
       // 确保结果有内容再添加到消息列表
-      if (result.data && result.data.trim()) {
+      if (answerContent && answerContent.trim()) {
         // 去除内容前面的空白字符（包括换行符），解决显示时前面有空行的问题
-        const trimmedContent = result.data.trimStart()
+        const trimmedContent = answerContent.trimStart()
         messages.value.push({
           role: 'assistant',
           blocks: [

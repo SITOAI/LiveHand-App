@@ -144,6 +144,18 @@
     		"navigationBarTitleText" : "",
     		"enablePullDownRefresh" : false
     	}
+    },
+    {
+    	"path" : "pages/search/detail",
+    	"style" : 
+    	{
+    		"navigationBarTitleText" : "",
+    		"enablePullDownRefresh" : false,
+        "app-plus": {
+            "softinputMode": "adjustResize",
+            "softinputNavBar": "none"
+        }
+    	}
     }
   ],
   "globalStyle": {

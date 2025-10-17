@@ -79,6 +79,7 @@
       </view>
     </scroll-view>
   </view>
+  <SelectionPanel v-model:show="showCenterModal" />
 </template>
 
 <script setup>
@@ -89,6 +90,7 @@ import MenuItem from '../../../components/children/MenuItem.vue'
 import FollowWeChatPanel from '../../../pages/static/FollowWeChat.vue'
 import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
 import AboutPanel from '../../../pages/static/About.vue'
+import SelectionPanel from '../../../components/SelectionPanel.vue'
 import { useUserStore } from '../../../store/user.js'
 
 // 响应式数据
@@ -97,22 +99,30 @@ const userStore = useUserStore()
 const showFollowWeChatPanel = ref(false)
 const showFollowRedBookPanel = ref(false)
 const showAboutPanel = ref(false)
+const showCenterModal = ref(false)
+let modalListener = null
 
 // 页面加载时检查用户状态
 onMounted(() => {
-  // 这里可以添加用户状态检查逻辑
-  // isMember.value = userStore.isMember
+  // 监听特定的自定义事件
+  modalListener = uni.$on('showMineModal', () => {
+    showCenterModal.value = true
+  })
   
   // 监听全局事件，当切换tabbar时关闭所有弹窗
   uni.$on('closeAllModals', () => {
     showFollowRedBookPanel.value = false
     showFollowWeChatPanel.value = false
     showAboutPanel.value = false
+    showCenterModal.value = false
   })
 })
 
 onUnmounted(() => {
   // 移除事件监听，避免内存泄漏
+  if (modalListener) {
+    uni.$off('showMineModal', modalListener)
+  }
   uni.$off('closeAllModals')
 })
 
