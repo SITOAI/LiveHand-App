@@ -197,11 +197,11 @@ function openAbout() {
   right: 0;
   background-color: #ebeff2;
   padding: 32rpx;
+  padding-top: calc(70rpx + env(safe-area-inset-top, 0px));
   box-sizing: border-box;
-  position: sticky;
-  top: 0;
   z-index: 100;
   box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  margin-top: 0;
 }
 
 .page-header {
@@ -228,6 +228,9 @@ function openAbout() {
   box-sizing: border-box;
   width: 100%;
   margin-top: 0;
+  padding-top: 12vh;
+  position: relative;
+  background-color: #ebeff2;
 }
 
 .section {

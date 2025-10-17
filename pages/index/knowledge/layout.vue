@@ -61,7 +61,7 @@ import CommonPanel from '../../../components/CommonPanel.vue'
 import SearchPanel from '../../../components/SearchPanel.vue'
 import SelectionPanel from '../../../components/SelectionPanel.vue'
 
-const activeTab = ref(1)
+const activeTab = ref(0)
 const lastTab = ref(0)
 const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
