@@ -359,7 +359,7 @@ function navigateToDetail(item) {
   const now = new Date(timestamp)
   const formattedTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
   uni.navigateTo({
-    url: `/pages/search/detail?id=${item.id}&title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.desc)}&repo=${encodeURIComponent(item.knowledgeBase)}&url=${encodeURIComponent(item.url || '')}&appId=${encodeURIComponent(item.app_id || '')}&agentApiKey=${encodeURIComponent(item.api_key || '')}&time=${encodeURIComponent(formattedTime)}`
+    url: `/pages/search/detail?id=${item.id}&title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.desc)}&repo=${encodeURIComponent(item.knowledgeBase)}&url=${encodeURIComponent(item.url || '')}&appId=${encodeURIComponent(item.app_id || '')}&agentApiKey=${encodeURIComponent(item.api_key || '')}&time=${encodeURIComponent(formattedTime)}&chatId=${encodeURIComponent(item.chatId || '')}`
   })
 }
 

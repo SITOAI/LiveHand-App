@@ -2,7 +2,7 @@
   <view class="livechat-page" :style="{ height: height }">
     <!-- 顶部 Header -->
     <view class="chat-header" v-if="showHeader">
-      <text class="chat-title">{{ title }}</text>
+      <text class="chat-title">{{ displayTitle }}</text>
       <u-icon name="close-circle" size="28" class="chat-close-icon" @click="handleClose" />
     </view>
 
@@ -246,7 +246,19 @@ const props = defineProps({
   agentApiKey: {
     type: String,
     default: ''
+  },
+  chatId: {
+    type: String,
+    default: ''
   }
+})
+
+// 计算属性：处理标题文本，searchDetail页面限制7个字符
+const displayTitle = computed(() => {
+  if (props.sourcePage === 'searchDetail' && props.title && props.title.length > 7) {
+    return props.title.substring(0, 11) + '...'
+  }
+  return props.title
 })
 
 const input = ref('')
@@ -623,8 +635,10 @@ const send = async () => {
         content: [content]
       }
       
-      // 只有在第一次请求返回后，且chatId有值时才添加到请求参数中
-      if (chatId.value) {
+      // 每次请求都携带chatId参数，优先使用props传入的chatId
+      if (props.chatId) {
+        baseParams.chatId = props.chatId
+      } else if (chatId.value) {
         baseParams.chatId = chatId.value
       }
     }
@@ -834,21 +848,24 @@ page {
   height: 60rpx;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   background-color: #fff;
   border-bottom: 1px solid #f0f0f0;
   z-index: 10; /* 确保Header在最上层 */
+  padding-right: 60rpx; /* 为关闭按钮留出空间 */
 }
 .chat-title {
   font-size: 30rpx;
   font-weight: bold;
   color: #333;
+  text-align: left;
+  width: 100%;
 }
 .chat-close-icon {
   position: absolute;
-  right: -25rpx;
-  top: 10%;
+  right: 0;
+  top: 50%;
   transform: translateY(-50%);
 }
 

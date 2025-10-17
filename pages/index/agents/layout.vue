@@ -15,28 +15,35 @@
         class="sub-swiper"
       >
         <swiper-item>
-          <News class="sub-index-container" />
+          <view class="sub-index-container">
+            <web-view :src="newsUrl" class="web-view-container" :webview-styles="webviewStyles" :allowFullScreen="false"></web-view>
+          </view>
         </swiper-item>
         <swiper-item>
-          <Research class="sub-index-container" />
-        </swiper-item>
-        <swiper-item>
-          <Resume class="sub-index-container" />
+          <view class="sub-index-container">
+            <web-view :src="researchUrl" class="web-view-container" :webview-styles="webviewStyles" :allowFullScreen="false"></web-view>
+          </view>
         </swiper-item>
       </swiper>
     </view>
   </view>
-  <SelectionPanel v-model:show="showCenterModal" />
+  <SelectionPanel v-model:show="showCenterModal"  />
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import Research from './research/research.vue'
-import Resume from './resume/resume.vue'
-import News from './news/news.vue'
 import SubTabBar from '../../../components/SubTabBar.vue'
 import SelectionPanel from '../../../components/SelectionPanel.vue'
 
+const newsUrl = ref('http://news.sitoai.cn')
+const researchUrl = ref('http://research.sitoai.cn')
+const webviewStyles = ref({ 
+  progress: { 
+    color: '#07c160' 
+  } 
+})
+
+// 默认设置为新闻tab（索引0）
 const activeTab = ref(0)
 const lastTab = ref(0)
 const showCenterModal = ref(false)
@@ -53,7 +60,45 @@ onMounted(() => {
   uni.$on('closeAllModals', () => {
     showCenterModal.value = false
   })
+  
+  // 确保初始加载新闻网址
+  newsUrl.value = `http://news.sitoai.cn?t=${new Date().getTime()}`
+  
+  // 延迟设置webview样式，确保页面元素已渲染
+  setTimeout(() => {
+    setWebviewStyles()
+  }, 300)
 })
+
+function setWebviewStyles() {
+  //获取webview 
+  let pages = getCurrentPages(); 
+  if (pages.length > 0) {
+    let page = pages[pages.length - 1]; 
+    let currentWebview = page.$getAppWebview(); 
+    
+    if (currentWebview && currentWebview.children().length > 0) {
+      // 为所有webview子元素设置样式
+      currentWebview.children().forEach((wv) => {
+        // 获取系统信息设置webview样式
+        uni.getSystemInfo({
+          success: (sysinfo) => {
+            const statusbar = sysinfo.statusBarHeight; 
+            const height = sysinfo.windowHeight;
+            const headerHeight = 60; // 根据layout.vue样式，header高度约为60px
+            
+            // 设置webview样式，确保布局合理
+            wv.setStyle({ 
+              top: statusbar + headerHeight, // 考虑状态栏和header高度
+              height: height - statusbar - headerHeight, // 充满剩余内容空间
+              zIndex: 1
+            })
+          }
+        });
+      });
+    }
+  }
+}
 
 onUnmounted(() => {
   // 移除事件监听并重置状态
@@ -66,6 +111,20 @@ onUnmounted(() => {
 function handleTabChange(index) {
   lastTab.value = activeTab.value
   activeTab.value = index
+  // 强制刷新web-view的src，通过添加随机参数触发重新加载
+  const timestamp = new Date().getTime();
+  if (index === 0) {
+    // 切换到新闻tab
+    newsUrl.value = `http://news.sitoai.cn?t=${timestamp}`;
+  } else if (index === 1) {
+    // 切换到调研tab
+    researchUrl.value = `http://research.sitoai.cn?t=${timestamp}`;
+  }
+  
+  // 同时重新设置webview样式
+  setTimeout(() => {
+    setWebviewStyles();
+  }, 100);
 }
 
 function onSwiperChange(e) {
@@ -121,7 +180,6 @@ console.log("statusBarHeight:"+statusBarHeight)
 }
 
 .sub-index-header {
-  background-color: white;
   border-bottom: 0.5px solid rgba(204, 204, 204, 0.5);
   z-index: 1000;
   display: flex;
@@ -143,11 +201,19 @@ console.log("statusBarHeight:"+statusBarHeight)
 }
 
 .sub-index-container {
-  padding: 10px !important;
+  padding: 0 !important;
   height: 100% !important;
-  overflow: auto !important;
+  overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+  position: relative;
+}
+
+.web-view-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
 }
 </style>

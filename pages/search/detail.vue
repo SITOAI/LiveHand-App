@@ -17,7 +17,8 @@
       </template>
       <template v-else>
           <!-- 只有在没有URL时才显示detail-box模块 -->
-        <view  class="detail-box">
+        <!-- 固定在顶部的详情信息 -->
+        <view class=" fixed-detail-box">
           <view class="detail-title">{{ title }}</view>
           <view class="detail-meta">
               <image src="../../static/black_folder.png" class="folder-img" mode="aspectFit"></image>
@@ -62,6 +63,7 @@
             :noteSummary="content"
             :appId="appId"
             :agentApiKey="agentApiKey"
+            :chatId="chatId"
           />
         </scroll-view>
       </u-popup>
@@ -83,6 +85,7 @@ const chatPopupVisible = ref(false)
 const time = ref('')
 const appId = ref('')
 const agentApiKey = ref('')
+const chatId = ref('')
 
 const webviewStyles = ref({ 
   progress: { 
@@ -107,6 +110,7 @@ onLoad((options) => {
     time.value = decodeURIComponent(options.time || '')
     appId.value = decodeURIComponent(options.appId || '')
     agentApiKey.value = decodeURIComponent(options.agentApiKey || '')
+    chatId.value = decodeURIComponent(options.chatId || '')
     
     // 检查是否有URL
     hasUrl.value = !!url.value
@@ -162,7 +166,7 @@ function parseMarkdown(text) {
   });
   
   // 处理列表
-  mdText = mdText.replace(/^- (.*$)/gm, '<div style="display: flex; align-items: flex-start; margin-bottom: 8px;"><span style="margin-right: 8px; margin-top: 4px;">•</span><div>$1</div></div>')
+  mdText = mdText.replace(/^- (.*$)/gm, '<div style="display: flex; align-items: flex-start; margin-bottom: 8px; width: 100%; box-sizing: border-box; padding-right: 10rpx;"><span style="margin-right: 8px; margin-top: 4px; flex-shrink: 0;">•</span><div style="flex: 1; word-break: break-word;">$1</div></div>')
   
   // 处理段落
   mdText = mdText.replace(/^(?!<h[1-3]>)(?!<div)(?!•)(.*$)/gm, '<p style="margin: 8px 0; line-height: 1.6;">$1</p>')
@@ -230,8 +234,7 @@ onMounted(async () => {
   background: #fff;
   box-sizing: border-box;
   position: relative;
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding: 0 20rpx; /* 调整为rpx单位并减小左右内边距 */
   min-height: 100vh;
 }
 
@@ -283,6 +286,7 @@ onMounted(async () => {
   font-size: 24rpx;
   color: #999;
   gap: 10rpx;
+  margin-top: 50rpx;
   margin-bottom: 20rpx;
   flex-wrap: wrap;
 }
@@ -297,20 +301,25 @@ onMounted(async () => {
 }
 
 .detail-title {
-  font-size: 32rpx;
+  font-size: 38rpx;
   color: #333;
   font-weight: bold;
-  line-height: 1.4;
+  line-height: 1.2;
   margin: 30rpx 0 15rpx 0;
   white-space: normal;
   word-break: break-all;
+  letter-spacing: 1rpx;
 }
 
 /* 内容滚动区域 */
 .content-scroll {
-  max-height: calc(100vh - 180rpx);
+  max-height: calc(100vh - 170rpx);
+  padding-top: 24vh; /* 增加顶部内边距以适应多行标题，避免内容被固定的detail-box遮挡 */
   padding-bottom: 20rpx;
   overflow-y: auto;
+  width: 100%; /* 明确设置宽度 */
+  box-sizing: border-box;
+  transition: padding-top 0.3s ease;
 }
 
 /* web-view容器样式 */
@@ -325,37 +334,57 @@ onMounted(async () => {
 
 /* 详情内容 */
 .detail-content {
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333;
   line-height: 50rpx;
-  padding: 20rpx 0;
-}
-
-/* 修改为直接对富文本内容应用样式 */
-.detail-content {
+  padding: 20rpx; 
+  width: 100%; /* 确保内容区域宽度100% */
+  box-sizing: border-box;
   text-indent: 2em;
   margin-bottom: 16rpx;
+  word-break: break-word; /* 确保长单词能正常换行 */
+  overflow-wrap: break-word; /* 允许在单词内换行 */
 }
 
 /* 确保所有段落都有缩进 */
 .detail-content :deep(p) {
   text-indent: 2em;
   margin-bottom: 16rpx;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 10rpx;
+  padding-right: 5rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 也添加通用样式作为后备 */
 rich-text {
   --text-indent: 2em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 rich-text * {
   margin-bottom: 16rpx !important;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 只对段落添加缩进，不对标题、列表等元素添加 */
 rich-text :deep(p) {
   text-indent: 2em;
   margin-bottom: 16rpx;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Markdown链接样式 */
@@ -372,11 +401,20 @@ rich-text :deep(p) {
   padding: 10px 30rpx;
   background-color: #fff;
   z-index: 999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.detail-box {
-  padding-top: 12vh;
+/* 固定定位的详情框样式 */
+.fixed-detail-box {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  padding: 50rpx 50rpx 20rpx; /* 减少左右内边距 */
+  z-index: 99;
   box-sizing: border-box;
+  margin-bottom: 30rpx;
+  background-color: #fff;
 }
 
 /* 聊天栏样式 */
