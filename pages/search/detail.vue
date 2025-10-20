@@ -103,14 +103,18 @@ const chatPopupStyle = {
 
 onLoad((options) => {
   // 从URL参数中获取数据
+  console.log("🚀 ~ options:", options)
   if (options) {
     title.value = decodeURIComponent(options.title || '')
     repo.value = decodeURIComponent(options.repo || '')
     url.value = decodeURIComponent(options.url || '')
     time.value = decodeURIComponent(options.time || '')
     appId.value = decodeURIComponent(options.appId || '')
+    console.log("🚀 ~ appId.value:", appId.value)
     agentApiKey.value = decodeURIComponent(options.agentApiKey || '')
+    console.log("🚀 ~  agentApiKey.value:",  agentApiKey.value)
     chatId.value = decodeURIComponent(options.chatId || '')
+    console.log("🚀 ~ chatId.value:", chatId.value)
     
     // 检查是否有URL
     hasUrl.value = !!url.value

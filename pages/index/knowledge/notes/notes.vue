@@ -19,19 +19,23 @@
     <div v-else class="empty-state">
       <view class="empty-icon">📝</view>
       <view class="empty-title">暂无知识笔记</view>
-      <view class="empty-description">您还没有创建任何知识笔记，点击下方按钮开始记录您的思考</view>
+      <view class="empty-description">您还没有创建任何知识笔记，点击下方加号开始记录您的思考</view>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import http from '../../../../utils/http.js'
 import NoteCard from '@/components/cards/NoteCard.vue'
 
 // 笔记数据
 const notes = ref([])
+// 定时器引用
+let refreshTimer = null
+// 自动刷新间隔（毫秒）
+const AUTO_REFRESH_INTERVAL = 10000 // 20秒
 
 // Mock数据 - 作为接口请求失败的备用数据
 const mockNotes = [
@@ -179,6 +183,102 @@ function formatTags(tagData) {
 onLoad(() => {
   getNotesData()
 })
+
+// 页面显示时启动定时刷新
+onMounted(() => {
+  startAutoRefresh()
+  // 监听全局数据更新事件
+  uni.$on('notesDataUpdated', handleDataUpdateEvent)
+})
+
+// 页面隐藏时停止定时刷新
+onUnmounted(() => {
+  stopAutoRefresh()
+  // 移除事件监听
+  uni.$off('notesDataUpdated', handleDataUpdateEvent)
+})
+
+// 启动自动刷新
+function startAutoRefresh() {
+  // 避免重复创建定时器
+  stopAutoRefresh()
+  // 创建新的定时器，每20秒执行一次刷新
+  refreshTimer = setInterval(() => {
+    refreshNotesData()
+  }, AUTO_REFRESH_INTERVAL)
+}
+
+// 停止自动刷新
+function stopAutoRefresh() {
+  if (refreshTimer) {
+    clearInterval(refreshTimer)
+    refreshTimer = null
+  }
+}
+
+// 处理数据更新事件
+function handleDataUpdateEvent() {
+  // 当接收到后台数据更新事件时立即刷新数据
+  refreshNotesData()
+}
+
+// 刷新笔记数据（无感知）
+async function refreshNotesData() {
+  try {
+    // 获取当前的数据快照用于比较
+    const beforeData = JSON.stringify(notes.value)
+    
+    // 重新获取数据
+    await new Promise((resolve, reject) => {
+      // 从本地存储获取token和用户信息
+      const token = uni.getStorageSync('token')
+      const userInfo = uni.getStorageSync('userInfo') || {}
+      const userId = userInfo.knowledge_user_id ? String(userInfo.knowledge_user_id) : ''
+      const params = {
+        token: token,
+        liveKnowledge_user_id: userId
+      }
+      
+      http.post("/livehands/note/list", params).then(result => {
+        try {
+          // 检查响应状态
+          if (result.code === 200 && result.data && Array.isArray(result.data)) {
+            // 处理接口返回的数据，转换为需要的格式
+            const formattedNotes = result.data.map((item, index) => ({
+              id: item.info.id || index + 1,
+              title: item.info.note_title || '未命名笔记',
+              time: item.info.note_created_datetime || new Date().toLocaleString(),
+              content: item.info.note_description || '',
+              handmould: item.content.note_content || '',
+              summary: item.content.note_summary || '',
+              repo: item.info.dataset_name || '暂无知识库分类',
+              musice: item.musice || false,
+              // 确保tags格式正确，转换为NoteCard组件期望的格式
+              tags: formatTags(item.info.note_tags)
+            }))
+            
+            // 比较新数据与旧数据是否不同
+            const afterData = JSON.stringify(formattedNotes)
+            if (beforeData !== afterData) {
+              // 应用新数据
+              notes.value = formattedNotes
+              console.log('笔记数据已自动更新')
+            }
+          }
+          resolve()
+        } catch (error) {
+          console.error('处理笔记数据时出错:', error)
+          resolve() // 即使处理出错也继续执行
+        }
+      }).catch(error => {
+        console.error('自动刷新笔记数据请求失败:', error)
+        resolve() // 即使请求失败也不阻止后续执行
+      })
+    })
+  } catch (error) {
+    console.error('自动刷新过程出错:', error)
+  }
+}
 </script>
 
 <style scoped>

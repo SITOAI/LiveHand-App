@@ -198,6 +198,9 @@ const fetchSearchResults = async (searchKeyword) => {
           title: item.title || '无标题',
           desc: descValue,
           knowledgeBase: item.knowledgeBase || item.name || '未知来源',
+          appId: item.app_id || '',
+          agentApiKey: item.api_key || '',
+          chatId: item.chatId || '',
           // 获取并格式化时间字段，兼容多种可能的字段名
           time: formatTime(item.createTime || item.date || item.time),
           // 获取url链接，取第一项或默认空字符串
@@ -353,13 +356,14 @@ function openUrl(url) {
 
 // 添加导航到详情页函数
 function navigateToDetail(item) {
+  console.log("🚀 ~ navigateToDetail ~ item:", item)
   // 添加时间戳参数，确保每次跳转都带上当前时间
   const timestamp = Date.now()
   // 格式化时间为可读格式
   const now = new Date(timestamp)
   const formattedTime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
   uni.navigateTo({
-    url: `/pages/search/detail?id=${item.id}&title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.desc)}&repo=${encodeURIComponent(item.knowledgeBase)}&url=${encodeURIComponent(item.url || '')}&appId=${encodeURIComponent(item.app_id || '')}&agentApiKey=${encodeURIComponent(item.api_key || '')}&time=${encodeURIComponent(formattedTime)}&chatId=${encodeURIComponent(item.chatId || '')}`
+    url: `/pages/search/detail?id=${item.id}&title=${encodeURIComponent(item.title)}&desc=${encodeURIComponent(item.desc)}&repo=${encodeURIComponent(item.knowledgeBase)}&url=${encodeURIComponent(item.url || '')}&appId=${encodeURIComponent(item.appId || '')}&agentApiKey=${encodeURIComponent(item.agentApiKey || '')}&time=${encodeURIComponent(formattedTime)}&chatId=${encodeURIComponent(item.chatId || '')}`
   })
 }
 
@@ -546,7 +550,8 @@ function clearHistory() {
   flex-direction: column;
   padding-top: 6vh;
   padding: 6vh 30rpx 0;
-  height: 94vh;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 /* 搜索栏样式 */

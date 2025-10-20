@@ -273,6 +273,8 @@ const messages = ref([
 const isTyping = ref(false)
 const scrollTarget = ref('msg-0')
 const chatId = ref('') // 聊天窗口ID，初始为空
+const appId = ref('') // 应用ID，初始为空
+const agentApiKey = ref('') // 代理API密钥，初始为空
 
 
 
@@ -635,12 +637,27 @@ const send = async () => {
         content: [content]
       }
       
-      // 每次请求都携带chatId参数，优先使用props传入的chatId
+       // 每次请求都携带chatId参数，优先使用props传入的chatId
       if (props.chatId) {
         baseParams.chatId = props.chatId
       } else if (chatId.value) {
         baseParams.chatId = chatId.value
       }
+
+      // 每次请求都携带appId参数，优先使用props传入的appId
+      if (props.appId) {
+        baseParams.appId = props.appId
+      } else if (appId.value) {
+        baseParams.appId = appId.value
+      }
+
+      // 每次请求都携带agentApiKey参数，优先使用props传入的agentApiKey
+      if (props.agentApiKey) {
+        baseParams.agentApiKey = props.agentApiKey
+      } else if (agentApiKey.value) {
+        baseParams.agentApiKey = agentApiKey.value
+      }
+      
     }
     
     // 根据来源页面构建不同的请求参数
@@ -664,10 +681,8 @@ const send = async () => {
       // 从SearchDetail页面进入的请求参数
       requestParams = {
         ...baseParams,
-        // appId: props.appId,
-        // agent_api_key: props.agentApiKey
-       "appId":"68ecca35942f643c45d2fe5b",
-       "agent_api_key":"openapi-h1hp4LFYmhHL4rO2KrZlDu94JGjEHUSMFeve221Ne7Z2WSO7IfCxFgmhBrTa9",
+        appId: props.appId,
+        agent_api_key: props.agentApiKey
       }
     } else {
       // 默认请求参数
@@ -699,11 +714,22 @@ const send = async () => {
     isTyping.value = false
     isLoading.value = false
     
-    if (props.sourcePage === 'searchDetail' && (result.chatId || (result.data && result.data.chatId))) {
-      chatId.value = result.chatId || result.data.chatId
-    }
+    //   if (props.sourcePage === 'searchDetail') {
+    // // 更新chatId
+    // if (result.chatId || (result.data && result.data.chatId)) {
+    //   chatId.value = result.chatId || result.data.chatId
+    // }
+    // // 更新appId
+    // if (result.appId || (result.data && result.data.appId)) {
+    //   appId.value = result.appId || result.data.appId
+    // }
+    // // 更新agentApiKey
+    // if (result.agentApiKey || (result.data && result.data.agentApiKey)) {
+    //   agentApiKey.value = result.agentApiKey || result.data.agentApiKey
+    // }
+// }
     
-    // 处理接口返回结果
+    
     // 根据实际返回的数据结构修改检查条件
     const hasValidResponse = result && (result.code === 200 || (result.data && result.data.code === 0)) && 
                            (result.answer || result.data || (result.data && result.data.answer));
