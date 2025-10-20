@@ -54,9 +54,9 @@
                 "useOriginalMsgbox" : false,
                 "iosStyle" : "common",
                 "android" : {
-                    "hdpi" : "static/logo.png",
-                    "xhdpi" : "static/logo.png",
-                    "xxhdpi" : "static/logo.png"
+                    "hdpi" : "static/icons/1024x1024.png",
+                    "xhdpi" : "static/icons/1024x1024.png",
+                    "xxhdpi" : "static/icons/1024x1024.png"
                 }
             },
             "icons" : {
