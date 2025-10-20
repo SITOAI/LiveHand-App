@@ -1,26 +1,29 @@
 <template>
   <div class="notes-container">
-    <!-- 有数据时显示笔记卡片 -->
-    <template v-if="notes.length > 0">
-      <NoteCard
-        v-for="note in notes"
-        :key="note.id"
-        :title="note.title"
-        :time="note.time"
-        :content="note.content"
-        :handmould="note.handmould"
-        :summary="note.summary"
-        :repo="note.repo"
-        :musice="note.musice"
-        :tags="note.tags"
-      />
+    <!-- 数据加载完成后才根据数据状态显示内容 -->
+    <template v-if="!isLoading">
+      <!-- 有数据时显示笔记卡片 -->
+      <template v-if="notes.length > 0">
+        <NoteCard
+          v-for="note in notes"
+          :key="note.id"
+          :title="note.title"
+          :time="note.time"
+          :content="note.content"
+          :handmould="note.handmould"
+          :summary="note.summary"
+          :repo="note.repo"
+          :musice="note.musice"
+          :tags="note.tags"
+        />
+      </template>
+      <!-- 无数据时显示提示信息 -->
+      <div v-else class="empty-state">
+        <view class="empty-icon">📝</view>
+        <view class="empty-title">暂无知识笔记</view>
+        <view class="empty-description">您还没有创建任何知识笔记，点击下方加号开始记录您的思考</view>
+      </div>
     </template>
-    <!-- 无数据时显示提示信息 -->
-    <div v-else class="empty-state">
-      <view class="empty-icon">📝</view>
-      <view class="empty-title">暂无知识笔记</view>
-      <view class="empty-description">您还没有创建任何知识笔记，点击下方加号开始记录您的思考</view>
-    </div>
   </div>
 </template>
 
@@ -32,6 +35,8 @@ import NoteCard from '@/components/cards/NoteCard.vue'
 
 // 笔记数据
 const notes = ref([])
+// 数据加载状态标志
+const isLoading = ref(true)
 // 定时器引用
 let refreshTimer = null
 // 自动刷新间隔（毫秒）
@@ -111,6 +116,8 @@ const mockNotes = [
 
 // 从接口获取笔记数据
 function getNotesData() {
+  // 设置为加载中状态
+  isLoading.value = true
   // 从本地存储获取token和用户信息，添加错误处理
   const token = uni.getStorageSync('token');
   const userInfo = uni.getStorageSync('userInfo') || {};
@@ -143,11 +150,15 @@ function getNotesData() {
       uni.showToast({ title: '获取笔记数据失败，使用本地数据', icon: 'none' })
       notes.value = mockNotes
     }
+    // 数据加载完成
+    isLoading.value = false
   }).catch(error => {
     // 请求失败时使用mock数据
     console.error('获取笔记数据出错:', error)
     uni.showToast({ title: '网络错误，使用本地数据', icon: 'error' })
     notes.value = mockNotes
+    // 数据加载完成
+    isLoading.value = false
   })
 }
 

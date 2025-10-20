@@ -6,9 +6,14 @@
     }
   },
   "pages": [
-    // tabbar页面放在前面
     {
-      // 探索 layout 页面
+      "path": "pages/login/login",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
       "path": "pages/index/explore/layout",
       "style": {
         "navigationBarTitleText": "探索",
@@ -16,7 +21,6 @@
       }
     },
     {
-      // 知识库 layout 页面
       "path": "pages/index/knowledge/layout",
       "style": {
        "navigationBarTitleText": "知识库",
@@ -24,7 +28,6 @@
       }
     },
     {
-      // 智能体 layout 页面
       "path": "pages/index/agents/layout",
       "style": {
         "navigationBarTitleText": "智能体",
@@ -32,23 +35,13 @@
       }
     },
     {
-      // 我的 layout 页面
       "path": "pages/index/mine/layout",
       "style": {
         "navigationBarTitleText": "我的"
       }
     },
     {
-      // 一级 layout 页面：入口页面
       "path": "pages/layout",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
-      // 登录页
-      "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"

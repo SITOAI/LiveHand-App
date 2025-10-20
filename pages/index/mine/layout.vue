@@ -151,6 +151,8 @@ onUnmounted(() => {
 
 function logout() {
   userStore.logout()
+  // 清空所有uni-app存储数据
+  uni.clearStorageSync()
   setTimeout(() => {
     uni.reLaunch({ url: '/pages/layout' })
   }, 300)

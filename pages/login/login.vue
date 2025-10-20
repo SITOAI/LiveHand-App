@@ -55,8 +55,16 @@
 <script setup>
 import { ref } from 'vue'
 import { onUnmounted } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
 import http from '../../utils/http.js'
+
+// 立即检查登录状态，在页面渲染前执行
+const token = uni.getStorageSync('token') || ''
+if (token) {
+  // 如果已登录，直接跳转到探索页面
+  uni.reLaunch({
+    url: '/pages/index/explore/layout'
+  })
+}
 
 const phone = ref('')
 const agree = ref(false)

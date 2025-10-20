@@ -15,6 +15,8 @@ export const useUserStore = defineStore('user', () => {
   function logout() {
     token.value = ''
     uni.removeStorageSync('token')
+    // 清除所有uni-app存储数据
+    uni.clearStorageSync()
   }
 
   return {
