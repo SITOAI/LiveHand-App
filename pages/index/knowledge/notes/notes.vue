@@ -1,17 +1,26 @@
 <template>
   <div class="notes-container">
-    <NoteCard
-      v-for="note in notes"
-      :key="note.id"
-      :title="note.title"
-      :time="note.time"
-      :content="note.content"
-      :handmould="note.handmould"
-      :summary="note.summary"
-      :repo="note.repo"
-      :musice="note.musice"
-      :tags="note.tags"
-    />
+    <!-- 有数据时显示笔记卡片 -->
+    <template v-if="notes.length > 0">
+      <NoteCard
+        v-for="note in notes"
+        :key="note.id"
+        :title="note.title"
+        :time="note.time"
+        :content="note.content"
+        :handmould="note.handmould"
+        :summary="note.summary"
+        :repo="note.repo"
+        :musice="note.musice"
+        :tags="note.tags"
+      />
+    </template>
+    <!-- 无数据时显示提示信息 -->
+    <div v-else class="empty-state">
+      <view class="empty-icon">📝</view>
+      <view class="empty-title">暂无知识笔记</view>
+      <view class="empty-description">您还没有创建任何知识笔记，点击下方按钮开始记录您的思考</view>
+    </div>
   </div>
 </template>
 
@@ -196,5 +205,38 @@ onLoad(() => {
   cursor: pointer;
   color: #999;
   transition: color 0.3s;
+}
+
+/* 空状态样式 */
+.empty-state {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 40rpx;
+  opacity: 0.8;
+}
+
+.empty-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.empty-description {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 80%;
 }
 </style>

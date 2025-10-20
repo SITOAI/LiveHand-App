@@ -55,6 +55,7 @@
         <view class="section-body">
           <view @click="openDocs"><MenuItem title="使用文档" icon="file-text" :isOk="true" /></view>
           <view @click="openAbout"><MenuItem title="关于我们" icon="integral" :isOk="true" /></view>
+          <view @click="confirmAccountDeletion"><MenuItem title="注销账户" icon="trash" :isOk="true" /></view>
         </view>
       </view>
 
@@ -62,6 +63,7 @@
       <FollowWeChatPanel v-model:show="showFollowWeChatPanel" />
       <FollowRedBookPanel v-model:show="showFollowRedBookPanel" />
       <AboutPanel v-model:show="showAboutPanel" />
+      <UpdatePanel v-model:show="showUpdatePanel" />
 
       <!-- 退出登录 -->
       <view class="logout-wrapper">
@@ -80,6 +82,22 @@
     </scroll-view>
   </view>
   <SelectionPanel v-model:show="showCenterModal" />
+  
+  <!-- 自定义注销账户确认弹框 -->
+  <view v-if="showDeleteAccountModal" class="custom-modal-overlay">
+    <view class="custom-modal">
+      <view class="modal-header">
+        <text class="modal-title">注销账户</text>
+      </view>
+      <view class="modal-content">
+        <text class="modal-message">注销账户将删除您的所有数据且不可恢复，确定要继续吗？</text>
+      </view>
+      <view class="modal-footer">
+        <button class="cancel-button" @click="showDeleteAccountModal = false">取消</button>
+        <button class="confirm-button" @click="deleteAccount">确定注销</button>
+      </view>
+    </view>
+  </view>
 </template>
 
 <script setup>
@@ -90,6 +108,7 @@ import MenuItem from '../../../components/children/MenuItem.vue'
 import FollowWeChatPanel from '../../../pages/static/FollowWeChat.vue'
 import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
 import AboutPanel from '../../../pages/static/About.vue'
+import UpdatePanel from '../../../pages/static/Update.vue'
 import SelectionPanel from '../../../components/SelectionPanel.vue'
 import { useUserStore } from '../../../store/user.js'
 
@@ -99,7 +118,9 @@ const userStore = useUserStore()
 const showFollowWeChatPanel = ref(false)
 const showFollowRedBookPanel = ref(false)
 const showAboutPanel = ref(false)
+const showUpdatePanel = ref(false)
 const showCenterModal = ref(false)
+const showDeleteAccountModal = ref(false)
 let modalListener = null
 
 // 页面加载时检查用户状态
@@ -114,7 +135,9 @@ onMounted(() => {
     showFollowRedBookPanel.value = false
     showFollowWeChatPanel.value = false
     showAboutPanel.value = false
+    showUpdatePanel.value = false
     showCenterModal.value = false
+    showDeleteAccountModal.value = false
   })
 })
 
@@ -168,7 +191,7 @@ function openFeedback() {
   uni.navigateTo({ url: '/pages/static/Feedback' })
 }
 function openUpdate() {
-  uni.navigateTo({ url: '/pages/static/Update' })
+  showUpdatePanel.value = true
 }
 function openIntro() {
   uni.navigateTo({ url: '/pages/static/Intro' })
@@ -178,6 +201,39 @@ function openDocs() {
 }
 function openAbout() {
   showAboutPanel.value = true
+}
+
+// 注销账户功能
+function confirmAccountDeletion() {
+  // 显示自定义确认弹框
+  showDeleteAccountModal.value = true
+}
+
+function deleteAccount() {
+  // 隐藏确认弹框
+  showDeleteAccountModal.value = false
+  
+  // 清除用户数据
+  userStore.logout()
+  // 清除所有可能的用户相关数据
+  try {
+    uni.clearStorageSync()
+  } catch (e) {
+    console.error('清除存储数据失败:', e)
+  }
+  
+  // 显示注销成功提示
+  uni.showToast({
+    title: '账户已注销',
+    icon: 'success',
+    duration: 2000,
+    success: () => {
+      // 延迟跳转到登录页
+      setTimeout(() => {
+        uni.reLaunch({ url: '/pages/login/login' })
+      }, 2000)
+    }
+  })
 }
 </script>
 
@@ -270,5 +326,89 @@ function openAbout() {
   font-size: 24rpx;
   color: #999;
   text-align: center;
+}
+
+/* 自定义弹框样式 */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.custom-modal {
+  background-color: #fff;
+  border-radius: 24rpx;
+  width: 80%;
+  max-width: 600rpx;
+  overflow: hidden;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  padding: 32rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-content {
+  padding: 40rpx 32rpx;
+  text-align: center;
+}
+
+.modal-message {
+  font-size: 32rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  display: flex;
+}
+
+.cancel-button,
+.confirm-button {
+  height: 80rpx;
+  width: 30rpx;
+  flex: 1;
+  font-size: 32rpx;
+  border: none;
+  margin-bottom: 40rpx;
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.cancel-button {
+  color: #666;
+  margin-right: 10rpx;
+}
+
+.confirm-button {
+  color: #f56c6c;
+  font-weight: 500;
+  background-color:#fff;
+  border: 1rpx solid #ddd;
+}
+
+.cancel-button:active,
+.confirm-button:active {
+  background-color: #f8f8f8;
+}
+::v-deep uni-button:after {
+  border: none;
 }
 </style>
