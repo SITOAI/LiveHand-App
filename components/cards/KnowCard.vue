@@ -31,7 +31,7 @@ import { defineProps } from 'vue'
 const props = defineProps({
   name: String,
   prompt: String,
-  count: String,
+  count: Number,
   avatar: String,
   itemId: String
 })

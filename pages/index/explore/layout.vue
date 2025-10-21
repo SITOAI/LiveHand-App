@@ -53,18 +53,15 @@
 			</view>
 		  </view>
   
-  <!-- 引入SelectionPanel组件 - 移除items属性 -->
-  <SelectionPanel v-model:show="showCenterModal" />
+
 </view>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import SelectionPanel from "../../../components/SelectionPanel.vue"
 import RecommendCard from "../../../components/cards/RecommendCard.vue"
 
-// 响应式数据 - 移除popupItems变量
-const showCenterModal = ref(false)
+// 响应式数据
 const data = ref([
 	{
 		title: "C++中string如何实现字符串分割函数split()——4种方法",
@@ -116,27 +113,11 @@ const data = ref([
 	}
 ])
 
-// 监听自定义事件
-let modalListener = null
-
 onMounted(() => {
-  // 监听特定的自定义事件
-  modalListener = uni.$on('showExploreModal', () => {
-    showCenterModal.value = true
-  })
-  
-  // 监听tabbar切换事件，关闭弹框
-  uni.$on('closeAllModals', () => {
-    showCenterModal.value = false
-  })
 })
 
 onUnmounted(() => {
   // 移除事件监听并重置状态
-  if (modalListener) {
-    uni.$off('showExploreModal', modalListener)
-  }
-  showCenterModal.value = false
 })
 
 

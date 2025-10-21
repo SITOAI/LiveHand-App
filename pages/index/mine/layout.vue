@@ -81,7 +81,7 @@
       </view>
     </scroll-view>
   </view>
-  <SelectionPanel v-model:show="showCenterModal" />
+
   
   <!-- 自定义注销账户确认弹框 -->
   <view v-if="showDeleteAccountModal" class="custom-modal-overlay">
@@ -109,7 +109,6 @@ import FollowWeChatPanel from '../../../pages/static/FollowWeChat.vue'
 import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
 import AboutPanel from '../../../pages/static/About.vue'
 import UpdatePanel from '../../../pages/static/Update.vue'
-import SelectionPanel from '../../../components/SelectionPanel.vue'
 import { useUserStore } from '../../../store/user.js'
 
 // 响应式数据
@@ -119,33 +118,22 @@ const showFollowWeChatPanel = ref(false)
 const showFollowRedBookPanel = ref(false)
 const showAboutPanel = ref(false)
 const showUpdatePanel = ref(false)
-const showCenterModal = ref(false)
 const showDeleteAccountModal = ref(false)
-let modalListener = null
 
 // 页面加载时检查用户状态
 onMounted(() => {
-  // 监听特定的自定义事件
-  modalListener = uni.$on('showMineModal', () => {
-    showCenterModal.value = true
-  })
-  
   // 监听全局事件，当切换tabbar时关闭所有弹窗
   uni.$on('closeAllModals', () => {
     showFollowRedBookPanel.value = false
     showFollowWeChatPanel.value = false
     showAboutPanel.value = false
     showUpdatePanel.value = false
-    showCenterModal.value = false
     showDeleteAccountModal.value = false
   })
 })
 
 onUnmounted(() => {
   // 移除事件监听，避免内存泄漏
-  if (modalListener) {
-    uni.$off('showMineModal', modalListener)
-  }
   uni.$off('closeAllModals')
 })
 

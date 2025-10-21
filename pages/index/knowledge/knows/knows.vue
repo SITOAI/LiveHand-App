@@ -145,7 +145,7 @@ function getKnowsData() {
       const formattedKnows = result.data.body.data.map((item, index) => ({
         id: item._id || index + 1,
         name: item.name || '未命名知识库',
-        count: item.count || index + 11,
+        count: item.fileTotal || 0,
         avatar: '/static/foldery.png',
         // avatar: item.avatar || '/static/foldery.png',
         prompt: item.intro || '知识库描述',

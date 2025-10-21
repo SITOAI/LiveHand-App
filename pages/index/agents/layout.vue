@@ -27,13 +27,13 @@
       </swiper>
     </view>
   </view>
-  <SelectionPanel v-model:show="showCenterModal"  />
+
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import SubTabBar from '../../../components/SubTabBar.vue'
-import SelectionPanel from '../../../components/SelectionPanel.vue'
+
 
 const newsUrl = ref('http://news.sitoai.cn')
 const researchUrl = ref('http://research.sitoai.cn')
@@ -46,20 +46,9 @@ const webviewStyles = ref({
 // 默认设置为新闻tab（索引0）
 const activeTab = ref(0)
 const lastTab = ref(0)
-const showCenterModal = ref(false)
-let modalListener = null
 
 // 监听自定义事件
 onMounted(() => {
-  // 监听特定的自定义事件
-  modalListener = uni.$on('showAgentsModal', () => {
-    showCenterModal.value = true
-  })
-  
-  // 监听tabbar切换事件，关闭弹框
-  uni.$on('closeAllModals', () => {
-    showCenterModal.value = false
-  })
   
   // 确保初始加载新闻网址
   newsUrl.value = `http://news.sitoai.cn?t=${new Date().getTime()}`
@@ -102,10 +91,6 @@ function setWebviewStyles() {
 
 onUnmounted(() => {
   // 移除事件监听并重置状态
-  if (modalListener) {
-    uni.$off('showAgentsModal', modalListener)
-  }
-  showCenterModal.value = false
 })
 
 function handleTabChange(index) {

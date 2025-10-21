@@ -99,6 +99,15 @@
       }
     },
     {
+      "path": "pages/midTabBar/midTabBar",
+      "style": {
+        "backgroundColor": "transparent",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    },
+    {
     	"path" : "pages/details/NoteDetails/NoteDetails",
     	"style" : 
     	{

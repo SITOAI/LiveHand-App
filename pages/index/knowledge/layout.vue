@@ -46,9 +46,7 @@
 	        </swiper-item>
 	      </swiper>
 	    </view>
-	    
-	    <SelectionPanel v-model:show="showCenterModal" />
-	</view>
+</view>
 </template>
 
 <script setup>
@@ -59,17 +57,13 @@ import Knows from './knows/knows.vue'
 import TabBar from '../../../components/TabBar.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import SearchPanel from '../../../components/SearchPanel.vue'
-import SelectionPanel from '../../../components/SelectionPanel.vue'
+
 
 const activeTab = ref(0)
 const lastTab = ref(0)
 const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
 const startX = ref(0)
-
-// 添加响应式数据用于SelectionPanel - 移除popupItems变量
-const showCenterModal = ref(false)
-let modalListener = null
 
 onMounted(() => {
   uni.$on('swipeFromInnerFirstTab', () => {
@@ -78,22 +72,14 @@ onMounted(() => {
     }
   })
   
-  // 监听特定的自定义事件
-modalListener = uni.$on('showKnowledgeModal', () => {
-  showCenterModal.value = true
-})
-
-// 监听tabbar切换事件，关闭弹框
+  // 监听tabbar切换事件，关闭弹框
 uni.$on('closeAllModals', () => {
-  showCenterModal.value = false
+  showSearchPanel.value = false
+  showCommonPanel.value = false
 })
 })
 onUnmounted(() => {
   // 移除事件监听并重置状态，避免内存泄漏
-  if (modalListener) {
-    uni.$off('showKnowledgeModal', modalListener)
-  }
-  showCenterModal.value = false
 })
 
 // 处理选择事件
