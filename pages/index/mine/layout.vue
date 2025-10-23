@@ -22,8 +22,8 @@
       <view class="section">
         <view class="section-title">个性化设置</view>
         <view class="section-body">
-          <view @click="openHistory"><MenuItem title="历史记录" icon="clock" :isOk="true" /></view>
-          <view @click="openTags"><MenuItem title="预设标签" icon="tags" :isOk="true" /></view>
+          <view @click="openHistory"><MenuItem title="历史记录" icon="clock" /></view>
+          <view @click="openTags"><MenuItem title="预设标签" icon="tags"  /></view>
           <view @click="openFiles"><MenuItem title="文件管理器" icon="folder" /></view>
         </view>
       </view>
@@ -33,10 +33,10 @@
         <view class="section-title">需要你的帮助</view>
         <view class="section-body">
           <view @click="openRate"><MenuItem title="去应用商城给个好评" icon="star" /></view>
-          <view @click="openShare"><MenuItem title="分享 LiveHands 给好友" icon="share" :isOk="true" /></view>
+          <view @click="openShare"><MenuItem title="分享 LiveHands 给好友" icon="share"  /></view>
           <view @click="openWechat"><MenuItem title="关注官方公众号" icon="weixin-fill" :isOk="true" /></view>
-          <view @click="openRedbook"><MenuItem title="关注官方小红书" icon="heart" :isOk="true" /></view>
-          <view @click="openFeedback"><MenuItem title="吐槽专用" icon="chat" :isOk="true" /></view>
+          <view @click="openRedbook"><MenuItem title="关注官方小红书" icon="heart"  /></view>
+          <view @click="openFeedback"><MenuItem title="吐槽专用" icon="chat" /></view>
         </view>
       </view>
 
@@ -45,7 +45,7 @@
         <view class="section-title">版本信息</view>
         <view class="section-body">
           <view @click="openUpdate"><MenuItem title="版本更新" icon="checkmark-circle" :isOk="true" /></view>
-          <view @click="openIntro"><MenuItem title="版本介绍" icon="info-circle" :isOk="true" /></view>
+          <!-- <view @click="openIntro"><MenuItem title="版本介绍" icon="info-circle" :isOk="true" /></view> -->
         </view>
       </view>
 
@@ -53,7 +53,7 @@
       <view class="section">
         <view class="section-title">帮助中心</view>
         <view class="section-body">
-          <view @click="openDocs"><MenuItem title="使用文档" icon="file-text" :isOk="true" /></view>
+          <view @click="openDocs"><MenuItem title="使用文档" icon="file-text"  /></view>
           <view @click="openAbout"><MenuItem title="关于我们" icon="integral" :isOk="true" /></view>
           <view @click="confirmAccountDeletion"><MenuItem title="注销账户" icon="trash" :isOk="true" /></view>
         </view>
@@ -64,6 +64,7 @@
       <FollowRedBookPanel v-model:show="showFollowRedBookPanel" />
       <AboutPanel v-model:show="showAboutPanel" />
       <UpdatePanel v-model:show="showUpdatePanel" />
+      <IntroPanel v-model:show="showIntroPanel" />
 
       <!-- 退出登录 -->
       <view class="logout-wrapper">
@@ -109,6 +110,7 @@ import FollowWeChatPanel from '../../../pages/static/FollowWeChat.vue'
 import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
 import AboutPanel from '../../../pages/static/About.vue'
 import UpdatePanel from '../../../pages/static/Update.vue'
+import IntroPanel from '../../../pages/static/Intro.vue'
 import { useUserStore } from '../../../store/user.js'
 import http from '../../../utils/http.js'
 
@@ -119,6 +121,7 @@ const showFollowWeChatPanel = ref(false)
 const showFollowRedBookPanel = ref(false)
 const showAboutPanel = ref(false)
 const showUpdatePanel = ref(false)
+const showIntroPanel = ref(false)
 const showDeleteAccountModal = ref(false)
 
 // 页面加载时检查用户状态
@@ -129,6 +132,7 @@ onMounted(() => {
     showFollowWeChatPanel.value = false
     showAboutPanel.value = false
     showUpdatePanel.value = false
+    showIntroPanel.value = false
     showDeleteAccountModal.value = false
   })
 })
@@ -176,7 +180,7 @@ function openWechat() {
   showFollowWeChatPanel.value = true
 }
 function openRedbook() {
-  showFollowRedBookPanel.value = true
+  // showFollowRedBookPanel.value = true
 }
 function openFeedback() {
   uni.navigateTo({ url: '/pages/static/Feedback' })
@@ -185,7 +189,8 @@ function openUpdate() {
   showUpdatePanel.value = true
 }
 function openIntro() {
-  uni.navigateTo({ url: '/pages/static/Intro' })
+  // 显示版本介绍面板
+  showIntroPanel.value = true
 }
 function openDocs() {
   uni.navigateTo({ url: '/pages/static/Docs' })

@@ -1,26 +1,27 @@
 <template>
 	<view class="knowledge-layout">
 	   <view class="knowledge-layout-header">
-	      <u-icon name="list" size="28" @click="showCommonPanel = true" />
 	      <TabBar v-model="activeTab" @change="handleTabChange" />
-	      <u-icon
-	        v-if="activeTab == 0"
-	        name="search"
-	        size="28"
-	        @click="onSearchClick"
-	      />
-	      <u-icon
-	        v-else-if="activeTab == 1"
-	        name="search"
-	        size="28"
-	        @click="onSearchClick"
-	      />
-	      <u-icon
-	        v-else
-	        name="grid"
-	        size="28"
-	        @click="onAIClickInAgent"
-	      />
+	      <view class="header-right">
+	        <u-icon
+	          v-if="activeTab == 0"
+	          name="search"
+	          size="28"
+	          @click="onSearchClick"
+	        />
+	        <u-icon
+	          v-else-if="activeTab == 1"
+	          name="search"
+	          size="28"
+	          @click="onSearchClick"
+	        />
+	        <u-icon
+	          v-else
+	          name="grid"
+	          size="28"
+	          @click="onAIClickInAgent"
+	        />
+	      </view>
 	    </view>
 
 	    <view
@@ -28,7 +29,7 @@
 	      @touchstart="onTouchStart"
 	      @touchend="onTouchEnd"
 	    >
-	      <CommonPanel v-model:show="showCommonPanel" />
+	
 	      <SearchPanel v-if="activeTab === 0" v-model:show="showSearchPanel" search-type="notes" />
 	      <SearchPanel v-if="activeTab === 1" v-model:show="showSearchPanel" search-type="knowledge" />
 
@@ -55,13 +56,12 @@ import { onMounted, onUnmounted } from 'vue'
 import Notes from './notes/notes.vue'
 import Knows from './knows/knows.vue'
 import TabBar from '../../../components/TabBar.vue'
-import CommonPanel from '../../../components/CommonPanel.vue'
+
 import SearchPanel from '../../../components/SearchPanel.vue'
 
 
 const activeTab = ref(0)
 const lastTab = ref(0)
-const showCommonPanel = ref(false)
 const showSearchPanel = ref(false)
 const startX = ref(0)
 
@@ -75,7 +75,6 @@ onMounted(() => {
   // 监听tabbar切换事件，关闭弹框
 uni.$on('closeAllModals', () => {
   showSearchPanel.value = false
-  showCommonPanel.value = false
 })
 })
 onUnmounted(() => {
@@ -132,10 +131,17 @@ function onAIClickInAgent() {
   border-bottom: 0.5px solid rgba(204, 204, 204, 0.5);
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 0 3vw;
   background-color: #f5f5f5;
+}
+
+.header-right {
+  position: absolute;
+  right: 3vw;
+  display: flex;
+  align-items: center;
 }
 
 .knowledge-layout-content {

@@ -3,7 +3,7 @@
 		<!-- 固定部分：explore_input 区域以上内容 -->
 		<view class="fixed_header">
 			<view class="explore_header">
-				<image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image>
+				<!-- <image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image> -->
 				<!-- <image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image> -->
 			</view>
 			
