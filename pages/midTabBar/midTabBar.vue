@@ -1,7 +1,6 @@
 <template>
   <view class="mid-tab-bar-container">
     <!-- 半透明蒙层 -->
-    <view class="overlay" @click="handleOverlayClick"></view>
     
     <!-- 引入SelectionPanel组件 -->
     <SelectionPanel 
@@ -55,7 +54,7 @@ export default {
   width: 100vw;
 }
 
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -63,5 +62,5 @@ export default {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 999;
-}
+} */
 </style>

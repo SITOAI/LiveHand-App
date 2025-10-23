@@ -110,6 +110,7 @@ import FollowRedBookPanel from '../../../pages/static/FollowRedBook.vue'
 import AboutPanel from '../../../pages/static/About.vue'
 import UpdatePanel from '../../../pages/static/Update.vue'
 import { useUserStore } from '../../../store/user.js'
+import http from '../../../utils/http.js'
 
 // 响应式数据
 const isMember = ref(false)
@@ -199,31 +200,78 @@ function confirmAccountDeletion() {
   showDeleteAccountModal.value = true
 }
 
-function deleteAccount() {
+async function deleteAccount() {
   // 隐藏确认弹框
   showDeleteAccountModal.value = false
   
-  // 清除用户数据
-  userStore.logout()
-  // 清除所有可能的用户相关数据
-  try {
-    uni.clearStorageSync()
-  } catch (e) {
-    console.error('清除存储数据失败:', e)
-  }
-  
-  // 显示注销成功提示
-  uni.showToast({
-    title: '账户已注销',
-    icon: 'success',
-    duration: 2000,
-    success: () => {
-      // 延迟跳转到登录页
-      setTimeout(() => {
-        uni.reLaunch({ url: '/pages/login/login' })
-      }, 2000)
-    }
+  // 显示加载提示
+  uni.showLoading({
+    title: '正在处理...',
+    mask: true
   })
+  
+  try {
+    const userInfo = uni.getStorageSync('userInfo') || {};
+    console.log("🚀 ~ deleteAccount ~ userInfo:", userInfo)
+    const nickName = userInfo.nickName || ''
+    console.log("🚀 ~ deleteAccount ~ nickName:", nickName)
+    const knowledge_user_id = userInfo.knowledge_user_id || ''
+    console.log("🚀 ~ deleteAccount ~ knowledge_user_id:", knowledge_user_id)
+    
+    // 调用注销账户接口
+    const res = await http.post('/user/logout', {
+      name: nickName,
+      knowledge_user_id: knowledge_user_id
+    })
+    console.log("🚀 ~ deleteAccount ~ res:", res)
+    
+    // 隐藏加载提示
+    uni.hideLoading()
+    
+    // 判断注销是否成功
+    if (res.data && res.data.isSuccess === 1) {
+      // 清除用户数据
+      userStore.logout()
+      // 清除所有可能的用户相关数据
+      try {
+        uni.clearStorageSync()
+      } catch (e) {
+        console.error('清除存储数据失败:', e)
+      }
+      
+      // 显示注销成功提示
+      uni.showToast({
+        title: '账户已注销',
+        icon: 'success',
+        duration: 2000,
+        success: () => {
+          // 延迟跳转到登录页
+          setTimeout(() => {
+            uni.reLaunch({ url: '/pages/login/login' })
+          }, 2000)
+        }
+      })
+    } else {
+      // 注销失败
+      uni.showToast({
+        title: res.data?.message || '注销失败，请重试',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  } catch (error) {
+    // 隐藏加载提示
+    uni.hideLoading()
+    
+    // 显示错误提示
+    uni.showToast({
+      title: error.message || '注销失败，请重试',
+      icon: 'none',
+      duration: 2000
+    })
+    
+    console.error('注销账户失败:', error)
+  }
 }
 </script>
 

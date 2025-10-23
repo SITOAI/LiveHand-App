@@ -7,13 +7,6 @@
   },
   "pages": [
     {
-      "path": "pages/login/login",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationStyle": "custom"
-      }
-    },
-    {
       "path": "pages/index/explore/layout",
       "style": {
         "navigationBarTitleText": "探索",
@@ -42,6 +35,13 @@
     },
     {
       "path": "pages/layout",
+      "style": {
+        "navigationBarTitleText": "",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/login/login",
       "style": {
         "navigationBarTitleText": "",
         "navigationStyle": "custom"
