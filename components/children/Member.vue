@@ -8,7 +8,7 @@
       <view class="username">{{ username || 'LiveHands用户' }}</view>
       <view class="user-desc">已登录</view>
     </view>
-    <view class="member-badge">
+    <view class="member-badge" @click="showComingSoon">
       <image class="badge-icon" src="../../static/star_icon.png" mode="aspectFit"></image>
       <text class="badge-text">用户认证</text>
     </view>
@@ -23,10 +23,19 @@ const username = ref('')
 const userStore = useUserStore()
 
 onMounted(() => {
-  // 从用户store中获取用户名信息
-  // 这里可以根据实际情况从store或API获取用户信息
-  // username.value = userStore.username || 'LiveHands用户'
+  const userInfo = uni.getStorageSync('userInfo') || {};
+  username.value =`ST_${userInfo.nickName}`  || 'LiveHands用户'
 })
+
+// 显示敬请期待弹窗
+const showComingSoon = () => {
+  uni.showModal({
+    title: '',
+    content: '敬请期待',
+    showCancel: false,
+    confirmText: '确定'
+  })
+}
 </script>
 
 <style scoped>
@@ -41,7 +50,7 @@ onMounted(() => {
   height: 140rpx;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 32rpx;
+  margin-right: 12rpx;
   background-color: #f0f0f0;
   border: 4rpx solid #e6f7ff;
 }
@@ -70,7 +79,7 @@ onMounted(() => {
 .member-badge {
   display: flex;
   align-items: center;
-  padding: 12rpx 24rpx;
+  padding: 12rpx 16rpx;
   background-color: #fff7e6;
   border-radius: 36rpx;
   border: 2rpx solid #ffd591;

@@ -63,7 +63,13 @@
       <FollowWeChatPanel v-model:show="showFollowWeChatPanel" />
       <FollowRedBookPanel v-model:show="showFollowRedBookPanel" />
       <AboutPanel v-model:show="showAboutPanel" />
-      <UpdatePanel v-model:show="showUpdatePanel" />
+      <UpdatePanel 
+        v-model:show="showUpdatePanel" 
+        :update-info="updateInfo" 
+        :has-new-version="hasNewVersion" 
+        :latest-version="latestVersion" 
+        :update-logs="updateLogs"
+      />
       <IntroPanel v-model:show="showIntroPanel" />
 
       <!-- 退出登录 -->
@@ -151,6 +157,119 @@ function logout() {
   }, 300)
 }
 
+// 版本更新相关数据
+const updateInfo = ref({})
+const hasNewVersion = ref(false)
+const latestVersion = ref('')
+const updateLogs = ref([])
+const isCheckingUpdate = ref(false)
+
+// 检查更新 - 调用接口
+async function checkUpdate() {
+  if (isCheckingUpdate.value) return
+  
+  isCheckingUpdate.value = true
+  
+  try {
+    // 准备请求参数
+      // 使用Promise封装异步获取应用信息的操作
+      const getAppInfo = () => {
+        return new Promise((resolve) => {
+          let packageName = '__UNI__34CDEE1' // 默认包名
+          let currentVersion = '1.0.0' // 默认版本号
+          
+          try {
+            if (typeof plus !== 'undefined') {
+              try {
+                // 判断是否为生产环境
+                // 在uni-app中，可以通过判断process.env.NODE_ENV或自定义环境变量来区分环境
+                const isProduction = process.env.NODE_ENV === 'production'
+                
+                // 开发环境使用固定包名，生产环境使用plus.runtime.appid
+                if (isProduction) {
+                  // 生产环境使用plus.runtime.appid并格式化为所需格式
+                  // 移除__UNI__前缀和下划线，格式化为uni.app.UNIXXX格式
+                  const rawAppId = plus.runtime.appid || '__UNI__34CDEE1'
+                  packageName = rawAppId.replace(/^__UNI__/, 'uni.app.UNI')
+                } else {
+                  // 开发环境使用默认包名并格式化为所需格式
+                packageName = 'uni.app.UNI34CDEE1'
+                }
+                
+                // 使用plus.runtime.getProperty获取应用信息，包括配置的版本号
+                plus.runtime.getProperty(plus.runtime.appid, function(info) {
+                  if (info && info.version) {
+                    currentVersion = info.version
+                    console.log('应用版本号：', info.version)
+                  }
+                  console.log('运行时版本号：', plus.runtime.version)
+                  resolve({ packageName, currentVersion })
+                })
+              } catch (err) {
+                console.error('获取应用信息失败:', err)
+                resolve({ packageName, currentVersion })
+              }
+            } else {
+              // 非App平台，直接返回默认值
+              resolve({ packageName, currentVersion })
+            }
+          } catch (err) {
+            console.error('获取应用信息失败:', err)
+            resolve({ packageName, currentVersion })
+          }
+        })
+      }
+      
+      // 等待获取应用信息后再继续
+      const { packageName, currentVersion } = await getAppInfo()
+    
+    const params = {
+      package_name: packageName,
+      current_version: currentVersion
+    }
+    console.log("🚀 ~ checkUpdate ~ params:", params)
+    
+    // 调用版本更新接口
+    const response = await http.request('/livehands/check_update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    })
+    console.log("🚀 ~ checkUpdate ~ response:", response)
+    
+    // 处理响应数据
+    if (response && response.code === 200) {
+      updateInfo.value = response.data
+      latestVersion.value = response.data.version
+      
+      // 判断是否需要更新
+      hasNewVersion.value = response.data.need_update === 1
+      
+      // 解析更新日志 - 以分号分隔每个更新内容
+      if (response.data.change_notes) {
+        // 同时支持英文分号(;)和中文分号(；)作为分隔符
+        updateLogs.value = response.data.change_notes.split(/[;；]/)
+          .map(item => item.trim())
+          .filter(item => item.length > 0)
+      }
+    }
+    
+    return response
+  } catch (error) {
+    console.error('检查更新请求失败:', error)
+    uni.showToast({
+      title: '网络异常，请稍后重试',
+      icon: 'none',
+      duration: 2000
+    })
+    return null
+  } finally {
+    isCheckingUpdate.value = false
+  }
+}
+
 // 页面跳转函数
 function openWidget() {
   uni.navigateTo({ url: '/pages/static/WidgetManager' })
@@ -185,8 +304,22 @@ function openRedbook() {
 function openFeedback() {
   uni.navigateTo({ url: '/pages/static/Feedback' })
 }
-function openUpdate() {
-  showUpdatePanel.value = true
+async function openUpdate() {
+  // 显示加载提示
+  uni.showLoading({
+    title: '检查更新中...',
+    mask: true
+  })
+  
+  try {
+    // 先调用checkUpdate接口
+    await checkUpdate()
+    // 然后显示更新面板
+    showUpdatePanel.value = true
+  } finally {
+    // 隐藏加载提示
+    uni.hideLoading()
+  }
 }
 function openIntro() {
   // 显示版本介绍面板

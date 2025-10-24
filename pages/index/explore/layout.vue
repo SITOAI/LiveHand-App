@@ -1,7 +1,7 @@
 <template>
   <view class="container">
-		<!-- 固定部分：explore_input 区域以上内容 -->
-		<view class="fixed_header">
+		<!-- 顶部不固定的部分 -->
+		<view class="header_section">
 			<view class="explore_header">
 				<!-- <image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image> -->
 				<!-- <image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image> -->
@@ -10,13 +10,16 @@
 			<view class="explore_logo_area">
 				<image class="explore_logo" src="../../../static/logo-group.png" mode="widthFix"></image>
 			</view>
-			
-			<view class="explore_input" @click="navigateToSearch">
-				<input type="text" placeholder="把问题和任务告诉我" disabled/>
-				<view class="explore_input_search_button">
+		</view>
+		
+		<!-- 滚动到顶部时固定的搜索框 -->
+		<view  class="sticky_box"@click="navigateToSearch">
+			<input class="sticky_search" type="text" placeholder="把问题和任务告诉我" disabled>
+			    <view class="explore_input_search_button">
 					<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
 				</view>
-			</view>
+			</input>
+			
 		</view>
 		
 		<!-- 滚动部分 -->
@@ -51,10 +54,8 @@
 			  <!-- 最后一个元素结束后的"收尾" divider -->
 			  <u-divider text="分割线" :dot="true"></u-divider>
 			</view>
-		  </view>
-  
-
-</view>
+		</view>
+	</view>
 </template>
 
 <script setup>
@@ -141,25 +142,41 @@ function navigateToSearch() {
   background-position: top center;
 }
 
-/* 固定部分样式 */
-.fixed_header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: #f5f5f5;
+/* 顶部不固定的部分 */
+.header_section {
+  padding: 80px 20px 0 20px;
   background-image: url('../../static/background-login.png');
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top center;
-  padding: 40px 20px 0 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.01);
+  margin-bottom: 30px;
+}
+
+/* 滚动到顶部时固定的搜索框 */
+.sticky_box{
+  background-color: #f5f5f5;
+  z-index: 10000;
+  position: sticky;
+  top: 0; /* 添加顶部安全距离，避免与状态栏重叠 */
+  padding-top: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sticky_search {
+  width: 100%;
+  background-color: #ffffff;
+  height: 46px;
+  border-radius: 10px;
+  margin: 0 20px 20px 20px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 /* 滚动部分样式 */
 .scroll_content {
-  padding: calc(250px + 40px) 20px 20px 20px; /* 顶部固定高度 + 底部栏高度 + 边距 */
+  padding: 0 20px 20px 20px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -184,20 +201,14 @@ function navigateToSearch() {
   margin: auto;
 }
 
-.explore_input {
-	display: flex;
-	background-color: #ffffff;
-	align-items: center;
-	justify-content: space-between;
-	height: 25px;
-	border-radius: 10px;
-	margin-top: 50px;
-	padding: 15px;
-	margin-bottom: 20rpx;
-}
+
 
 .explore_input_search_button {
-	background-color: rgba(75,116,239,0.3);
+	position: absolute;
+	right: 30px;
+	top: 30%;
+    transform: translateY(50%);
+	background-color: rgba(22, 73, 224, 0.854);
 	display: flex;
 	align-items: center;
 	padding: 5px;
@@ -205,16 +216,18 @@ function navigateToSearch() {
 	height: 20px;
 	border-radius: 25px;
 	justify-content: center;
+    z-index: 100000;
 }
 
 .explore_input_search_image {
 	width: 15px;
+
 }
 
 .ask_question_area {
   display: flex;
   align-items: center;
-  margin-top: 90rpx;
+  margin-top: 40rpx;
 }
 
 .ask_question_image {

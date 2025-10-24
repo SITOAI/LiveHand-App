@@ -23,25 +23,25 @@
       <view class="static-body">
         <!-- 当前版本信息 -->
         <view class="version-info">
-          <text class="current-version">当前版本: v{{ currentVersion }}</text>
-          <text class="latest-version" v-if="hasNewVersion">最新版本: v{{ latestVersion }}</text>
+          <text class="current-version">当前版本: V{{ currentVersion }}</text>
+          <text class="latest-version" v-if="props.hasNewVersion">最新版本: V{{ props.latestVersion }}</text>
         </view>
 
         <!-- 版本更新状态 -->
-        <view class="update-status" :class="{ 'update-available': hasNewVersion, 'up-to-date': !hasNewVersion }">
-          <u-icon :name="hasNewVersion ? 'download' : 'checkmark-circle'" size="20" :color="hasNewVersion ? '#007aff' : '#52c41a'" />
-          <text>{{ hasNewVersion ? '发现新版本' : '当前已是最新版本' }}</text>
+        <view class="update-status" :class="{ 'update-available': props.hasNewVersion, 'up-to-date': !props.hasNewVersion }">
+          <u-icon :name="props.hasNewVersion ? 'download' : 'checkmark-circle'" size="20" :color="props.hasNewVersion ? '#007aff' : '#52c41a'" />
+          <text>{{ props.hasNewVersion ? '发现新版本' : '当前已是最新版本' }}</text>
         </view>
 
         <!-- 更新按钮 -->
         <u-button 
           class="update-button" 
-          :type="hasNewVersion ? 'primary' : 'default'" 
-          :disabled="isUpdating || !hasNewVersion"
-          @click="checkUpdate"
+          :type="props.hasNewVersion ? 'primary' : 'default'" 
+          :disabled="isUpdating"
+          @click="props.hasNewVersion ? performUpdate() : showUpToDateMessage()"
           :loading="isUpdating"
         >
-          {{ isUpdating ? '更新中...' : (hasNewVersion ? '立即更新' : '检查更新') }}
+          {{ isUpdating ? '更新中...' : (props.hasNewVersion ? '立即更新' : '检查更新') }}
         </u-button>
 
         <!-- 更新日志 -->
@@ -51,7 +51,7 @@
             <text class="log-title-text">更新日志</text>
           </view>
           <view class="log-content">
-            <view class="log-item" v-for="(item, index) in updateLogs" :key="index">
+            <view class="log-item" v-for="(item, index) in props.updateLogs" :key="index">
               <u-icon name="checkmark" size="14" color="#007aff" class="log-dot" />
               <text class="log-text">{{ item }}</text>
             </view>
@@ -68,68 +68,137 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref, onMounted } from 'vue'
+import { defineProps, defineEmits, ref, onMounted, watch } from 'vue'
+import http from '../../utils/http.js'
 
 const props = defineProps({
   show: Boolean,
-  tab: Number
+  tab: Number,
+  updateInfo: Object,
+  hasNewVersion: Boolean,
+  latestVersion: String,
+  updateLogs: Array
 })
 const emit = defineEmits(['update:show'])
 
+
 // 响应式数据
 const currentVersion = ref('1.0.0') // 当前版本
-const latestVersion = ref('1.0.1')  // 最新版本
-const hasNewVersion = ref(false)    // 是否有新版本
 const isUpdating = ref(false)       // 是否正在更新
 const showUpdateLog = ref(false)    // 是否显示更新日志
 const updateNotice = ref('建议在WiFi环境下更新应用') // 更新说明
-const updateLogs = ref([            // 更新日志列表
-  '优化了应用性能，提升使用体验',
-  '修复了已知问题',
-  '增强了应用稳定性',
-  '新增了部分功能'
-])
 
 // 生命周期钩子
 onMounted(() => {
   // 初始化时获取应用版本信息
   initializeAppVersion()
-  // 模拟检查更新
-  simulateCheckUpdate()
 })
+
+// 监听props变化
+watch(() => props.updateLogs, (newLogs) => {
+  if (newLogs && newLogs.length > 0) {
+    showUpdateLog.value = true
+  } else {
+    showUpdateLog.value = false
+  }
+}, { immediate: true })
 
 // 初始化应用版本信息
 function initializeAppVersion() {
   try {
-    // 从manifest.json获取版本信息
+    // 默认版本号
     currentVersion.value = '1.0.0'
+    
+    // 如果在App平台运行，使用plus.runtime.getProperty获取应用信息
+    if (typeof plus !== 'undefined') {
+      try {
+        // 使用plus.runtime.getProperty获取应用信息，包括配置的版本号
+        plus.runtime.getProperty(plus.runtime.appid, function(info) {
+          if (info && info.version) {
+            currentVersion.value = info.version
+          }
+        })
+      } catch (err) {
+      }
+    }
   } catch (error) {
-    console.error('获取版本信息失败:', error)
+    // 出错时使用默认值
+    currentVersion.value = '.0.0'
   }
 }
 
-// 模拟检查更新
-function simulateCheckUpdate() {
-  // 随机模拟是否有新版本（80%概率有新版本）
-  hasNewVersion.value = Math.random() > 0.2
-  // 有新版本时显示更新日志
-  if (hasNewVersion.value) {
-    showUpdateLog.value = true
-  }
+// 显示已是最新版本提示
+function showUpToDateMessage() {
+  uni.showToast({
+    title: '已是最新版本',
+    icon: 'none',
+    duration: 2000
+  })
 }
 
-// 检查更新
-function checkUpdate() {
+// 检查更新 - 外部调用版本更新接口
+async function checkUpdate() {
   if (isUpdating.value) return
   
-  if (!hasNewVersion.value) {
-    // 如果当前没有新版本，则重新检查
-    isUpdating.value = true
-    // 模拟检查更新的网络请求延迟
-    setTimeout(() => {
-      simulateCheckUpdate()
-      isUpdating.value = false
-      // 如果检查后仍没有新版本，显示提示
+  isUpdating.value = true
+  
+  try {
+    // 准备请求参数
+    let packageName = '__UNI__34CDEE1' // 默认包名
+    
+    try {
+      if (typeof plus !== 'undefined') {
+        // 判断是否为生产环境
+        const isProduction = process.env.NODE_ENV === 'production'
+        
+        // 开发环境使用固定包名，生产环境使用plus.runtime.appid
+        if (isProduction) {
+          // 生产环境使用plus.runtime.appid并格式化为所需格式
+            // 移除__UNI__前缀和下划线，格式化为uni.app.UNIXXX格式
+            const rawAppId = plus.runtime.appid || '__UNI__34CDEE1'
+            packageName = rawAppId.replace(/^__UNI__/, 'uni.app.UNI')
+        } else {
+          // 开发环境使用默认包名并格式化为所需格式
+          packageName = 'uni.app.UNI34CDEE1'
+        }
+      }
+    } catch (err) {
+    }
+    
+    const params = {
+      package_name: packageName,
+      current_version: currentVersion.value
+    }
+    
+    // 调用版本更新接口
+    const response = await http.request('/livehands/check_update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    })
+    
+    // 处理响应数据
+    if (response && response.code === 200) {
+      updateInfo.value = response.data
+      latestVersion.value = response.data.version
+      
+      // 判断是否需要更新
+      hasNewVersion.value = response.data.need_update === 1
+      
+      // 解析更新日志 - 以分号分隔每个更新内容
+      if (response.data.change_notes) {
+        // 同时支持英文分号(;)和中文分号(；)作为分隔符
+        // 使用正则表达式分割，确保兼容两种分号
+        // 同时支持英文分号(;)和中文分号(；)作为分隔符
+        updateLogs.value = response.data.change_notes.split(/[;；]/)
+          .map(item => item.trim())
+          .filter(item => item.length > 0)
+        showUpdateLog.value = updateLogs.value.length > 0
+      }
+      
+      // 如果不需要更新，显示提示
       if (!hasNewVersion.value) {
         uni.showToast({
           title: '已是最新版本',
@@ -137,45 +206,92 @@ function checkUpdate() {
           duration: 2000
         })
       }
-    }, 1500)
-  } else {
-    // 如果有新版本，则执行更新
-    performUpdate()
+    } else {
+      uni.showToast({
+        title: response?.msg || '检查更新失败',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  } catch (error) {
+    uni.showToast({
+      title: '网络异常，请稍后重试',
+      icon: 'none',
+      duration: 2000
+    })
+  } finally {
+    isUpdating.value = false
   }
 }
 
 // 执行更新
 function performUpdate() {
+  // 检查更新信息和下载地址是否存在
+  if (!props.updateInfo || !props.updateInfo.direct_download_url) {
+    uni.showToast({
+      title: '更新包地址无效',
+      icon: 'none',
+      duration: 2000
+    })
+    return
+  }
+  
   isUpdating.value = true
   
-  // 模拟下载和安装过程
-  setTimeout(() => {
-    // 模拟下载完成
-    isUpdating.value = false
-    
-    // 显示更新完成提示
-    uni.showModal({
-      title: '更新完成',
-      content: '应用已更新至最新版本，是否立即重启应用？',
-      showCancel: true,
-      cancelText: '稍后',
-      confirmText: '立即重启',
-      success: (res) => {
-        if (res.confirm) {
-          // 这里可以添加实际的应用重启逻辑
-          // 在真实场景中，可能需要调用原生API进行重启
-          console.log('重启应用')
-          uni.showToast({
-            title: '应用将重启以完成更新',
-            icon: 'none',
-            duration: 2000
+  // 下载更新包
+  uni.downloadFile({
+    // 使用direct_download_url进行下载
+    url: props.updateInfo.direct_download_url,
+    success: (res) => {
+      console.log("555555555555555555:", res)
+      isUpdating.value = false
+      
+      if (res.statusCode === 200) {
+        // 下载成功，开始安装
+        if (uni.canIUse('installApp')) {
+          // 对于支持installApp的平台
+          uni.installApp({
+            filePath: res.tempFilePath,
+            success: () => {
+            },
+            fail: (err) => {
+              uni.showToast({
+                title: '应用安装失败',
+                icon: 'none',
+                duration: 2000
+              })
+            }
           })
-          // 关闭弹窗
-          closePopup()
+        } else {
+          // 对于不支持installApp的平台，提示用户手动安装
+          uni.showModal({
+            title: '下载完成',
+            content: '请点击确定手动安装应用',
+            showCancel: false,
+            success: () => {
+              // 在实际场景中，可能需要根据平台进行不同处理
+              console.log('引导用户手动安装')
+            }
+          })
         }
+      } else {
+        uni.showToast({
+          title: '下载失败',
+          icon: 'none',
+          duration: 2000
+        })
       }
-    })
-  }, 3000)
+    },
+    fail: (err) => {
+      isUpdating.value = false
+      console.error('下载更新包失败:', err)
+      uni.showToast({
+        title: '下载失败，请检查网络',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  })
 }
 
 // 关闭弹窗
