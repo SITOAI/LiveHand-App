@@ -152,9 +152,18 @@ function logout() {
   userStore.logout()
   // 清空所有uni-app存储数据
   uni.clearStorageSync()
-  setTimeout(() => {
-    uni.reLaunch({ url: '/pages/layout' })
-  }, 300)
+  // 显示退出成功提示
+  uni.showToast({
+    title: '已退出登录',
+    icon: 'success',
+    duration: 1500,
+    success: () => {
+      // 延迟跳转到登录页，确保存储清理完成
+      setTimeout(() => {
+        uni.reLaunch({ url: '/pages/login/login' })
+      }, 1500)
+    }
+  })
 }
 
 // 版本更新相关数据

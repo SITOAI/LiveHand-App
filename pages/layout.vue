@@ -1,31 +1,22 @@
 <template>
-  <view>
-    <!-- 登录状态判断 -->
-    <Login v-if="!isLogin" />
-    <!-- 登录后自动跳转到tabbar页面，系统会自动处理tabbar显示 -->
-    <view v-else class="hidden">登录成功，等待系统跳转...</view>
+  <view class="layout-container">
+    <!-- 简化的layout页面，现在只作为备用路由或过渡页面 -->
+    <!-- 实际的登录状态检查和页面跳转已经在App.vue中集中处理 -->
   </view>
 </template>
 
 <script setup>
-import { computed, onMounted, watch } from 'vue'
-import { useUserStore } from '../store/user.js'
-import Login from './login/login.vue'
-
-const userStore = useUserStore()
-const isLogin = computed(() => userStore.isLogin)
-
-// 监听登录状态变化，确保登录成功后立即跳转到探索页面
-watch(isLogin, (newVal) => {
-  if (newVal) {
-    uni.switchTab({ url: '/pages/index/explore/layout' })
-  }
-}, { immediate: true })
+// 移除所有登录状态检查和跳转逻辑
+// 这些逻辑已经在App.vue的onLaunch中集中处理，避免重复跳转导致闪烁
+import { onMounted } from 'vue'
 
 onMounted(() => {
-  // 如果已经登录，直接跳转到探索页面
-  if (isLogin.value) {
-    uni.switchTab({ url: '/pages/index/explore/layout' })
+  // 简单的页面重定向，避免用户直接访问layout页面时出现空白
+  const token = uni.getStorageSync('token') || '';
+  if (!token) {
+    uni.reLaunch({ url: '/pages/login/login' });
+  } else {
+    uni.reLaunch({ url: '/pages/index/explore/layout' });
   }
 })
 </script>

@@ -160,10 +160,28 @@ http.addRequestInterceptor(async (config) => {
 http.addResponseInterceptor(async (response) => {
   if (response.status === 401) {
     try {
+      // 清除token和所有存储数据
       uni.removeStorageSync('token')
+      uni.clearStorageSync()
     } catch (e) {
       console.warn('token 清除失败:', e)
     }
+    
+    // 显示未授权提示
+    uni.showToast({
+      title: '登录已过期，请重新登录',
+      icon: 'none',
+      duration: 2000,
+      success: () => {
+        // 跳转到登录页
+        setTimeout(() => {
+          uni.reLaunch({
+            url: '/pages/login/login'
+          })
+        }, 2000)
+      }
+    })
+    
     throw new Error('未授权，请重新登录')
   }
   return response

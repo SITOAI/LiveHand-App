@@ -57,14 +57,8 @@ import { ref } from 'vue'
 import { onUnmounted } from 'vue'
 import http from '../../utils/http.js'
 
-// 立即检查登录状态，在页面渲染前执行
-const token = uni.getStorageSync('token') || ''
-if (token) {
-  // 如果已登录，直接跳转到探索页面
-  uni.reLaunch({
-    url: '/pages/index/explore/layout'
-  })
-}
+// 移除登录状态检查，因为App.vue已经在应用启动时集中处理了
+// 这样可以避免登录页面也进行跳转导致的闪烁问题
 
 const phone = ref('')
 const agree = ref(false)
