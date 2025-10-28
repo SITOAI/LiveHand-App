@@ -38,6 +38,10 @@ export default {
     });
     
     uni.onAppShow(() => {
+      setTimeout(()=>{ 
+        plus.navigator.closeSplashscreen() 
+      }, 2000)
+      
       // 这里只做必要的检查，避免重复跳转
       const token = uni.getStorageSync('token') || '';
       const pages = getCurrentPages();
