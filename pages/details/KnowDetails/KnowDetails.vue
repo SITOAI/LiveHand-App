@@ -209,6 +209,7 @@ import LiveChat from '../../../components/chat/LiveChat.vue'
 import NoteCard from '../../../components/cards/NoteCard.vue'
 import SearchPanel from '../../../components/SearchPanel.vue'
 import http from '../../../utils/http.js'
+import { mockNotes, mockFiles } from '../../../utils/mock/knowDetailsData.js'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -253,110 +254,7 @@ const showSearchPanel = ref(false)
 // 笔记数据
 const notes = ref([])
 
-// Mock数据 - 作为接口请求失败的备用数据
-const mockNotes = [
-  {
-    id: 1,
-    title: 'AI研究记录',
-    time: '2025-06-26 08:30',
-    content: '西安视途科技有限公司是一家专注于 AI Agent 和 大模型核心技术研发 的人工智能企业，成立于2024年8月20号.',
-    handmould: 'AI研究记录手抄内容：视途科技专注于AI Agent和大模型核心技术研发，成立于2024年8月20日。公司在AI领域有丰富的经验和技术积累。',
-    summary: 'AI研究记录总结：视途科技是一家专注于人工智能核心技术的企业，尤其在AI Agent和大模型方面有深入研究，成立时间为2024年8月20日。',
-    repo: '默认知识库',
-    tags: [
-      { text: 'AI', type: 'warning' },
-      { text: '技术', type: 'warning' }
-    ]
-  },
-  {
-    id: 2,
-    title: '多模态智能体总结',
-    time: '2025-06-25 10:00',
-    content: '我们目前在多模态智能体方面的研究集中在图像、语音、文本的融合交互上，并结合 LLM 的上下文管理能力展开实验。',
-    handmould: '多模态智能体总结手抄内容：当前研究重点在于图像、语音、文本三种模态的融合交互，同时结合大语言模型的上下文管理能力进行实验和开发。',
-    summary: '多模态智能体研究总结：团队正在进行多模态智能体的研究，主要关注图像、语音和文本的融合交互，并结合大语言模型的上下文管理能力开展实验工作。',
-    repo: '默认知识库',
-    musice:true,
-    tags: [
-      { text: '多模态', type: 'warning' },
-      { text: '架构', type: 'warning' }
-    ]
-  },
-  {
-    id: 3,
-    title: '知识图谱接入实验',
-    time: '2025-06-24 14:00',
-    content: '目前已完成 LiveKG 与 LiveAgent 的初步打通，验证了智能体对接图谱后的检索调用效果。',
-    handmould: '知识图谱接入实验手抄内容：成功完成LiveKG与LiveAgent的初步对接，测试结果表明智能体能够有效检索和调用图谱中的知识。',
-    summary: '知识图谱接入实验总结：项目团队已经成功实现了LiveKG知识图谱与LiveAgent智能体的初步集成，验证了智能体能够有效检索和利用图谱中的知识。',
-    repo: '默认知识库',
-    tags: [
-      { text: '图谱', type: 'warning' },
-      { text: '智能检索', type: 'warning' }
-    ]
-  },
-  {
-    id: 4,
-    title: '部署方案调研',
-    time: '2025-06-23 16:00',
-    content: '对比本地化部署、私有云、混合云三种部署方式的性能、稳定性和接入成本，为下季度客户部署做好准备。',
-    handmould: '部署方案调研手抄内容：对本地化部署、私有云和混合云三种模式进行了全面对比，分析了各自的性能表现、系统稳定性和接入成本。',
-    summary: '部署方案调研总结：针对客户需求，对本地化部署、私有云和混合云三种部署方式进行了详细对比，包括性能、稳定性和接入成本等方面，为下季度的客户部署提供了决策依据。',
-    repo: '部署与运维',
-    tags: [
-      { text: '本地化', type: 'warning' },
-      { text: '私有云', type: 'warning' }
-    ]
-  },
-  {
-    id: 5,
-    title: '插件系统扩展记录',
-    time: '2025-06-22',
-    content: '新增 MCP 插件适配能力，支持按模板生成 Word、Excel 等文档，已完成测试。',
-    handmould: '插件系统扩展记录手抄内容：成功扩展了MCP插件适配功能，现在可以根据模板自动生成Word、Excel等办公文档，并已通过内部测试。',
-    summary: '插件系统扩展总结：插件系统新增了MCP插件适配能力，实现了根据模板自动生成Word、Excel等文档的功能，目前已完成所有测试工作。',
-    repo: '插件系统',
-    tags: [
-      { text: '插件', type: 'warning' },
-      { text: '模板', type: 'warning' }
-    ]
-  },
-  {
-    id: 6,
-    title: '知识专利',
-    time: '2025-06-22',
-    content: '本知识专利记录了某领域核心技术的创新方法与实现路径，涵盖算法设计、系统架构及应用场景，具有独创性与实用价值，为相关技术研发与产业化提供知识产权保障。',
-    handmould: '知识专利手抄内容：本专利涵盖了某领域核心技术的创新方法与实现路径，包括算法设计、系统架构和应用场景等方面，具有很高的独创性和实用价值。',
-    summary: '知识专利总结：本知识专利详细记录了某领域核心技术的创新方法与实现路径，内容涵盖算法设计、系统架构及应用场景，具有显著的独创性和实用价值，为相关技术的研发与产业化提供了重要的知识产权保障。',
-    repo: '知识专利',
-    tags: [
-      { text: '知识专利', type: 'primary' },
-      { text: '法律', type: 'success' }
-    ]
-  }
-]
-
-// Mock文件数据 - 作为接口请求失败的备用数据
-const mockFiles = [
-  {
-    id: 1,
-    name: '项目需求文档.docx',
-    type: 'file',
-    uploadTime: '2025-12-30 12:56'
-  },
-  {
-    id: 2,
-    name: '会议录音.mp3',
-    type: 'audio',
-    uploadTime: '2025-12-30 12:56'
-  },
-  {
-    id: 3,
-    name: '产品设计图.png',
-    type: 'image',
-    uploadTime: '2025-12-30 12:56'
-  }
-]
+// 从mock数据文件导入模拟数据
 
 // 从接口获取笔记数据
 function getNotesData() {

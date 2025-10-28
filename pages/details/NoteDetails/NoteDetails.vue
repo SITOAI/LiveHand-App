@@ -198,6 +198,7 @@ import NoteDetailPosterTab from '../../../components/tabs/NoteDetailPosterTab.vu
 import TalkButton from '../../../components/children/TalkButton.vue'
 import LiveChat from '../../../components/chat/LiveChat.vue'
 import http from '../../../utils/http.js'
+import { mockRepoList } from '../../../utils/mock/noteDetailsData.js'
 
 const activeTab = ref(0)
 const lastTab = ref(0)
@@ -214,37 +215,8 @@ const showRepoSelection = ref(false)
 const selectedRepo = ref('1') // 默认选择id为1的知识库（字符串类型）
 const title = ref('默认知识库')
 
-// 知识库列表数据
-const repoList = ref([
-  {
-    id: '1',
-    name: '默认知识库',
-    desc: '知识库说明',
-    icon: '../../../static/foldery.png',
-    value: '默认知识库'
-  },
-  {
-    id: '2',
-    name: '教育知识',
-    desc: '学习、教育、知识',
-    icon: '../../../static/test/test1.png',
-    value: '教育知识1'
-  },
-  {
-    id: '3',
-    name: '教育知识',
-    desc: '学习、教育、知识',
-    icon: '../../../static/test/test1.png',
-    value: '教育知识2'
-  },
-  {
-    id: '4',
-    name: '教育知识',
-    desc: '学习、教育、知识',
-    icon: '../../../static/test/test1.png',
-    value: '教育知识3'
-  }
-])
+// 从mock数据文件导入知识库列表
+const repoList = ref(mockRepoList)
 
 // 聊天弹窗样式对象
 const chatPopupStyle = {
