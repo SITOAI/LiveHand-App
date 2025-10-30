@@ -2,8 +2,8 @@
     "name" : "LiveHands",
     "appid" : "__UNI__34CDEE1",
     "description" : "",
-    "versionName" : "0.0.7",
-    "version": "0.0.7",
+    "versionName" : "0.0.8",
+    "version" : "0.0.8",
     "versionCode" : "100",
     "transformPx" : false,
     /* 5+App特有相关 */
@@ -55,9 +55,9 @@
                 "useOriginalMsgbox" : false,
                 "iosStyle" : "common",
                 "android" : {
-                    "hdpi" : "static/icons/1024x1024.png",
-                    "xhdpi" : "static/icons/1024x1024.png",
-                    "xxhdpi" : "static/icons/1024x1024.png"
+                    "hdpi" : "static/start.png",
+                    "xhdpi" : "static/start.png",
+                    "xxhdpi" : "static/start.png"
                 }
             },
             "icons" : {
