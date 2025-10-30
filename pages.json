@@ -101,7 +101,7 @@
     {
       "path": "pages/midTabBar/midTabBar",
       "style": {
-        "backgroundColor": "transparent",
+        "background": "transparent",
         "app-plus": {
           "titleNView": false
         }

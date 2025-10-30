@@ -32,7 +32,7 @@ export default {
       
       uni.navigateTo({
         url: "/pages/midTabBar/midTabBar",
-        animationType: "slide-in-bottom",
+        animationType: "fade-in",
         animationDuration: 150
       });
     });
