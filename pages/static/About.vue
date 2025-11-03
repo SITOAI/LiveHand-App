@@ -17,17 +17,17 @@
       </view>
 
       <!-- 内容区域 -->
-      <scroll-view scroll-y class="common-wrapper">
+      <!-- <scroll-view scroll-y class="common-wrapper"> -->
         <!-- Logo & 版本 -->
         <view class="logo-section">
           <image class="logo" src="/static/logo.png" mode="widthFix" />
           <text class="app-name">LiveHand</text>
-          <text class="version">v{{ version }}</text>
+          <text class="version">V{{ version }}</text>
         </view>
 
         <!-- 菜单列表 -->
         <view class="section">
-          <view class="section-title">法律信息888</view>
+          <view class="section-title">法律信息</view>
           <view class="section-body">
             <view @click="openUser"><MenuItem title="用户服务协议" icon="file-text" :isOk="true" /></view>
             <view @click="openPrivacy"><MenuItem title="隐私政策" icon="lock" :isOk="true" /></view>
@@ -37,8 +37,8 @@
 		<!-- Panel -->
 		<UserPanel v-model:show="showUserPanel" />
 		<PrivacyPanel v-model:show="showPrivacyPanel" />
-      </scroll-view>
-
+      <!-- </scroll-view> -->
+      
       <!-- 底部信息 -->
       <view class="somthing-info">
         <text>西安视途科技有限公司 版权所有 © 2025</text>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import MenuItem from '../../components/children/MenuItem.vue'
 
 // 引入对应的Panel组件（模仿原代码结构）
@@ -59,7 +59,7 @@ import PrivacyPanel from './Privacy.vue'
 const props = defineProps({ show: Boolean })
 const emit = defineEmits(['update:show'])
 
-const version = ref('2.0.1')
+const version = ref('1.0.0')
 
 // 定义各Panel的显示状态（模仿原代码ref声明方式）
 const showUserPanel = ref(false)
@@ -88,18 +88,48 @@ function openUser() {
 function openPrivacy() {
   showPrivacyPanel.value = true
 }
+
+// 初始化应用版本信息
+function initializeAppVersion() {
+  try {
+    // 默认版本号
+    version.value = '1.0.0'
+    
+    // 如果在App平台运行，使用plus.runtime.getProperty获取应用信息
+    if (typeof plus !== 'undefined') {
+      try {
+        // 使用plus.runtime.getProperty获取应用信息，包括配置的版本号
+        plus.runtime.getProperty(plus.runtime.appid, function(info) {
+          if (info && info.version) {
+            version.value = info.version
+          }
+        })
+      } catch (err) {
+        console.error('获取应用版本失败:', err)
+      }
+    }
+  } catch (error) {
+    console.error('初始化版本信息失败:', error)
+  }
+}
+
+// 生命周期钩子
+onMounted(() => {
+  // 初始化时获取应用版本信息
+  initializeAppVersion()
+})
 </script>
 
 <style scoped>
-/* 完全继承原代码的样式 */
 .panel-wrapper {
   width: 90vw;
-  height: 95vh;
+  min-height: 95vh;
   background-color: #ebeff2;
   display: flex;
   flex-direction: column;
   padding: 5vh 5vw 0;
   border-radius: 10px;
+  position: relative;
 }
 .panel-header {
   display: flex;
@@ -132,10 +162,12 @@ function openPrivacy() {
   border-radius: 10px;
 }
 .somthing-info {
-  padding-bottom: 2vh;
+  padding: 20rpx 0;
   font-size: 10px;
   color: #ccc;
   text-align: center;
+  background-color: #ebeff2;
+  margin-top:30vh;
 }
 
 /* 关于我们特有样式（模仿原代码） */
@@ -147,6 +179,12 @@ function openPrivacy() {
   background-color: #fff;
   border-radius: 10px;
   margin-bottom: 16px;
+}
+
+/* 确保底部信息固定在底部 */
+.panel-wrapper::after {
+  content: '';
+  flex-grow: 1;
 }
 .logo {
   width: 80px;

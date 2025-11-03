@@ -27,7 +27,6 @@
       </swiper>
     </view>
   </view>
-
 </template>
 
 <script setup>
@@ -103,7 +102,7 @@ function handleTabChange(index) {
     newsUrl.value = `http://news.sitoai.cn?t=${timestamp}`;
   } else if (index === 1) {
     // 切换到调研tab
-    researchUrl.value = `http://research.sitoai.cn?t=${timestamp}`;
+    researchUrl.value = `http://research.sitoai.cn/chat?t=${timestamp}`;
   }
   
   // 同时重新设置webview样式
@@ -155,29 +154,32 @@ console.log("statusBarHeight:"+statusBarHeight)
 
 <style scoped>
 .sub-index-page {
-  height: 100vh !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  top: 4vh !important;
+  height: 100vh;
   position: relative !important;
   background-color: #f5f5f5;
 }
 
 .sub-index-header {
-  border-bottom: 0.5px solid rgba(204, 204, 204, 0.5);
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 0 3vw;
+  padding: calc(env(safe-area-inset-top, 0px) + 30px) 0;
   background-color: #f5f5f5;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+  min-height: 60px;
 }
 
 .sub-index-content {
-  height: calc(100vh - 60px);
+  flex: 1;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
+  -webkit-overflow-scrolling: touch;
 }
 
 .sub-swiper {

@@ -94,7 +94,7 @@
       "style": {
         "navigationBarTitleText": "搜索",
         "navigationStyle": "custom",
-        "enablePullDownRefresh": false,
+        "enablePullDownRefresh": true,
         "backgroundColor": "#ffffff"
       }
     },

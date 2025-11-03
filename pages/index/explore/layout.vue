@@ -2,24 +2,18 @@
   <view class="container">
 		<!-- 顶部不固定的部分 -->
 		<view class="header_section">
-			<view class="explore_header">
-				<!-- <image class="explore_header_image" src="../../../static/more.png" mode="widthFix"></image> -->
-				<!-- <image class="explore_header_image" src="../../../static/search_explore.png" mode="widthFix" @click="navigateToSearch"></image> -->
-			</view>
-			
 			<view class="explore_logo_area">
-				<image class="explore_logo" src="../../../static/logo-group.png" mode="widthFix"></image>
+				<view class="logo_container">
+					<image class="explore_logo" src="../../../static/logoIcon/64x64.png" mode="widthFix"></image>
+				</view>
 			</view>
 		</view>
-		
 		<!-- 滚动到顶部时固定的搜索框 -->
 		<view  class="sticky_box"@click="navigateToSearch">
-			<input class="sticky_search" type="text" placeholder="把问题和任务告诉我" disabled>
-			    <view class="explore_input_search_button">
-					<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
-				</view>
-			</input>
-			
+			<input class="sticky_search" type="text" placeholder="把问题和任务告诉我" disabled/>
+			<view class="explore_input_search_button">
+				<image class="explore_input_search_image" src="../../../static/search_inner.png" mode="widthFix"></image>
+			</view>
 		</view>
 		
 		<!-- 滚动部分 -->
@@ -96,12 +90,11 @@ function navigateToSearch() {
 
 /* 顶部不固定的部分 */
 .header_section {
-  padding: 80px 20px 0 20px;
+  padding: 160rpx 20rpx 0 20rpx;
   background-image: url('../../static/background-login.png');
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top center;
-  margin-bottom: 30px;
 }
 
 /* 滚动到顶部时固定的搜索框 */
@@ -109,8 +102,8 @@ function navigateToSearch() {
   background-color: #f5f5f5;
   z-index: 10000;
   position: sticky;
-  top: 0; /* 添加顶部安全距离，避免与状态栏重叠 */
-  padding-top: 5vh;
+  top: 0; 
+  padding-top: 70rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,20 +139,31 @@ function navigateToSearch() {
 
 .explore_logo_area {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo_container {
+  width: 128rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .explore_logo {
-  width: 250px;
-  margin: auto;
+  width: 100%;
+  height: auto;
+  border-radius: 20rpx;
 }
 
 
 
 .explore_input_search_button {
 	position: absolute;
-	right: 30px;
-	top: 30%;
-    transform: translateY(50%);
+	right: 50rpx;
+	top: 55rpx;
+  transform: translateY(50%);
 	background-color: rgba(22, 73, 224, 0.854);
 	display: flex;
 	align-items: center;

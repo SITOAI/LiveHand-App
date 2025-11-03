@@ -1,5 +1,5 @@
 {
-    "name" : "LiveHands",
+    "name" : "弹点",
     "appid" : "__UNI__34CDEE1",
     "description" : "",
     "versionName" : "0.0.8",
@@ -55,9 +55,9 @@
                 "useOriginalMsgbox" : false,
                 "iosStyle" : "common",
                 "android" : {
-                    "hdpi" : "static/start.png",
-                    "xhdpi" : "static/start.png",
-                    "xxhdpi" : "static/start.png"
+                    "hdpi" : "static/res/drawable-hdpi/2.9.png",
+                    "xhdpi" : "static/res/drawable-xhdpi/2.9.png",
+                    "xxhdpi" : "static/res/drawable-xxhdpi/2.9.png"
                 }
             },
             "icons" : {

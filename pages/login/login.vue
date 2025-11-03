@@ -47,7 +47,6 @@
 	<!-- 微信登录快捷按钮 -->
 	<view class="wechat-login-area">
 	  <image class="wechat-login-button" src="/static/weichat-icon.png" mode="widthFix" @click="loginWithWechat" />
-
 	</view>
   </view>
 </template>
@@ -95,7 +94,7 @@ function getVerifyCode() {
   }).then(result=>{
 	  if(result.code === 200 && result.data.isSuccess === 1){
 	  	  uni.navigateTo({
-	  	      url: `/pages/login/verify?phone=${encodeURIComponent(phone.value)}`
+	  	      url: `/pages/login/verify?phone=${encodeURIComponent(phone.value)}&countdown=${countdown.value}`
 	  	  	  })
 	  }else{
 		  return uni.showToast({ title: '获取验证码失败，请稍后再试！', icon: 'error' })
@@ -273,10 +272,11 @@ onUnmounted(() => {
 /* 按钮高度和输入框行高度一致 */
 .verify-btn {
   width: 100%;
-  height: 55px;            /* 和输入框高度一致 */
+  width: 620rpx;
+  height: 96rpx;
+  background: #2E5CE7;
+  border-radius: 16rpx 16rpx 16rpx 16rpx;           /* 和输入框高度一致 */
   font-size: 30rpx;
-  border-radius: 10rpx;
-  background-color: #007aff;
   color: white;
   text-align: center;
   line-height: 80rpx;       /* 文字垂直居中 */
@@ -315,7 +315,10 @@ onUnmounted(() => {
 
 .wechat-login-button {
 	cursor: pointer;
-	margin-top: 170px;
+	margin-top: 50px;
 	width: 60px;
+}
+::v-deep uni-button:after{
+  border: none;
 }
 </style>

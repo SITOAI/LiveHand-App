@@ -55,7 +55,23 @@ onLoad(options => {
   if (options.phone) {
     phone.value = decodeURIComponent(options.phone)
   }
+  if (options.countdown) {
+    const receivedCountdown = parseInt(options.countdown)
+    if (receivedCountdown > 0) {
+      countdown.value = receivedCountdown
+      startCountdown()
+    }
+  }
 })
+
+function startCountdown() {
+  timer = setInterval(() => {
+    countdown.value--
+    if (countdown.value <= 0) {
+      clearInterval(timer)
+    }
+  }, 1000)
+}
 
 function goBack() {
   uni.navigateBack()
@@ -64,12 +80,7 @@ function goBack() {
 function resendCode() {
   uni.showToast({ title: '正在重新获取验证码', icon: 'none' })
   countdown.value = 60
-  timer = setInterval(() => {
-    countdown.value--
-    if (countdown.value <= 0) {
-      clearInterval(timer)
-    }
-  }, 1000)
+  startCountdown()
   // TODO: 这里调用接口重新发送验证码
 }
 

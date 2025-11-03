@@ -122,7 +122,7 @@ function onAIClickInAgent() {
 }
 
 .knowledge-layout-header {
-  position: fixed;
+  position: sticky;
   top: 5vh;
   left: 0;
   right: 0;
@@ -145,7 +145,7 @@ function onAIClickInAgent() {
 }
 
 .knowledge-layout-content {
-  margin-top: 9vh; /* 留出 header 高度 + 顶部边距 */
+  margin-top: 3vh; /* 留出 header 高度 + 顶部边距 */
   height: calc(100vh - 9vh); /* 减去 header 高度 */
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
