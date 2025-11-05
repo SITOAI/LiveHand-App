@@ -1,7 +1,14 @@
 <template>
   <div class="notes-container">
+    <!-- 数据加载中显示加载状态 -->
+    <template v-if="isLoading">
+      <div class="loading-state">
+        <view class="loading-spinner"></view>
+        <view class="loading-text">正在加载笔记...</view>
+      </div>
+    </template>
     <!-- 数据加载完成后才根据数据状态显示内容 -->
-    <template v-if="!isLoading">
+    <template v-else>
       <!-- 有数据时显示笔记卡片 -->
       <template v-if="notes.length > 0">
         <NoteCard
@@ -29,7 +36,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad,onShow,onHide } from '@dcloudio/uni-app'
 import http from '../../../../utils/http.js'
 import NoteCard from '@/components/cards/NoteCard.vue'
 import { mockNotes } from '../../../../utils/mock/notesData.js'
@@ -40,8 +47,11 @@ const notes = ref([])
 const isLoading = ref(true)
 // 定时器引用
 let refreshTimer = null
-// 自动刷新间隔（毫秒）
-const AUTO_REFRESH_INTERVAL = 10000 // 20秒
+// 上次刷新时间戳
+let lastRefreshTime = 0
+// 最小刷新间隔（毫秒）
+const MIN_REFRESH_INTERVAL = 10000 // 10秒
+const AUTO_REFRESH_INTERVAL = 5000 
 
 // 从接口获取笔记数据
 function getNotesData() {
@@ -83,7 +93,6 @@ function getNotesData() {
     isLoading.value = false
   }).catch(error => {
     // 请求失败时使用mock数据
-    console.error('获取笔记数据出错:', error)
     uni.showToast({ title: '网络错误，使用本地数据', icon: 'error' })
     notes.value = mockNotes
     // 数据加载完成
@@ -124,14 +133,28 @@ onLoad(() => {
   getNotesData()
 })
 
-// 页面显示时启动定时刷新
-onMounted(() => {
+// 页面显示时确保有数据并启动自动刷新
+onShow(() => {
+  // 如果没有数据，重新获取
+  if (notes.value.length === 0) {
+    getNotesData()
+  }
+  // 启动自动刷新
   startAutoRefresh()
+})
+
+// 页面挂载时设置事件监听
+onMounted(() => {
   // 监听全局数据更新事件
   uni.$on('notesDataUpdated', handleDataUpdateEvent)
 })
 
 // 页面隐藏时停止定时刷新
+onHide(() => {
+  stopAutoRefresh()
+})
+
+// 页面卸载时停止定时刷新并清理资源
 onUnmounted(() => {
   stopAutoRefresh()
   // 移除事件监听
@@ -165,6 +188,16 @@ function handleDataUpdateEvent() {
 // 刷新笔记数据（无感知）
 async function refreshNotesData() {
   try {
+    // 检查距离上次刷新是否小于最小间隔
+    const now = Date.now()
+    if (now - lastRefreshTime < MIN_REFRESH_INTERVAL) {
+      console.log('刷新间隔过小，跳过此次刷新')
+      return
+    }
+    
+    // 更新上次刷新时间
+    lastRefreshTime = now
+    
     // 获取当前的数据快照用于比较
     const beforeData = JSON.stringify(notes.value)
     
@@ -202,21 +235,17 @@ async function refreshNotesData() {
             if (beforeData !== afterData) {
               // 应用新数据
               notes.value = formattedNotes
-              console.log('笔记数据已自动更新')
             }
           }
           resolve()
         } catch (error) {
-          console.error('处理笔记数据时出错:', error)
           resolve() // 即使处理出错也继续执行
         }
       }).catch(error => {
-        console.error('自动刷新笔记数据请求失败:', error)
         resolve() // 即使请求失败也不阻止后续执行
       })
     })
   } catch (error) {
-    console.error('自动刷新过程出错:', error)
   }
 }
 </script>
@@ -245,6 +274,38 @@ async function refreshNotesData() {
   cursor: pointer;
   color: #999;
   transition: color 0.3s;
+}
+
+/* 加载状态样式 */
+.loading-state {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #007aff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 30rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #999;
 }
 
 /* 空状态样式 */

@@ -56,8 +56,14 @@
     <!-- 搜索面板 -->
     <SearchPanel v-model:show="showSearchPanel" search-type="knowledgeItem" />
 
+    <!-- 加载状态 -->
+    <view v-if="isLoading" class="loading-state">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">正在加载内容...</text>
+    </view>
+    
     <!-- Swiper 内容区 -->
-    <view
+    <view v-else
       class="tab-content-wrapper"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
@@ -87,7 +93,7 @@
           </scroll-view>
         </swiper-item>
         <swiper-item>
-          <scroll-view scroll-y class="tab-inner-scroll">
+          <scroll-view scroll-y class="tab-inner-scroll file-scroll">
             <!-- 文件标签页内容 -->
             <view class="file-list">
               <view class="file-tabs">
@@ -116,9 +122,6 @@
         </swiper-item>
       </swiper>
     </view>
-
-    <!-- 底部占位元素，确保内容不被聊天栏遮挡 -->
-    <view class="bottom-spacer"></view>
 
     <!-- 底部聊天栏 -->
     <view class="chatbar" v-if="!chatPopupVisible">
@@ -191,7 +194,7 @@
           class="note-detail-live-chat"
           :height="'80vh'"
           :showHeader="true"
-          :title="title"
+          :title="name"
           :onClose="handleCloseChat"
           :sourcePage="'knowDetails'"
           :datasetId="itemId"
@@ -254,7 +257,21 @@ const showSearchPanel = ref(false)
 // 笔记数据
 const notes = ref([])
 
+// 加载状态
+const isLoading = ref(true)
+// 跟踪请求完成数
+const loadedCount = ref(0)
+const totalRequests = 2 // 两个请求：笔记和文件
+
 // 从mock数据文件导入模拟数据
+
+// 检查是否所有请求都已完成
+function checkAllRequestsCompleted() {
+  loadedCount.value++
+  if (loadedCount.value >= totalRequests) {
+    isLoading.value = false
+  }
+}
 
 // 从接口获取笔记数据
 function getNotesData() {
@@ -295,6 +312,9 @@ function getNotesData() {
     console.error('获取笔记数据出错:', error)
     uni.showToast({ title: '网络错误，使用本地数据', icon: 'error' })
     notes.value = mockNotes
+  }).finally(() => {
+    // 标记笔记请求完成
+    checkAllRequestsCompleted()
   })
 }
 
@@ -322,11 +342,13 @@ function getFilesData() {
       
       files.value = formattedFiles
     } else {
-
       files.value = mockFiles
     }
   }).catch(error => {
     files.value = mockFiles
+  }).finally(() => {
+    // 标记文件请求完成
+    checkAllRequestsCompleted()
   })
 }
 
@@ -677,14 +699,48 @@ function onTouchEnd(e) {
   padding-top: 4vh;
 }
 
+/* 加载状态样式 */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background: linear-gradient( 180deg, #FFFFFF 0%, #F5F5F5 31%);
+}
+
+.loading-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 8rpx solid #f3f3f3;
+  border-top: 8rpx solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+
 /* 固定顶部 */
 .top-fixed-header {
-  /* position: fixed;
-  top: 3vh;
-  left: 0; */
   width: 100vw;
   z-index: 999;
   padding: 12px 16px 8px;
+  padding-bottom: 0;
   box-sizing: border-box;
 }
 
@@ -796,23 +852,20 @@ function onTouchEnd(e) {
   height: 100%;
   overflow-y: auto;
   padding: 10px 14px;
+  padding-bottom: 50rpx;
   box-sizing: border-box;
+}
+
+.file-scroll {
+  overflow-y: auto !important; 
+  -webkit-overflow-scrolling: touch; 
 }
 
 /* 文件列表样式 */
 .file-list {
+  height: 100%;
   margin-top: 1vh;
-}
-
-.file-search-bar {
-  margin-top: 10px;
-  padding: 0 14px;
-  margin: 0 14px 10px;
-}
-
-.file-list-scroll {
-  height: calc(100vh - 270px);
-  box-sizing: border-box;
+  padding-bottom: 50rpx;
 }
 
 .file-item {
@@ -872,46 +925,6 @@ function onTouchEnd(e) {
 
 .file-type-text {
   text-transform: uppercase;
-}
-
-/* 底部聊天栏 */
-.chatbar {
-  position: fixed;
-  bottom: 0rpx;
-  left: 0;
-  right: 0;
-  display: flex;
-  padding: 10px 14px;
-  border-radius: 15px;
-  margin: 2.5vw;
-  background: #ddd;
-  z-index: 999; 
-  box-sizing: border-box;
-  gap: 10px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  /* 为了完全遮挡下方内容，添加一个额外的伪元素 */
-}
-
-.chatbar::before {
-  content: '';
-  position: absolute;
-  bottom: -200rpx;
-  left: -200rpx;
-  right: -200rpx;
-  height: 200rpx;
-  background: #ffffff;
-  z-index: -1;
-}
-.fake-input {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: 0 14px;
-  box-sizing: border-box;
-}
-.fake-input-text {
-  color: #999;
-  font-size: 14px;
 }
 
 .note-detail-live-chat {
@@ -1083,16 +1096,6 @@ function onTouchEnd(e) {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.chatbar::before {
-  content: '';
-  position: absolute;
-  bottom: -200rpx;
-  left: -200rpx;
-  right: -200rpx;
-  height: 200rpx;
-  background: #ffffff;
-  z-index: -1;
-}
 .fake-input {
   flex: 1;
   display: flex;
@@ -1111,12 +1114,6 @@ function onTouchEnd(e) {
   border-top-left-radius: 16rpx;
   border-top-right-radius: 16rpx;
   overflow: hidden;
-}
-
-/* 底部占位元素 */
-.bottom-spacer {
-  height: 30px;
-  width: 100%;
 }
 
 /* 无文件提示样式 - 上下左右居中显示 */
@@ -1203,4 +1200,6 @@ function onTouchEnd(e) {
 ::v-deep .more-popup .u-popup__content {
   background-color: transparent;
 }
+
+
 </style>

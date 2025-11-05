@@ -103,7 +103,7 @@ function navigateToSearch() {
   z-index: 10000;
   position: sticky;
   top: 0; 
-  padding-top: 70rpx;
+  padding-top: 4vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -162,7 +162,7 @@ function navigateToSearch() {
 .explore_input_search_button {
 	position: absolute;
 	right: 50rpx;
-	top: 55rpx;
+	top: 46rpx;
   transform: translateY(50%);
 	background-color: rgba(22, 73, 224, 0.854);
 	display: flex;

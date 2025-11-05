@@ -243,7 +243,6 @@ function performUpdate() {
     // 使用direct_download_url进行下载
     url: props.updateInfo.direct_download_url,
     success: (res) => {
-      console.log("555555555555555555:", res)
       isUpdating.value = false
       
       if (res.statusCode === 200) {

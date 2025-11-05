@@ -83,7 +83,7 @@
             class="voice-toggle-btn"
             @click.stop="toggleVoiceMode"
           >
-            <image src="../../static/keyboard.png" class="voice-icon" mode="aspectFit"></image>
+            <image src="../../static/keyboard.png" class="keyboard-icon" mode="aspectFit"></image>
           </view>
         </template>
         
@@ -104,7 +104,6 @@
     <view class="recording-toast" v-if="isRecording">
       <view class="recording-icon"></view>
       <text class="recording-text">{{ wsConnectionStatus }}</text>
-      <!-- 实时识别文本显示 -->
       <text class="partial-text" v-if="partialText">{{ partialText }}</text>
     </view>
   </view>
@@ -182,7 +181,6 @@ onMounted(() => {
   recorderManager.onFrameRecorded((res) => {
     if (res.isLastFrame) {
       // 最后一帧数据
-      console.log('录音结束')
     } else if (isWebSocketConnected.value && socketTask && isFormatSent.value) {
       // 确保格式参数发送成功后再发送音频数据到WebSocket
       try {
@@ -255,8 +253,9 @@ const props = defineProps({
 
 // 计算属性：处理标题文本，searchDetail页面限制7个字符
 const displayTitle = computed(() => {
-  if (props.sourcePage === 'searchDetail' && props.title && props.title.length > 7) {
-    return props.title.substring(0, 11) + '...'
+  if ( props.title && props.title.length > 10) {
+  // if (props.sourcePage === 'searchDetail' && props.title && props.title.length > 10) {
+    return props.title.substring(0, 10) + '...'
   }
   return props.title
 })
@@ -291,14 +290,13 @@ const focusInput = () => {
 // 切换语音/文字输入模式
 const toggleVoiceMode = () => {
   if (isLoading.value) return
-  
+
   // 隐藏键盘
   uni.hideKeyboard()
   
   // 切换模式
   isVoiceMode.value = !isVoiceMode.value
   
-  console.log(`已切换到${isVoiceMode.value ? '语音' : '文字'}输入模式`)
 }
 
 // 初始化WebSocket连接
@@ -306,7 +304,7 @@ const initWebSocket = () => {
   try {
     wsConnectionStatus.value = '正在连接服务器...'
     socketTask = uni.connectSocket({
-      url: `${http.baseURL.replace('http://', 'ws://')}/livehands/asr/ws`,
+      // url: `${http.baseURL.replace('http://', 'ws://')}/livehands/asr/ws`,
       success: () => {
       },
       fail: (err) => {
@@ -713,23 +711,7 @@ const send = async () => {
     // 隐藏正在输入状态
     isTyping.value = false
     isLoading.value = false
-    
-    //   if (props.sourcePage === 'searchDetail') {
-    // // 更新chatId
-    // if (result.chatId || (result.data && result.data.chatId)) {
-    //   chatId.value = result.chatId || result.data.chatId
-    // }
-    // // 更新appId
-    // if (result.appId || (result.data && result.data.appId)) {
-    //   appId.value = result.appId || result.data.appId
-    // }
-    // // 更新agentApiKey
-    // if (result.agentApiKey || (result.data && result.data.agentApiKey)) {
-    //   agentApiKey.value = result.agentApiKey || result.data.agentApiKey
-    // }
-// }
-    
-    
+      
     // 根据实际返回的数据结构修改检查条件
     const hasValidResponse = result && (result.code === 200 || (result.data && result.data.code === 0)) && 
                            (result.answer || result.data || (result.data && result.data.answer));
@@ -882,7 +864,7 @@ page {
   padding-right: 60rpx; /* 为关闭按钮留出空间 */
 }
 .chat-title {
-  font-size: 30rpx;
+  font-size: 36rpx;
   font-weight: bold;
   color: #333;
   text-align: left;
@@ -1005,6 +987,11 @@ page {
 }
 
 .voice-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.keyboard-icon {
   width: 40rpx;
   height: 40rpx;
 }

@@ -1,15 +1,31 @@
 <template>
   <view class="knows-container">
-	<KnowCard
-	  v-for="know in knows"
-	  :key="know.id"
-	  :name="know.name"
-	  :prompt="know.prompt"
-	  :avatar="know.avatar"
-	  :count="know.count"
-	  :itemId="know.id"
-	>
-	</KnowCard>
+    <!-- 加载状态 -->
+    <view v-if="isLoading" class="loading-state">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">正在加载知识库...</text>
+    </view>
+    
+    <!-- 知识库列表 -->
+    <template v-else>
+	  <KnowCard
+	    v-for="know in knows"
+	    :key="know.id"
+	    :name="know.name"
+	    :prompt="know.prompt"
+	    :avatar="know.avatar"
+	    :count="know.count"
+	    :itemId="know.id"
+	  >
+	  </KnowCard>
+      
+      <!-- 空状态 -->
+      <view v-if="knows.length === 0" class="empty-container">
+        <image src="/static/folder.png" class="empty-icon" mode="aspectFit"></image>
+        <text class="empty-title">暂无知识库</text>
+        <text class="empty-description">点击加号创建您的第一个知识库</text>
+      </view>
+    </template>
   </view>
     <!-- 初次登录引导模态框 -->
     <view  v-if="showCreateModal" class="create-modal-overlay">
@@ -49,8 +65,14 @@ const showCreateModal = ref(false)
 // 知识库数据
 const knows = ref([])
 
+// 加载状态
+const isLoading = ref(true)
+
 // 从接口获取知识库数据
 function getKnowsData() {
+  // 设置加载状态为true
+  isLoading.value = true
+  
   // 从本地存储获取token
   const token = uni.getStorageSync('token');
   const params = {
@@ -81,6 +103,9 @@ function getKnowsData() {
     console.error('获取知识库数据出错:', error)
     uni.showToast({ title: '网络错误，使用本地数据', icon: 'error' })
     knows.value = mockKnows
+  }).finally(() => {
+    // 无论成功失败，设置加载状态为false
+    isLoading.value = false
   })
 }
 
@@ -120,6 +145,67 @@ onLoad(() => {
   max-height: calc(100vh - 240rpx); /* 考虑底部tabbar高度 */
   overflow-y: auto;
   padding: 20rpx 20rpx 40rpx 20rpx; /* 增加底部内边距确保内容不被tabbar遮挡 */
+}
+
+/* 加载状态样式 */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  width: 100%;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 6rpx solid #f3f3f3;
+  border-top: 6rpx solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 20rpx;
+}
+
+/* 空状态样式 */
+.empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  width: 100%;
+}
+
+.empty-icon {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.6;
+}
+
+.empty-title {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.empty-description {
+  font-size: 26rpx;
+  color: #999;
+  text-align: center;
+  padding: 0 40rpx;
 }
 
 /* 模态框样式 */

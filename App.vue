@@ -1,10 +1,10 @@
 <script>
 export default {
   onLaunch() {
-    // 一次性检查登录状态，决定初始页面，避免多次跳转造成闪烁
+    // 立即决定最终页面，避免中间页面的显示
+    setTimeout(()=>{plus.navigator.closeSplashscreen();}, 3000);
     const token = uni.getStorageSync('token') || '';
     
-    // 立即决定最终页面，避免中间页面的显示
     if (!token) {
       // 未登录状态：直接跳转到登录页
       setTimeout(() => {

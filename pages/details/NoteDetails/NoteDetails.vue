@@ -445,7 +445,6 @@ function copyNoteSummary() {
 <style scoped>
 .note-details-page {
   background: #fff;
-  min-height: 100vh;
   box-sizing: border-box;
   position: relative;
   padding: 0 16px;
@@ -615,7 +614,8 @@ function copyNoteSummary() {
 
 /* Swiper 内容区 */
 .tab-content-wrapper {
-  height: calc(100vh - 380px);
+  margin-top: 540rpx;
+  height: calc(100vh - 330rpx);
 }
 
 .tab-swiper {
@@ -624,10 +624,9 @@ function copyNoteSummary() {
 
 .tab-inner-scroll {
   height: 100%;
-  overflow-y: auto; /* 内容多时自动显示滚动条，内容少时不显示 */
+  overflow-y: auto; 
   padding: 0;
   box-sizing: border-box;
-  /* 移除任何可能存在的自定义滚动条样式影响 */
 }
 
 /* AI提问按钮 - 公用组件 */
@@ -897,7 +896,17 @@ function copyNoteSummary() {
 
 /* 底部占位元素 */
 .bottom-spacer {
-  height: 100px;
+  height: 100rpx;
   width: 100%;
+}
+.top-fixed-header {
+  position: fixed;
+  top: 3vh;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  padding: 12px 16px 8px;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 </style>

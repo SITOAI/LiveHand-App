@@ -1,6 +1,7 @@
 <template>
 	<view class="knowledge-layout">
-	   <view class="knowledge-layout-header">
+	  <view class="knowledge-layout-header-container">
+      <view class="knowledge-layout-header">
 	      <TabBar v-model="activeTab" @change="handleTabChange" />
 	      <view class="header-right">
 	        <u-icon
@@ -23,8 +24,9 @@
 	        />
 	      </view>
 	    </view>
+    </view>
 
-	    <view
+	  <view
 	      class="knowledge-layout-content"
 	      @touchstart="onTouchStart"
 	      @touchend="onTouchEnd"
@@ -46,7 +48,7 @@
 	          <Knows class="knowledge-layout-container" />
 	        </swiper-item>
 	      </swiper>
-	    </view>
+	  </view>
 </view>
 </template>
 
@@ -121,15 +123,18 @@ function onAIClickInAgent() {
   padding-top: 4vh;
 }
 
-.knowledge-layout-header {
-  position: sticky;
-  top: 5vh;
+.knowledge-layout-header-container{
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  height: 6vh;
-  background-color: white;
-  border-bottom: 0.5px solid rgba(204, 204, 204, 0.5);
+  background-color: #fff;
+  padding-top: 5vh;
   z-index: 1000;
+}
+.knowledge-layout-header {
+  height: 6vh;
+  border-bottom: 0.5px solid rgba(204, 204, 204, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,8 +150,8 @@ function onAIClickInAgent() {
 }
 
 .knowledge-layout-content {
-  margin-top: 3vh; /* 留出 header 高度 + 顶部边距 */
-  height: calc(100vh - 9vh); /* 减去 header 高度 */
+  margin-top: 8vh; 
+  height: calc(100vh - 7vh); 
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch; /* iOS 平滑滚动 */
   box-sizing: border-box;
